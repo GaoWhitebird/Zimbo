@@ -1,0 +1,20 @@
+flutter_native_splash:
+  #color: "#06330C"
+  #color_dark: "#06330C"
+  fullscreen: true
+  background_image: assets/images/png/ic_splash.png
+
+  #image: "assets/background.png"
+  #background_image: "assets/background.png"
+  #background_image_dark: "assets/dark-background.png"
+  #image_dark: assets/splash-invert.png
+
+  #android: false
+  #ios: false
+  #web: false
+
+  #android_gravity: center
+  #ios_content_mode: center
+  #web_image_mode: center
+
+  #fullscreen: true
