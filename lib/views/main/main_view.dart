@@ -83,12 +83,13 @@ List<Widget> navWidgets = [
   const SizedBox(
     child: EcoHubView(),
   ),
-  const SizedBox(
+  SizedBox(
     child: SupportView(),
   ),
 ];
 
 buildWidget(BuildContext context, MainViewModel model, Widget? child) {
+  setStatusBarColor(ColorUtils.appColorWhite);
   return WillPopScope(
       child: Scaffold(
         appBar: AppBar(
@@ -173,11 +174,10 @@ buildWidget(BuildContext context, MainViewModel model, Widget? child) {
             )),
       ),
       onWillPop: () {
-        // showDialog(
-        //         context: context,
-        //         builder: (BuildContext context) => const ExitDialog(),
-        //       );
-        finishView(context);
+        showDialog(
+                context: context,
+                builder: (BuildContext context) => const ExitDialog(),
+              );
         return Future.value(false);
       });
 }

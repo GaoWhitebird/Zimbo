@@ -5,6 +5,9 @@ class StringUtils {
   static const txtWarning = 'Warning !';
   static const txtError = 'Error';
   static const txtConfirm = 'Confirm';
+  static const txtDelete = 'Delete';
+  static const txtOk = 'Ok';
+  static const txtDescription = 'Description';
   static const txtResume = 'Resume';
   static const txtSave = 'Save';
   static const txtYes = 'Yes';
@@ -44,13 +47,40 @@ class StringUtils {
   static const txtSupport = 'Support';
   static const txtMenu = 'Menu';
   static const txtProfile = 'Profile';
+  static const txtAddItem = 'Add Item';
+  static const txtAddItems = 'Add Items';
   static const txtSubscription = 'Subscription';
   static const txtLogout = 'Logout';
   static const txtAppVersion = 'App Version';
   static const txtBarcodeScanner = 'Barcode Scanner';
   static const txtBarcodeNotScanned = 'Barcode Not Scanned';
 
+  static const txtSomethingWentWrong = 'Something went wrong, please try again';
+  static const txtPleaseCheckConntection = 'Please check connection';
+  static const txtPleaseEnterName = 'Please enter name';
+  static const txtPleaseEnterEmail = 'Please enter email';
+  static const txtPleaseEnterCorrectEmail = 'Please enter correct email';
+  static const txtPleaseEnterCorrectPassword = 'Password must be at least 6 characters';
+  static const txtPleaseEnterPassword = 'Please enter pasword';
+  static const txtUsed = 'Used';
+  static const txtTimes = 'Times';
+  static const txtRecyclableItemsAdded = 'Recyclables have been successfully added';
+  static const txtYourScore = 'Your Score';
+  static const txtOnePoint = 'Each item is one point';
+  static const txtPointHistory = 'Point History';
+  static const txtPlusOne = '+1';
+  static const txtPts = 'Pts';
+  static const txtHowWeCanHelp = 'How we can help you?';
+  static const txtDescribeYourProblem = 'Describe your problem and we will help you via your e-mail';
+  static const txtUploadScreenshot = 'Upload screenshot';
+  static const txtPleaseEnterDescription = 'Please enter description';
+  static const txtSentSuccess = 'The email has been sent successfully';
+  static const txtDoYouWantToDelete = 'Do you want to delete this item?';
+
   static const txtPrefUser = 'pref_user';
+
+
+
 
   static const txtIntroTitle_1 = 'Intro 1';
   static const txtIntroTitle_2 = 'Intro 2';

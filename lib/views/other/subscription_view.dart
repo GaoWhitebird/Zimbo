@@ -21,6 +21,7 @@ class SubscriptionView extends StatelessWidget {
 
   buildWidget(
       BuildContext context, SubscriptionViewModel model, Widget? child) {
+    setStatusBarColor(ColorUtils.appColorWhite);
     return WillPopScope(
         child: Scaffold(
           appBar: AppBar(
@@ -38,8 +39,8 @@ class SubscriptionView extends StatelessWidget {
                     bottomRight: Radius.circular(50))),
             leading: BackButton(
               color: ColorUtils.appColorBlack,
-              onPressed: () {
-                finishView(context);
+              onPressed: () => {
+                finishView(context),
               },
             ),
           ),

@@ -18,7 +18,9 @@ class ImageUtils {
   static const imgIcMenuSupport = 'assets/images/svg/ic_menu_support.svg';
   static const imgIcMenuLogout = 'assets/images/svg/ic_menu_logout.svg';
   static const imgIcMenuProfile = 'assets/images/svg/ic_menu_profile.svg';
+  static const imgIcStar = 'assets/images/svg/ic_star.svg';
 
   //json
   static const imgLogingImage = 'assets/images/json/ic_loading_image.json';
+  static const imgLogingApi = 'assets/images/json/ic_loading_api.json';
 }

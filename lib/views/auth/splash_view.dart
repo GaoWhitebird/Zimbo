@@ -2,6 +2,7 @@ import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/image_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
 import 'package:zimbo/utils/string_utils.dart';
+import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -20,7 +21,7 @@ class SplashView extends StatelessWidget {
   }
 
   buildWidget(BuildContext context, SplashViewModel model, Widget? child) {
-
+    setStatusBarColor(ColorUtils.appColorTransparent);
     return WillPopScope(
       child: Scaffold(
         body: Container(

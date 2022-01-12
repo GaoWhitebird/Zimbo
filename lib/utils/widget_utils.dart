@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:bot_toast/bot_toast.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/image_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
@@ -14,6 +15,7 @@ class ExitDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    setStatusBarColor(ColorUtils.appColorTransparent);
     return AlertDialog(
       contentPadding: const EdgeInsets.all(20),
       backgroundColor: Colors.white,
@@ -43,6 +45,61 @@ class ExitDialog extends StatelessWidget {
           onPressed: () {
             finish(context);
             exit(0);
+          },
+        ),
+      ],
+    );
+  }
+}
+
+// ignore: must_be_immutable
+class CustomDialog extends StatelessWidget {
+  CustomDialog({
+    Key? key,
+    required this.title,
+    required this.description,
+    required this.okButtonStr,
+    required this.cancelButtonStr,
+    required this.okClicked,
+  }) : super(key: key);
+
+  String title;
+  String description;
+  String okButtonStr;
+  String cancelButtonStr;
+  Function okClicked;
+
+  @override
+  Widget build(BuildContext context) {
+    setStatusBarColor(ColorUtils.appColorTransparent);
+    return AlertDialog(
+      contentPadding: const EdgeInsets.all(20),
+      backgroundColor: Colors.white,
+      title: Row(
+        children: [
+          Image.asset(ImageUtils.imgIcLogo, height: 25, fit: BoxFit.fitHeight),
+          Container(
+            width: 20,
+          ),
+          Text(title, style: boldTextStyle(color: Colors.orange)),
+        ],
+      ),
+      content: Text(description,
+          style: primaryTextStyle(color: ColorUtils.appColorBlack)),
+      actions: [
+        TextButton(
+          child: Text(cancelButtonStr,
+              style: secondaryTextStyle(color: ColorUtils.appColorBlack)),
+          onPressed: () {
+            finish(context);
+          },
+        ),
+        TextButton(
+          child: Text(okButtonStr,
+              style: secondaryTextStyle(color: ColorUtils.appColorAccent)),
+          onPressed: () {
+            okClicked();
+            finish(context);
           },
         ),
       ],
@@ -121,6 +178,7 @@ class EditTextField extends StatefulWidget {
       required this.isPassword,
       required this.isSecure,
       required this.mController,
+      this.autoFocus,
       this.cursorColor,
       this.hintColor,
       this.borderColor,
@@ -152,6 +210,7 @@ class EditTextField extends StatefulWidget {
   int? maxLine;
   double? latterSpacing;
   bool? lineThrough;
+  bool? autoFocus;
 
   @override
   _EditTextFieldState createState() => _EditTextFieldState();
@@ -221,6 +280,7 @@ class _EditTextFieldState extends State<EditTextField> {
             textAlign:
                 widget.isCentered ?? false ? TextAlign.center : TextAlign.start,
             maxLines: widget.maxLine ?? 1,
+            autofocus: widget.autoFocus ?? false,
           ));
     } else {
       return Padding(
@@ -269,6 +329,7 @@ class _EditTextFieldState extends State<EditTextField> {
             textAlign:
                 widget.isCentered ?? false ? TextAlign.center : TextAlign.start,
             maxLines: widget.maxLine ?? 1,
+            autofocus: widget.autoFocus ?? false,
           ));
     }
   }
@@ -397,3 +458,44 @@ class RoundButtonState extends State<RoundButton> {
   }
 }
 
+void showMessage(String str, double? alignment) {
+  BotToast.showText(
+      text: str,
+      textStyle: const TextStyle(
+          fontSize: SizeUtils.textSizeSMedium, color: ColorUtils.appColorWhite),
+      borderRadius: const BorderRadius.all(
+        Radius.circular(30),
+      ),
+      contentColor: ColorUtils.appColorAccent,
+      align: Alignment(0, alignment ?? 0.2));
+}
+
+class LoadingWidget extends StatelessWidget {
+  const LoadingWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    setStatusBarColor(ColorUtils.appColorTransparent);
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: const BoxDecoration(
+          color: ColorUtils.appColorBlack_50,
+          borderRadius: BorderRadius.all(Radius.circular(8))),
+      child: const CircularProgressIndicator(
+        backgroundColor: ColorUtils.appColorWhite,
+        color: ColorUtils.appColorAccent_50,
+      ),
+    );
+  }
+}
+
+void showLoading() {
+  BotToast.showCustomLoading(
+    toastBuilder: (_) => const LoadingWidget(),
+    backgroundColor: ColorUtils.appColorTransparent,
+  );
+}
+
+void hideLoading() {
+  BotToast.closeAllLoading();
+}

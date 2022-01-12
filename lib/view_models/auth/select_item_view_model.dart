@@ -1,47 +1,43 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-// ignore: implementation_imports
-import 'package:nb_utils/src/extensions/widget_extensions.dart';
-import 'package:zimbo/model/recyclable_item_model.dart';
+import 'package:zimbo/extentions/widget_extensions.dart';
+import 'package:zimbo/model/common/recyclable_item_model.dart';
+import 'package:zimbo/model/request/add_recyclable_req.dart';
+import 'package:zimbo/model/request/recyclable_item_req.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
 import 'package:zimbo/views/main/main_view.dart';
 
 class SelectItemViewModel extends BaseViewModel {
   List<RecyclableItemModel> mList = <RecyclableItemModel>[];
+  String? token;
 
   initialize(BuildContext context) async {
-    mList.add(RecyclableItemModel(
-        id: 0,
-        image:
-            'https://cdn.shopify.com/s/files/1/0084/7770/4252/products/EMB003_Electric_mug__LARGE_black_Web_2000x.jpg?v=1597239612',
-        name: 'ELECTRIC COFFEE MUG',
-        count: 0,
-        isChecked: false));
-      mList.add(RecyclableItemModel(
-        id: 0,
-        image:
-            'https://www.thespruceeats.com/thmb/FeLgdcaqlcddHD9e2CXeIIhtmYA=/fit-in/280x230/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/NespressoVertuoandMilkFrother-fcbedcaa92f04fd2a8a5462999e89804.jpg',
-        name: 'Coffee Pod',
-        count: 0,
-        isChecked: false));
-      mList.add(RecyclableItemModel(
-        id: 0,
-        image:
-            'https://i.insider.com/60cb7a5823393a00188e3cfb?width=1000&format=jpeg&auto=webp',
-        name: 'Bottle',
-        count: 0,
-        isChecked: false));
-      mList.add(RecyclableItemModel(
-        id: 0,
-        image:
-            'https://assets.hermes.com/is/image/hermesproduct/tote-bag--1462298%2092-front-1-300-0-850-850_b.jpg',
-        name: 'Bag',
-        count: 0,
-        isChecked: false));
+    token = await sharedService.getToken();
 
-      notifyListeners();
+    await networkService.doGetRecyclableItemList(token!).then((value) => {
+          if (value != null)
+            {
+              mList = value,
+            }
+        });
+
+    notifyListeners();
   }
 
   onClickNext(BuildContext context) {
-    const MainView().launch(context, isNewTask: false);
+    List<RecyclableItemReq> list = [];
+    for (int i = 0; i < mList.length; i++){
+      if(mList[i].isChecked == '1'){
+        RecyclableItemReq req = RecyclableItemReq(id: mList[i].id, count: mList[i].count);
+        list.add(req);
+      }
+    }
+
+    networkService.doAddRecyclableItems(token!, AddRecyclableReq(list: jsonEncode(list))).then((value) => {
+      if(value != null) {
+        const MainView().launch(context, isNewTask: false),
+      }
+    });
   }
 }

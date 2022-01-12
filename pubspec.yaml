@@ -11,26 +11,42 @@ dependencies:
   flutter:
     sdk: flutter
 
+# Design
   cupertino_icons: ^1.0.2
+  cached_network_image: ^3.2.0
+  lottie: ^1.2.1
+  google_fonts: ^2.1.0 
+  flutter_svg: ^1.0.0 
+
   # for MVC
   stacked: ^2.2.7+1
   get_it: ^7.2.0
   provider: ^6.0.1
+
+  # System
+  shared_preferences: ^2.0.9
+  device_info_plus: ^3.2.0
+  package_info_plus: ^1.3.0
+
   # Api calls
   dio: ^4.0.4
 
-  google_fonts: ^2.1.0 
-  flutter_svg: ^1.0.0 
+  # Auth
   google_sign_in: ^5.2.1
   flutter_facebook_auth: ^3.5.7
-  shared_preferences: ^2.0.9
+
+  # Utils
   nb_utils: ^4.4.10
   bot_toast: ^4.0.1
   url_launcher: ^6.0.17
-  cached_network_image: ^3.2.0
-  lottie: ^1.2.1
+
+  # More
   fast_barcode_scanner: ^1.1.4
   expandable: ^5.0.1
+  intl: ^0.17.0
+  image_picker: ^0.8.4+4
+
+
 
 dev_dependencies:
   flutter_test:

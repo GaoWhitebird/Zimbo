@@ -1,8 +1,9 @@
+import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:zimbo/utils/string_utils.dart';
-import 'package:zimbo/utils/widget_utils.dart';
+import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/view_models/main/echo_hub_view_model.dart';
+import 'package:zimbo/views/items/item_eco_hub_view.dart';
 
 class EcoHubView extends StatelessWidget {
   const EcoHubView({ Key? key }) : super(key: key);
@@ -18,11 +19,20 @@ class EcoHubView extends StatelessWidget {
 
 buildWidget(BuildContext context, EcoHubViewModel model, Widget? child) {
     return Scaffold(
-      body: Stack(children: <Widget>[
-        Container(
-          child: textView(StringUtils.txtEcoHub),
+      body: ExpandableTheme(
+        data: const ExpandableThemeData(
+          iconColor: ColorUtils.appColorBlack,
+          useInkWell: true,
         ),
-      ]),
+        child: ListView(
+          physics: const BouncingScrollPhysics(),
+          children: model.mList.map((item){
+            return EcoHubItemView(
+              model: item,
+            );
+          }).toList(),
+        ),
+      ),
     );
   }
 }

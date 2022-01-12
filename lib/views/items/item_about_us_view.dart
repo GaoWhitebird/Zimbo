@@ -1,6 +1,6 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:zimbo/model/about_model.dart';
+import 'package:zimbo/model/common/about_model.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';

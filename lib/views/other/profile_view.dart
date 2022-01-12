@@ -20,6 +20,7 @@ class ProfileView extends StatelessWidget {
   }
 
   buildWidget(BuildContext context, ProfileViewModel model, Widget? child) {
+    setStatusBarColor(ColorUtils.appColorWhite);
     return WillPopScope(
         child: Scaffold(
           appBar: AppBar(
@@ -37,8 +38,8 @@ class ProfileView extends StatelessWidget {
                     bottomRight: Radius.circular(50))),
             leading: BackButton(
               color: ColorUtils.appColorBlack,
-              onPressed: () {
-                finishView(context);
+              onPressed: () => {
+                finishView(context),
               },
             ),
           ),

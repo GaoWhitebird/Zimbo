@@ -1,0 +1,24 @@
+class ApiUtils {
+  // ignore: constant_identifier_names
+  static const BASE_URL = 'http://52.6.71.213/zimbo/mobile/';  
+  //static const BASE_URL = 'http://192.168.0.75/zimbo/mobile/';  
+  static const urlSignupEmail = BASE_URL + 'main/signup_email';
+  static const urlLogin = BASE_URL + 'main/login';
+  static const urlAutoLogin = BASE_URL + 'main/auto_login';
+  static const urlLoginFacebook = BASE_URL + 'main/login_facebook';
+  static const urlLoginGoogle = BASE_URL + 'main/login_google';
+  static const urlLogout = BASE_URL + 'user/logout';
+  static const urlUpdateProfile = BASE_URL + 'user/update_profile';
+  static const urlGetUserProfile = BASE_URL + 'user/profile';
+  static const urlDeleteUserProfile = BASE_URL + 'user/delete_profile';
+
+  static const urlGetRecyclableList = BASE_URL + 'user/get_recyclable_list';
+  static const urlGetAvailableRecyclableList = BASE_URL + 'user/get_available_recyclable_list';
+  static const urlAddRecyclableItems = BASE_URL + 'user/add_user_recyclable_items';
+  static const urlDeleteRecyclableItem = BASE_URL + 'user/delete_user_recyclable_item';
+  static const urlUpdateRecyclableItemCount = BASE_URL + 'user/update_user_recyclable_count';
+  static const urlGetPointHistory = BASE_URL + 'user/get_point_history';
+  static const urlGetUserRecyclableList = BASE_URL + 'user/get_user_recyclable_list';
+  static const urlAddScore = BASE_URL + 'user/add_user_score';
+  static const urlPostSupport = BASE_URL + 'user/post_support';
+}

@@ -3,6 +3,7 @@ import 'package:stacked/stacked.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
 import 'package:zimbo/utils/string_utils.dart';
+import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/auth/reset_pass_view_model.dart';
 
@@ -22,6 +23,7 @@ class ResetPassView extends StatelessWidget {
   }
 
   buildWidget(BuildContext context, ResetPassViewModel model, Widget? child) {
+    setStatusBarColor(ColorUtils.appColorPrimaryDark);
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
 

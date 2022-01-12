@@ -50,5 +50,7 @@
 		</array>
 		<key>NSCameraUsageDescription</key>
 		<string>Camera permission is required for barcode scanning.</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>Photo Library permission is required for sending image on Feedback.</string>
 	</dict>
 </plist>

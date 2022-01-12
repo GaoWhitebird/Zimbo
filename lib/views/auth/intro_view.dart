@@ -5,6 +5,7 @@ import 'package:zimbo/utils/dots_indicator/dots_indicator.dart';
 import 'package:zimbo/utils/image_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
 import 'package:zimbo/utils/string_utils.dart';
+import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/auth/intro_view_model.dart';
 
@@ -22,7 +23,7 @@ class IntroView extends StatelessWidget {
 }
 
 buildWidget(BuildContext context, IntroViewModel model, Widget? child) {
-  changeStatusColor(ColorUtils.appColorTransparent);
+  setStatusBarColor(ColorUtils.appColorTransparent);
   var width = MediaQuery.of(context).size.width;
   var height = MediaQuery.of(context).size.height;
 

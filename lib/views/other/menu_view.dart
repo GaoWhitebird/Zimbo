@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nb_utils/nb_utils.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
+import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/image_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
@@ -9,10 +10,8 @@ import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/other/menu_view_model.dart';
 import 'package:zimbo/views/items/item_menu_view.dart';
-import 'package:zimbo/views/main/main_view.dart';
 import 'package:zimbo/views/other/profile_view.dart';
 import 'package:zimbo/views/other/subscription_view.dart';
-
 
 class MenuView extends StatelessWidget {
   const MenuView({Key? key}) : super(key: key);
@@ -27,6 +26,7 @@ class MenuView extends StatelessWidget {
   }
 
   buildWidget(BuildContext context, MenuViewModel model, Widget? child) {
+    setStatusBarColor(ColorUtils.appColorWhite);
     return WillPopScope(
         child: Scaffold(
             appBar: AppBar(
@@ -48,20 +48,65 @@ class MenuView extends StatelessWidget {
                   Icons.close,
                   color: ColorUtils.appColorTextTitle,
                 ),
-                onPressed: () {
-                  finish(context);
-                },
+                onPressed: () => finishView(context),
               ),
             ),
             body: Column(
               mainAxisSize: MainAxisSize.max,
-              children: <Widget> [
-                MenuViewItem(imageStr: ImageUtils.imgIcMenuProfile, titleStr: StringUtils.txtProfile, onTap:() => const ProfileView().launch(context)),
-                MenuViewItem(imageStr: ImageUtils.imgIcMyItems, titleStr: StringUtils.txtSubscription, onTap:() => const SubscriptionView().launch(context)),
-                MenuViewItem(imageStr: ImageUtils.imgIcMenuSupport, titleStr: StringUtils.txtSupport, onTap:() => const MainView().launch(context)),
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                MenuViewItem(
+                    imageStr: ImageUtils.imgIcMenuProfile,
+                    titleStr: StringUtils.txtProfile,
+                    onTap: () => {
+                          finishView(context),
+                          const ProfileView().launch(context),
+                        }),
+                MenuViewItem(
+                    imageStr: ImageUtils.imgIcMyItems,
+                    titleStr: StringUtils.txtSubscription,
+                    onTap: () => {
+                          finishView(context),
+                          const SubscriptionView().launch(context),
+                        }),
+                MenuViewItem(
+                    imageStr: ImageUtils.imgIcMenuSupport,
+                    titleStr: StringUtils.txtSupport,
+                    onTap: () => finishView(context, 4)),
+                Expanded(child: Container()),
+                GestureDetector(
+                  child: Container(
+                    padding: const EdgeInsets.fromLTRB(30, 15, 30, 15),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        SvgPicture.asset(ImageUtils.imgIcMenuLogout,
+                            color: ColorUtils.appColorBlack),
+                        const SizedBox(width: 20),
+                        Expanded(
+                          child: textView(StringUtils.txtLogout,
+                              textColor: ColorUtils.appColorTextDark,
+                              fontSize: SizeUtils.textSizeMedium),
+                        ),
+                      ],
+                    ),
+                  ),
+                  onTap: () => model.onClickLogout(context),
+                ),
+                Container(
+                  padding: const EdgeInsets.fromLTRB(30, 15, 30, 15),
+                  alignment: Alignment.bottomLeft,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      textView(StringUtils.txtAppName, textColor: ColorUtils.appColorTextLight, fontSize: SizeUtils.textSizeSMedium, fontWeight: FontWeight.w600, isCentered: false),
+                      textView(StringUtils.txtAppVersion + " " + model.version, textColor: ColorUtils.appColorTextWhite, fontSize: SizeUtils.textSizeSmall, fontWeight: FontWeight.w400, isCentered: false),
+                    ],
+                  ),
+                )
               ],
-            )
-        ),
+            )),
         onWillPop: () {
           finishView(context);
           return Future.value(false);

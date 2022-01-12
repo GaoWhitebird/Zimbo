@@ -9,6 +9,8 @@ class ColorUtils {
   static const appColorAccent_50 = Color(0x8F04760F);
   static const appColorBlack = Color(0xFF000000);
   static const appColorBlack_10 = Color(0x0A000000);
+  static const appColorBlack_50 = Color(0x8F000000);
+  static const appColorOrange_10 = Color(0x0AFFA800);
   static const appColorWhite = Color(0xFFFFFFFF);
   static const appColorTransparent = Color(0x00FFFFFF);
   static const appColorTextTitle = Color(0xFF4A4D61);

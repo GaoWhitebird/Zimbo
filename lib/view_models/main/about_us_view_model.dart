@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:zimbo/model/about_model.dart';
+import 'package:zimbo/model/common/about_model.dart';
 import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
 

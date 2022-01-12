@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -105,3 +108,25 @@ Future<T?> invokeNativeMethod<T>(String channel, String method,
   return await platform.invokeMethod<T>(method, arguments);
 }
 
+Future<String?> getDeviceId() async {
+  var deviceInfo = DeviceInfoPlugin();
+  if (Platform.isIOS) { // import 'dart:io'
+    var iosDeviceInfo = await deviceInfo.iosInfo;
+    return iosDeviceInfo.identifierForVendor; // unique ID on iOS
+  } else {
+    var androidDeviceInfo = await deviceInfo.androidInfo;
+    return androidDeviceInfo.androidId; // unique ID on Android
+  }
+}
+
+bool isValidEmail(String email) {
+
+  String p = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+  RegExp regExp = new RegExp(p);
+
+  return regExp.hasMatch(email);
+}
+
+bool isValidPassword(String password){
+  return password.length >= 6;
+}

@@ -5,6 +5,7 @@ import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/image_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
 import 'package:zimbo/utils/string_utils.dart';
+import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/auth/login_view_model.dart';
 
@@ -26,6 +27,7 @@ class LoginView extends StatelessWidget {
   }
 
   buildWidget(BuildContext context, LoginViewModel model, Widget? child) {
+    setStatusBarColor(ColorUtils.appColorPrimaryDark);
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
 
@@ -191,7 +193,7 @@ class LoginView extends StatelessWidget {
                                       textContent: StringUtils.txtLogin,
                                       textSize: SizeUtils.textSizeMedium,
                                       radius: 30,
-                                      onPressed: () => model.onClickLogin(context)),
+                                      onPressed: () => model.onClickLogin(context, textEditingControllerEmail.text, textEditingControllerPassword.text,)),
                                   ),
                                   Row(
                                     mainAxisSize: MainAxisSize.min,

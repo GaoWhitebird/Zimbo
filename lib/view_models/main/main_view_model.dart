@@ -9,15 +9,17 @@ class MainViewModel extends BaseViewModel {
   int selectedIndex = 2;
 
   initialize(BuildContext context) async {
-
+    
   }
 
-  onClickMenu(BuildContext context) {
-    const MenuView().launch(context);
+  onClickMenu(BuildContext context) async {
+    final result = await const MenuView().launch(context);
+    if (result != null) selectedIndex = result;
+    notifyListeners();
   }
 
   onClickBarcode(BuildContext context) {
-    const BarcodeScannerScreen().launch(context);
+    //const BarcodeScannerScreen().launch(context);
   }
 
   setSelectedIndex(int index) {

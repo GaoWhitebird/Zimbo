@@ -21,7 +21,7 @@ class SelectItemView extends StatelessWidget {
   }
 
   buildWidget(BuildContext context, SelectItemViewModel model, Widget? child) {
-
+    setStatusBarColor(ColorUtils.appColorPrimaryDark);
     return WillPopScope(
         child: Scaffold(
           resizeToAvoidBottomInset : false,

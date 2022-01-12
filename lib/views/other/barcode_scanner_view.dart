@@ -55,6 +55,7 @@ class _BarcodeScannerScreenState extends State<BarcodeScannerScreen> {
 
   buildWidget(
       BuildContext context, BarcodeScannerViewModel model, Widget? child) {
+    setStatusBarColor(ColorUtils.appColorTransparent);
     return Scaffold(
       extendBodyBehindAppBar: true,
       resizeToAvoidBottomInset: false,
@@ -68,9 +69,7 @@ class _BarcodeScannerScreenState extends State<BarcodeScannerScreen> {
         elevation: 0,
         leading: BackButton(
           color: ColorUtils.appColorWhite,
-          onPressed: () {
-            finishView(context);
-          },
+          onPressed: () => finishView(context),
         ),
         actions: [
           ValueListenableBuilder<bool>(

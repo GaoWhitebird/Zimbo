@@ -5,6 +5,7 @@ import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/image_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
 import 'package:zimbo/utils/string_utils.dart';
+import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/auth/signup_view_model.dart';
 
@@ -28,6 +29,7 @@ class SignUpView extends StatelessWidget {
   }
 
   buildWidget(BuildContext context, SignUpViewModel model, Widget? child) {
+    setStatusBarColor(ColorUtils.appColorPrimaryDark);
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
 
@@ -178,7 +180,7 @@ class SignUpView extends StatelessWidget {
                                       textContent: StringUtils.txtSignUp,
                                       textSize: SizeUtils.textSizeMedium,
                                       radius: 30,
-                                      onPressed: () => model.onClickSignUp(context)),
+                                      onPressed: () => model.onClickSignUp(context, textEditingControllerName.text, textEditingControllerEmail.text, textEditingControllerPassword.text)),
                                   ),
                                   Column(
                                     children: [
