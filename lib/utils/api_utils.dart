@@ -21,4 +21,10 @@ class ApiUtils {
   static const urlGetUserRecyclableList = BASE_URL + 'user/get_user_recyclable_list';
   static const urlAddScore = BASE_URL + 'user/add_user_score';
   static const urlPostSupport = BASE_URL + 'user/post_support';
+
+  static const urlGetStripeKey = BASE_URL + 'payment/get_publish_key';
+  static const urlUpdatePaymentInfo = BASE_URL + 'payment/update_payment';
+  static const urlCancelPayment = BASE_URL + 'payment/cancel_payment';
+  static const urlGetSubscriptionInfo = BASE_URL + 'payment/get_subscription_info';
+  static const urlGetPaymentHistory = BASE_URL + 'payment/get_payment_history';
 }

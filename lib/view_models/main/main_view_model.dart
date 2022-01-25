@@ -19,7 +19,7 @@ class MainViewModel extends BaseViewModel {
   }
 
   onClickBarcode(BuildContext context) {
-    //const BarcodeScannerScreen().launch(context);
+    const BarcodeScannerScreen().launch(context);
   }
 
   setSelectedIndex(int index) {

@@ -31,6 +31,17 @@ class SharedService {
     return token;
   }
 
+  void saveIsSubscription(bool isSubscription) async {
+    await _getPref();
+    _prefs!.setBool("subscriptoin", isSubscription);
+  }
+
+  Future<bool> getIsSubscription() async {
+    await _getPref();
+    var isSubscription = _prefs!.getBool("subscriptoin");
+    return isSubscription == null ? false : isSubscription;
+  }
+
   void saveUser(UserModel? user) async {
     await _getPref();
     _prefs!.setString("user", user == null ? '' : jsonEncode(user.toJson()));

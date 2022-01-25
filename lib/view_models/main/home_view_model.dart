@@ -17,10 +17,10 @@ class HomeViewModel extends BaseViewModel {
     await networkService.doGetPointHistory(token!).then((value) => {
       if(value != null){
         mList = value,
+        notifyListeners(),
       }
     });
 
-    notifyListeners();
   }
 
 }

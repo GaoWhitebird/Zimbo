@@ -61,13 +61,13 @@ class _PointHistoryItemState extends State<PointHistoryItem> {
                   const SizedBox(height: 5),
                   Row(
                     children: <Widget> [
-                      const Icon(Icons.calendar_today_outlined, color: ColorUtils.appColorTextLight, size: 20,),
+                      const Icon(Icons.calendar_today_outlined, color: ColorUtils.appColorTextLight, size: 18,),
                       const SizedBox(width: 5),
-                      textView(readTimestampYYYYDD(widget.model.timestamp), fontSize: SizeUtils.textSizeSMedium, textColor: ColorUtils.appColorTextLight),
+                      textView(readTimestampYYYYDD(widget.model.timestamp), fontSize: SizeUtils.textSizeSmall, textColor: ColorUtils.appColorTextLight),
                       const SizedBox(width: 5),
-                      const Icon(Icons.timer, color: ColorUtils.appColorTextLight, size: 20),
+                      const Icon(Icons.timer, color: ColorUtils.appColorTextLight, size: 18),
                       const SizedBox(width: 5),
-                      textView(readTimestampHH(widget.model.timestamp), fontSize: SizeUtils.textSizeSMedium, textColor: ColorUtils.appColorTextLight),
+                      textView(readTimestampHH(widget.model.timestamp), fontSize: SizeUtils.textSizeSmall, textColor: ColorUtils.appColorTextLight),
                     ],
                   )
                 ],

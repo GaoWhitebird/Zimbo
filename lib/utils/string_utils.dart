@@ -48,6 +48,7 @@ class StringUtils {
   static const txtMenu = 'Menu';
   static const txtProfile = 'Profile';
   static const txtAddItem = 'Add Item';
+  static const txtAddCard = 'Add Card';
   static const txtAddItems = 'Add Items';
   static const txtSubscription = 'Subscription';
   static const txtLogout = 'Logout';
@@ -69,6 +70,7 @@ class StringUtils {
   static const txtOnePoint = 'Each item is one point';
   static const txtPointHistory = 'Point History';
   static const txtPlusOne = '+1';
+  static const txtMinusUSD = '-\$';
   static const txtPts = 'Pts';
   static const txtHowWeCanHelp = 'How we can help you?';
   static const txtDescribeYourProblem = 'Describe your problem and we will help you via your e-mail';
@@ -76,6 +78,25 @@ class StringUtils {
   static const txtPleaseEnterDescription = 'Please enter description';
   static const txtSentSuccess = 'The email has been sent successfully';
   static const txtDoYouWantToDelete = 'Do you want to delete this item?';
+  static const txtWhatInIncluded = 'What in included in the subscription?';
+  static const txtWhatInIncludedDescription = '- What in included in the subscription Description \n - What in included in the subscription Description \n - What in included in the subscription Description';
+  static const txtPaymentHistory = 'Payment History';
+  static const txtNextPayment = 'Next Payment';
+  static const txtCancelPayment = 'Cancel payment';
+  static const txtSubscriptionCost = 'Subscription Cost:';
+  static const txtSubscriptionCancel = 'Subscription Canceled';
+  static const txtSubscriptionCancelFailed = 'Subscription cancel failed';
+  static const txtSubscriptionSuccess = 'Subscription Successed !';
+  static const txtSubscriptionFailed = 'Subscription Failed !';
+  static const txtEditPaymentDetails = 'Edit Payment details';
+  static const txtCardNumber = 'Card Number';
+  static const txtCardHolder = 'Card Holder';
+  static const txtExpireDate = 'Expire Date';
+  static const txtCVV = 'CVV';
+
+  static const txtInvalideCardNumber = 'Please enter correct Card number';
+  static const txtInvalideDate = 'Please enter correct Date';
+  static const txtInvalideCVV = 'Please enter correct CVV';
 
   static const txtPrefUser = 'pref_user';
 

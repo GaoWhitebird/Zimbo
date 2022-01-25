@@ -37,7 +37,7 @@ class MyItemsViewModel extends BaseViewModel {
     UpdateRecyclableReq req = UpdateRecyclableReq(recyclableId: item.id, count: item.count);
     await networkService.doUpdateRecyclableCount(token!, req).then((value) => {
       if(value){
-        print('Changed')
+        
       }
     });
   }

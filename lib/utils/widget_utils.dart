@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:bot_toast/bot_toast.dart';
+import 'package:flutter/services.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/image_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
@@ -178,6 +179,9 @@ class EditTextField extends StatefulWidget {
       required this.isPassword,
       required this.isSecure,
       required this.mController,
+      this.onTap,
+      this.textInputType,
+      this.inputFormatters,
       this.autoFocus,
       this.cursorColor,
       this.hintColor,
@@ -211,6 +215,9 @@ class EditTextField extends StatefulWidget {
   double? latterSpacing;
   bool? lineThrough;
   bool? autoFocus;
+  TextInputType? textInputType;
+  List<TextInputFormatter>? inputFormatters;
+  VoidCallback? onTap;
 
   @override
   _EditTextFieldState createState() => _EditTextFieldState();
@@ -281,6 +288,9 @@ class _EditTextFieldState extends State<EditTextField> {
                 widget.isCentered ?? false ? TextAlign.center : TextAlign.start,
             maxLines: widget.maxLine ?? 1,
             autofocus: widget.autoFocus ?? false,
+            keyboardType: widget.textInputType ?? TextInputType.text,
+            inputFormatters: widget.inputFormatters ?? [],
+            onTap: widget.onTap ?? null,
           ));
     } else {
       return Padding(
@@ -330,6 +340,9 @@ class _EditTextFieldState extends State<EditTextField> {
                 widget.isCentered ?? false ? TextAlign.center : TextAlign.start,
             maxLines: widget.maxLine ?? 1,
             autofocus: widget.autoFocus ?? false,
+            keyboardType: widget.textInputType ?? TextInputType.text,
+            inputFormatters: widget.inputFormatters ?? [],
+            onTap: widget.onTap ?? null,
           ));
     }
   }

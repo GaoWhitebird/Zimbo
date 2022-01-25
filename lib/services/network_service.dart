@@ -3,8 +3,10 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:zimbo/locator.dart';
+import 'package:zimbo/model/common/payment_history_item_model.dart';
 import 'package:zimbo/model/common/point_item_model.dart';
 import 'package:zimbo/model/common/recyclable_item_model.dart';
+import 'package:zimbo/model/common/subscription_info_model.dart';
 import 'package:zimbo/model/common/user_model.dart';
 import 'package:zimbo/model/request/add_recyclable_req.dart';
 import 'package:zimbo/model/request/add_score_req.dart';
@@ -16,6 +18,7 @@ import 'package:zimbo/model/request/signup_email_req.dart';
 import 'package:zimbo/model/request/signup_facebook_req.dart';
 import 'package:zimbo/model/request/signup_google_req.dart';
 import 'package:zimbo/model/request/token_req.dart';
+import 'package:zimbo/model/request/update_payment_req.dart';
 import 'package:zimbo/model/request/update_profile_req.dart';
 import 'package:zimbo/model/request/update_recyclable_req.dart';
 import 'package:zimbo/services/shared_service.dart';
@@ -255,5 +258,47 @@ class NetworkService {
     if(res == null) return false;
 
     return true;
+  }
+
+  Future doCancelPayment(String token) async {
+    var res = await doPostRequest(ApiUtils.urlCancelPayment, token: TokenReq(token: token).toJson());
+    if(res == null) return false;
+
+    return true;
+  }
+
+  Future doUpdatePayment(String token, UpdatePaymentReq req) async {
+    var res = await doPostRequest(ApiUtils.urlUpdatePaymentInfo, token: TokenReq(token: token).toJson(), param: req.toJson());
+    if(res == null) return false;
+
+    return true;
+  }
+
+  Future<String?> doGetStripeKey(String token) async {
+    var res = await doPostRequest(ApiUtils.urlGetStripeKey, token: TokenReq(token: token).toJson());
+    if(res == null) return null;
+
+    String publishKey = res['publish_key'];
+    return publishKey;
+  }
+
+  Future<SubscriptionInfoModel?> doGetSubscriptionInfo(String token) async {
+    var res = await doPostRequest(ApiUtils.urlGetSubscriptionInfo, token: TokenReq(token: token).toJson());
+
+    if(res == null) return null;
+    SubscriptionInfoModel model = SubscriptionInfoModel.fromJson(res);
+    return model;
+  }
+
+  Future<List<PaymentHistoryItemModel>?> doGetPaymentHistory(String token) async {
+    var res = await doPostRequest(ApiUtils.urlGetPaymentHistory, token: TokenReq(token: token).toJson());
+
+    if(res == null) return null;
+    List<dynamic> _list = res['history'];
+    List<PaymentHistoryItemModel> list = [];
+    for (int i = 0; i < _list.length; i++){
+      list.add(PaymentHistoryItemModel.fromJson(_list[i]));
+    }
+    return list;
   }
 }
