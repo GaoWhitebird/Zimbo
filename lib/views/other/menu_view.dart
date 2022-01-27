@@ -60,7 +60,7 @@ class MenuView extends StatelessWidget {
                     titleStr: StringUtils.txtProfile,
                     onTap: () => {
                           finishView(context),
-                          const ProfileView().launch(context),
+                          ProfileView().launch(context),
                         }),
                 MenuViewItem(
                     imageStr: ImageUtils.imgIcMyItems,

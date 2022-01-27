@@ -98,6 +98,11 @@ class StringUtils {
   static const txtInvalideCardNumber = 'Please enter correct Card number';
   static const txtInvalideDate = 'Please enter correct Date';
   static const txtInvalideCVV = 'Please enter correct CVV';
+  static const txtMobilePhone = 'Mobile Phone';
+  static const txtEmailAddress = 'Email Address';
+  static const txtAddress = 'Address';
+  static const txtResetScore = 'Reset Score';
+  static const txtDeleteProfile = 'Delete Profile';
 
   static const txtPrefUser = 'pref_user';
 

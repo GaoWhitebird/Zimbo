@@ -22,6 +22,9 @@ class ImageUtils {
   static const imgIcMenuLogout = 'assets/images/svg/ic_menu_logout.svg';
   static const imgIcMenuProfile = 'assets/images/svg/ic_menu_profile.svg';
   static const imgIcStar = 'assets/images/svg/ic_star.svg';
+  static const imgIcPhone = 'assets/images/svg/ic_phone.svg';
+  static const imgIcAddress = 'assets/images/svg/ic_address.svg';
+  static const imgIcMail = 'assets/images/svg/ic_mail.svg';
 
   //json
   static const imgLogingImage = 'assets/images/json/ic_loading_image.json';
