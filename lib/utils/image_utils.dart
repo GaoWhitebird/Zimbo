@@ -4,6 +4,9 @@ class ImageUtils {
   static const imgIcLogo = 'assets/images/png/ic_logo.png';
   static const imgIcSplash = 'assets/images/png/ic_splash.png';
   static const imgIcIntroBack = 'assets/images/png/ic_intro_back.png';
+  static const imgIcIntro1 = 'assets/images/png/ic_intro_1.png';
+  static const imgIcIntro2 = 'assets/images/png/ic_intro_2.png';
+  static const imgIcIntro3 = 'assets/images/png/ic_intro_3.png';
 
   // svg
   static const imgIcFacebook = 'assets/images/svg/ic_facebook.svg';

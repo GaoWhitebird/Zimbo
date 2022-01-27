@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/dots_indicator/dots_indicator.dart';
 import 'package:zimbo/utils/image_utils.dart';
@@ -31,8 +32,8 @@ buildWidget(BuildContext context, IntroViewModel model, Widget? child) {
       child: Scaffold(
         body: Stack(
           children: <Widget>[
-            Image.asset(ImageUtils.imgIcIntroBack,
-                width: width * 1, height: height * 0.5, fit: BoxFit.fill),
+            Image.asset(ImageUtils.imgIcSplash,
+                width: width, height: height, fit: BoxFit.fill),
             SizedBox(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
@@ -42,15 +43,15 @@ buildWidget(BuildContext context, IntroViewModel model, Widget? child) {
                   WalkThrough(
                       textTitle: StringUtils.txtIntroTitle_1,
                       textContent: StringUtils.txtIntroDescription_1,
-                      walkImg: ImageUtils.imgIcLogo),
+                      walkImg: ImageUtils.imgIcIntro1),
                   WalkThrough(
                       textTitle: StringUtils.txtIntroTitle_2,
                       textContent: StringUtils.txtIntroDescription_2,
-                      walkImg: ImageUtils.imgIcLogo),
+                      walkImg: ImageUtils.imgIcIntro2),
                   WalkThrough(
                       textTitle: StringUtils.txtIntroTitle_3,
                       textContent: StringUtils.txtIntroDescription_3,
-                      walkImg: ImageUtils.imgIcLogo),
+                      walkImg: ImageUtils.imgIcIntro3),
                 ],
                 onPageChanged: (value) {
                   model.setCurrentIndex(value);
@@ -58,12 +59,15 @@ buildWidget(BuildContext context, IntroViewModel model, Widget? child) {
               ),
             ),
             Align(
-                alignment: Alignment.topRight,
+                alignment: Alignment.bottomRight,
                 child: Container(
                   width: width * 0.3,
-                  margin: EdgeInsets.only(top: height * 0.05),
+                  margin: EdgeInsets.only(bottom: height * 0.03),
                   child: TextButton(
-                    child: textView(StringUtils.txtSkip, fontSize: SizeUtils.textSizeMedium, textColor: ColorUtils.appColorWhite),
+                    child: textView(StringUtils.txtSkip,
+                        fontSize: SizeUtils.textSizeMedium,
+                        textColor: ColorUtils.appColorWhite,
+                        textAllCaps: true),
                     onPressed: () => model.onClickSkip(context),
                   ),
                 )),
@@ -79,11 +83,26 @@ buildWidget(BuildContext context, IntroViewModel model, Widget? child) {
                         dotsCount: 3,
                         position: model.currentIndex,
                         decorator: const DotsDecorator(
-                          color: ColorUtils.appColorBlack_10,
-                          activeColor: ColorUtils.appColorAccent,
+                          color: ColorUtils.appColorBlack_30,
+                          activeColor: ColorUtils.appColorWhite,
                           activeSize: Size.square(12.0),
                         )),
                     const Expanded(child: SizedBox()),
+                    Container(
+                        width: width,
+                        alignment: Alignment.centerLeft,
+                        child: SizedBox(
+                          width: width * 0.6,
+                          child: RoundButton(
+                            isStroked: false,
+                            textContent: StringUtils.txtGetStarted,
+                            textSize: SizeUtils.textSizeMedium,
+                            onPressed: () => model.onClickNext(context),
+                            textColor: ColorUtils.appColorWhite,
+                            backgroundColor: ColorUtils.appColorBlue,
+                            radius: 5,
+                          ).visible(model.currentIndex == 2),
+                        )),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
@@ -99,21 +118,21 @@ buildWidget(BuildContext context, IntroViewModel model, Widget? child) {
                             radius: 50,
                           ),
                         ),
-                        const SizedBox(width: 10,),
-                        Expanded(
-                          child: RoundButton(
-                            isStroked: false,
-                            textContent: StringUtils.txtNext,
-                            textSize: SizeUtils.textSizeMedium,
-                            onPressed: () => model.onClickNext(context),
-                            textColor: ColorUtils.appColorWhite,
-                            backgroundColor: ColorUtils.appColorAccent,
-                            radius: 50,
-                          )
+                        const SizedBox(
+                          width: 10,
                         ),
-                        
+                        Expanded(
+                            child: RoundButton(
+                          isStroked: false,
+                          textContent: StringUtils.txtNext,
+                          textSize: SizeUtils.textSizeMedium,
+                          onPressed: () => model.onClickNext(context),
+                          textColor: ColorUtils.appColorWhite,
+                          backgroundColor: ColorUtils.appColorAccent,
+                          radius: 50,
+                        )),
                       ],
-                    ),
+                    ).visible(false),
                   ],
                 ),
               ),

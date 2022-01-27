@@ -372,25 +372,30 @@ class WalkThrough extends StatelessWidget {
         children: <Widget>[
           Container(
             margin: EdgeInsets.only(top: h * 0.05),
-            height: h * 0.5,
+            height: h * 0.4,
             child: Stack(
               alignment: Alignment.center,
               children: <Widget>[
-                Image.asset(walkImg, width: width * 0.6, height: h * 0.4),
+                Image.asset(walkImg, width: width * 0.6, height: h * 0.3),
               ],
             ),
           ),
           SizedBox(height: h * 0.01),
-          textView(textTitle,
-              textColor: ColorUtils.appColorBlack,
-              fontSize: SizeUtils.textSizeXLarge,
-              isCentered: true),
+          Padding(
+            padding: const EdgeInsets.only(left: 28.0, right: 28.0),
+            child: textView(textTitle,
+                textColor: ColorUtils.appColorWhite,
+                fontSize: SizeUtils.textSizeXLarge,
+                maxLine: 2,
+                isCentered: true),
+          ),
+          SizedBox(height: h * 0.02),
           Padding(
             padding: const EdgeInsets.only(left: 28.0, right: 28.0),
             child: textView(textContent,
-                textColor: ColorUtils.appColorTextLight,
+                textColor: ColorUtils.appColorWhite,
                 fontSize: SizeUtils.textSizeMedium,
-                maxLine: 4,
+                maxLine: 5,
                 isCentered: true),
           )
         ],

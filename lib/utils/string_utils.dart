@@ -2,6 +2,7 @@ class StringUtils {
   static const txtAppName = 'Zimbo';
   static const txtBack = 'Back';
   static const txtNext = 'Next';
+  static const txtGetStarted = 'Get Started';
   static const txtWarning = 'Warning !';
   static const txtError = 'Error';
   static const txtConfirm = 'Confirm';
@@ -14,7 +15,7 @@ class StringUtils {
   static const txtNo = 'No';
   static const txtCancel = 'Cancel';
   static const txtExit = 'Exit';
-  static const txtSkip = 'Skip';
+  static const txtSkip = 'Skip  ->';
   static const txtSend = 'Send';
   static const txtDoYouWantToExit = 'Do you want to exit?';
   static const txtLogin = 'Login';
@@ -103,15 +104,15 @@ class StringUtils {
 
 
 
-  static const txtIntroTitle_1 = 'Intro 1';
-  static const txtIntroTitle_2 = 'Intro 2';
-  static const txtIntroTitle_3 = 'Intro 3';
+  static const txtIntroTitle_1 = 'Welcome';
+  static const txtIntroTitle_2 = 'Relief for our planet and your pocket';
+  static const txtIntroTitle_3 = 'Reuse. Reuse. Reuse';
   static const txtIntroDescription_1 =
-      'Intro Intro Intro Intro Intro Intro Intro Intro Intro  Intro Intro Intro Intro Intro Intro Intro Intro Intro Intro description 1';
+      'At zimbo we are reimagining sustainability. We believe that the largest opportunity for environmental impact lies with the collective power of individuals.';
   static const txtIntroDescription_2 =
-      'Intro Intro Intro Intro Intro Intro Intro Intro Intro  Intro Intro Intro Intro Intro Intro Intro Intro Intro Intro description 2';
+      'Easily log your sustainable behavior to generate a personal ‘green score’. Your score then qualifies you for exclusive discounts and offers from our corporate partners.';
   static const txtIntroDescription_3 =
-      'Intro Intro Intro Intro Intro Intro Intro Intro Intro  Intro Intro Intro Intro Intro Intro Intro Intro Intro Intro description 3';
+      'Improve your green score by reusing household items that you may already own. Track your score, monitor your impact, enjoy the savings.';
 
   static const txtAboutTitle_1 = 'Who we are';
   static const txtAboutTitle_2 = 'How does is work?';
