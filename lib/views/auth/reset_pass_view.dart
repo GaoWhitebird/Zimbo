@@ -84,7 +84,7 @@ class ResetPassView extends StatelessWidget {
                           ]),
                       padding: const EdgeInsets.all(10),
                       width: width,
-                      height: height * 0.6,
+                      height: height * 0.7,
                       child: Column(
                         children: [
                           Expanded(

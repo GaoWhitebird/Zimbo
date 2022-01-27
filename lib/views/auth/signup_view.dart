@@ -10,7 +10,7 @@ import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/auth/signup_view_model.dart';
 
 class SignUpView extends StatelessWidget {
-  SignUpView({ Key? key }) : super(key: key);
+  SignUpView({Key? key}) : super(key: key);
 
   final TextEditingController textEditingControllerName =
       TextEditingController();
@@ -72,7 +72,8 @@ class SignUpView extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(15, 10, 5, 10),
                             child: ElevatedButton.icon(
-                                onPressed: () => model.onClickFacebookLogin(context),
+                                onPressed: () =>
+                                    model.onClickFacebookLogin(context),
                                 icon:
                                     SvgPicture.asset(ImageUtils.imgIcFacebook),
                                 label: textView(StringUtils.txtFacebook,
@@ -93,7 +94,8 @@ class SignUpView extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(5, 10, 15, 10),
                             child: ElevatedButton.icon(
-                                onPressed: () => model.onClickGoogleLogin(context),
+                                onPressed: () =>
+                                    model.onClickGoogleLogin(context),
                                 icon: SvgPicture.asset(ImageUtils.imgIcGoogle),
                                 label: textView(StringUtils.txtGoogle,
                                     textColor: ColorUtils.appColorBlack,
@@ -135,7 +137,7 @@ class SignUpView extends StatelessWidget {
                           ]),
                       padding: const EdgeInsets.all(10),
                       width: width,
-                      height: height * 0.6,
+                      height: height * 0.7,
                       child: Column(
                         children: [
                           textView(StringUtils.txtCreateAnAccount,
@@ -168,19 +170,25 @@ class SignUpView extends StatelessWidget {
                             child: SizedBox(
                               width: width,
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  
                                   Container(
                                     alignment: Alignment.center,
-                                    margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                                    margin: const EdgeInsets.fromLTRB(
+                                        10, 10, 10, 10),
                                     child: RoundButton(
-                                      isStroked: false,
-                                      textContent: StringUtils.txtSignUp,
-                                      textSize: SizeUtils.textSizeMedium,
-                                      radius: 30,
-                                      onPressed: () => model.onClickSignUp(context, textEditingControllerName.text, textEditingControllerEmail.text, textEditingControllerPassword.text)),
+                                        isStroked: false,
+                                        textContent: StringUtils.txtSignUp,
+                                        textSize: SizeUtils.textSizeMedium,
+                                        radius: 30,
+                                        onPressed: () => model.onClickSignUp(
+                                            context,
+                                            textEditingControllerName.text,
+                                            textEditingControllerEmail.text,
+                                            textEditingControllerPassword
+                                                .text)),
                                   ),
                                   Column(
                                     children: [
@@ -198,8 +206,10 @@ class SignUpView extends StatelessWidget {
                                           GestureDetector(
                                             child: textViewUnderline(
                                               StringUtils.txtTerms,
-                                              textColor: ColorUtils.appColorAccent,
-                                              fontSize: SizeUtils.textSizeMedium,
+                                              textColor:
+                                                  ColorUtils.appColorAccent,
+                                              fontSize:
+                                                  SizeUtils.textSizeMedium,
                                               fontWeight: FontWeight.w500,
                                               isCentered: false,
                                             ),
@@ -212,7 +222,8 @@ class SignUpView extends StatelessWidget {
                                           textView(StringUtils.txtAnd,
                                               textColor:
                                                   ColorUtils.appColorTextWhite,
-                                              fontSize: SizeUtils.textSizeSMedium,
+                                              fontSize:
+                                                  SizeUtils.textSizeSMedium,
                                               fontWeight: FontWeight.w400,
                                               isCentered: false),
                                           const SizedBox(
@@ -221,8 +232,10 @@ class SignUpView extends StatelessWidget {
                                           GestureDetector(
                                             child: textViewUnderline(
                                               StringUtils.txtCondition,
-                                              textColor: ColorUtils.appColorAccent,
-                                              fontSize: SizeUtils.textSizeMedium,
+                                              textColor:
+                                                  ColorUtils.appColorAccent,
+                                              fontSize:
+                                                  SizeUtils.textSizeMedium,
                                               fontWeight: FontWeight.w500,
                                               isCentered: false,
                                             ),

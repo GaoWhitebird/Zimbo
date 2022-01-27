@@ -65,7 +65,8 @@ class LoginView extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(15, 10, 5, 10),
                             child: ElevatedButton.icon(
-                                onPressed: () => model.onClickFacebookLogin(context),
+                                onPressed: () =>
+                                    model.onClickFacebookLogin(context),
                                 icon:
                                     SvgPicture.asset(ImageUtils.imgIcFacebook),
                                 label: textView(StringUtils.txtFacebook,
@@ -86,7 +87,8 @@ class LoginView extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(5, 10, 15, 10),
                             child: ElevatedButton.icon(
-                                onPressed: () => model.onClickGoogleLogin(context),
+                                onPressed: () =>
+                                    model.onClickGoogleLogin(context),
                                 icon: SvgPicture.asset(ImageUtils.imgIcGoogle),
                                 label: textView(StringUtils.txtGoogle,
                                     textColor: ColorUtils.appColorBlack,
@@ -128,7 +130,7 @@ class LoginView extends StatelessWidget {
                           ]),
                       padding: const EdgeInsets.all(10),
                       width: width,
-                      height: height * 0.6,
+                      height: height * 0.7,
                       child: Column(
                         children: [
                           textView(StringUtils.txtSigninViaEmail,
@@ -136,7 +138,9 @@ class LoginView extends StatelessWidget {
                               fontSize: SizeUtils.textSizeNormal,
                               fontWeight: FontWeight.w600,
                               isCentered: true),
-                          const SizedBox(height: 10,),
+                          const SizedBox(
+                            height: 10,
+                          ),
                           EditTextField(
                             hintText: StringUtils.txtEmail,
                             isPassword: false,
@@ -155,7 +159,8 @@ class LoginView extends StatelessWidget {
                             child: SizedBox(
                               width: width,
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Row(
@@ -187,13 +192,19 @@ class LoginView extends StatelessWidget {
                                   ),
                                   Container(
                                     alignment: Alignment.center,
-                                    margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                                    margin: const EdgeInsets.fromLTRB(
+                                        10, 10, 10, 10),
                                     child: RoundButton(
-                                      isStroked: false,
-                                      textContent: StringUtils.txtLogin,
-                                      textSize: SizeUtils.textSizeMedium,
-                                      radius: 30,
-                                      onPressed: () => model.onClickLogin(context, textEditingControllerEmail.text, textEditingControllerPassword.text,)),
+                                        isStroked: false,
+                                        textContent: StringUtils.txtLogin,
+                                        textSize: SizeUtils.textSizeMedium,
+                                        radius: 30,
+                                        onPressed: () => model.onClickLogin(
+                                              context,
+                                              textEditingControllerEmail.text,
+                                              textEditingControllerPassword
+                                                  .text,
+                                            )),
                                   ),
                                   Row(
                                     mainAxisSize: MainAxisSize.min,

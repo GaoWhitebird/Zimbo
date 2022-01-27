@@ -76,7 +76,7 @@ class SupportView extends StatelessWidget {
                         ]),
                     padding: const EdgeInsets.all(10),
                     width: width,
-                    height: height * 0.6,
+                    height: height * 0.7,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       mainAxisSize: MainAxisSize.max,
@@ -109,9 +109,10 @@ class SupportView extends StatelessWidget {
                                             borderRadius:
                                                 BorderRadius.circular(20),
                                             child: Image.file(
-                                                new File(model.imagePath),
+                                              new File(model.imagePath),
                                               width: width,
-                                              fit: BoxFit.cover,),
+                                              fit: BoxFit.cover,
+                                            ),
                                           )
                                         : Container(
                                             color:
@@ -135,7 +136,7 @@ class SupportView extends StatelessWidget {
                                               fontWeight: FontWeight.w500,
                                               isCentered: true),
                                           style: ElevatedButton.styleFrom(
-                                            elevation: 0.0,
+                                              elevation: 0.0,
                                               primary: ColorUtils
                                                   .appColorTransparent,
                                               padding: const EdgeInsets.only(
@@ -160,8 +161,8 @@ class SupportView extends StatelessWidget {
                                     textContent: StringUtils.txtSend,
                                     textSize: SizeUtils.textSizeMedium,
                                     radius: 30,
-                                    onPressed: () =>
-                                        model.onClickSend(context, textEditingControllerDescription.text)),
+                                    onPressed: () => model.onClickSend(context,
+                                        textEditingControllerDescription.text)),
                               ),
                             ],
                           ),

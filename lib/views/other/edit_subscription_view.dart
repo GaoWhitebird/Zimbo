@@ -114,7 +114,7 @@ class EditSubscriptionView extends StatelessWidget {
                         ]),
                     padding: const EdgeInsets.all(10),
                     width: width,
-                    height: height * 0.6,
+                    height: height * 0.7,
                     child: Column(
                       children: [
                         EditTextField(
@@ -142,11 +142,12 @@ class EditSubscriptionView extends StatelessWidget {
                             autoFocus: false,
                             textInputType: TextInputType.datetime,
                             onTap: () {
-                              FocusScope.of(context).requestFocus(new FocusNode());
+                              FocusScope.of(context)
+                                  .requestFocus(new FocusNode());
                               model.onClickDatePicker(context);
-                              FocusScope.of(context).requestFocus(new FocusNode());
-                            }
-                        ),
+                              FocusScope.of(context)
+                                  .requestFocus(new FocusNode());
+                            }),
                         EditTextField(
                           hintText: StringUtils.txtCVV,
                           isPassword: false,
