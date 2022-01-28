@@ -11,6 +11,7 @@ class ApiUtils {
   static const urlUpdateProfile = BASE_URL + 'user/update_profile';
   static const urlGetUserProfile = BASE_URL + 'user/profile';
   static const urlDeleteUserProfile = BASE_URL + 'user/delete_profile';
+  static const urlResetScore = BASE_URL + 'user/reset_score';
 
   static const urlGetRecyclableList = BASE_URL + 'user/get_recyclable_list';
   static const urlGetAvailableRecyclableList = BASE_URL + 'user/get_available_recyclable_list';

@@ -48,8 +48,12 @@ dependencies:
   intl: ^0.17.0
   image_picker: ^0.8.4+4
   flutter_multi_formatter: ^2.5.1
-  flutter_datetime_picker: ^1.5.1
   stripe_sdk: ^5.0.0-nullsafety.1
+
+  flutter_datetime_picker:
+    git:
+      url: https://github.com/Realank/flutter_datetime_picker.git
+      ref: master
 
 
 

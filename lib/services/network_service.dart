@@ -239,6 +239,13 @@ class NetworkService {
     return true;
   }
 
+    Future doResetScore(String token) async {
+    var res = await doPostRequest(ApiUtils.urlResetScore, token: TokenReq(token: token).toJson());
+    if(res == null) return false;
+
+    return true;
+  }
+
   Future doDeleteRecyclableItem(String token, DeleteRecyclableReq req) async {
     var res = await doPostRequest(ApiUtils.urlDeleteRecyclableItem, token: TokenReq(token: token,).toJson(), param: req.toJson());
     if(res == null) return false;

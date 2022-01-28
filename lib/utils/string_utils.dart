@@ -48,6 +48,7 @@ class StringUtils {
   static const txtSupport = 'Support';
   static const txtMenu = 'Menu';
   static const txtProfile = 'Profile';
+  static const txtEditProfile = 'Edit Profile';
   static const txtAddItem = 'Add Item';
   static const txtAddCard = 'Add Card';
   static const txtAddItems = 'Add Items';
@@ -78,7 +79,11 @@ class StringUtils {
   static const txtUploadScreenshot = 'Upload screenshot';
   static const txtPleaseEnterDescription = 'Please enter description';
   static const txtSentSuccess = 'The email has been sent successfully';
+  static const txtProfileUpdatedSuccess = 'Profile updated successfully';
+  static const txtResetScoreSuccess = 'Reset score successfully';
   static const txtDoYouWantToDelete = 'Do you want to delete this item?';
+  static const txtDoYouWantToDeleteProfile = 'Do you want to delete Profile?';
+  static const txtDoYouWantToResetScore = 'Do you want to Reset Score?';
   static const txtWhatInIncluded = 'What in included in the subscription?';
   static const txtWhatInIncludedDescription = '- What in included in the subscription Description \n - What in included in the subscription Description \n - What in included in the subscription Description';
   static const txtPaymentHistory = 'Payment History';
@@ -102,7 +107,9 @@ class StringUtils {
   static const txtEmailAddress = 'Email Address';
   static const txtAddress = 'Address';
   static const txtResetScore = 'Reset Score';
+  static const txtReset = 'Reset';
   static const txtDeleteProfile = 'Delete Profile';
+  static const txtCountryCity = 'Country, City';
 
   static const txtPrefUser = 'pref_user';
 

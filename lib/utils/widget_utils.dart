@@ -180,6 +180,8 @@ class EditTextField extends StatefulWidget {
       required this.isSecure,
       required this.mController,
       this.onTap,
+      this.isEnable,
+      this.enableInteractiveSelection,
       this.textInputType,
       this.inputFormatters,
       this.autoFocus,
@@ -201,6 +203,8 @@ class EditTextField extends StatefulWidget {
   bool isSecure;
   TextEditingController mController;
 
+  bool? enableInteractiveSelection;
+  bool? isEnable;
   Color? cursorColor;
   Color? hintColor;
   Color? borderColor;
@@ -291,6 +295,8 @@ class _EditTextFieldState extends State<EditTextField> {
             keyboardType: widget.textInputType ?? TextInputType.text,
             inputFormatters: widget.inputFormatters ?? [],
             onTap: widget.onTap ?? null,
+            enabled: widget.isEnable ?? true,
+            enableInteractiveSelection: widget.enableInteractiveSelection ?? true,
           ));
     } else {
       return Padding(
@@ -343,6 +349,8 @@ class _EditTextFieldState extends State<EditTextField> {
             keyboardType: widget.textInputType ?? TextInputType.text,
             inputFormatters: widget.inputFormatters ?? [],
             onTap: widget.onTap ?? null,
+            enabled: widget.isEnable ?? true,
+            enableInteractiveSelection: widget.enableInteractiveSelection ?? true,
           ));
     }
   }

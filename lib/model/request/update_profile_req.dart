@@ -1,20 +1,22 @@
+import 'package:dio/dio.dart';
+
 class UpdateProfileReq {
-  String userName;
-  String userEmail;
-  String userImage;
-  String userPhone;
-  String userPhonePrefix;
-  String country;
-  String address;
+  String? userName;
+  String? userEmail;
+  String? userPhone;
+  String? userPhonePrefix;
+  String? country;
+  String? address;
+  MultipartFile? userImage;
 
   UpdateProfileReq({
-    required this.userName,
-    required this.userEmail,
-    required this.userImage,
-    required this.userPhone,
-    required this.userPhonePrefix,
-    required this.country,
-    required this.address,
+     this.userName,
+     this.userEmail,
+     this.userImage,
+     this.userPhone,
+     this.userPhonePrefix,
+     this.country,
+     this.address,
   });
 
   Map<String, dynamic> toJson() => {

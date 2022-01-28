@@ -1,8 +1,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/model/common/user_model.dart';
+import 'package:zimbo/utils/string_utils.dart';
+import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
+import 'package:zimbo/views/auth/login_view.dart';
+import 'package:zimbo/views/other/edit_profile_view.dart';
 
 class ProfileViewModel extends BaseViewModel {
 
@@ -30,7 +35,13 @@ class ProfileViewModel extends BaseViewModel {
     });
   }
 
-  void onClickEdit(BuildContext context) {}
+  void onClickEdit(BuildContext context) async {
+        final result = await EditProfileView().launch(context);
+
+    if (result != null) {
+      initialize(context);
+    }
+  }
 
   onClickAddPhoto(BuildContext context) async {
     final ImagePicker _picker = ImagePicker();
@@ -42,8 +53,22 @@ class ProfileViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  onClickReset(BuildContext context) {}
+  onClickReset(BuildContext context) async {
+    networkService.doResetScore(token!).then((value) => {
+      if(value){
+       showMessage(StringUtils.txtResetScoreSuccess, null),
+      }
+    });
+  }
 
-  onClickDelete(BuildContext context) {}
+  onClickDelete(BuildContext context) async {
+    networkService.doDeleteProfile(token!).then((value) => {
+      if(value){
+        sharedService.saveToken(''),
+        sharedService.saveUser(null),
+        LoginView().launch(context, isNewTask: true),
+      }
+    });
+  }
 
 }

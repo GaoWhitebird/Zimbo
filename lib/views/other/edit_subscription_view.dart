@@ -141,13 +141,9 @@ class EditSubscriptionView extends StatelessWidget {
                             borderColor: ColorUtils.appColorBlack_10,
                             autoFocus: false,
                             textInputType: TextInputType.datetime,
-                            onTap: () {
-                              FocusScope.of(context)
-                                  .requestFocus(new FocusNode());
-                              model.onClickDatePicker(context);
-                              FocusScope.of(context)
-                                  .requestFocus(new FocusNode());
-                            }),
+                            enableInteractiveSelection: false,
+                            onTap: () { FocusScope.of(context).requestFocus(new FocusNode()); model.onClickDatePicker(context);},
+                           ),
                         EditTextField(
                           hintText: StringUtils.txtCVV,
                           isPassword: false,

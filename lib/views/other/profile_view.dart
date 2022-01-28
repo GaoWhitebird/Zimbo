@@ -144,7 +144,7 @@ class ProfileView extends StatelessWidget {
                       ProfileViewItem(
                           imageStr: ImageUtils.imgIcPhone,
                           titleStr: StringUtils.txtMobilePhone,
-                          contentStr: model.userPhonePrefix + model.userPhone),
+                          contentStr: model.userPhone),
                       ProfileViewItem(
                           imageStr: ImageUtils.imgIcMail,
                           titleStr: StringUtils.txtEmailAddress,
@@ -170,14 +170,21 @@ class ProfileView extends StatelessWidget {
                                     child: GestureDetector(
                                       child: textViewUnderline(
                                         StringUtils.txtResetScore,
-                                        textColor:
-                                            ColorUtils.appColorAccent,
+                                        textColor: ColorUtils.appColorAccent,
                                         fontSize: SizeUtils.textSizeMedium,
                                         fontWeight: FontWeight.w500,
                                         isCentered: false,
                                       ),
-                                      onTap: () =>
-                                          model.onClickReset(context),
+                                      onTap: () => CustomDialog(
+                                          title: StringUtils.txtWarning,
+                                          description: StringUtils
+                                              .txtDoYouWantToResetScore,
+                                          okButtonStr: StringUtils.txtReset,
+                                          cancelButtonStr:
+                                              StringUtils.txtCancel,
+                                          okClicked: () {
+                                            model.onClickReset(context);
+                                          }),
                                     ),
                                   ),
                                   Container(
@@ -185,14 +192,21 @@ class ProfileView extends StatelessWidget {
                                     child: GestureDetector(
                                       child: textViewUnderline(
                                         StringUtils.txtDeleteProfile,
-                                        textColor:
-                                            ColorUtils.appColorAccent,
+                                        textColor: ColorUtils.appColorAccent,
                                         fontSize: SizeUtils.textSizeMedium,
                                         fontWeight: FontWeight.w500,
                                         isCentered: false,
                                       ),
-                                      onTap: () =>
-                                          model.onClickDelete(context),
+                                      onTap: () => CustomDialog(
+                                          title: StringUtils.txtWarning,
+                                          description: StringUtils
+                                              .txtDoYouWantToDeleteProfile,
+                                          okButtonStr: StringUtils.txtDelete,
+                                          cancelButtonStr:
+                                              StringUtils.txtCancel,
+                                          okClicked: () {
+                                            model.onClickDelete(context);
+                                          }),
                                     ),
                                   ),
                                 ],
