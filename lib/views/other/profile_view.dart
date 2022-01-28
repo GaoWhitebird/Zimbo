@@ -175,16 +175,21 @@ class ProfileView extends StatelessWidget {
                                         fontWeight: FontWeight.w500,
                                         isCentered: false,
                                       ),
-                                      onTap: () => CustomDialog(
-                                          title: StringUtils.txtWarning,
-                                          description: StringUtils
-                                              .txtDoYouWantToResetScore,
-                                          okButtonStr: StringUtils.txtReset,
-                                          cancelButtonStr:
-                                              StringUtils.txtCancel,
-                                          okClicked: () {
-                                            model.onClickReset(context);
-                                          }),
+                                      onTap: () => showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) =>
+                                            CustomDialog(
+                                                title: StringUtils.txtWarning,
+                                                description: StringUtils
+                                                    .txtDoYouWantToResetScore,
+                                                okButtonStr:
+                                                    StringUtils.txtReset,
+                                                cancelButtonStr:
+                                                    StringUtils.txtCancel,
+                                                okClicked: () {
+                                                  model.onClickReset(context);
+                                                }),
+                                      ),
                                     ),
                                   ),
                                   Container(
@@ -197,16 +202,21 @@ class ProfileView extends StatelessWidget {
                                         fontWeight: FontWeight.w500,
                                         isCentered: false,
                                       ),
-                                      onTap: () => CustomDialog(
-                                          title: StringUtils.txtWarning,
-                                          description: StringUtils
-                                              .txtDoYouWantToDeleteProfile,
-                                          okButtonStr: StringUtils.txtDelete,
-                                          cancelButtonStr:
-                                              StringUtils.txtCancel,
-                                          okClicked: () {
-                                            model.onClickDelete(context);
-                                          }),
+                                      onTap: () => showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) =>
+                                            CustomDialog(
+                                                title: StringUtils.txtWarning,
+                                                description: StringUtils
+                                                    .txtDoYouWantToDeleteProfile,
+                                                okButtonStr:
+                                                    StringUtils.txtDelete,
+                                                cancelButtonStr:
+                                                    StringUtils.txtCancel,
+                                                okClicked: () {
+                                                  model.onClickDelete(context);
+                                                }),
+                                      ),
                                     ),
                                   ),
                                 ],

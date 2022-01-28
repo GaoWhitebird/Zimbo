@@ -6,7 +6,6 @@ class UserModel {
   String? userEmail;
   String? userImage;
   String? userPhone;
-  String? userPhonePrefix;
   String? userScore;
   String? country;
   String? address;
@@ -28,7 +27,6 @@ class UserModel {
     this.userEmail,
     this.userImage,
     this.userPhone,
-    this.userPhonePrefix,
     this.userScore,
     this.country,
     this.address,
@@ -51,7 +49,6 @@ class UserModel {
     'user_email': userEmail,
     'user_image': userImage,
     'user_phone': userPhone,
-    'user_phone_prefix': userPhonePrefix,
     'user_score': userScore,
     'country': country,
     'address': address,
@@ -74,7 +71,6 @@ class UserModel {
     userEmail: json['user_email'],
     userImage: json['user_image'],
     userPhone: json['user_phone'],
-    userPhonePrefix: json['user_phone_prefix'],
     userScore: json['user_score'],
     country: json['country'],
     address: json['address'],

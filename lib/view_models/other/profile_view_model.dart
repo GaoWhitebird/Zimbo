@@ -14,18 +14,17 @@ class ProfileViewModel extends BaseViewModel {
   String? token;
   UserModel? userModel;
   String imagePath = '';
-  String userPhonePrefix = '';
   String userPhone = '';
   String userEmail = '';
   String userAddress = '';
 
   initialize(BuildContext context) async {
     token = await sharedService.getToken();
+
     networkService.doGetProfile(token!).then((value) => {
       if(value != null){
         userModel = value,
         imagePath = userModel!.userImage!,
-        userPhonePrefix = userModel!.userPhonePrefix!,
         userPhone = userModel!.userPhone!,
         userEmail = userModel!.userEmail!,
         userAddress = userModel!.address!,
@@ -57,6 +56,8 @@ class ProfileViewModel extends BaseViewModel {
     networkService.doResetScore(token!).then((value) => {
       if(value){
        showMessage(StringUtils.txtResetScoreSuccess, null),
+       userModel!.userScore = '0',
+       sharedService.saveUser(userModel),
       }
     });
   }
