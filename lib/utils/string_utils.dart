@@ -126,13 +126,24 @@ class StringUtils {
   static const txtIntroDescription_3 =
       'Improve your green score by reusing household items that you may already own. Track your score, monitor your impact, enjoy the savings.';
 
-  static const txtAboutTitle_1 = 'Who we are';
-  static const txtAboutTitle_2 = 'How does is work?';
-  static const txtAboutTitle_3 = 'What is our vision?';
+  static const txtAboutTitle_1 = 'Reimagining Sustainability';
+  static const txtAboutTitle_2 = 'Who is zimbo?';
+  static const txtAboutTitle_3 = 'Making Sustainability Simple';
   static const txtAboutDescription_1 =
-      'zimbo is an environmental platform that empowers Australians to behave more sustainably every day.\nWe believe that consumers should benefit from the conservational habits that they foster. By making easy, ethical decisions in routine activities, zimbo provides its members with a sustainability profile and a \'green score\'.\nMuch like a credit score, zimbo members enjoy exclusive institutional benefits and proactive offers from our corporate partners based on the green score that they accumulate.\nThrough the zimbo app, members can easily access a vast library of sustainable activities that contribute to their profile, placing the control of their score in their own hands.';
+      'At zimbo we are reimagining sustainability. \n\nWe believe that the largest opportunity for environmental impact lies with the collective power of individuals. \nWhere even the smallest adjustments to daily habits and buying decisions can provide meaningful relief for our planet.';
   static const txtAboutDescription_2 =
-      'Once a member downloads the zimbo app and creates an account, they are prompted to select any reusable items they may own, for example a reusable coffee cup. For each eligible item, the member will receive a unique bar code sticker in the mail to be affixed to the reusable cup.\nEach time a member shops and uses their cup, they simply open the zimbo app and scan the barcode, contributing to their green score. The same applies to a vast library of environmentally friendly products, such as reusable shopping bags, reusable water bottles and many others.';
+      'zimbo is a modern approach to climate care that empowers Australians to behave more sustainably every day. \n\nWe believe that consumers should benefit from the conservational habits they foster. By making easy, ethical decisions in routine activities, zimbo provides its members with a sustainability profile and a ‘green score’. \n\nMuch like a credit score, zimbo members enjoy exclusive benefits and discounts from our corporate partners based on the green score that they accumulate. \n\nThrough the zimbo app, members can easily access a vast library of sustainable activities that contribute to their profile, placing the control of their score in their own hands.';
   static const txtAboutDescription_3 =
-      'At zimbo, our vision is to democratise sustainability.\nWe believe that the largest opportunity for environmental change lies with consumers, where even the smallest adjustments in buying decisions and daily household habits can have a meaningful impact to our planet.';
+      'After downloading the zimbo app and creating an account, new members will receive a keychain printed with a unique QR code in the mail. \n\nWhether at home or out and about, each time a member uses an eligible reusable product, they can open the zimbo app, scan the QR code, and select the item that was reused. It’s as simple as that. \nYour green score is calculated based on the positive impact of the products you reuse and the number of times you reuse them.';
+
+  static const txtEcoTitle_1 = 'Who are we?';
+  static const txtEcoTitle_2 = 'How does it work?';
+  static const txtEcoTitle_3 = 'What is our vision?';
+  static const txtEcoDescription_1 =
+      'zimbo is a modern approach to climate care that empowers Australians to behave more sustainably every day. \n\nWe believe that consumers should benefit from the conservational habits that they foster. By making easy, ethical decisions in routine activities, zimbo provides its members with a sustainability profile and a ‘green score’. \n\nMuch like a credit score, zimbo members enjoy exclusive institutional benefits and proactive offers from our corporate partners based on the green score that they accumulate. \n\nThrough the zimbo app, members can easily access a vast library of sustainable activities that contribute to their profile, placing the control of their score in their own hands.';
+  static const txtEcoDescription_2 =
+      'After downloading the zimbo app and creating an account, new members are prompted to select any reusable household items they may own. For each eligible item, they will receive a unique QR code in the mail to be affixed. \n\nTake a reusable coffee cup for example. Every time a member shops and uses their cup, they simply open the zimbo app and scan the QR code that has been sent and affixed to the cup, contributing to their green score. The same applies to a vast library of environmentally friendly products, such as shopping bags, water bottles, cleaning dispensers and many others.';
+  static const txtEcoDescription_3 =
+      'At zimbo, we are reimagining sustainability. \n\nWe believe that the largest opportunity for environmental impact lies with the collective power of individuals. Where even the smallest adjustments to daily habits and buying decisions can provide meaningful relief for our planet.';
+
 }
