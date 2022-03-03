@@ -26,6 +26,7 @@ class SubscriptionHistoryView extends StatelessWidget {
 
     return WillPopScope(
         child: Scaffold(
+          backgroundColor: ColorUtils.appColorBlue,
           appBar: AppBar(
             title: textView(StringUtils.txtPaymentHistory,
                 textColor: ColorUtils.appColorTextTitle,

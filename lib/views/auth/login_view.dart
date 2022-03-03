@@ -27,25 +27,28 @@ class LoginView extends StatelessWidget {
   }
 
   buildWidget(BuildContext context, LoginViewModel model, Widget? child) {
-    setStatusBarColor(ColorUtils.appColorPrimaryDark);
+    setStatusBarColor(ColorUtils.appColorBlue);
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
 
     return WillPopScope(
         child: Scaffold(
             appBar: AppBar(
-              title: textView(StringUtils.txtAppName,
-                  textColor: ColorUtils.appColorTextTitle,
-                  fontSize: SizeUtils.textSizeNormal,
-                  fontWeight: FontWeight.w500,
-                  isCentered: true),
-              backgroundColor: ColorUtils.appColorPrimaryDark,
+              title: Image.asset(ImageUtils.imgIcLogo, width: width * 0.15, fit: BoxFit.scaleDown),
+              backgroundColor: ColorUtils.appColorBlue,
               centerTitle: true,
               elevation: 0,
               automaticallyImplyLeading: false,
             ),
             body: SingleChildScrollView(
-              child: Column(
+              child: Stack(
+                children: <Widget>[
+                  Container(
+                    color: ColorUtils.appColorBlue,
+                    width: width,
+                    height: height,
+                  ),
+                  Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
@@ -53,7 +56,7 @@ class LoginView extends StatelessWidget {
                       height: height * 0.1,
                       alignment: Alignment.center,
                       child: textView(StringUtils.txtLogin,
-                          textColor: ColorUtils.appColorBlack,
+                          textColor: ColorUtils.appColorWhite,
                           fontSize: SizeUtils.textSizeLarge,
                           fontWeight: FontWeight.w600,
                           isCentered: true),
@@ -110,7 +113,7 @@ class LoginView extends StatelessWidget {
                       height: height * 0.1,
                       alignment: Alignment.center,
                       child: textView(StringUtils.txtOr,
-                          textColor: ColorUtils.appColorTextLight,
+                          textColor: ColorUtils.appColorWhite,
                           fontSize: SizeUtils.textSizeSMedium,
                           fontWeight: FontWeight.w500,
                           isCentered: true),
@@ -133,7 +136,7 @@ class LoginView extends StatelessWidget {
                       height: height * 0.7,
                       child: Column(
                         children: [
-                          textView(StringUtils.txtSigninViaEmail,
+                          textView(StringUtils.txtSigninWithEmail,
                               textColor: ColorUtils.appColorTextDark,
                               fontSize: SizeUtils.textSizeNormal,
                               fontWeight: FontWeight.w600,
@@ -159,10 +162,8 @@ class LoginView extends StatelessWidget {
                             child: SizedBox(
                               width: width,
                               child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
+                                  const SizedBox(height: 10,),
                                   Row(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment:
@@ -190,6 +191,7 @@ class LoginView extends StatelessWidget {
                                       ),
                                     ],
                                   ),
+                                  const SizedBox(height: 10,),
                                   Container(
                                     alignment: Alignment.center,
                                     margin: const EdgeInsets.fromLTRB(
@@ -206,6 +208,7 @@ class LoginView extends StatelessWidget {
                                                   .text,
                                             )),
                                   ),
+                                  const SizedBox(height: 10,),
                                   Row(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment:
@@ -241,6 +244,8 @@ class LoginView extends StatelessWidget {
                       ),
                     ),
                   ]),
+                ],
+              )
             )),
         onWillPop: () {
           showDialog(

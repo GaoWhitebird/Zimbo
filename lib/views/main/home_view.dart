@@ -22,7 +22,9 @@ class HomeView extends StatelessWidget {
 
   buildWidget(BuildContext context, HomeViewModel model, Widget? child) {
     return Scaffold(
-      body: Column(children: <Widget>[
+      backgroundColor: ColorUtils.appColorBlue,
+        body: SingleChildScrollView(
+      child: Column(children: <Widget>[
         Container(
           padding: const EdgeInsets.all(10.0),
           child: HomeScoreItem(model: model.userModel),
@@ -30,19 +32,22 @@ class HomeView extends StatelessWidget {
         Container(
           alignment: Alignment.centerLeft,
           padding: const EdgeInsets.only(left: 10),
-          child: textView(StringUtils.txtPointHistory,
-              textColor: ColorUtils.appColorBlack,
+          child: textView(StringUtils.txtReuseHistory,
+              textColor: ColorUtils.appColorWhite,
               fontSize: SizeUtils.textSizeNormal,
               fontWeight: FontWeight.w600,
               isCentered: false),
         ),
-        Expanded(
+        SizedBox(
           child: ListView(
+            primary: false,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
             children: getChildList(model),
           ),
         ),
       ]),
-    );
+    ));
   }
 
   List<Widget> getChildList(HomeViewModel model) {

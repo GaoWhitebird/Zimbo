@@ -10,16 +10,18 @@ import 'package:zimbo/utils/size_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/views/items/item_quantity_view.dart';
 
-class RecyclableItemView extends StatefulWidget {
-  RecyclableItemView({Key? key, required this.model}) : super(key: key);
+// ignore: must_be_immutable
+class RecyclableItemPhotoView extends StatefulWidget {
+  RecyclableItemPhotoView({Key? key, required this.model, this.onClickPhoto}) : super(key: key);
 
   final RecyclableItemModel model;
+  Function? onClickPhoto;
 
   @override
-  _RecyclableItemViewState createState() => _RecyclableItemViewState();
+  _RecyclableItemPhotoViewState createState() => _RecyclableItemPhotoViewState();
 }
 
-class _RecyclableItemViewState extends State<RecyclableItemView> {
+class _RecyclableItemPhotoViewState extends State<RecyclableItemPhotoView> {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -64,21 +66,21 @@ class _RecyclableItemViewState extends State<RecyclableItemView> {
             ),
             Container(
               height: width * 0.2 + 20,
-              alignment: Alignment.topRight,
-              child: IconButton(
-                icon: widget.model.isChecked == '1' ? SvgPicture.asset(ImageUtils.imgIcCheckOn) : SvgPicture.asset(ImageUtils.imgIcCheckOff),
-                alignment: Alignment.topRight,
-                splashColor: ColorUtils.appColorTransparent,
-                onPressed: () {
-                  setState(() {
-                    if(widget.model.isChecked == '1'){
-                      widget.model.count = '0';
-                    }
-                    widget.model.isChecked == '1' ? widget.model.isChecked = '0' : widget.model.isChecked = '1';
-                  });
-                },
+              alignment: Alignment.center,
+              child: widget.model.userRecyclableImage != "" ? SvgPicture.asset(ImageUtils.imgIcCheckSigngle) : Container(color: ColorUtils.appColorTransparent,),
+            ),
+            IconButton(
+              splashRadius: 25,
+              icon: const Icon(
+                Icons.photo_camera_outlined,
+                color: ColorUtils.appColorTextTitle,
               ),
-            ),  
+              onPressed: () {
+                if(widget.onClickPhoto != null){
+                  widget.onClickPhoto!();
+                }
+              },
+            )  
           ],
         ),
       )

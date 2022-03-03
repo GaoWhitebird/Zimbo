@@ -5,8 +5,9 @@ import 'package:stacked/stacked.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
 import 'package:zimbo/utils/string_utils.dart';
+import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
-import 'package:zimbo/view_models/main/support_view_model.dart';
+import 'package:zimbo/view_models/other/support_view_model.dart';
 
 class SupportView extends StatelessWidget {
   SupportView({Key? key}) : super(key: key);
@@ -26,9 +27,29 @@ class SupportView extends StatelessWidget {
   buildWidget(BuildContext context, SupportViewModel model, Widget? child) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-    textEditingControllerDescription.text = '';
 
     return Scaffold(
+      backgroundColor: ColorUtils.appColorBlue,
+      appBar: AppBar(
+            title: textView(StringUtils.txtSupport,
+                textColor: ColorUtils.appColorTextTitle,
+                fontSize: SizeUtils.textSizeNormal,
+                fontWeight: FontWeight.w500,
+                isCentered: true),
+            backgroundColor: ColorUtils.appColorWhite,
+            centerTitle: true,
+            elevation: 0,
+            shape: const ContinuousRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(50),
+                    bottomRight: Radius.circular(50))),
+            leading: BackButton(
+              color: ColorUtils.appColorBlack,
+              onPressed: () {
+                finishView(context);
+              },
+            ),
+          ),
       body: Stack(children: <Widget>[
         SingleChildScrollView(
           child: Column(
@@ -42,7 +63,7 @@ class SupportView extends StatelessWidget {
                   height: height * 0.05,
                   alignment: Alignment.center,
                   child: textView(StringUtils.txtHowWeCanHelp,
-                      textColor: ColorUtils.appColorBlack,
+                      textColor: ColorUtils.appColorWhite,
                       fontSize: SizeUtils.textSizeNormal,
                       fontWeight: FontWeight.w600,
                       isCentered: true),
@@ -52,11 +73,22 @@ class SupportView extends StatelessWidget {
                   alignment: Alignment.center,
                   padding: const EdgeInsets.only(left: 20, right: 20),
                   child: textView(StringUtils.txtDescribeYourProblem,
-                      textColor: ColorUtils.appColorTextLight,
+                      textColor: ColorUtils.appColorWhite,
+                      fontSize: SizeUtils.textSizeSmall,
+                      fontWeight: FontWeight.w300,
+                      isCentered: true,
+                      maxLine: 2),
+                ),
+                Container(
+                  height: height * 0.1,
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: textView(StringUtils.txtSupportMail,
+                      textColor: ColorUtils.appColorWhite,
                       fontSize: SizeUtils.textSizeSMedium,
                       fontWeight: FontWeight.w500,
                       isCentered: true,
-                      maxLine: 2),
+                      maxLine: 1),
                 ),
                 SizedBox(
                   height: height * 0.02,

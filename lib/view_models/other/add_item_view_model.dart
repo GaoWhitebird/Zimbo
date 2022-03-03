@@ -30,7 +30,7 @@ class AddItemViewModel extends BaseViewModel {
     List<RecyclableItemReq> list = [];
     for (int i = 0; i < mList.length; i++){
       if(mList[i].isChecked == '1'){
-        RecyclableItemReq req = RecyclableItemReq(id: mList[i].id, count: mList[i].count);
+        RecyclableItemReq req = RecyclableItemReq(id: mList[i].id, image: mList[i].count);
         list.add(req);
       }
     }

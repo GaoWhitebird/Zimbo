@@ -41,17 +41,21 @@ buildWidget(BuildContext context, IntroViewModel model, Widget? child) {
                 controller: model.pageController,
                 children: <Widget>[
                   WalkThrough(
-                      textTitle: StringUtils.txtIntroTitle_1,
-                      textContent: StringUtils.txtIntroDescription_1,
-                      walkImg: ImageUtils.imgIcIntro1),
+                    textTitle: StringUtils.txtIntroTitle_1,
+                    textContent: StringUtils.txtIntroDescription_1,
+                    walkImg: ImageUtils.imgIcLogo,
+                    backImg: ImageUtils.imgIcIntroBack1,
+                  ),
                   WalkThrough(
                       textTitle: StringUtils.txtIntroTitle_2,
                       textContent: StringUtils.txtIntroDescription_2,
-                      walkImg: ImageUtils.imgIcIntro2),
+                      walkImg: ImageUtils.imgIcLogo,
+                      backImg: ImageUtils.imgIcIntroBack2),
                   WalkThrough(
                       textTitle: StringUtils.txtIntroTitle_3,
                       textContent: StringUtils.txtIntroDescription_3,
-                      walkImg: ImageUtils.imgIcIntro3),
+                      walkImg: ImageUtils.imgIcLogo,
+                      backImg: ImageUtils.imgIcIntroBack3),
                 ],
                 onPageChanged: (value) {
                   model.setCurrentIndex(value);
@@ -59,22 +63,9 @@ buildWidget(BuildContext context, IntroViewModel model, Widget? child) {
               ),
             ),
             Align(
-                alignment: Alignment.bottomRight,
-                child: Container(
-                  width: width * 0.3,
-                  margin: EdgeInsets.only(bottom: height * 0.03),
-                  child: TextButton(
-                    child: textView(StringUtils.txtSkip,
-                        fontSize: SizeUtils.textSizeMedium,
-                        textColor: ColorUtils.appColorWhite,
-                        textAllCaps: true),
-                    onPressed: () => model.onClickSkip(context),
-                  ),
-                )),
-            Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                height: height * 0.2,
+                height: height * 0.3,
                 padding: const EdgeInsets.all(20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -83,26 +74,39 @@ buildWidget(BuildContext context, IntroViewModel model, Widget? child) {
                         dotsCount: 3,
                         position: model.currentIndex,
                         decorator: const DotsDecorator(
-                          color: ColorUtils.appColorBlack_30,
+                          color: ColorUtils.appColorWhite_20,
                           activeColor: ColorUtils.appColorWhite,
                           activeSize: Size.square(12.0),
                         )),
                     const Expanded(child: SizedBox()),
                     Container(
                         width: width,
-                        alignment: Alignment.centerLeft,
+                        margin: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+                        alignment: Alignment.center,
                         child: SizedBox(
-                          width: width * 0.6,
+                          width: width * 0.9,
                           child: RoundButton(
                             isStroked: false,
-                            textContent: StringUtils.txtGetStarted,
+                            textContent: model.buttonTextList[model.currentIndex],
                             textSize: SizeUtils.textSizeMedium,
                             onPressed: () => model.onClickNext(context),
                             textColor: ColorUtils.appColorWhite,
                             backgroundColor: ColorUtils.appColorBlue,
-                            radius: 5,
-                          ).visible(model.currentIndex == 2),
+                            radius: 30,
+                          ),
                         )),
+                    Align(
+                        alignment: Alignment.center,
+                        child: SizedBox(
+                          width: width * 0.3,
+                          child: TextButton(
+                            child: textView(StringUtils.txtSkip,
+                                fontSize: SizeUtils.textSizeMedium,
+                                textColor: ColorUtils.appColorWhite,
+                                textAllCaps: true),
+                            onPressed: () => model.onClickSkip(context),
+                          ),
+                        )).visible(false),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[

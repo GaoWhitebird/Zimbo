@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/model/common/point_item_model.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/image_utils.dart';
@@ -56,18 +57,18 @@ class _PointHistoryItemState extends State<PointHistoryItem> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  textView(widget.model.name,
+                  textView(widget.model.name, textColor: ColorUtils.appColorWhite,
                       fontSize: SizeUtils.textSizeMedium, fontWeight: FontWeight.w600),
                   const SizedBox(height: 5),
                   Row(
                     children: <Widget> [
-                      const Icon(Icons.calendar_today_outlined, color: ColorUtils.appColorTextLight, size: 18,),
+                      const Icon(Icons.calendar_today_outlined, color: ColorUtils.appColorWhite, size: 18,),
                       const SizedBox(width: 5),
-                      textView(readTimestampYYYYDD(widget.model.timestamp), fontSize: SizeUtils.textSizeSmall, textColor: ColorUtils.appColorTextLight),
+                      textView(readTimestampYYYYDD(widget.model.timestamp), fontSize: SizeUtils.textSizeSmall, textColor: ColorUtils.appColorWhite, fontWeight: FontWeight.w300),
                       const SizedBox(width: 5),
-                      const Icon(Icons.timer, color: ColorUtils.appColorTextLight, size: 18),
+                      const Icon(Icons.timer, color: ColorUtils.appColorWhite, size: 18),
                       const SizedBox(width: 5),
-                      textView(readTimestampHH(widget.model.timestamp), fontSize: SizeUtils.textSizeSmall, textColor: ColorUtils.appColorTextLight),
+                      textView(readTimestampHH(widget.model.timestamp), fontSize: SizeUtils.textSizeSmall, textColor: ColorUtils.appColorWhite, fontWeight: FontWeight.w300),
                     ],
                   )
                 ],
@@ -80,14 +81,14 @@ class _PointHistoryItemState extends State<PointHistoryItem> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       textView(StringUtils.txtPlusOne,
-                          fontSize: SizeUtils.textSizeNormal,
+                          fontSize: SizeUtils.textSizeMedium,
                           fontWeight: FontWeight.w500,
-                          textColor: ColorUtils.appColorAccent),
+                          textColor: ColorUtils.appColorWhite),
                       textView(
-                          StringUtils.txtPts,
-                          fontSize: SizeUtils.textSizeSMedium,
-                          textColor: ColorUtils.appColorTextLight,
-                          fontWeight: FontWeight.w400),
+                          StringUtils.txtReuse,
+                          fontSize: SizeUtils.textSizeSmall,
+                          textColor: ColorUtils.appColorWhite,
+                          fontWeight: FontWeight.w300),
                     ],
                   )),
             ],
@@ -96,7 +97,7 @@ class _PointHistoryItemState extends State<PointHistoryItem> {
         Container(
           height: 0.5,
           color: ColorUtils.appColorTextWhite,
-        )
+        ).visible(false)
       ],
     );
   }

@@ -1,14 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
+import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
 import 'package:zimbo/views/auth/login_view.dart';
 
 class IntroViewModel extends BaseViewModel {
   int currentIndex = 0;
   PageController pageController = PageController();
+  List<String> buttonTextList = [StringUtils.txtGetStarted, StringUtils.txtNext, StringUtils.txtDoThis];
 
-  initialize(BuildContext context) async {}
+  initialize(BuildContext context) async {
+
+  }
 
   onClickPrev() {
     if (currentIndex > 0) {

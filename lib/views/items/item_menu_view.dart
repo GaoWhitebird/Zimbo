@@ -22,16 +22,16 @@ class MenuViewItem extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-                SvgPicture.asset(imageStr, color: ColorUtils.appColorBlack),
+                SvgPicture.asset(imageStr, color: ColorUtils.appColorWhite),
                 const SizedBox(width: 20),
                 Expanded(
-                  child: textView(titleStr, textColor: ColorUtils.appColorTextDark, fontSize: SizeUtils.textSizeMedium),
+                  child: textView(titleStr, textColor: ColorUtils.appColorWhite, fontSize: SizeUtils.textSizeMedium),
                 ),
-                const Icon(Icons.navigate_next_rounded, color: ColorUtils.appColorTextLight),
+                const Icon(Icons.navigate_next_rounded, color: ColorUtils.appColorWhite),
               ],
             ),
           ),
-          Container(height: 1, color: ColorUtils.appColorTextWhite,)
+          Container(height: 1, color: ColorUtils.appColorWhite_5,)
         ],
       ),
       onTap: onTap,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
@@ -23,7 +24,8 @@ class MyItemsView extends StatelessWidget {
         body: Stack(
       children: [
         Container(
-          margin: const EdgeInsets.all(10),
+          color: ColorUtils.appColorBlue,
+          padding: const EdgeInsets.all(10),
           child: ListView(
             children: getChildList(context, model),
           ),
@@ -42,7 +44,7 @@ class MyItemsView extends StatelessWidget {
                   color: ColorUtils.appColorWhite,
                 ),
               ),
-            )),
+            )).visible(false),
       ],
     ));
   }

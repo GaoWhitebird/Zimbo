@@ -63,6 +63,7 @@ class ProfileViewModel extends BaseViewModel {
   }
 
   onClickDelete(BuildContext context) async {
+    
     networkService.doDeleteProfile(token!).then((value) => {
       if(value){
         sharedService.saveToken(''),

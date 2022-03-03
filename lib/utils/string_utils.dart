@@ -1,8 +1,9 @@
 class StringUtils {
-  static const txtAppName = 'Zimbo';
+  static const txtAppName = 'zimbo';
   static const txtBack = 'Back';
   static const txtNext = 'Next';
   static const txtGetStarted = 'Get Started';
+  static const txtDoThis = 'Let\'s do this';
   static const txtWarning = 'Warning !';
   static const txtError = 'Error';
   static const txtConfirm = 'Confirm';
@@ -15,7 +16,7 @@ class StringUtils {
   static const txtNo = 'No';
   static const txtCancel = 'Cancel';
   static const txtExit = 'Exit';
-  static const txtSkip = 'Skip  ->';
+  static const txtSkip = 'Skip';
   static const txtSend = 'Send';
   static const txtDoYouWantToExit = 'Do you want to exit?';
   static const txtLogin = 'Login';
@@ -24,7 +25,7 @@ class StringUtils {
   static const txtGoogle = 'Google';
   static const txtOr = 'or';
   static const txtAnd = 'and';
-  static const txtSigninViaEmail = 'Sign In via Email';
+  static const txtSigninWithEmail = 'Sign In with Email';
   static const txtCreateAnAccount = 'Create an account';
   static const txtUserName = 'User Name';
   static const txtEmail = 'Email';
@@ -33,6 +34,7 @@ class StringUtils {
   static const txtResetHere = 'Reset here';
   static const txtResetPassword = 'Reset Password';
   static const txtIRemember = 'I remembered my password';
+  static const txtGoBack = 'Go back';
   static const txtWeWillSend = 'We will send you a new password by email';
   static const txtRegisterHere = 'Register here';
   static const txtNoAccount = 'Don\'t have an account?';
@@ -40,14 +42,22 @@ class StringUtils {
   static const txtTerms = 'Terms';
   static const txtCondition = 'Condition';
   static const txtHowManyItems =
-      'How many recyclable items of each do you have?';
+      'Select any reusable items you have';
+  static const txtTakePhoto =
+      'Take photo of your items';
 
+  static const txtThisIsZimbo = 'This is zimbo';
+  static const txtPantry = 'Pantry';
+  static const txtDashboard = 'Dashboard';
+  static const txtZimboSphere = 'zimbo-sphere';
+  static const txtCommunity = 'Community';
   static const txtAboutUS = 'About Us';
   static const txtMyItems = 'Items';
   static const txtEcoHub = 'Eco Hub';
   static const txtSupport = 'Support';
   static const txtMenu = 'Menu';
   static const txtProfile = 'Profile';
+  static const txtHowDoesZimbWork = 'How does zimbo work?';
   static const txtEditProfile = 'Edit Profile';
   static const txtAddItem = 'Add Item';
   static const txtAddCard = 'Add Card';
@@ -70,12 +80,16 @@ class StringUtils {
   static const txtRecyclableItemsAdded = 'Recyclables have been successfully added';
   static const txtYourScore = 'Your Score';
   static const txtOnePoint = 'Each item is one point';
+  static const txtTotalReuseActivity = 'Total reuse activity';
   static const txtPointHistory = 'Point History';
+  static const txtReuseHistory = 'Reuse History';
+  static const txtComingSoon = 'Coming soon';
   static const txtPlusOne = '+1';
   static const txtMinusUSD = '-\$';
   static const txtPts = 'Pts';
+  static const txtReuse = 'Reuse';
   static const txtHowWeCanHelp = 'How we can help you?';
-  static const txtDescribeYourProblem = 'Describe your problem and we will help you via your e-mail';
+  static const txtDescribeYourProblem = 'Please give a short description of what you\'d like help with and a screenshot if applicable';
   static const txtUploadScreenshot = 'Upload screenshot';
   static const txtPleaseEnterDescription = 'Please enter description';
   static const txtSentSuccess = 'The email has been sent successfully';
@@ -85,10 +99,10 @@ class StringUtils {
   static const txtDoYouWantToDeleteProfile = 'Do you want to delete Profile?';
   static const txtDoYouWantToResetScore = 'Do you want to Reset Score?';
   static const txtWhatInIncluded = 'What in included in the subscription?';
-  static const txtWhatInIncludedDescription = '- What in included in the subscription Description \n - What in included in the subscription Description \n - What in included in the subscription Description';
+  static const txtWhatInIncludedDescription = '- Personal reuse activity total \n - Personal carbon offset total (coming soon) \n - Personal ‘Green Rating’ (coming soon) \n - Reuse data & insights (coming soon) \n - Personalized offers and discounts (coming soon) \n - Social networking & challenges (coming soon)';
   static const txtPaymentHistory = 'Payment History';
   static const txtNextPayment = 'Next Payment';
-  static const txtCancelPayment = 'Cancel payment';
+  static const txtCancelPayment = 'Cancel my subscription';
   static const txtSubscriptionCost = 'Subscription Cost:';
   static const txtSubscriptionCancel = 'Subscription Canceled';
   static const txtSubscriptionCancelFailed = 'Subscription cancel failed';
@@ -112,13 +126,15 @@ class StringUtils {
   static const txtCountryCity = 'Country, City';
 
   static const txtPrefUser = 'pref_user';
+  static const txtSupportMail = 'support@zimbo.me';
 
 
 
 
-  static const txtIntroTitle_1 = 'Welcome';
+  //static const txtIntroTitle_1 = 'Welcome';
+  static const txtIntroTitle_1 = 'We\'re so glad you\'re here';
   static const txtIntroTitle_2 = 'Relief for our planet and your pocket';
-  static const txtIntroTitle_3 = 'Reuse. Reuse. Reuse';
+  static const txtIntroTitle_3 = 'Reuse. Reuse. Reuse... and Reuse again';
   static const txtIntroDescription_1 =
       'At zimbo we are reimagining sustainability. We believe that the largest opportunity for environmental impact lies with the collective power of individuals.';
   static const txtIntroDescription_2 =

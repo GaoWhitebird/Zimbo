@@ -5,6 +5,7 @@ class RecyclableItemModel {
   String count;
   String usedCount;
   String isChecked;
+  String userRecyclableImage;
 
   RecyclableItemModel({
     required this.id,
@@ -12,7 +13,8 @@ class RecyclableItemModel {
     required this.name,
     required this.count,
     required this.usedCount,
-    required this.isChecked
+    required this.isChecked,
+    required this.userRecyclableImage
   });
 
   Map<String, dynamic> toJson() => {
@@ -22,6 +24,7 @@ class RecyclableItemModel {
     'count': count,
     'used_count': usedCount,
     'is_checked': isChecked,
+    'user_recyclable_image': userRecyclableImage,
   };
 
   factory RecyclableItemModel.fromJson(Map<String, dynamic> json) => RecyclableItemModel(
@@ -31,5 +34,6 @@ class RecyclableItemModel {
     count: json['count'],
     usedCount: json['used_count'],
     isChecked: json['is_checked'],
+    userRecyclableImage: json['user_recyclable_image'],
   );
 }

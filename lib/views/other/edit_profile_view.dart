@@ -56,6 +56,7 @@ class _EditProfileViewState extends State<EditProfileView> {
 
     return WillPopScope(
         child: Scaffold(
+          backgroundColor: ColorUtils.appColorBlue,
             appBar: AppBar(
               title: textView(StringUtils.txtEditProfile,
                   textColor: ColorUtils.appColorTextTitle,

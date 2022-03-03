@@ -39,6 +39,7 @@ class EditSubscriptionView extends StatelessWidget {
 
     return WillPopScope(
         child: Scaffold(
+          backgroundColor: ColorUtils.appColorBlue,
           appBar: AppBar(
             title: textView(StringUtils.txtEditPaymentDetails,
                 textColor: ColorUtils.appColorTextTitle,
@@ -155,11 +156,10 @@ class EditSubscriptionView extends StatelessWidget {
                           child: SizedBox(
                             width: width,
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
-                                  alignment: Alignment.center,
+                                  alignment: Alignment.topCenter,
                                   margin:
                                       const EdgeInsets.fromLTRB(10, 10, 10, 10),
                                   child: RoundButton(

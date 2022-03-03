@@ -25,25 +25,26 @@ class AboutUSItemView extends StatelessWidget {
                 theme: const ExpandableThemeData(
                   headerAlignment: ExpandablePanelHeaderAlignment.center,
                   tapBodyToCollapse: true,
+                  iconColor: ColorUtils.appColorWhite,
                 ),
                 header: Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-                    child: textView(model.title, textColor: ColorUtils.appColorTextDark, fontSize: SizeUtils.textSizeMedium, fontWeight: FontWeight.w600)),
+                    padding: const EdgeInsets.fromLTRB(10, 10, 20, 10),
+                    child: textView(model.title, textColor: ColorUtils.appColorWhite, fontSize: SizeUtils.textSizeMedium, fontWeight: FontWeight.bold)),
                 collapsed: Container(),
-                expanded: textView(model.description, textColor: ColorUtils.appColorTextLight, fontSize: SizeUtils.textSizeSMedium, maxLine: 50),
+                expanded: textView(model.description, textColor: ColorUtils.appColorWhite, fontSize: SizeUtils.textSizeSmall, maxLine: 50),
                 builder: (_, collapsed, expanded) {
                   return Padding(
                     padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
                     child: Expandable(
                       collapsed: collapsed,
                       expanded: expanded,
-                      theme: const ExpandableThemeData(crossFadePoint: 0),
+                      theme: const ExpandableThemeData(crossFadePoint: 0,),
                     ),
                   );
                 },
               ),
             ),
-            Container(height: 1, color: ColorUtils.appColorTextWhite,)
+            Container(height: 0.5, color: ColorUtils.appColorTextWhite,)
           ],
         ),
       ));

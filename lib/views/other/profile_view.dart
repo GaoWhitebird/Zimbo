@@ -1,6 +1,7 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/image_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
@@ -29,6 +30,7 @@ class ProfileView extends StatelessWidget {
 
     return WillPopScope(
         child: Scaffold(
+          backgroundColor: ColorUtils.appColorBlue,
             appBar: AppBar(
               title: textView(StringUtils.txtProfile,
                   textColor: ColorUtils.appColorTextTitle,
@@ -124,20 +126,19 @@ class ProfileView extends StatelessWidget {
                     model.userModel == null ? '' : model.userModel!.userName,
                     fontWeight: FontWeight.w600,
                     fontSize: SizeUtils.textSizeMedium,
-                    textColor: ColorUtils.appColorTextTitle,
+                    textColor: ColorUtils.appColorWhite,
                     isCentered: true),
                 textView(
                     model.userModel == null ? '' : model.userModel!.country,
                     fontWeight: FontWeight.w400,
                     fontSize: SizeUtils.textSizeSMedium,
-                    textColor: ColorUtils.appColorTextLight,
+                    textColor: ColorUtils.appColorWhite,
                     isCentered: true),
                 const SizedBox(
                   height: 10,
                 ),
                 Expanded(
-                    child: Container(
-                  color: ColorUtils.appColorWhite,
+                    child: SizedBox(
                   width: width,
                   child: Column(
                     children: [
@@ -163,14 +164,14 @@ class ProfileView extends StatelessWidget {
                               Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.center,
                                 children: [
                                   Container(
                                     margin: const EdgeInsets.all(15),
                                     child: GestureDetector(
                                       child: textViewUnderline(
                                         StringUtils.txtResetScore,
-                                        textColor: ColorUtils.appColorAccent,
+                                        textColor: ColorUtils.appColorWhite,
                                         fontSize: SizeUtils.textSizeMedium,
                                         fontWeight: FontWeight.w500,
                                         isCentered: false,
@@ -191,13 +192,13 @@ class ProfileView extends StatelessWidget {
                                                 }),
                                       ),
                                     ),
-                                  ),
+                                  ).visible(false),
                                   Container(
                                     margin: const EdgeInsets.all(15),
                                     child: GestureDetector(
                                       child: textViewUnderline(
                                         StringUtils.txtDeleteProfile,
-                                        textColor: ColorUtils.appColorAccent,
+                                        textColor: ColorUtils.appColorWhite,
                                         fontSize: SizeUtils.textSizeMedium,
                                         fontWeight: FontWeight.w500,
                                         isCentered: false,

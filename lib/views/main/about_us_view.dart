@@ -24,7 +24,9 @@ class AboutUsView extends StatelessWidget {
           iconColor: ColorUtils.appColorBlack,
           useInkWell: true,
         ),
-        child: ListView(
+        child: Container(
+          color: ColorUtils.appColorBlue,
+          child: ListView(
           physics: const BouncingScrollPhysics(),
           children: model.mList.map((item){
             return AboutUSItemView(
@@ -32,6 +34,8 @@ class AboutUsView extends StatelessWidget {
             );
           }).toList(),
         ),
+        )
+        
       ),
     );
   }

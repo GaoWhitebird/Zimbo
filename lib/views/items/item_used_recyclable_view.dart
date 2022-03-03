@@ -47,7 +47,7 @@ class _UsedRecyclableItemViewState extends State<UsedRecyclableItemView> {
         color: ColorUtils.appColorWhite,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
-          side: const BorderSide(width: 1, color: ColorUtils.appColorTextWhite),
+          side: const BorderSide(width: 1, color: ColorUtils.appColorWhite),
         ),
         child: Stack(
           children: [

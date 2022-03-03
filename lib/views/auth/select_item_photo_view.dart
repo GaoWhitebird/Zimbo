@@ -1,27 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:zimbo/model/common/recyclable_item_model.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/image_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
 import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
-import 'package:zimbo/view_models/auth/select_item_view_model.dart';
-import 'package:zimbo/views/items/item_recyclable_view.dart';
+import 'package:zimbo/view_models/auth/slect_item_photo_view_model.dart';
+import 'package:zimbo/views/items/item_recyclable_photo_view.dart';
 
-class SelectItemView extends StatelessWidget {
-  const SelectItemView({Key? key}) : super(key: key);
+// ignore: must_be_immutable
+class SelectItemPhotoView extends StatefulWidget {
+
+  List<RecyclableItemModel> itemList = [];
+  SelectItemPhotoView(this.itemList, { Key? key }) : super(key: key);
 
   @override
+  State<SelectItemPhotoView> createState() => _SelectItemPhotoViewState();
+}
+
+class _SelectItemPhotoViewState extends State<SelectItemPhotoView> {
+  @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<SelectItemViewModel>.reactive(
-      viewModelBuilder: () => SelectItemViewModel(),
-      builder: (context, model, child) => buildWidget(context, model, child),
-      onModelReady: (model) => model.initialize(context),
+    return ViewModelBuilder<SelectItemPhotoViewModel>.reactive(
+      viewModelBuilder:() => SelectItemPhotoViewModel(),
+      builder:(context, model, child) => buildWidget(context, model, child) ,
+      onModelReady: (model) => model.initialize(context, widget.itemList),
     );
   }
 
-  buildWidget(BuildContext context, SelectItemViewModel model, Widget? child) {
+  buildWidget(BuildContext context, SelectItemPhotoViewModel model, Widget? child) {
     setStatusBarColor(ColorUtils.appColorBlue);
     var width = MediaQuery.of(context).size.width;
     return WillPopScope(
@@ -38,7 +47,7 @@ class SelectItemView extends StatelessWidget {
             color: ColorUtils.appColorBlue,
             child: Column(
             children: [
-              textView(StringUtils.txtHowManyItems,
+              textView(StringUtils.txtTakePhoto,
                   textColor: ColorUtils.appColorWhite,
                   fontSize: SizeUtils.textSizeNormal,
                   fontWeight: FontWeight.w600,
@@ -68,19 +77,18 @@ class SelectItemView extends StatelessWidget {
           
         ),
         onWillPop: () {
-          // showDialog(
-          //   context: context,
-          //   builder: (BuildContext context) => const ExitDialog(),
-          // );
           finishView(context);
           return Future.value(false);
         });
   }
 
-  List<Widget> getChildList(SelectItemViewModel model) {
+  List<Widget> getChildList(SelectItemPhotoViewModel model) {
     return model.mList.map((item){
-      return RecyclableItemView(
+      return RecyclableItemPhotoView(
         model: item,
+        onClickPhoto: (){
+          model.onClickPhoto(context, item);
+        }
       );
     }).toList();
   }

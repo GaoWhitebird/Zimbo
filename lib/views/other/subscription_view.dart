@@ -28,6 +28,7 @@ class SubscriptionView extends StatelessWidget {
 
     return WillPopScope(
         child: Scaffold(
+          backgroundColor: ColorUtils.appColorBlue,
           appBar: AppBar(
             title: textView(StringUtils.txtSubscription,
                 textColor: ColorUtils.appColorTextTitle,
@@ -126,14 +127,14 @@ class SubscriptionView extends StatelessWidget {
                       children: <Widget>[
                         textView(
                           StringUtils.txtNextPayment,
-                          textColor: ColorUtils.appColorTextWhite,
+                          textColor: ColorUtils.appColorWhite,
                           fontSize: SizeUtils.textSizeSmall,
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.w300,
                           isCentered: true,
                         ),
                         textView(
                           model.nextDate,
-                          textColor: ColorUtils.appColorTextDark,
+                          textColor: ColorUtils.appColorWhite,
                           fontSize: SizeUtils.textSizeSmall,
                           fontWeight: FontWeight.w600,
                           isCentered: true,
@@ -145,7 +146,7 @@ class SubscriptionView extends StatelessWidget {
               ).visible(model.hasHistory),
               Container(
                 height: 1,
-                color: ColorUtils.appColorGreyCard,
+                color: ColorUtils.appColorAccent_5,
                 margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
               ),
               Expanded(
@@ -155,27 +156,27 @@ class SubscriptionView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       textView(StringUtils.txtWhatInIncluded,
-                          textColor: ColorUtils.appColorBlack,
+                          textColor: ColorUtils.appColorWhite,
                           fontSize: SizeUtils.textSizeLargeMedium,
                           fontWeight: FontWeight.w600,
                           isCentered: false,
                           maxLine: 2),
                       Container(height: 10,),
                       textView(StringUtils.txtWhatInIncludedDescription,
-                          textColor: ColorUtils.appColorTextLight,
-                          fontSize: SizeUtils.textSizeSMedium,
+                          textColor: ColorUtils.appColorWhite,
+                          fontSize: SizeUtils.textSizeSmall,
                           isCentered: false,
                           maxLine: 8),
                       Container(height: 10,),
                       Row(
                         children: <Widget>[
                           textView(StringUtils.txtSubscriptionCost,
-                              textColor: ColorUtils.appColorTextDark,
+                              textColor: ColorUtils.appColorWhite,
                               fontSize: SizeUtils.textSizeMedium,
                               isCentered: false,),
                           Container(width: 10,),
                           textView(model.subscriptionCost,
-                              textColor: ColorUtils.appColorAccent,
+                              textColor: ColorUtils.appColorWhite,
                               fontSize: SizeUtils.textSizeMedium,
                               isCentered: false,),
                         ],
@@ -187,15 +188,14 @@ class SubscriptionView extends StatelessWidget {
               Container(
                 alignment: Alignment.bottomLeft,
                 margin: const EdgeInsets.all(10),
-                child: GestureDetector(
-                  child: textViewUnderline(
-                    StringUtils.txtCancelPayment,
-                    textColor: ColorUtils.appColorAccent,
-                    fontSize: SizeUtils.textSizeMedium,
-                    fontWeight: FontWeight.w500,
-                    isCentered: false,
-                  ),
-                  onTap: () => model.onClickCancelPayment(context),
+                child: RoundButton(
+                      isStroked: true,
+                      textContent: StringUtils.txtCancelPayment,
+                      onPressed: () => model.onClickCancelPayment(context),
+                      backgroundColor: ColorUtils.appColorWhite,
+                      textColor: ColorUtils.appColorBlue,
+                      textSize: SizeUtils.textSizeMedium,
+                      radius: 30,
                 ),
               ).visible(model.isSubscription),
             ],

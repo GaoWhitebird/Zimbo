@@ -10,6 +10,7 @@ import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/other/menu_view_model.dart';
 import 'package:zimbo/views/items/item_menu_view.dart';
+import 'package:zimbo/views/other/support_view.dart';
 import 'package:zimbo/views/other/profile_view.dart';
 import 'package:zimbo/views/other/subscription_view.dart';
 
@@ -29,6 +30,7 @@ class MenuView extends StatelessWidget {
     setStatusBarColor(ColorUtils.appColorWhite);
     return WillPopScope(
         child: Scaffold(
+          backgroundColor: ColorUtils.appColorBlue,
             appBar: AppBar(
               title: textView(StringUtils.txtMenu,
                   textColor: ColorUtils.appColorTextTitle,
@@ -56,6 +58,13 @@ class MenuView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 MenuViewItem(
+                    imageStr: ImageUtils.imgIcAboutUs,
+                    titleStr: StringUtils.txtHowDoesZimbWork,
+                    onTap: () => {
+                          finishView(context),
+                          ProfileView().launch(context),
+                        }),
+                MenuViewItem(
                     imageStr: ImageUtils.imgIcMenuProfile,
                     titleStr: StringUtils.txtProfile,
                     onTap: () => {
@@ -72,7 +81,10 @@ class MenuView extends StatelessWidget {
                 MenuViewItem(
                     imageStr: ImageUtils.imgIcMenuSupport,
                     titleStr: StringUtils.txtSupport,
-                    onTap: () => finishView(context, 4)),
+                    onTap: () => {
+                      finishView(context),
+                      SupportView().launch(context),
+                    }),
                 Expanded(child: Container()),
                 GestureDetector(
                   child: Container(
@@ -81,11 +93,11 @@ class MenuView extends StatelessWidget {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         SvgPicture.asset(ImageUtils.imgIcMenuLogout,
-                            color: ColorUtils.appColorBlack),
+                            color: ColorUtils.appColorWhite),
                         const SizedBox(width: 20),
                         Expanded(
                           child: textView(StringUtils.txtLogout,
-                              textColor: ColorUtils.appColorTextDark,
+                              textColor: ColorUtils.appColorWhite,
                               fontSize: SizeUtils.textSizeMedium),
                         ),
                       ],
@@ -100,8 +112,8 @@ class MenuView extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      textView(StringUtils.txtAppName, textColor: ColorUtils.appColorTextLight, fontSize: SizeUtils.textSizeSMedium, fontWeight: FontWeight.w600, isCentered: false),
-                      textView(StringUtils.txtAppVersion + " " + model.version, textColor: ColorUtils.appColorTextWhite, fontSize: SizeUtils.textSizeSmall, fontWeight: FontWeight.w400, isCentered: false),
+                      textView(StringUtils.txtAppName, textColor: ColorUtils.appColorWhite, fontSize: SizeUtils.textSizeSMedium, fontWeight: FontWeight.w600, isCentered: false),
+                      textView(StringUtils.txtAppVersion + " " + model.version, textColor: ColorUtils.appColorWhite, fontSize: SizeUtils.textSizeSmall, fontWeight: FontWeight.w300, isCentered: false),
                     ],
                   ),
                 )

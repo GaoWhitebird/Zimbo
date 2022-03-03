@@ -22,7 +22,7 @@ class ExitDialog extends StatelessWidget {
       backgroundColor: Colors.white,
       title: Row(
         children: [
-          Image.asset(ImageUtils.imgIcLogo, height: 25, fit: BoxFit.fitHeight),
+          Image.asset(ImageUtils.imgIcIntro2, height: 25, fit: BoxFit.fitHeight),
           Container(
             width: 20,
           ),
@@ -78,7 +78,7 @@ class CustomDialog extends StatelessWidget {
       backgroundColor: Colors.white,
       title: Row(
         children: [
-          Image.asset(ImageUtils.imgIcLogo, height: 25, fit: BoxFit.fitHeight),
+          Image.asset(ImageUtils.imgIcIntro2, height: 25, fit: BoxFit.fitHeight),
           Container(
             width: 20,
           ),
@@ -296,7 +296,8 @@ class _EditTextFieldState extends State<EditTextField> {
             inputFormatters: widget.inputFormatters ?? [],
             onTap: widget.onTap ?? null,
             enabled: widget.isEnable ?? true,
-            enableInteractiveSelection: widget.enableInteractiveSelection ?? true,
+            enableInteractiveSelection:
+                widget.enableInteractiveSelection ?? true,
           ));
     } else {
       return Padding(
@@ -350,7 +351,8 @@ class _EditTextFieldState extends State<EditTextField> {
             inputFormatters: widget.inputFormatters ?? [],
             onTap: widget.onTap ?? null,
             enabled: widget.isEnable ?? true,
-            enableInteractiveSelection: widget.enableInteractiveSelection ?? true,
+            enableInteractiveSelection:
+                widget.enableInteractiveSelection ?? true,
           ));
     }
   }
@@ -364,50 +366,71 @@ class WalkThrough extends StatelessWidget {
   final String? textTitle;
   final String? textContent;
   final String walkImg;
+  final String? backImg;
 
   WalkThrough(
-      {Key? key, this.textTitle, this.textContent, required this.walkImg})
+      {Key? key, this.textTitle, this.textContent, required this.walkImg, this.backImg})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var h = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-    return SizedBox(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      child: Column(
-        children: <Widget>[
-          Container(
-            margin: EdgeInsets.only(top: h * 0.05),
-            height: h * 0.4,
-            child: Stack(
-              alignment: Alignment.center,
-              children: <Widget>[
-                Image.asset(walkImg, width: width * 0.6, height: h * 0.3),
-              ],
-            ),
+    return Stack(
+      children: <Widget>[
+        Image.asset(backImg!,
+                width: width, height: h, fit: BoxFit.fill),
+        Container(
+          height: h,
+          width: width,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: <Color>[
+                ColorUtils.appColorGradientStart,
+                ColorUtils.appColorGradientEnd,
+            ])
           ),
-          SizedBox(height: h * 0.01),
-          Padding(
-            padding: const EdgeInsets.only(left: 28.0, right: 28.0),
-            child: textView(textTitle,
-                textColor: ColorUtils.appColorWhite,
-                fontSize: SizeUtils.textSizeXLarge,
-                maxLine: 2,
-                isCentered: true),
+        ),
+        SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Column(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.only(top: h * 0.05),
+                height: h * 0.3,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: <Widget>[
+                    Image.asset(walkImg, width: width * 0.4, height: h * 0.2),
+                  ],
+                ),
+              ),
+              SizedBox(height: h * 0.01),
+              Padding(
+                padding: const EdgeInsets.only(left: 28.0, right: 28.0),
+                child: textView(textTitle,
+                    textColor: ColorUtils.appColorWhite,
+                    fontSize: SizeUtils.textSizeLarge,
+                    fontWeight: FontWeight.w500,
+                    maxLine: 2,
+                    isCentered: true),
+              ),
+              SizedBox(height: h * 0.02),
+              Padding(
+                padding: const EdgeInsets.only(left: 28.0, right: 28.0),
+                child: textView(textContent,
+                    textColor: ColorUtils.appColorWhite,
+                    fontSize: SizeUtils.textSizeSMedium,
+                    maxLine: 5,
+                    isCentered: true),
+              )
+            ],
           ),
-          SizedBox(height: h * 0.02),
-          Padding(
-            padding: const EdgeInsets.only(left: 28.0, right: 28.0),
-            child: textView(textContent,
-                textColor: ColorUtils.appColorWhite,
-                fontSize: SizeUtils.textSizeMedium,
-                maxLine: 5,
-                isCentered: true),
-          )
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

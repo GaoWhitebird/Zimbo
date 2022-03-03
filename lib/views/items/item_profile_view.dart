@@ -23,14 +23,14 @@ class ProfileViewItem extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-                SvgPicture.asset(imageStr, color: ColorUtils.appColorAccent),
+                SvgPicture.asset(imageStr, color: ColorUtils.appColorWhite),
                 const SizedBox(width: 20),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      textView(titleStr, textColor: ColorUtils.appColorTextLight, fontSize: SizeUtils.textSizeSmall, isCentered: false),
-                      textView(contentStr, textColor: ColorUtils.appColorTextDark, fontSize: SizeUtils.textSizeSMedium, isCentered: false),
+                      textView(titleStr, textColor: ColorUtils.appColorWhite, fontSize: SizeUtils.textSizeSmall, isCentered: false),
+                      textView(contentStr, textColor: ColorUtils.appColorWhite, fontSize: SizeUtils.textSizeSMedium, isCentered: false, fontWeight: FontWeight.w500),
                     ],
                   )
                   
