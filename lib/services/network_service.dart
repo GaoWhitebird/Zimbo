@@ -31,10 +31,14 @@ class NetworkService {
   Future doPostRequest(String url, {dynamic param, dynamic token}) async {
     showLoading();
     try {
+      var formData = FormData();
+      if(param != null){
+        formData = FormData.fromMap(param);
+      }
       Response response = await dio.post(
         url,
         queryParameters: token,
-        data: param == null ? '' : FormData.fromMap(param),
+        data: param == null ? '' : formData,
         options: Options(headers: {
           HttpHeaders.contentTypeHeader: "application/json",
         }),
@@ -95,7 +99,7 @@ class NetworkService {
 
   Future<UserModel?> doAutoLogin(AutoLoginReq req) async {
     var res = await doPostRequest(ApiUtils.urlAutoLogin, param: req.toJson());
-    if(res == null) return null;
+    if (res == null) return null;
 
     String token = res['token'];
     var sharedService = locator<SharedService>();
@@ -118,8 +122,9 @@ class NetworkService {
   }
 
   Future<UserModel?> doSignUpFacebook(SignUpFacebookReq req) async {
-    var res = await doPostRequest(ApiUtils.urlLoginFacebook, param: req.toJson());
-    if(res == null) return null;
+    var res =
+        await doPostRequest(ApiUtils.urlLoginFacebook, param: req.toJson());
+    if (res == null) return null;
 
     String token = res['token'];
     var sharedService = locator<SharedService>();
@@ -131,7 +136,7 @@ class NetworkService {
 
   Future<UserModel?> doSignUpGoogle(SignUpGoogleReq req) async {
     var res = await doPostRequest(ApiUtils.urlLoginGoogle, param: req.toJson());
-    if(res == null) return null;
+    if (res == null) return null;
 
     String token = res['token'];
     var sharedService = locator<SharedService>();
@@ -142,74 +147,87 @@ class NetworkService {
   }
 
   Future doLogout(String token) async {
-    var res = await doPostRequest(ApiUtils.urlLogout, token: TokenReq(token: token).toJson());
+    var res = await doPostRequest(ApiUtils.urlLogout,
+        token: TokenReq(token: token).toJson());
     if (res == null) return false;
 
     return true;
   }
 
-  Future<List<RecyclableItemModel>?> doGetRecyclableItemList(String token) async {
-    var res = await doGetRequest(ApiUtils.urlGetRecyclableList, TokenReq(token: token).toJson());
+  Future<List<RecyclableItemModel>?> doGetRecyclableItemList(
+      String token) async {
+    var res = await doGetRequest(
+        ApiUtils.urlGetRecyclableList, TokenReq(token: token).toJson());
     if (res == null) return [];
 
     List<dynamic> _list = res['recyclable_list'];
     List<RecyclableItemModel> list = [];
-    for (int i = 0; i < _list.length; i++){
+    for (int i = 0; i < _list.length; i++) {
       list.add(RecyclableItemModel.fromJson(_list[i]));
     }
     return list;
   }
 
-    Future<List<RecyclableItemModel>?> doGetAvailableRecyclableItemList(String token) async {
-    var res = await doGetRequest(ApiUtils.urlGetAvailableRecyclableList, TokenReq(token: token).toJson());
+  Future<List<RecyclableItemModel>?> doGetAvailableRecyclableItemList(
+      String token) async {
+    var res = await doGetRequest(ApiUtils.urlGetAvailableRecyclableList,
+        TokenReq(token: token).toJson());
     if (res == null) return [];
 
     List<dynamic> _list = res['recyclable_list'];
     List<RecyclableItemModel> list = [];
-    for (int i = 0; i < _list.length; i++){
+    for (int i = 0; i < _list.length; i++) {
       list.add(RecyclableItemModel.fromJson(_list[i]));
     }
     return list;
   }
 
-  Future<List<RecyclableItemModel>?> doGetUserRecyclableList(String token) async {
-    var res = await doGetRequest(ApiUtils.urlGetUserRecyclableList, TokenReq(token: token).toJson());
+  Future<List<RecyclableItemModel>?> doGetUserRecyclableList(
+      String token) async {
+    var res = await doGetRequest(
+        ApiUtils.urlGetUserRecyclableList, TokenReq(token: token).toJson());
     if (res == null) return [];
 
     List<dynamic> _list = res['user_recyclable_item_list'];
     List<RecyclableItemModel> list = [];
-    for (int i = 0; i < _list.length; i++){
+    for (int i = 0; i < _list.length; i++) {
       list.add(RecyclableItemModel.fromJson(_list[i]));
     }
     return list;
   }
 
-  Future doAddRecyclableItems(String token, AddRecyclableReq req,) async {
+  Future doAddRecyclableItems(
+    String token,
+    AddRecyclableReq req,
+  ) async {
+    showLoading();
     var res = await doPostRequest(ApiUtils.urlAddRecyclableItems, param: req.toJson(), token: TokenReq(token: token).toJson());
     if (res == null) return null;
 
     List<dynamic> _list = res['user_recyclable_item_list'];
-    List<RecyclableItemModel> list = [];
-    for (int i = 0; i < _list.length; i++){
-      list.add(RecyclableItemModel.fromJson(_list[i]));
-    }
-    return list;
+      List<RecyclableItemModel> list = [];
+      for (int i = 0; i < _list.length; i++) {
+        list.add(RecyclableItemModel.fromJson(_list[i]));
+      }
+      return list;
   }
 
   Future<List<PointItemModel>?> doGetPointHistory(String token) async {
-    var res = await doGetRequest(ApiUtils.urlGetPointHistory, TokenReq(token: token).toJson());
-    if(res == null) return [];
+    var res = await doGetRequest(
+        ApiUtils.urlGetPointHistory, TokenReq(token: token).toJson());
+    if (res == null) return [];
 
     List<dynamic> _list = res['list'];
     List<PointItemModel> list = [];
-    for (int i = 0; i < _list.length; i++){
+    for (int i = 0; i < _list.length; i++) {
       list.add(PointItemModel.fromJson(_list[i]));
     }
     return list;
   }
 
   Future<UserModel?> doGetProfile(String token) async {
-    var res = await doGetRequest(ApiUtils.urlGetUserProfile, TokenReq(token: token).toJson());
+    var res = await doGetRequest(
+        ApiUtils.urlGetUserProfile, TokenReq(token: token).toJson());
     if (res == null) return null;
 
     UserModel userModel = UserModel.fromJson(res['user_info']);
@@ -217,7 +235,8 @@ class NetworkService {
   }
 
   Future<UserModel?> doUpdateProfile(String token, UpdateProfileReq req) async {
-    var res = await doPostRequest(ApiUtils.urlUpdateProfile, token: TokenReq(token: token).toJson(), param: req.toJson());
+    var res = await doPostRequest(ApiUtils.urlUpdateProfile,
+        token: TokenReq(token: token).toJson(), param: req.toJson());
     if (res == null) return null;
 
     UserModel userModel = UserModel.fromJson(res['user_info']);
@@ -225,85 +244,100 @@ class NetworkService {
   }
 
   Future<UserModel?> doAddScore(String token, AddScoreReq req) async {
-    var res = await doPostRequest(ApiUtils.urlAddScore, param: req, token: TokenReq(token: token).toJson());
-    if(res == null) return null;
+    var res = await doPostRequest(ApiUtils.urlAddScore,
+        param: req, token: TokenReq(token: token).toJson());
+    if (res == null) return null;
 
     UserModel userModel = UserModel.fromJson(res['user_info']);
     return userModel;
   }
 
   Future doDeleteProfile(String token) async {
-    var res = await doPostRequest(ApiUtils.urlDeleteUserProfile, token: TokenReq(token: token).toJson());
-    if(res == null) return false;
+    var res = await doPostRequest(ApiUtils.urlDeleteUserProfile,
+        token: TokenReq(token: token).toJson());
+    if (res == null) return false;
 
     return true;
   }
 
-    Future doResetScore(String token) async {
-    var res = await doPostRequest(ApiUtils.urlResetScore, token: TokenReq(token: token).toJson());
-    if(res == null) return false;
+  Future doResetScore(String token) async {
+    var res = await doPostRequest(ApiUtils.urlResetScore,
+        token: TokenReq(token: token).toJson());
+    if (res == null) return false;
 
     return true;
   }
 
   Future doDeleteRecyclableItem(String token, DeleteRecyclableReq req) async {
-    var res = await doPostRequest(ApiUtils.urlDeleteRecyclableItem, token: TokenReq(token: token,).toJson(), param: req.toJson());
-    if(res == null) return false;
+    var res = await doPostRequest(ApiUtils.urlDeleteRecyclableItem,
+        token: TokenReq(
+          token: token,
+        ).toJson(),
+        param: req.toJson());
+    if (res == null) return false;
 
     return true;
   }
 
   Future doUpdateRecyclableCount(String token, UpdateRecyclableReq req) async {
-    var res = await doPostRequest(ApiUtils.urlUpdateRecyclableItemCount, token: TokenReq(token: token).toJson(), param: req.toJson());
-    if(res == null) return false;
+    var res = await doPostRequest(ApiUtils.urlUpdateRecyclableItemCount,
+        token: TokenReq(token: token).toJson(), param: req.toJson());
+    if (res == null) return false;
 
     return true;
   }
 
   Future doPostSupport(String token, PostSupportReq req) async {
-    var res = await doPostRequest(ApiUtils.urlPostSupport, token: TokenReq(token: token).toJson(), param: req.toJson());
-    if(res == null) return false;
+    var res = await doPostRequest(ApiUtils.urlPostSupport,
+        token: TokenReq(token: token).toJson(), param: req.toJson());
+    if (res == null) return false;
 
     return true;
   }
 
   Future doCancelPayment(String token) async {
-    var res = await doPostRequest(ApiUtils.urlCancelPayment, token: TokenReq(token: token).toJson());
-    if(res == null) return false;
+    var res = await doPostRequest(ApiUtils.urlCancelPayment,
+        token: TokenReq(token: token).toJson());
+    if (res == null) return false;
 
     return true;
   }
 
   Future doUpdatePayment(String token, UpdatePaymentReq req) async {
-    var res = await doPostRequest(ApiUtils.urlUpdatePaymentInfo, token: TokenReq(token: token).toJson(), param: req.toJson());
-    if(res == null) return false;
+    var res = await doPostRequest(ApiUtils.urlUpdatePaymentInfo,
+        token: TokenReq(token: token).toJson(), param: req.toJson());
+    if (res == null) return false;
 
     return true;
   }
 
   Future<String?> doGetStripeKey(String token) async {
-    var res = await doPostRequest(ApiUtils.urlGetStripeKey, token: TokenReq(token: token).toJson());
-    if(res == null) return null;
+    var res = await doPostRequest(ApiUtils.urlGetStripeKey,
+        token: TokenReq(token: token).toJson());
+    if (res == null) return null;
 
     String publishKey = res['publish_key'];
     return publishKey;
   }
 
   Future<SubscriptionInfoModel?> doGetSubscriptionInfo(String token) async {
-    var res = await doPostRequest(ApiUtils.urlGetSubscriptionInfo, token: TokenReq(token: token).toJson());
+    var res = await doPostRequest(ApiUtils.urlGetSubscriptionInfo,
+        token: TokenReq(token: token).toJson());
 
-    if(res == null) return null;
+    if (res == null) return null;
     SubscriptionInfoModel model = SubscriptionInfoModel.fromJson(res);
     return model;
   }
 
-  Future<List<PaymentHistoryItemModel>?> doGetPaymentHistory(String token) async {
-    var res = await doPostRequest(ApiUtils.urlGetPaymentHistory, token: TokenReq(token: token).toJson());
+  Future<List<PaymentHistoryItemModel>?> doGetPaymentHistory(
+      String token) async {
+    var res = await doPostRequest(ApiUtils.urlGetPaymentHistory,
+        token: TokenReq(token: token).toJson());
 
-    if(res == null) return null;
+    if (res == null) return null;
     List<dynamic> _list = res['history'];
     List<PaymentHistoryItemModel> list = [];
-    for (int i = 0; i < _list.length; i++){
+    for (int i = 0; i < _list.length; i++) {
       list.add(PaymentHistoryItemModel.fromJson(_list[i]));
     }
     return list;

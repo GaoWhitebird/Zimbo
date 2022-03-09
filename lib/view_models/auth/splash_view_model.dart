@@ -8,6 +8,7 @@ import 'package:zimbo/view_models/base_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:zimbo/views/auth/intro_view.dart';
 import 'package:zimbo/views/auth/login_view.dart';
+import 'package:zimbo/views/auth/select_shopping_day_view.dart';
 import 'package:zimbo/views/main/main_view.dart';
 
 class SplashViewModel extends BaseViewModel{
@@ -24,7 +25,8 @@ class SplashViewModel extends BaseViewModel{
         if(value != null){
           userModel = value,
           sharedService.saveUser(userModel),
-          const MainView().launch(context, isNewTask: true),
+          //const MainView().launch(context, isNewTask: true),
+          const SelectShoppingDayView().launch(context, isNewTask: true),
         }else {
           LoginView().launch(context, isNewTask: true),
         }

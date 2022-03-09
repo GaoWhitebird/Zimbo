@@ -1,6 +1,7 @@
 
+
 class AddRecyclableReq {
-  String list;
+  List<dynamic> list;
 
   AddRecyclableReq({
     required this.list,

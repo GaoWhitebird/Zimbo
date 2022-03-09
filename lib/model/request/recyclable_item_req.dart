@@ -1,10 +1,12 @@
+import 'package:dio/dio.dart';
+
 class RecyclableItemReq {
   String id;
-  String image;
+  MultipartFile? image;
 
   RecyclableItemReq({
     required this.id,
-    required this.image,
+    this.image,
   });
 
   Map<String, dynamic> toJson() => {

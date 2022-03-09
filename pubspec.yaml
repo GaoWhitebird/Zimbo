@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-# Design
+  # Design
   cupertino_icons: ^1.0.2
   cached_network_image: ^3.2.0
   lottie: ^1.2.1
@@ -49,6 +49,7 @@ dependencies:
   image_picker: ^0.8.4+4
   flutter_multi_formatter: ^2.5.1
   stripe_sdk: ^5.0.0-nullsafety.1
+  weekday_selector: ^1.0.0
 
   flutter_datetime_picker:
     git:

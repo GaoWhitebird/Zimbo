@@ -2,6 +2,7 @@ class StringUtils {
   static const txtAppName = 'zimbo';
   static const txtBack = 'Back';
   static const txtNext = 'Next';
+  static const txtApply = 'Apply';
   static const txtGetStarted = 'Get Started';
   static const txtDoThis = 'Let\'s do this';
   static const txtWarning = 'Warning !';
@@ -35,6 +36,7 @@ class StringUtils {
   static const txtResetPassword = 'Reset Password';
   static const txtIRemember = 'I remembered my password';
   static const txtGoBack = 'Go back';
+  static const txtGotIt = 'Got it';
   static const txtWeWillSend = 'We will send you a new password by email';
   static const txtRegisterHere = 'Register here';
   static const txtNoAccount = 'Don\'t have an account?';
@@ -45,6 +47,8 @@ class StringUtils {
       'Select any reusable items you have';
   static const txtTakePhoto =
       'Take photo of your items';
+  static const txtWhenShopping =
+      'When do you usually go shopping?';
 
   static const txtThisIsZimbo = 'This is zimbo';
   static const txtPantry = 'Pantry';
@@ -124,6 +128,9 @@ class StringUtils {
   static const txtReset = 'Reset';
   static const txtDeleteProfile = 'Delete Profile';
   static const txtCountryCity = 'Country, City';
+  static const txtWhyINeed = 'Why I need to do this?';
+  static const txtNotNow = 'Not right now';
+  static const txtWhyINeedDescription = 'Verification of reusable items helps ensure a sustainable platform for all.';
 
   static const txtPrefUser = 'pref_user';
   static const txtSupportMail = 'support@zimbo.me';

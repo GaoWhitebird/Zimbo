@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:zimbo/model/common/recyclable_item_model.dart';
@@ -30,12 +29,12 @@ class AddItemViewModel extends BaseViewModel {
     List<RecyclableItemReq> list = [];
     for (int i = 0; i < mList.length; i++){
       if(mList[i].isChecked == '1'){
-        RecyclableItemReq req = RecyclableItemReq(id: mList[i].id, image: mList[i].count);
+        RecyclableItemReq req = RecyclableItemReq(id: mList[i].id,);
         list.add(req);
       }
     }
 
-    networkService.doAddRecyclableItems(token!, AddRecyclableReq(list: jsonEncode(list))).then((value) => {
+    networkService.doAddRecyclableItems(token!, AddRecyclableReq(list: list)).then((value) => {
       if(value != null) {
         showMessage(StringUtils.txtRecyclableItemsAdded, null),
         finishView(context, true),
