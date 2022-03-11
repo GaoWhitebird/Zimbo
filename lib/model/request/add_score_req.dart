@@ -1,15 +1,15 @@
 class AddScoreReq {
-  String recyclableId;
+  List<dynamic> recyclableIds;
 
   AddScoreReq({
-    required this.recyclableId,
+    required this.recyclableIds,
   });
 
   Map<String, dynamic> toJson() => {
-    'recyclable_id': recyclableId,
+    'recyclable_ids': recyclableIds,
   };
 
   factory AddScoreReq.fromJson(Map<String, dynamic> json) => AddScoreReq(
-    recyclableId: json['recyclable_id'],
+    recyclableIds: json['recyclable_ids'],
   );
 }

@@ -49,11 +49,26 @@ class StringUtils {
       'Take photo of your items';
   static const txtWhenShopping =
       'When do you usually go shopping?';
+  static const txtReminderTheseDays =
+      'Would you like zimbo to remind you to take your shopping bags on these days?';
+  static const txtReminderShoppingBags =
+      'Would you like zimbo to remind you to take your shopping bags?';
+  static const txtYourGuide =
+      'Your guide to personal sustainability';
+  static const txtWhatNewBlog =
+      'What\'s new in this blog';
 
+  static const txtOnceAWeek = 'Once a week';
+  static const txtTwiceAWeek = 'Twice a week';
+  static const txtOnMondays = 'On Mondays';
+  static const txtOnWeekends = 'On Weekends';
+
+  static const txtNoSpecificDay = 'No specific day';
   static const txtThisIsZimbo = 'This is zimbo';
   static const txtPantry = 'Pantry';
   static const txtDashboard = 'Dashboard';
   static const txtZimboSphere = 'zimbo-sphere';
+  static const txtSphere = 'Sphere';
   static const txtCommunity = 'Community';
   static const txtAboutUS = 'About Us';
   static const txtMyItems = 'Items';
@@ -61,11 +76,14 @@ class StringUtils {
   static const txtSupport = 'Support';
   static const txtMenu = 'Menu';
   static const txtProfile = 'Profile';
-  static const txtHowDoesZimbWork = 'How does zimbo work?';
+  static const txtHowDoesZimboWork = 'How does zimbo work?';
   static const txtEditProfile = 'Edit Profile';
   static const txtAddItem = 'Add Item';
+  static const txtAddScore = 'Add Score';
+  static const txtAdd = 'Add';
   static const txtAddCard = 'Add Card';
   static const txtAddItems = 'Add Items';
+  static const txtSubmit = 'Submit';
   static const txtSubscription = 'Subscription';
   static const txtLogout = 'Logout';
   static const txtAppVersion = 'App Version';
@@ -81,18 +99,27 @@ class StringUtils {
   static const txtPleaseEnterPassword = 'Please enter pasword';
   static const txtUsed = 'Used';
   static const txtTimes = 'Times';
-  static const txtRecyclableItemsAdded = 'Recyclables have been successfully added';
+  static const txtRecyclableItemsAdded = 'Pantry item added successfully!';
+  static const txtRecyclableItemsAddedFail = 'Pantry item added fail!';
+  static const txtRecyclableItemsRemoved = 'Pantry item removed successfully!';
+  static const txtRecyclableItemsRemovedFail = 'Pantry item removed fail!';
   static const txtYourScore = 'Your Score';
+  static const txtScoreAddedSuccess = 'Your Score added success!';
+  static const txtScoreAddedFail = 'Your Score added fail!';
   static const txtOnePoint = 'Each item is one point';
   static const txtTotalReuseActivity = 'Total reuse activity';
   static const txtPointHistory = 'Point History';
   static const txtReuseHistory = 'Reuse History';
+  static const txtMyPantryItems = 'My pantry items';
+  static const txtWhatPantryItemsAreYouUsing = 'What pantry item(s) are you using right now?';
+  static const txtAdditionalPantryItems = 'Additional pantry items';
   static const txtComingSoon = 'Coming soon';
   static const txtPlusOne = '+1';
   static const txtMinusUSD = '-\$';
   static const txtPts = 'Pts';
   static const txtReuse = 'Reuse';
   static const txtHowWeCanHelp = 'How we can help you?';
+  static const txtHowCanIImprove = 'How can I improve my score?';
   static const txtDescribeYourProblem = 'Please give a short description of what you\'d like help with and a screenshot if applicable';
   static const txtUploadScreenshot = 'Upload screenshot';
   static const txtPleaseEnterDescription = 'Please enter description';
@@ -100,6 +127,7 @@ class StringUtils {
   static const txtProfileUpdatedSuccess = 'Profile updated successfully';
   static const txtResetScoreSuccess = 'Reset score successfully';
   static const txtDoYouWantToDelete = 'Do you want to delete this item?';
+  static const txtDoYouWantToAdd = 'Do you want to add this item?';
   static const txtDoYouWantToDeleteProfile = 'Do you want to delete Profile?';
   static const txtDoYouWantToResetScore = 'Do you want to Reset Score?';
   static const txtWhatInIncluded = 'What in included in the subscription?';
@@ -168,5 +196,29 @@ class StringUtils {
       'After downloading the zimbo app and creating an account, new members are prompted to select any reusable household items they may own. For each eligible item, they will receive a unique QR code in the mail to be affixed. \n\nTake a reusable coffee cup for example. Every time a member shops and uses their cup, they simply open the zimbo app and scan the QR code that has been sent and affixed to the cup, contributing to their green score. The same applies to a vast library of environmentally friendly products, such as shopping bags, water bottles, cleaning dispensers and many others.';
   static const txtEcoDescription_3 =
       'At zimbo, we are reimagining sustainability. \n\nWe believe that the largest opportunity for environmental impact lies with the collective power of individuals. Where even the smallest adjustments to daily habits and buying decisions can provide meaningful relief for our planet.';
+
+  static const txtBlogTitle_1 = 'Did you know?';
+  static const txtBlogTitle_2 = 'Did you know?';
+  static const txtBlogTitle_3 = 'How much Carbon Dioxide do tree absorb each year?';
+  static const txtBlogDescription_1 =
+      'Australians throw out 2.7 million single-use or disposable coffee cups every single day. This adds up to 1 billion coffee cups thrown out every year.';
+  static const txtBlogDescription_2 =
+      'More than 10 million plastic bags are used in Australia every day, or 3.65 billion every year. On average, a plastic bag is used for 12 minutes but takes 1,000 years to break down.';
+  static const txtBlogDescription_3 =
+      'A mature tree absorbs carbon dioxide at a rate of 22 kilograms per year. In one year, an acre of forest can absorb twice the carbon dioxide produced by the average motor vehicle each year.';
+
+
+  static const txtHowTitle_1 = 'Variety';
+  static const txtHowTitle_2 = 'Frequency';
+  static const txtHowTitle_3 = 'Share ideas';
+  static const txtHowTitle_4 = 'Refer a friend';
+  static const txtHowDescription_1 =
+      'Reusing a range of different items improves your green rating. The more variety of items you log your use of, the better! From shopping bags to coffee cups, cleaning products and more, variety of items contributes to a healthier planet and a better green rating. Keep an eye out for new items we add to the pantry!';
+  static const txtHowDescription_2 =
+      'The more you remember to reuse your items, the more sustainable you become. Don\'t forget to scan and log each reuse within the app.';
+  static const txtHowDescription_3 =
+      'We love learning about the new things you’re reusing. Share your reuse ideas with us and if they\'re added to the app, watch your green rating improve.';
+  static const txtHowDescription_4 =
+      'Do you know someone who’s already a great re-user? Or maybe you’d like to help a family member or friend begin their sustainability journey. Each time you refer a friend, and they sign up to zimbo, your rating improves.';
 
 }

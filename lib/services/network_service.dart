@@ -14,6 +14,7 @@ import 'package:zimbo/model/request/auto_login_req.dart';
 import 'package:zimbo/model/request/delete_recyclable_req.dart';
 import 'package:zimbo/model/request/login_req.dart';
 import 'package:zimbo/model/request/post_support_req.dart';
+import 'package:zimbo/model/request/shopping_day_req.dart';
 import 'package:zimbo/model/request/signup_email_req.dart';
 import 'package:zimbo/model/request/signup_facebook_req.dart';
 import 'package:zimbo/model/request/signup_google_req.dart';
@@ -182,18 +183,29 @@ class NetworkService {
     return list;
   }
 
-  Future<List<RecyclableItemModel>?> doGetUserRecyclableList(
+  Future<List<List<RecyclableItemModel>>?> doGetUserRecyclableList(
       String token) async {
     var res = await doGetRequest(
         ApiUtils.urlGetUserRecyclableList, TokenReq(token: token).toJson());
-    if (res == null) return [];
+    if (res == null) return null;
 
     List<dynamic> _list = res['user_recyclable_item_list'];
     List<RecyclableItemModel> list = [];
     for (int i = 0; i < _list.length; i++) {
       list.add(RecyclableItemModel.fromJson(_list[i]));
     }
-    return list;
+
+    List<dynamic> _tempList = res['available_recyclable_list'];
+    List<RecyclableItemModel> templist = [];
+    for (int i = 0; i < _tempList.length; i++) {
+      templist.add(RecyclableItemModel.fromJson(_tempList[i]));
+    }
+
+    List<List<RecyclableItemModel>> totalList = [];
+    totalList.add(list);
+    totalList.add(templist);
+
+    return totalList;
   }
 
   Future doAddRecyclableItems(
@@ -245,7 +257,7 @@ class NetworkService {
 
   Future<UserModel?> doAddScore(String token, AddScoreReq req) async {
     var res = await doPostRequest(ApiUtils.urlAddScore,
-        param: req, token: TokenReq(token: token).toJson());
+        param: req.toJson(), token: TokenReq(token: token).toJson());
     if (res == null) return null;
 
     UserModel userModel = UserModel.fromJson(res['user_info']);
@@ -341,5 +353,13 @@ class NetworkService {
       list.add(PaymentHistoryItemModel.fromJson(_list[i]));
     }
     return list;
+  }
+
+  Future doSetShoppingDay(String token, ShoppingDayReq req) async {
+    var res = await doPostRequest(ApiUtils.urlSetShoppingDay,
+        token: TokenReq(token: token).toJson(), param: req.toJson());
+    if (res == null) return false;
+
+    return true;
   }
 }

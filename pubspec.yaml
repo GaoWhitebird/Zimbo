@@ -40,6 +40,7 @@ dependencies:
   nb_utils: ^4.4.10
   bot_toast: ^4.0.1
   url_launcher: ^6.0.17
+  uni_links: ^0.5.1
 
 
   # More
@@ -50,6 +51,7 @@ dependencies:
   flutter_multi_formatter: ^2.5.1
   stripe_sdk: ^5.0.0-nullsafety.1
   weekday_selector: ^1.0.0
+  group_button: ^4.6.0
 
   flutter_datetime_picker:
     git:

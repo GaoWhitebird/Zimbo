@@ -12,6 +12,11 @@ class ImageUtils {
   static const imgIcIntro3 = 'assets/images/png/ic_intro_3.png';
   static const imgIcDashboardHeader = 'assets/images/png/ic_dashboard_header.png';
   static const imgIcDashboard = 'assets/images/png/ic_dashboard.png';
+  static const imgIcGuideBack = 'assets/images/png/ic_guide_back.jpg';
+  static const imgIcSphereHeader = 'assets/images/png/ic_sphere_header.png';
+  static const imgIcBlog1 = 'assets/images/png/ic_blog_1.png';
+  static const imgIcBlog2 = 'assets/images/png/ic_blog_2.png';
+  static const imgIcBlog3 = 'assets/images/png/ic_blog_3.png';
 
   // svg
   static const imgIcFacebook = 'assets/images/svg/ic_facebook.svg';

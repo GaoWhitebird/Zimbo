@@ -79,6 +79,7 @@ class _PointHistoryItemState extends State<PointHistoryItem> {
                   alignment: Alignment.center,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       textView(StringUtils.txtPlusOne,
                           fontSize: SizeUtils.textSizeMedium,

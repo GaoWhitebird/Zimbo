@@ -59,10 +59,9 @@ class MenuView extends StatelessWidget {
               children: <Widget>[
                 MenuViewItem(
                     imageStr: ImageUtils.imgIcAboutUs,
-                    titleStr: StringUtils.txtHowDoesZimbWork,
+                    titleStr: StringUtils.txtHowDoesZimboWork,
                     onTap: () => {
-                          finishView(context),
-                          ProfileView().launch(context),
+                          finishView(context, 0),
                         }),
                 MenuViewItem(
                     imageStr: ImageUtils.imgIcMenuProfile,

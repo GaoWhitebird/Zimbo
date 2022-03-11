@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:group_button/group_button.dart';
 import 'package:stacked/stacked.dart';
+import 'package:weekday_selector/weekday_selector.dart';
+import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/image_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
@@ -40,17 +44,111 @@ class SelectShoppingDayView extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
-                    padding: EdgeInsets.fromLTRB(width * 0.1, 0, width * 0.1, 0),
+                    padding:
+                        EdgeInsets.fromLTRB(width * 0.1, 0, width * 0.1, 0),
                     child: textView(StringUtils.txtWhenShopping,
-                      textColor: ColorUtils.appColorWhite,
-                      fontSize: SizeUtils.textSizeNormal,
-                      fontWeight: FontWeight.w600,
-                      isCentered: true,
-                      maxLine: 2),
+                        textColor: ColorUtils.appColorWhite,
+                        fontSize: SizeUtils.textSizeNormal,
+                        fontWeight: FontWeight.w600,
+                        isCentered: true,
+                        maxLine: 2),
                   ),
                   Expanded(
                     child: Container(
-                        margin: const EdgeInsets.all(10), child: Container()),
+                        margin: const EdgeInsets.all(10),
+                        child: Column(children: <Widget>[
+                          WeekdaySelector(
+                            fillColor: ColorUtils.appColorWhite,
+                            selectedFillColor: ColorUtils.appColorAccent,
+                            color: ColorUtils.appColorBlack,
+                            selectedColor: ColorUtils.appColorWhite,
+                            onChanged: (int day) {
+                              model.weekDayChanged(day);
+                            },
+                            values: model.weekDayValues,
+                            firstDayOfWeek: 0,
+                            shortWeekdays: model.weekDayStringList,
+                          ),
+                          Container(
+                              padding: const EdgeInsets.all(10),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  IconButton(
+                                    icon: model.isChecked
+                                        ? SvgPicture.asset(
+                                            ImageUtils.imgIcCheckOn)
+                                        : SvgPicture.asset(
+                                            ImageUtils.imgIcCheckOff),
+                                    alignment: Alignment.center,
+                                    splashColor: ColorUtils.appColorTransparent,
+                                    onPressed: () {
+                                      model.onSetChecked(!model.isChecked);
+                                    },
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      model.onSetChecked(!model.isChecked);
+                                    },
+                                    child: textView(
+                                        StringUtils.txtNoSpecificDay,
+                                        textColor: ColorUtils.appColorWhite,
+                                        fontSize: SizeUtils.textSizeSMedium,
+                                        fontWeight: FontWeight.w400,
+                                        maxLine: 1),
+                                  )
+                                ],
+                              )),
+                          Expanded(
+                              child: Container(
+                            alignment: Alignment.center,
+                            child: textView(StringUtils.txtReminderTheseDays,
+                                textColor: ColorUtils.appColorWhite,
+                                fontSize: SizeUtils.textSizeMedium,
+                                fontWeight: FontWeight.w600,
+                                isCentered: true,
+                                maxLine: 4),
+                          )).visible(!model.isChecked),
+                          Expanded(
+                              child: Container(
+                                  alignment: Alignment.center,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      textView(
+                                          StringUtils.txtReminderShoppingBags,
+                                          textColor: ColorUtils.appColorWhite,
+                                          fontSize: SizeUtils.textSizeMedium,
+                                          fontWeight: FontWeight.w600,
+                                          isCentered: true,
+                                          maxLine: 4),
+                                      const SizedBox(height: 15,),
+                                      GroupButton(
+                                        options: GroupButtonOptions(
+                                          unselectedColor: ColorUtils.appColorWhite,
+                                          selectedColor: ColorUtils.appColorAccent,
+                                          buttonWidth: width * 0.4,
+                                          borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                          runSpacing: 0,
+                                        ),
+                                       
+                                        isRadio: true,
+                                        onSelected: (index, isSelected) {
+                                          model.onGroupSelected(index, isSelected);
+                                        },
+                                        buttons: const [
+                                          StringUtils.txtOnceAWeek,
+                                          StringUtils.txtTwiceAWeek,
+                                          StringUtils.txtOnMondays,
+                                          StringUtils.txtOnWeekends,
+                                        ],
+                                        
+                                      )
+                                    ],
+                                  ))).visible(model.isChecked),
+                        ])),
                   ),
                   Column(
                     mainAxisSize: MainAxisSize.min,

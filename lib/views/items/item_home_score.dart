@@ -33,17 +33,17 @@ class _HomeScoreItemState extends State<HomeScoreItem> {
           children: <Widget>[
             CircleAvatar(
                 backgroundColor: ColorUtils.appColorWhite,
-                radius: width * 0.25,
+                radius: width * 0.2,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Image.asset(
                       ImageUtils.imgIcDashboardHeader,
-                      width: width * 0.2,
-                      height: width * 0.2,
+                      width: width * 0.15,
+                      height: width * 0.15,
                     ),
                     textView(StringUtils.txtTotalReuseActivity,
-                        fontSize: SizeUtils.textSizeSMedium,
+                        fontSize: SizeUtils.textSizeSmall,
                         textColor: ColorUtils.appColorBlack),
                     textView(
                         widget.model == null
@@ -57,7 +57,7 @@ class _HomeScoreItemState extends State<HomeScoreItem> {
             Row(
               children: <Widget>[
                 Container(
-                  height: width * 0.25,
+                  height: width * 0.2,
                   padding:
                       EdgeInsets.only(left: width * 0.02, right: width * 0.02),
                   child: CircleAvatar(

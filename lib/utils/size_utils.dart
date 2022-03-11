@@ -7,6 +7,7 @@ class SizeUtils {
   static const fontBold = 'Bold';
 
   /* font sizes*/
+  static const textSizeSSmall = 10.0;
   static const textSizeSmall = 12.0;
   static const textSizeSMedium = 14.0;
   static const textSizeMedium = 16.0;

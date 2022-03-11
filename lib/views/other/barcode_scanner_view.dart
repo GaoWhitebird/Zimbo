@@ -3,12 +3,14 @@ import 'dart:async';
 import 'package:fast_barcode_scanner/fast_barcode_scanner.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
 import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/other/barcode_scanner_view_model.dart';
+import 'package:zimbo/views/other/add_score_view.dart';
 
 final codeStream = StreamController<Barcode>.broadcast();
 
@@ -35,6 +37,11 @@ class _BarcodeScannerScreenState extends State<BarcodeScannerScreen> {
       final count = detectionCount.update(event.value, (value) => value + 1,
           ifAbsent: () => 1);
       detectionInfo.value = "${count}x\n${event.value}";
+
+      if(barcodeStr.toLowerCase().contains(StringUtils.txtAppName)){
+        finishView(context);
+        const AddScoreView().launch(context);
+      }
     });
   }
 
