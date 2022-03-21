@@ -1,9 +1,10 @@
-import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:zimbo/utils/color_utils.dart';
+import 'package:zimbo/utils/image_utils.dart';
+import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/view_models/main/about_us_view_model.dart';
-import 'package:zimbo/views/items/item_about_us_view.dart';
+import 'package:zimbo/views/items/item_about_us_new.dart';
 
 class AboutUsView extends StatelessWidget {
   const AboutUsView({Key? key}) : super(key: key);
@@ -18,25 +19,25 @@ class AboutUsView extends StatelessWidget {
   }
 
   buildWidget(BuildContext context, AboutUsViewModel model, Widget? child) {
+    var width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: ExpandableTheme(
-        data: const ExpandableThemeData(
-          iconColor: ColorUtils.appColorBlack,
-          useInkWell: true,
-        ),
-        child: Container(
-          color: ColorUtils.appColorBlue,
-          child: ListView(
-          physics: const BouncingScrollPhysics(),
-          children: model.mList.map((item){
-            return AboutUSItemView(
-              model: item,
-            );
-          }).toList(),
-        ),
+      backgroundColor: ColorUtils.appColorBlue,
+      body: Container(
+        alignment: Alignment.center,
+        child: SingleChildScrollView(
+          child: Container(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      AboutUsNewItem(blgImage: ImageUtils.imgIcAboutUS1, blgTitle: StringUtils.txtAboutTitle_1, blgDescription: StringUtils.txtAboutDescription_1, blgWidth: width * 0.95,),
+                      AboutUsNewItem(blgImage: ImageUtils.imgIcAboutUS2, blgTitle: StringUtils.txtAboutTitle_2, blgDescription: StringUtils.txtAboutDescription_2, blgWidth: width * 0.95,),
+                      AboutUsNewItem(blgImage: ImageUtils.imgIcAboutUS3, blgTitle: StringUtils.txtAboutTitle_3, blgDescription: StringUtils.txtAboutDescription_3, blgWidth: width * 0.95,),
+                    ],
+                  ),
+                ),
         )
-        
-      ),
+      )
     );
   }
 }

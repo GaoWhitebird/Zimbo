@@ -14,7 +14,7 @@ class SignUpFacebookReq {
   });
 
   Map<String, dynamic> toJson() => {
-    'name': name,
+    'user_name': name,
     'facebook_id': facebookId,
     'email': email,
     'image': image,
@@ -22,7 +22,7 @@ class SignUpFacebookReq {
   };
 
   factory SignUpFacebookReq.fromJson(Map<String, dynamic> json) => SignUpFacebookReq(
-    name: json['name'], 
+    name: json['user_name'], 
     facebookId: json['facebook_id'], 
     email: json['email'], 
     image: json['image'], 

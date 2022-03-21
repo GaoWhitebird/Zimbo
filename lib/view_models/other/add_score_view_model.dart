@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/model/common/recyclable_item_model.dart';
 import 'package:zimbo/model/common/score_model.dart';
 import 'package:zimbo/model/request/add_score_req.dart';
@@ -8,7 +7,6 @@ import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
-import 'package:zimbo/views/main/main_view.dart';
 
 class AddScoreViewModel extends BaseViewModel {
   List<RecyclableItemModel> mList = [];

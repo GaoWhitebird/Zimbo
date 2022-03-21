@@ -17,6 +17,9 @@ class ImageUtils {
   static const imgIcBlog1 = 'assets/images/png/ic_blog_1.png';
   static const imgIcBlog2 = 'assets/images/png/ic_blog_2.png';
   static const imgIcBlog3 = 'assets/images/png/ic_blog_3.png';
+  static const imgIcAboutUS1 = 'assets/images/png/ic_about_us_1.png';
+  static const imgIcAboutUS2 = 'assets/images/png/ic_about_us_2.png';
+  static const imgIcAboutUS3 = 'assets/images/png/ic_about_us_3.png';
 
   // svg
   static const imgIcFacebook = 'assets/images/svg/ic_facebook.svg';

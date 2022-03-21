@@ -29,4 +29,7 @@ class ApiUtils {
   static const urlCancelPayment = BASE_URL + 'payment/cancel_payment';
   static const urlGetSubscriptionInfo = BASE_URL + 'payment/get_subscription_info';
   static const urlGetPaymentHistory = BASE_URL + 'payment/get_payment_history';
+
+  static const urlFacebookAppId = '765052451139435';
+  static const urlFacebookClientToken = 'dbd9508541ce22ef8f3d16e86a736461';
 }

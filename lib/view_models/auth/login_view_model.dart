@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/model/request/login_req.dart';
+import 'package:zimbo/model/request/signup_facebook_req.dart';
 import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
@@ -18,8 +20,41 @@ class LoginViewModel extends BaseViewModel {
     deviceKey = await getDeviceId();
   }
 
-  onClickFacebookLogin(BuildContext context) {
-    notifyListeners();
+  onClickFacebookLogin(BuildContext context) async {
+    final fb = FacebookLogin();
+    final res = await fb.logIn(permissions: [
+      FacebookPermission.publicProfile,
+      FacebookPermission.email,
+    ]);
+
+    switch (res.status) {
+      case FacebookLoginStatus.success:
+        final FacebookAccessToken accessToken = res.accessToken!;
+        final profile = await fb.getUserProfile();
+        final imageUrl = await fb.getProfileImageUrl(width: 100);
+        final email = await fb.getUserEmail();
+        
+        SignUpFacebookReq req = SignUpFacebookReq(
+          name: profile!.name!, 
+          facebookId: accessToken.token, 
+          email: email!, 
+          image: imageUrl!, 
+          deviceKey: deviceKey!);
+        networkService.doSignUpFacebook(req).then((value) => {
+          if (value != null)
+                {
+                  sharedService.saveUser(value),
+                  const MainView().launch(context, isNewTask: true),
+                }
+        });
+
+        break;
+      case FacebookLoginStatus.cancel:
+        break;
+      case FacebookLoginStatus.error:
+        showMessage('Error while log in: ${res.error}', null);
+        break;
+    }
   }
 
   onClickGoogleLogin(BuildContext context) {
