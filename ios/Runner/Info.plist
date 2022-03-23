@@ -95,4 +95,15 @@
 		<string>fbshareextension</string>
 		</array>
 	</dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.941073048729-rljjkp5mhibsolnlr4srldq6gcr2tj67</string>
+			</array>
+		</dict>
+	</array>
 </plist>

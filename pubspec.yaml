@@ -33,7 +33,7 @@ dependencies:
   dio: ^4.0.4
 
   # Auth
-  google_sign_in: ^5.2.1
+  google_sign_in: ^5.2.4
   flutter_login_facebook: ^1.4.1
 
   # Utils

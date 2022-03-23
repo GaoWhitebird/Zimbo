@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "941073048729",
+    "project_id": "zimbo-69ce9",
+    "storage_bucket": "zimbo-69ce9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:941073048729:android:a384a0b666db527f440408",
+        "android_client_info": {
+          "package_name": "com.au.zimbo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "941073048729-v96kp4fmfkmk4h3pb35207vf77iligdv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.au.zimbo",
+            "certificate_hash": "0d47f5aba500f4a5c196851fe406758f3c9c385f"
+          }
+        },
+        {
+          "client_id": "941073048729-p44fv3051860mbvaium1h560i8voj912.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBB2Ss_ca1MErWgHIPRkAWtqcl6zGMJlrs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "941073048729-p44fv3051860mbvaium1h560i8voj912.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

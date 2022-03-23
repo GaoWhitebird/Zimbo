@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_login_facebook/flutter_login_facebook.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
@@ -20,8 +21,17 @@ class MenuViewModel extends BaseViewModel {
   }
 
   onClickLogout(BuildContext context) async {
-    final fb = FacebookLogin();
-    fb.logOut();
+    try
+    {
+      final fb = FacebookLogin();
+      fb.logOut();
+      GoogleSignIn googleSignIn = GoogleSignIn();
+      googleSignIn.signOut();
+    }catch (error){
+
+    }
+
+
     networkService.doLogout(token!).then((value) => {
       if(value){
         sharedService.saveToken(''),
