@@ -1,9 +1,6 @@
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/image_utils.dart';
-import 'package:zimbo/utils/size_utils.dart';
-import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/system_utils.dart';
-import 'package:zimbo/utils/widget_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:zimbo/view_models/auth/splash_view_model.dart';
@@ -22,6 +19,7 @@ class SplashView extends StatelessWidget {
 
   buildWidget(BuildContext context, SplashViewModel model, Widget? child) {
     setStatusBarColor(ColorUtils.appColorTransparent);
+    var width = MediaQuery.of(context).size.width;
     return WillPopScope(
       child: Scaffold(
         body: Container(
@@ -35,7 +33,7 @@ class SplashView extends StatelessWidget {
             children: [
               Container(
                 alignment: Alignment.center,
-                child: textView(StringUtils.txtAppName, textColor: ColorUtils.appColorWhite, fontSize: SizeUtils.textSizeXXLarge),
+                child: Image.asset(ImageUtils.imgIcLogo, width: width * 0.3, fit: BoxFit.scaleDown),
               ),
             ],
           )

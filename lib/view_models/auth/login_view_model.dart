@@ -48,7 +48,7 @@ class LoginViewModel extends BaseViewModel {
           if (value != null)
                 {
                   sharedService.saveUser(value),
-                  const MainView().launch(context, isNewTask: true),
+                  MainView().launch(context, isNewTask: true),
                 }
         });
 
@@ -79,7 +79,7 @@ class LoginViewModel extends BaseViewModel {
             if (value != null)
                   {
                     sharedService.saveUser(value),
-                    const MainView().launch(context, isNewTask: true),
+                    MainView().launch(context, isNewTask: true),
                   }
           });
         } else {
@@ -109,7 +109,7 @@ class LoginViewModel extends BaseViewModel {
             if (value != null)
               {
                 sharedService.saveUser(value),
-                const MainView().launch(context, isNewTask: true),
+                MainView().launch(context, isNewTask: true),
               }
           });
     }
@@ -125,17 +125,17 @@ class LoginViewModel extends BaseViewModel {
 
   bool checkValidate() {
     if (email.isEmpty) {
-      showMessage(StringUtils.txtPleaseEnterEmail, null);
+      showMessage(StringUtils.txtPleaseEnterNameOrEmail, null);
       return false;
     }
     if (password.isEmpty) {
       showMessage(StringUtils.txtPleaseEnterPassword, null);
       return false;
     }
-    if (!isValidEmail(email)) {
-      showMessage(StringUtils.txtPleaseEnterCorrectEmail, null);
-      return false;
-    }
+    // if (!isValidEmail(email)) {
+    //   showMessage(StringUtils.txtPleaseEnterCorrectEmail, null);
+    //   return false;
+    // }
     if (!isValidPassword(password)) {
       showMessage(StringUtils.txtPleaseEnterCorrectPassword, null);
       return false;

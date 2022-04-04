@@ -24,7 +24,7 @@ class SplashViewModel extends BaseViewModel{
         if(value != null){
           userModel = value,
           sharedService.saveUser(userModel),
-          const MainView().launch(context, isNewTask: true),
+          MainView().launch(context, isNewTask: true),
         }else {
           LoginView().launch(context, isNewTask: true),
         }

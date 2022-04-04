@@ -280,23 +280,25 @@ class NetworkService {
     return true;
   }
 
-  Future doDeleteRecyclableItem(String token, DeleteRecyclableReq req) async {
+  Future<UserModel?> doDeleteRecyclableItem(String token, DeleteRecyclableReq req) async {
     var res = await doPostRequest(ApiUtils.urlDeleteRecyclableItem,
         token: TokenReq(
           token: token,
         ).toJson(),
         param: req.toJson());
-    if (res == null) return false;
+    if (res == null) return null;
 
-    return true;
+    UserModel userModel = UserModel.fromJson(res['user_info']);
+    return userModel;
   }
 
-  Future doUpdateRecyclableCount(String token, UpdateRecyclableReq req) async {
+  Future<UserModel?> doUpdateRecyclableCount(String token, UpdateRecyclableReq req) async {
     var res = await doPostRequest(ApiUtils.urlUpdateRecyclableItemCount,
         token: TokenReq(token: token).toJson(), param: req.toJson());
-    if (res == null) return false;
+    if (res == null) return null;
 
-    return true;
+    UserModel userModel = UserModel.fromJson(res['user_info']);
+    return userModel;
   }
 
   Future doPostSupport(String token, PostSupportReq req) async {

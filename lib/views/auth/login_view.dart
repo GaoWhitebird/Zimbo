@@ -145,7 +145,7 @@ class LoginView extends StatelessWidget {
                             height: 10,
                           ),
                           EditTextField(
-                            hintText: StringUtils.txtEmail,
+                            hintText: StringUtils.txtUserNameOrEmail,
                             isPassword: false,
                             isSecure: false,
                             mController: textEditingControllerEmail,

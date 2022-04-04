@@ -51,11 +51,11 @@ class SignUpViewModel extends BaseViewModel {
   }
 
   onClickCondition(BuildContext context) {
-    launchURL(CommonService.conditionsUrl);
+    launchURL(CommonService.termsUrl);
   }
 
-  onClickTerms(BuildContext context) {
-    launchURL(CommonService.termsUrl);
+  onClickPrivacy(BuildContext context) {
+    launchURL(CommonService.privacyUrl);
   }
 
   launchURL(String url) async {

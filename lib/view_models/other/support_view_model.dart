@@ -39,7 +39,7 @@ class SupportViewModel extends BaseViewModel {
         showMessage(StringUtils.txtSentSuccess, null),
         imagePath = '',
 
-        const MainView().launch(context, isNewTask: true),
+        MainView().launch(context, isNewTask: true),
       }
     });
   }

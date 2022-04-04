@@ -67,7 +67,7 @@ class _BarcodeScannerScreenState extends State<BarcodeScannerScreen> {
       extendBodyBehindAppBar: true,
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: textView(StringUtils.txtBarcodeScanner,
+        title: textView(StringUtils.txtQRScanner,
             textColor: ColorUtils.appColorWhite,
             fontSize: SizeUtils.textSizeNormal,
             fontWeight: FontWeight.w500,

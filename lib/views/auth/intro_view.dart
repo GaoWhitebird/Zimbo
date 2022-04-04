@@ -50,12 +50,12 @@ buildWidget(BuildContext context, IntroViewModel model, Widget? child) {
                       textTitle: StringUtils.txtIntroTitle_2,
                       textContent: StringUtils.txtIntroDescription_2,
                       walkImg: ImageUtils.imgIcLogo,
-                      backImg: ImageUtils.imgIcIntroBack2),
+                      backImg: ImageUtils.imgIcIntroBack1),
                   WalkThrough(
                       textTitle: StringUtils.txtIntroTitle_3,
                       textContent: StringUtils.txtIntroDescription_3,
                       walkImg: ImageUtils.imgIcLogo,
-                      backImg: ImageUtils.imgIcIntroBack3),
+                      backImg: ImageUtils.imgIcIntroBack1),
                 ],
                 onPageChanged: (value) {
                   model.setCurrentIndex(value);

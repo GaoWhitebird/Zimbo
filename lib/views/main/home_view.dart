@@ -15,7 +15,7 @@ class HomeView extends StatefulWidget {
   State<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _HomeViewState extends State<HomeView> with AutomaticKeepAliveClientMixin{
   
   @override
   void setState(VoidCallback fn) {
@@ -27,7 +27,13 @@ class _HomeViewState extends State<HomeView> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return ViewModelBuilder<HomeViewModel>.reactive(
       viewModelBuilder: () => HomeViewModel(),
       builder: (context, model, child) => buildWidget(context, model, child),
@@ -85,4 +91,7 @@ class _HomeViewState extends State<HomeView> {
       );
     }).toList();
   }
+
+  @override
+  bool get wantKeepAlive => false;
 }

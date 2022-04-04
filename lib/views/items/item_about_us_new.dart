@@ -51,9 +51,10 @@ class _AboutUsNewItemState extends State<AboutUsNewItem> {
             const SizedBox(height: 5),
             textView(widget.blgDescription,
                 textColor: ColorUtils.appColorWhite,
-                fontSize: SizeUtils.textSizeSmall,
+                fontSize: SizeUtils.textSizeSMedium,
                 fontWeight: FontWeight.w400,
-                maxLine: 20),
+                maxLine: 20,
+                isCentered: true),
           ],
         ));
   }

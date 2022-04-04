@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/model/request/shopping_day_req.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
-import 'package:zimbo/views/auth/guide_view.dart';
+import 'package:zimbo/views/main/main_view.dart';
 
 class SelectShoppingDayViewModel extends BaseViewModel {
   final weekDayValues = List.filled(7, false);
@@ -25,7 +25,7 @@ class SelectShoppingDayViewModel extends BaseViewModel {
   }
 
   onClickSkip(BuildContext context) {
-    const GuideView().launch(context, isNewTask: true);
+    MainView().launch(context, isNewTask: true);
   }
 
   void weekDayChanged(int day) {

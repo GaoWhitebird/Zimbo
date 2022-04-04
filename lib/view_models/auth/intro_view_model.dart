@@ -8,7 +8,7 @@ import 'package:zimbo/views/auth/login_view.dart';
 class IntroViewModel extends BaseViewModel {
   int currentIndex = 0;
   PageController pageController = PageController();
-  List<String> buttonTextList = [StringUtils.txtGetStarted, StringUtils.txtNext, StringUtils.txtDoThis];
+  List<String> buttonTextList = [StringUtils.txtNext, StringUtils.txtNext, StringUtils.txtStartScanning];
 
   initialize(BuildContext context) async {
 

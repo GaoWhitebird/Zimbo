@@ -33,7 +33,7 @@ class MyItemsView extends StatelessWidget {
             children: <Widget>[
               Container(
                 padding: const EdgeInsets.all(10),
-                child: textView(StringUtils.txtMyPantryItems,
+                child: textView(StringUtils.txtLaunchList,
                     textColor: ColorUtils.appColorWhite,
                     fontSize: SizeUtils.textSizeMedium,
                     fontWeight: FontWeight.w600,

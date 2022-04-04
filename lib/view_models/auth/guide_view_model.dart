@@ -1,8 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:zimbo/extentions/widget_extensions.dart';
+import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
-import 'package:zimbo/views/main/main_view.dart';
 
 class GuideViewModel extends BaseViewModel {
 
@@ -11,7 +10,8 @@ class GuideViewModel extends BaseViewModel {
   }
 
   onClickGotIt(BuildContext context) {
-    const MainView().launch(context, isNewTask: true);
+    //const MainView().launch(context, isNewTask: true);
+    finishView(context);
   }
 
 }

@@ -30,8 +30,9 @@ class MyItemsViewModel extends BaseViewModel {
   void onDeleteClicked(BuildContext context, RecyclableItemModel item) async {
     DeleteRecyclableReq req = DeleteRecyclableReq(recyclableId: item.id);
     await networkService.doDeleteRecyclableItem(token!, req).then((value) => {
-          if (value)
+          if (value != null)
             {
+              sharedService.saveUser(value),
               showMessage(StringUtils.txtRecyclableItemsRemoved, null),
               mAdditionalList.add(item),
               mList.removeWhere((element) => element.id == item.id),
@@ -46,8 +47,8 @@ class MyItemsViewModel extends BaseViewModel {
   void onAddRemoveClicked(BuildContext context, RecyclableItemModel item) async {
     UpdateRecyclableReq req = UpdateRecyclableReq(recyclableId: item.id, count: item.count);
     await networkService.doUpdateRecyclableCount(token!, req).then((value) => {
-      if(value){
-        
+      if(value != null){
+        sharedService.saveUser(value),
       }
     });
   }

@@ -5,7 +5,8 @@ import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
 
-class BarcodeScannerViewModel extends BaseViewModel {
+class QrScannerViewModel extends BaseViewModel {
+  String? mBarcodeStr = '';
   initialize(BuildContext context) async {
     var status = await Permission.camera.status;
     if (status.isDenied) {

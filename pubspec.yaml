@@ -45,6 +45,7 @@ dependencies:
 
   # More
   fast_barcode_scanner: ^1.1.4
+  qr_code_scanner: ^0.7.0
   expandable: ^5.0.1
   intl: ^0.17.0
   image_picker: ^0.8.4+4
@@ -52,6 +53,7 @@ dependencies:
   stripe_sdk: ^5.0.0-nullsafety.1
   weekday_selector: ^1.0.0
   group_button: ^4.6.0
+  permission_handler: ^9.2.0
 
   flutter_datetime_picker:
     git:

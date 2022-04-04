@@ -5,6 +5,7 @@ class StringUtils {
   static const txtApply = 'Apply';
   static const txtGetStarted = 'Get Started';
   static const txtDoThis = 'Let\'s do this';
+  static const txtStartScanning = 'Start scanning';
   static const txtWarning = 'Warning !';
   static const txtError = 'Error';
   static const txtConfirm = 'Confirm';
@@ -28,8 +29,9 @@ class StringUtils {
   static const txtAnd = 'and';
   static const txtSigninWithEmail = 'Sign In with Email';
   static const txtCreateAnAccount = 'Create an account';
-  static const txtUserName = 'User Name';
+  static const txtUserName = 'Username';
   static const txtEmail = 'Email';
+  static const txtUserNameOrEmail = 'Username OR Email';
   static const txtPassword = 'Password';
   static const txtForgotPassword = 'Forgot Password?';
   static const txtResetHere = 'Reset here';
@@ -42,7 +44,10 @@ class StringUtils {
   static const txtNoAccount = 'Don\'t have an account?';
   static const txtByTap = 'By tapping \'Sign Up\' you accept our';
   static const txtTerms = 'Terms';
-  static const txtCondition = 'Condition';
+  static const txtCondition = 'conditions';
+  static const txtTermsAndCondition = 'Terms and conditions';
+  static const txtPrivacyPolicy = 'Privacy policy';
+  static const txtPhoto = 'Photo';
   static const txtHowManyItems =
       'Select any reusable items you have';
   static const txtTakePhoto =
@@ -67,6 +72,7 @@ class StringUtils {
   static const txtThisIsZimbo = 'This is zimbo';
   static const txtPantry = 'Pantry';
   static const txtDashboard = 'Dashboard';
+  static const txtMyProfile = 'My Profile';
   static const txtZimboSphere = 'zimbo-sphere';
   static const txtSphere = 'Sphere';
   static const txtCommunity = 'Community';
@@ -76,6 +82,7 @@ class StringUtils {
   static const txtSupport = 'Support';
   static const txtMenu = 'Menu';
   static const txtProfile = 'Profile';
+  static const txtMyDetails = 'My Details';
   static const txtHowDoesZimboWork = 'How does zimbo work?';
   static const txtEditProfile = 'Edit Profile';
   static const txtAddItem = 'Add Item';
@@ -87,13 +94,14 @@ class StringUtils {
   static const txtSubscription = 'Subscription';
   static const txtLogout = 'Logout';
   static const txtAppVersion = 'App Version';
-  static const txtBarcodeScanner = 'Barcode Scanner';
-  static const txtBarcodeNotScanned = 'Barcode Not Scanned';
+  static const txtQRScanner = 'QR Scanner';
+  static const txtQRNotScanned = 'QR Code Not Scanned';
 
   static const txtSomethingWentWrong = 'Something went wrong, please try again';
   static const txtPleaseCheckConntection = 'Please check connection';
   static const txtPleaseEnterName = 'Please enter name';
   static const txtPleaseEnterEmail = 'Please enter email';
+  static const txtPleaseEnterNameOrEmail = 'Please enter user name or email';
   static const txtPleaseEnterCorrectEmail = 'Please enter correct email';
   static const txtPleaseEnterCorrectPassword = 'Password must be at least 6 characters';
   static const txtPleaseEnterPassword = 'Please enter pasword';
@@ -111,6 +119,7 @@ class StringUtils {
   static const txtPointHistory = 'Point History';
   static const txtReuseHistory = 'Reuse History';
   static const txtMyPantryItems = 'My pantry items';
+  static const txtLaunchList = 'Launch list';
   static const txtWhatPantryItemsAreYouUsing = 'What pantry item(s) are you using right now?';
   static const txtAdditionalPantryItems = 'Additional pantry items';
   static const txtComingSoon = 'Coming soon';
@@ -159,6 +168,9 @@ class StringUtils {
   static const txtWhyINeed = 'Why I need to do this?';
   static const txtNotNow = 'Not right now';
   static const txtWhyINeedDescription = 'Verification of reusable items helps ensure a sustainable platform for all.';
+  static const txtYouCanSelectImage = 'You can select item from Gallery or Camera';
+  static const txtGallery = 'Gallery';
+  static const txtCamera = 'Camera';
 
   static const txtPrefUser = 'pref_user';
   static const txtSupportMail = 'support@zimbo.me';

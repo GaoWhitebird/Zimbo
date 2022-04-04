@@ -14,9 +14,11 @@ import 'package:zimbo/views/main/home_view.dart';
 import 'package:zimbo/views/main/my_items_view.dart';
 import 'package:zimbo/views/main/sphere_view.dart';
 
+// ignore: must_be_immutable
 class MainView extends StatefulWidget {
-  const MainView({Key? key}) : super(key: key);
+  MainView({Key? key, this.index}) : super(key: key);
 
+  int? index;
   @override
   _MainViewState createState() => _MainViewState();
 }
@@ -27,14 +29,14 @@ class _MainViewState extends State<MainView> {
     return ViewModelBuilder<MainViewModel>.reactive(
         viewModelBuilder: () => MainViewModel(),
         builder: (context, model, child) => buildWidget(context, model, child),
-        onModelReady: (model) => model.initialize(context));
+        onModelReady: (model) => model.initialize(context, widget.index));
   }
 }
 
 List<String> navTitles = [
   StringUtils.txtThisIsZimbo,
   StringUtils.txtPantry,
-  StringUtils.txtDashboard,
+  StringUtils.txtMyProfile,
   StringUtils.txtZimboSphere,
   StringUtils.txtCommunity,
 ];

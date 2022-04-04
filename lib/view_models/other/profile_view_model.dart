@@ -53,7 +53,7 @@ class ProfileViewModel extends BaseViewModel {
   }
 
   onClickReset(BuildContext context) async {
-    networkService.doResetScore(token!).then((value) => {
+    await networkService.doResetScore(token!).then((value) => {
       if(value){
        showMessage(StringUtils.txtResetScoreSuccess, null),
        userModel!.userScore = '0',
@@ -64,7 +64,7 @@ class ProfileViewModel extends BaseViewModel {
 
   onClickDelete(BuildContext context) async {
     
-    networkService.doDeleteProfile(token!).then((value) => {
+    await networkService.doDeleteProfile(token!).then((value) => {
       if(value){
         sharedService.saveToken(''),
         sharedService.saveUser(null),

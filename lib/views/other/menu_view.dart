@@ -9,6 +9,7 @@ import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/other/menu_view_model.dart';
+import 'package:zimbo/views/auth/guide_view.dart';
 import 'package:zimbo/views/items/item_menu_view.dart';
 import 'package:zimbo/views/other/support_view.dart';
 import 'package:zimbo/views/other/profile_view.dart';
@@ -58,14 +59,21 @@ class MenuView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 MenuViewItem(
+                    imageStr: ImageUtils.imgIcBottomHelp,
+                    titleStr: StringUtils.txtThisIsZimbo,
+                    onTap: () {
+                          finishView(context, 0);
+                        }),
+                MenuViewItem(
                     imageStr: ImageUtils.imgIcAboutUs,
                     titleStr: StringUtils.txtHowDoesZimboWork,
-                    onTap: () => {
-                          finishView(context, 0),
+                    onTap: () async {
+                          await const GuideView().launch(context);
+                          finishView(context);
                         }),
                 MenuViewItem(
                     imageStr: ImageUtils.imgIcMenuProfile,
-                    titleStr: StringUtils.txtProfile,
+                    titleStr: StringUtils.txtMyDetails,
                     onTap: () => {
                           finishView(context),
                           ProfileView().launch(context),

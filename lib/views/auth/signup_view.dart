@@ -207,7 +207,7 @@ class SignUpView extends StatelessWidget {
                                           children: [
                                             GestureDetector(
                                               child: textViewUnderline(
-                                                StringUtils.txtTerms,
+                                                StringUtils.txtPrivacyPolicy,
                                                 textColor:
                                                     ColorUtils.appColorAccent,
                                                 fontSize:
@@ -216,7 +216,7 @@ class SignUpView extends StatelessWidget {
                                                 isCentered: false,
                                               ),
                                               onTap: () =>
-                                                  model.onClickTerms(context),
+                                                  model.onClickPrivacy(context),
                                             ),
                                             const SizedBox(
                                               width: 10,
@@ -233,7 +233,7 @@ class SignUpView extends StatelessWidget {
                                             ),
                                             GestureDetector(
                                               child: textViewUnderline(
-                                                StringUtils.txtCondition,
+                                                StringUtils.txtTermsAndCondition,
                                                 textColor:
                                                     ColorUtils.appColorAccent,
                                                 fontSize:

@@ -25,14 +25,18 @@ class GuideView extends StatelessWidget {
     var width = MediaQuery.of(context).size.width;
     return WillPopScope(
         child: Scaffold(
-          resizeToAvoidBottomInset: false,
           appBar: AppBar(
             title: Image.asset(ImageUtils.imgIcLogo,
                 width: width * 0.15, fit: BoxFit.scaleDown),
             backgroundColor: ColorUtils.appColorBlue,
             centerTitle: true,
             elevation: 0,
-            automaticallyImplyLeading: false,
+            leading: BackButton(
+                color: ColorUtils.appColorWhite,
+                onPressed: () {
+                  finishView(context);
+                },
+              ),
           ),
           body: Container(
               color: ColorUtils.appColorBlue,
@@ -73,6 +77,7 @@ class GuideView extends StatelessWidget {
               )),
         ),
         onWillPop: () {
+          finishView(context);
           return Future.value(false);
         });
   }
