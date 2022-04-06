@@ -85,7 +85,7 @@ class MyItemsView extends StatelessWidget {
         model: item,
         onDelete: () => showDialog(
           context: context,
-          builder: (BuildContext context) => CustomDialog(
+          builder: (BuildContext dlgContext) => CustomDialog(
               title: StringUtils.txtWarning,
               description: StringUtils.txtDoYouWantToDelete,
               okButtonStr: StringUtils.txtDelete,
@@ -108,7 +108,7 @@ class MyItemsView extends StatelessWidget {
         onDelete: (){},
         onAddRemove: () => showDialog(
           context: context,
-          builder: (BuildContext context) => CustomDialog(
+          builder: (BuildContext dlgContext) => CustomDialog(
               title: StringUtils.txtConfirm,
               description: StringUtils.txtDoYouWantToAdd,
               okButtonStr: StringUtils.txtAdd,

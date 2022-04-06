@@ -1,8 +1,10 @@
 
 import 'package:flutter/material.dart';
+import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/model/common/recyclable_item_model.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
 import 'package:zimbo/views/auth/select_item_photo_view.dart';
+import 'package:zimbo/views/auth/select_shopping_day_view.dart';
 
 class SelectItemViewModel extends BaseViewModel {
   List<RecyclableItemModel> mList = <RecyclableItemModel>[];
@@ -43,6 +45,10 @@ class SelectItemViewModel extends BaseViewModel {
         list.add(mList[i]);
       }
     }
-    Navigator.push(context, new MaterialPageRoute(builder: (context) => new SelectItemPhotoView(list)));
+    if(list.isNotEmpty){
+      SelectItemPhotoView(list).launch(context);
+    }else{
+      const SelectShoppingDayView().launch(context);
+    }
   }
 }

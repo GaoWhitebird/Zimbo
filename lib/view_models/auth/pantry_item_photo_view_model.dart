@@ -1,17 +1,17 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/model/common/recyclable_item_model.dart';
 import 'package:zimbo/model/request/add_recyclable_req.dart';
 import 'package:zimbo/model/request/recyclable_item_req.dart';
 import 'package:zimbo/utils/string_utils.dart';
+import 'package:zimbo/utils/system_utils.dart';
+import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
-import 'package:zimbo/views/auth/select_shopping_day_view.dart';
 import 'package:zimbo/views/dialog/photo_select_dlg.dart';
 import 'package:zimbo/views/dialog/take_photo_help_dlg.dart';
 
-class SelectItemPhotoViewModel extends BaseViewModel {
+class PantryItemPhotoViewModel extends BaseViewModel {
   String? token;
   List<RecyclableItemModel> mList = [];
   List<RecyclableItemReq> mReqList = [];
@@ -57,20 +57,22 @@ class SelectItemPhotoViewModel extends BaseViewModel {
         });
   }
 
-  onClickNext(BuildContext context) {
+  onClickNext(BuildContext context) async {
     List _list = [];
     for (int i = 0; i < mReqList.length; i++) {
       _list.add(mReqList[i].toJson());
     }
 
-    networkService
+    await networkService
         .doAddRecyclableItems(token!, AddRecyclableReq(list: _list))
         .then((value) => {
               if (value != null)
                 {
-                  const SelectShoppingDayView()
-                      .launch(context, isNewTask: true),
-                }
+                  showMessage(StringUtils.txtRecyclableItemsUpdatedSuccess, null),
+                }else {
+                  showMessage(StringUtils.txtRecyclableItemsUpdatedFail, null),
+                },
+              finishView(context),
             });
   }
 

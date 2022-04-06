@@ -24,7 +24,7 @@ class AddScoreView extends StatelessWidget {
     return Scaffold(
         backgroundColor: ColorUtils.appColorBlue,
         appBar: AppBar(
-          title: textView(StringUtils.txtAddScore,
+          title: textView(StringUtils.txtLogReuse,
               textColor: ColorUtils.appColorTextTitle,
               fontSize: SizeUtils.textSizeNormal,
               fontWeight: FontWeight.w500,
@@ -51,7 +51,7 @@ class AddScoreView extends StatelessWidget {
                 children: <Widget>[
                   Container(
                     padding: const EdgeInsets.all(10),
-                    child: textView(StringUtils.txtWhatPantryItemsAreYouUsing,
+                    child: textView(StringUtils.txtWhichPantryItemsAreYouUsing,
                         textColor: ColorUtils.appColorWhite,
                         fontSize: SizeUtils.textSizeMedium,
                         fontWeight: FontWeight.w600,

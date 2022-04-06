@@ -12,8 +12,10 @@ import 'package:zimbo/model/request/add_recyclable_req.dart';
 import 'package:zimbo/model/request/add_score_req.dart';
 import 'package:zimbo/model/request/auto_login_req.dart';
 import 'package:zimbo/model/request/delete_recyclable_req.dart';
+import 'package:zimbo/model/request/forgot_password_req.dart';
 import 'package:zimbo/model/request/login_req.dart';
 import 'package:zimbo/model/request/post_support_req.dart';
+import 'package:zimbo/model/request/reset_password_req.dart';
 import 'package:zimbo/model/request/shopping_day_req.dart';
 import 'package:zimbo/model/request/signup_email_req.dart';
 import 'package:zimbo/model/request/signup_facebook_req.dart';
@@ -153,6 +155,20 @@ class NetworkService {
     if (res == null) return false;
 
     return true;
+  }
+
+  Future doForgotPassword(ForgotPasswordReq req) async {
+    var res = await doPostRequest(ApiUtils.urlFortgotPassword, param: req.toJson());
+    if (res == null) return null;
+
+     return res;
+  }
+
+  Future doResetPassword(ResetPasswordReq req) async {
+    var res = await doPostRequest(ApiUtils.urlResetPassword, param: req.toJson());
+    if (res == null) return null;
+
+    return res;
   }
 
   Future<List<RecyclableItemModel>?> doGetRecyclableItemList(

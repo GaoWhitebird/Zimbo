@@ -33,9 +33,11 @@ class StringUtils {
   static const txtEmail = 'Email';
   static const txtUserNameOrEmail = 'Username OR Email';
   static const txtPassword = 'Password';
+  static const txtConfirmPassword = 'Confirm Password';
   static const txtForgotPassword = 'Forgot Password?';
   static const txtResetHere = 'Reset here';
   static const txtResetPassword = 'Reset Password';
+  static const txtPasswordNotMatching = 'Password is not matching.';
   static const txtIRemember = 'I remembered my password';
   static const txtGoBack = 'Go back';
   static const txtGotIt = 'Got it';
@@ -48,6 +50,8 @@ class StringUtils {
   static const txtTermsAndCondition = 'Terms and conditions';
   static const txtPrivacyPolicy = 'Privacy policy';
   static const txtPhoto = 'Photo';
+  static const txtPhotoAddedSuccess = 'Photo added success!';
+  static const txtPhotoAddedFail = 'Photo added fail!';
   static const txtHowManyItems =
       'Select any reusable items you have';
   static const txtTakePhoto =
@@ -73,7 +77,7 @@ class StringUtils {
   static const txtPantry = 'Pantry';
   static const txtDashboard = 'Dashboard';
   static const txtMyProfile = 'My Profile';
-  static const txtZimboSphere = 'zimbo-sphere';
+  static const txtZimboSphere = 'zimbosphere';
   static const txtSphere = 'Sphere';
   static const txtCommunity = 'Community';
   static const txtAboutUS = 'About Us';
@@ -87,6 +91,7 @@ class StringUtils {
   static const txtEditProfile = 'Edit Profile';
   static const txtAddItem = 'Add Item';
   static const txtAddScore = 'Add Score';
+  static const txtLogReuse = 'Log reuse';
   static const txtAdd = 'Add';
   static const txtAddCard = 'Add Card';
   static const txtAddItems = 'Add Items';
@@ -109,11 +114,13 @@ class StringUtils {
   static const txtTimes = 'Times';
   static const txtRecyclableItemsAdded = 'Pantry item added successfully!';
   static const txtRecyclableItemsAddedFail = 'Pantry item added fail!';
+  static const txtRecyclableItemsUpdatedSuccess = 'Pantry item updated successfully!';
+  static const txtRecyclableItemsUpdatedFail = 'Pantry item updated fail!';
   static const txtRecyclableItemsRemoved = 'Pantry item removed successfully!';
   static const txtRecyclableItemsRemovedFail = 'Pantry item removed fail!';
   static const txtYourScore = 'Your Score';
-  static const txtScoreAddedSuccess = 'Your Score added success!';
-  static const txtScoreAddedFail = 'Your Score added fail!';
+  static const txtScoreAddedSuccess = 'Reuse successfully logged!';
+  static const txtScoreAddedFail = 'Reuse logged fail!';
   static const txtOnePoint = 'Each item is one point';
   static const txtTotalReuseActivity = 'Total reuse activity';
   static const txtPointHistory = 'Point History';
@@ -121,6 +128,7 @@ class StringUtils {
   static const txtMyPantryItems = 'My pantry items';
   static const txtLaunchList = 'Launch list';
   static const txtWhatPantryItemsAreYouUsing = 'What pantry item(s) are you using right now?';
+  static const txtWhichPantryItemsAreYouUsing = 'Which pantry item are you using?';
   static const txtAdditionalPantryItems = 'Additional pantry items';
   static const txtComingSoon = 'Coming soon';
   static const txtPlusOne = '+1';

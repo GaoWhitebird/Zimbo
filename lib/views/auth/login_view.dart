@@ -250,7 +250,7 @@ class LoginView extends StatelessWidget {
         onWillPop: () {
           showDialog(
             context: context,
-            builder: (BuildContext context) => const ExitDialog(),
+            builder: (BuildContext dlgContext) => const ExitDialog(),
           );
           return Future.value(false);
         });

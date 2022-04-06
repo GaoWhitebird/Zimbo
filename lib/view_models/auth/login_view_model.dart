@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:uni_links/uni_links.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/model/request/login_req.dart';
 import 'package:zimbo/model/request/signup_facebook_req.dart';
@@ -9,6 +10,7 @@ import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
+import 'package:zimbo/views/auth/forgot_pass_view.dart';
 import 'package:zimbo/views/auth/reset_pass_view.dart';
 import 'package:zimbo/views/auth/signup_view.dart';
 import 'package:zimbo/views/main/main_view.dart';
@@ -18,8 +20,10 @@ class LoginViewModel extends BaseViewModel {
   String password = '';
   String? deviceKey = '';
   late GoogleSignIn googleSignIn;
+  bool initialUriIsHandled = false;
 
   initialize(BuildContext context) async {
+    handleIncomingLinks(context);
     deviceKey = await getDeviceId();
     googleSignIn = GoogleSignIn();
   }
@@ -120,7 +124,7 @@ class LoginViewModel extends BaseViewModel {
   }
 
   onClickResetPass(BuildContext context) {
-    ResetPassView().launch(context, isNewTask: false);
+    ForgotPassView().launch(context, isNewTask: false);
   }
 
   bool checkValidate() {
@@ -141,5 +145,19 @@ class LoginViewModel extends BaseViewModel {
       return false;
     }
     return true;
+  }
+
+    void handleIncomingLinks(BuildContext context) {
+    uriLinkStream.listen((Uri? uri) async {
+      if(uri != null && uri.toString().contains('token=')) {
+        if(!initialUriIsHandled){
+          initialUriIsHandled = true;
+          String uriStr = uri.toString();
+          String token = uriStr.split('token=')[1];
+          ResetPassView(token: token).launch(context);
+        }
+      }
+    }, onError: (Object err) {
+    });
   }
 }

@@ -6,28 +6,24 @@ import 'package:zimbo/utils/size_utils.dart';
 import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
-import 'package:zimbo/view_models/auth/reset_pass_view_model.dart';
+import 'package:zimbo/view_models/auth/forgot_pass_view_model.dart';
 
-// ignore: must_be_immutable
-class ResetPassView extends StatelessWidget {
-  ResetPassView({Key? key, this.token}) : super(key: key);
+class ForgotPassView extends StatelessWidget {
+  ForgotPassView({Key? key}) : super(key: key);
 
-  String? token;
-  final TextEditingController textEditingControllerPassword =
-      TextEditingController();
-  final TextEditingController textEditingControllerConfirmPassword =
+  final TextEditingController textEditingControllerEmail =
       TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<ResetPassViewModel>.reactive(
-      viewModelBuilder: () => ResetPassViewModel(),
+    return ViewModelBuilder<ForgotPassViewModel>.reactive(
+      viewModelBuilder: () => ForgotPassViewModel(),
       builder: (context, model, child) => buildWidget(context, model, child),
-      onModelReady: (model) => model.initialize(context, token),
+      onModelReady: (model) => model.initialize(context),
     );
   }
 
-  buildWidget(BuildContext context, ResetPassViewModel model, Widget? child) {
+  buildWidget(BuildContext context, ForgotPassViewModel model, Widget? child) {
     setStatusBarColor(ColorUtils.appColorBlue);
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
@@ -104,18 +100,10 @@ class ResetPassView extends StatelessWidget {
                                         CrossAxisAlignment.center,
                                     children: [
                                       EditTextField(
-                                        hintText: StringUtils.txtPassword,
-                                        isPassword: true,
-                                        isSecure: true,
-                                        mController: textEditingControllerPassword,
-                                        borderColor:
-                                            ColorUtils.appColorBlack_10,
-                                      ),
-                                      EditTextField(
-                                        hintText: StringUtils.txtConfirmPassword,
-                                        isPassword: true,
-                                        isSecure: true,
-                                        mController: textEditingControllerConfirmPassword,
+                                        hintText: StringUtils.txtEmail,
+                                        isPassword: false,
+                                        isSecure: false,
+                                        mController: textEditingControllerEmail,
                                         borderColor:
                                             ColorUtils.appColorBlack_10,
                                       ),
@@ -129,7 +117,7 @@ class ResetPassView extends StatelessWidget {
                                             textSize: SizeUtils.textSizeMedium,
                                             radius: 30,
                                             onPressed: () =>
-                                                model.onClickSend(context, textEditingControllerPassword.text, textEditingControllerConfirmPassword.text)),
+                                                model.onClickSend(context, textEditingControllerEmail.text)),
                                       ),
                                       Expanded(
                                         child: Container(

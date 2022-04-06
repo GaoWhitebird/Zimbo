@@ -178,7 +178,7 @@ class ProfileView extends StatelessWidget {
                                       ),
                                       onTap: () => showDialog(
                                         context: context,
-                                        builder: (BuildContext context) =>
+                                        builder: (BuildContext dlgContext) =>
                                             CustomDialog(
                                                 title: StringUtils.txtWarning,
                                                 description: StringUtils
@@ -205,7 +205,7 @@ class ProfileView extends StatelessWidget {
                                       ),
                                       onTap: () => showDialog(
                                         context: context,
-                                        builder: (BuildContext context) =>
+                                        builder: (BuildContext dlgContext) =>
                                             CustomDialog(
                                                 title: StringUtils.txtWarning,
                                                 description: StringUtils

@@ -8,6 +8,7 @@ import 'package:zimbo/model/request/update_recyclable_req.dart';
 import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
+import 'package:zimbo/views/auth/pantry_item_photo_view.dart';
 import 'package:zimbo/views/other/add_item_view.dart';
 
 class MyItemsViewModel extends BaseViewModel {
@@ -71,6 +72,8 @@ class MyItemsViewModel extends BaseViewModel {
         showMessage(StringUtils.txtRecyclableItemsAdded, null),
         mList.add(item),
         mAdditionalList.removeWhere((element) => element.id == item.id),
+
+        PantryItemPhotoView([item]).launch(context),
       }else {
         showMessage(StringUtils.txtRecyclableItemsAddedFail, null),
       },

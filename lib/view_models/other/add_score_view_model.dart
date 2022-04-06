@@ -49,8 +49,9 @@ class AddScoreViewModel extends BaseViewModel {
         if(value != null) {
           sharedService.saveUser(value),
           showMessage(StringUtils.txtScoreAddedSuccess, null),
-          
-          MainView(index: 2,).launch(context, isNewTask: false),
+          Future.delayed(const Duration(milliseconds: 500), () {
+            MainView(index: 2,).launch(context, isNewTask: false);
+          }),
         }else {
           showMessage(StringUtils.txtScoreAddedFail, null),
         }

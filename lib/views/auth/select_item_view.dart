@@ -70,7 +70,7 @@ class SelectItemView extends StatelessWidget {
         onWillPop: () {
           // showDialog(
           //   context: context,
-          //   builder: (BuildContext context) => const ExitDialog(),
+          //   builder: (BuildContext dlgContext) => const ExitDialog(),
           // );
           finishView(context);
           return Future.value(false);
