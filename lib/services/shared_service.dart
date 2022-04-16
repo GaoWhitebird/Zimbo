@@ -31,6 +31,17 @@ class SharedService {
     return token;
   }
 
+  void saveIsFirst(bool isFirst) async {
+    await _getPref();
+    _prefs!.setBool("isFirst", isFirst);
+  }
+
+  Future<bool> getIsFirst() async {
+    await _getPref();
+    var isFirst = _prefs!.getBool("isFirst");
+    return isFirst == null ? true : isFirst;
+  }
+
   void saveIsSubscription(bool isSubscription) async {
     await _getPref();
     _prefs!.setBool("subscriptoin", isSubscription);

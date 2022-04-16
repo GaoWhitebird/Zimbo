@@ -133,6 +133,9 @@ class NetworkService {
     var sharedService = locator<SharedService>();
     sharedService.saveToken(token);
 
+    bool isFirstSignUp = res['first_signup'];
+    sharedService.saveIsFirst(isFirstSignUp);
+
     UserModel userModel = UserModel.fromJson(res['user_info']);
     return userModel;
   }
@@ -144,6 +147,9 @@ class NetworkService {
     String token = res['token'];
     var sharedService = locator<SharedService>();
     sharedService.saveToken(token);
+
+    bool isFirstSignUp = res['first_signup'];
+    sharedService.saveIsFirst(isFirstSignUp);
 
     UserModel userModel = UserModel.fromJson(res['user_info']);
     return userModel;

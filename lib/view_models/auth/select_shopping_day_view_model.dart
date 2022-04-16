@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/model/request/shopping_day_req.dart';
+import 'package:zimbo/utils/string_utils.dart';
+import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
 import 'package:zimbo/views/main/main_view.dart';
 
@@ -49,7 +51,7 @@ class SelectShoppingDayViewModel extends BaseViewModel {
   }
 
   onGroupSelected(int index, bool isSelected) {
-    selectedGroup = 0;
+    selectedGroup = index;
   }
 
   onClickApply(BuildContext context) async {
@@ -58,8 +60,10 @@ class SelectShoppingDayViewModel extends BaseViewModel {
       if(selectedGroup > -1){
         req = ShoppingDayReq(specificDay: false, dayInfo: '$selectedGroup');
         await networkService.doSetShoppingDay(token!, req).then((value) => {
-          if(value != null){
+          if(value){
             onClickSkip(context),
+          }else {
+            showMessage(StringUtils.txtSomethingWentWrong, null),
           }
         });
       }else {
@@ -75,10 +79,12 @@ class SelectShoppingDayViewModel extends BaseViewModel {
         }
         String _dayInfoStr = dayInfoStr.substring(1);
 
-        req = ShoppingDayReq(specificDay: false, dayInfo: _dayInfoStr);
+        req = ShoppingDayReq(specificDay: true, dayInfo: _dayInfoStr);
         await networkService.doSetShoppingDay(token!, req).then((value) => {
-          if(value != null){
+          if(value){
             onClickSkip(context),
+          }else {
+            showMessage(StringUtils.txtSomethingWentWrong, null),
           }
         });
       }else {

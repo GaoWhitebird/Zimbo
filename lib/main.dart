@@ -8,6 +8,7 @@ import 'views/auth/splash_view.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   setupLocator();
   
   runApp(const MyApp());

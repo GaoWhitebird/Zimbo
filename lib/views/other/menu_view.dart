@@ -69,7 +69,7 @@ class MenuView extends StatelessWidget {
                     titleStr: StringUtils.txtHowDoesZimboWork,
                     onTap: () async {
                           await const GuideView().launch(context);
-                          finishView(context);
+                          setStatusBarColor(ColorUtils.appColorWhite);
                         }),
                 MenuViewItem(
                     imageStr: ImageUtils.imgIcMenuProfile,

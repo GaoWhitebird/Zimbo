@@ -1,5 +1,8 @@
 import 'dart:async';
+import 'dart:io';
 
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/model/common/user_model.dart';
 import 'package:zimbo/model/request/auto_login_req.dart';
@@ -13,12 +16,22 @@ import 'package:zimbo/views/main/main_view.dart';
 class SplashViewModel extends BaseViewModel{
   String? deviceKey = '';
   late UserModel? userModel;
+  String? firebaseToken = '';
+  String platformType = '';
+
   initialize(BuildContext context) async {
+    await Firebase.initializeApp(); 
     String? token = await sharedService.getToken();
     deviceKey = await getDeviceId();
+    firebaseToken = await FirebaseMessaging.instance.getToken();
+    if(Platform.isAndroid){
+      platformType = 'android';
+    }else if(Platform.isIOS){
+      platformType = 'ios';
+    }
     
     if(token != null){
-      AutoLoginReq req = AutoLoginReq(token: token, deviceKey: deviceKey ?? '');
+      AutoLoginReq req = AutoLoginReq(token: token, deviceKey: deviceKey ?? '', firebaseToken: firebaseToken!, deviceType: platformType);
 
       await networkService.doAutoLogin(req).then((value) => {
         if(value != null){

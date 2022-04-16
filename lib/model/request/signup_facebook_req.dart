@@ -4,6 +4,8 @@ class SignUpFacebookReq {
   String email;
   String image;
   String deviceKey;
+  String firebaseToken;
+  String deviceType;
 
   SignUpFacebookReq({
     required this.name,
@@ -11,6 +13,8 @@ class SignUpFacebookReq {
     required this.email,
     required this.image,
     required this.deviceKey,
+    required this.firebaseToken,
+    required this.deviceType,
   });
 
   Map<String, dynamic> toJson() => {
@@ -19,6 +23,8 @@ class SignUpFacebookReq {
     'email': email,
     'image': image,
     'device_key': deviceKey,
+    'fcm_token': firebaseToken,
+    'device_type': deviceType,
   };
 
   factory SignUpFacebookReq.fromJson(Map<String, dynamic> json) => SignUpFacebookReq(
@@ -26,6 +32,8 @@ class SignUpFacebookReq {
     facebookId: json['facebook_id'], 
     email: json['email'], 
     image: json['image'], 
-    deviceKey: json['device_key']
+    deviceKey: json['device_key'],
+    firebaseToken: json['fcm_token'],
+    deviceType: json['device_type']
   );
 }

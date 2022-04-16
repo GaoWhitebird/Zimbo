@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -12,6 +15,7 @@ import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
 import 'package:zimbo/views/auth/forgot_pass_view.dart';
 import 'package:zimbo/views/auth/reset_pass_view.dart';
+import 'package:zimbo/views/auth/select_item_view.dart';
 import 'package:zimbo/views/auth/signup_view.dart';
 import 'package:zimbo/views/main/main_view.dart';
 
@@ -21,11 +25,19 @@ class LoginViewModel extends BaseViewModel {
   String? deviceKey = '';
   late GoogleSignIn googleSignIn;
   bool initialUriIsHandled = false;
+  String? firebaseToken = '';
+  String platformType = '';
 
   initialize(BuildContext context) async {
     handleIncomingLinks(context);
     deviceKey = await getDeviceId();
     googleSignIn = GoogleSignIn();
+    firebaseToken = await FirebaseMessaging.instance.getToken();
+    if (Platform.isAndroid) {
+      platformType = 'android';
+    } else if (Platform.isIOS) {
+      platformType = 'ios';
+    }
   }
 
   onClickFacebookLogin(BuildContext context) async {
@@ -41,20 +53,29 @@ class LoginViewModel extends BaseViewModel {
         final profile = await fb.getUserProfile();
         final imageUrl = await fb.getProfileImageUrl(width: 100);
         final email = await fb.getUserEmail();
-        
+
         SignUpFacebookReq req = SignUpFacebookReq(
-          name: profile!.name!, 
-          facebookId: accessToken.token, 
-          email: email!, 
-          image: imageUrl!, 
-          deviceKey: deviceKey!);
-        networkService.doSignUpFacebook(req).then((value) => {
-          if (value != null)
+            name: profile!.name!,
+            facebookId: accessToken.token,
+            email: email!,
+            image: imageUrl!,
+            deviceKey: deviceKey!,
+            firebaseToken: firebaseToken!,
+            deviceType: platformType);
+        networkService.doSignUpFacebook(req).then((value) async => {
+              if (value != null)
                 {
                   sharedService.saveUser(value),
-                  MainView().launch(context, isNewTask: true),
+                  if (await sharedService.getIsFirst())
+                    {
+                      const SelectItemView().launch(context, isNewTask: true),
+                    }
+                  else
+                    {
+                      MainView().launch(context, isNewTask: true),
+                    }
                 }
-        });
+            });
 
         break;
       case FacebookLoginStatus.cancel:
@@ -73,19 +94,28 @@ class LoginViewModel extends BaseViewModel {
 
         if (_currentUser != null) {
           SignUpGoogleReq req = SignUpGoogleReq(
-          userName: _currentUser!.displayName!, 
-          googleId: _currentUser!.id, 
-          email: _currentUser!.email, 
-          image: _currentUser!.photoUrl!, 
-          deviceKey: deviceKey!);
+              userName: _currentUser!.displayName!,
+              googleId: _currentUser!.id,
+              email: _currentUser!.email,
+              image: _currentUser!.photoUrl!,
+              deviceKey: deviceKey!,
+              firebaseToken: firebaseToken!,
+              deviceType: platformType);
 
-          networkService.doSignUpGoogle(req).then((value) => {
-            if (value != null)
+          networkService.doSignUpGoogle(req).then((value) async => {
+                if (value != null)
                   {
                     sharedService.saveUser(value),
-                    MainView().launch(context, isNewTask: true),
+                    if (await sharedService.getIsFirst())
+                      {
+                        const SelectItemView().launch(context, isNewTask: true),
+                      }
+                    else
+                      {
+                        MainView().launch(context, isNewTask: true),
+                      }
                   }
-          });
+              });
         } else {
           showMessage('Error while log in', null);
         }
@@ -97,7 +127,6 @@ class LoginViewModel extends BaseViewModel {
       showMessage(StringUtils.txtSomethingWentWrong, null);
     }
 
-
     notifyListeners();
   }
 
@@ -107,7 +136,11 @@ class LoginViewModel extends BaseViewModel {
 
     if (checkValidate()) {
       LoginReq req = LoginReq(
-          email: email, password: password, deviceKey: deviceKey ?? '');
+          email: email,
+          password: password,
+          deviceKey: deviceKey ?? '',
+          firebaseToken: firebaseToken!,
+          deviceType: platformType);
 
       await networkService.doLogin(req).then((value) => {
             if (value != null)
@@ -147,17 +180,16 @@ class LoginViewModel extends BaseViewModel {
     return true;
   }
 
-    void handleIncomingLinks(BuildContext context) {
+  void handleIncomingLinks(BuildContext context) {
     uriLinkStream.listen((Uri? uri) async {
-      if(uri != null && uri.toString().contains('token=')) {
-        if(!initialUriIsHandled){
+      if (uri != null && uri.toString().contains('token=')) {
+        if (!initialUriIsHandled) {
           initialUriIsHandled = true;
           String uriStr = uri.toString();
           String token = uriStr.split('token=')[1];
           ResetPassView(token: token).launch(context);
         }
       }
-    }, onError: (Object err) {
-    });
+    }, onError: (Object err) {});
   }
 }

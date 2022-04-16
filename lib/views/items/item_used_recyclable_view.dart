@@ -109,7 +109,7 @@ class _UsedRecyclableItemViewState extends State<UsedRecyclableItemView> {
                     Icons.close,
                     size: 20,
                   )),
-            ),
+            ).visible(false),
           ],
         ));
   }
