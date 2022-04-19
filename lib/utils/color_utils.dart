@@ -6,6 +6,8 @@ class ColorUtils {
   static const appColorAccent = Color(0xFF98CB03);
   static const appColorBlue = Color(0xFF00B3D1);
   static const appColorMain = Color(0xFF00B3D1);
+  static const appColorGreen = Color(0xFF7ED957);
+  static const appColorBlueLight = Color(0xFF00DBE4);
   static const appColorAccent_10 = Color(0x1A04760F);
   static const appColorAccent_5 = Color(0x0504760F);
   static const appColorAccent_50 = Color(0x8004760F);

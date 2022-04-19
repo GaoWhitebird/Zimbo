@@ -22,7 +22,7 @@ class MenuViewItem extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-                SvgPicture.asset(imageStr, color: ColorUtils.appColorWhite),
+                SvgPicture.asset(imageStr, color: ColorUtils.appColorWhite, width: 24, height: 24,),
                 const SizedBox(width: 20),
                 Expanded(
                   child: textView(titleStr, textColor: ColorUtils.appColorWhite, fontSize: SizeUtils.textSizeMedium),

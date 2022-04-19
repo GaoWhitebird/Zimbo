@@ -11,6 +11,7 @@ import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/other/menu_view_model.dart';
 import 'package:zimbo/views/auth/guide_view.dart';
 import 'package:zimbo/views/items/item_menu_view.dart';
+import 'package:zimbo/views/other/reclamation_view.dart';
 import 'package:zimbo/views/other/support_view.dart';
 import 'package:zimbo/views/other/profile_view.dart';
 import 'package:zimbo/views/other/subscription_view.dart';
@@ -91,6 +92,13 @@ class MenuView extends StatelessWidget {
                     onTap: () => {
                       finishView(context),
                       SupportView().launch(context),
+                    }),
+                MenuViewItem(
+                    imageStr: ImageUtils.imgIcRefresh,
+                    titleStr: StringUtils.txtReclamation,
+                    onTap: () => {
+                      finishView(context),
+                      const ReclamationView().launch(context),
                     }),
                 Expanded(child: Container()),
                 GestureDetector(

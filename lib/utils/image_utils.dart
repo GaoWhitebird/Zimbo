@@ -20,6 +20,11 @@ class ImageUtils {
   static const imgIcAboutUS1 = 'assets/images/png/ic_about_us_1.png';
   static const imgIcAboutUS2 = 'assets/images/png/ic_about_us_2.png';
   static const imgIcAboutUS3 = 'assets/images/png/ic_about_us_3.png';
+  static const imgIcGuide1 = 'assets/images/png/ic_guide_step_1.png';
+  static const imgIcGuide2 = 'assets/images/png/ic_guide_step_2.png';
+  static const imgIcGuide3 = 'assets/images/png/ic_guide_step_3.png';
+  static const imgIcGuide4 = 'assets/images/png/ic_guide_step_4.png';
+  static const imgIcGuide5 = 'assets/images/png/ic_guide_step_5.png';
 
   // svg
   static const imgIcFacebook = 'assets/images/svg/ic_facebook.svg';
@@ -39,6 +44,8 @@ class ImageUtils {
   static const imgIcPhone = 'assets/images/svg/ic_phone.svg';
   static const imgIcAddress = 'assets/images/svg/ic_address.svg';
   static const imgIcMail = 'assets/images/svg/ic_mail.svg';
+  static const imgIcReclamation = 'assets/images/svg/ic_reclamation.svg';
+  static const imgIcRefresh = 'assets/images/svg/ic_refresh.svg';
   static const imgIcBottomHelp = 'assets/images/svg/ic_bottom_help.svg';
   static const imgIcBottomList = 'assets/images/svg/ic_bottom_list.svg';
   static const imgIcBottomDashboard = 'assets/images/svg/ic_bottom_dashboard.svg';

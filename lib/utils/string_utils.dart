@@ -84,6 +84,7 @@ class StringUtils {
   static const txtMyItems = 'Items';
   static const txtEcoHub = 'Eco Hub';
   static const txtSupport = 'Support';
+  static const txtReclamation = 'Reclamationz';
   static const txtMenu = 'Menu';
   static const txtProfile = 'Profile';
   static const txtMyDetails = 'My Details';
@@ -179,6 +180,7 @@ class StringUtils {
   static const txtYouCanSelectImage = 'You can select item from Gallery or Camera';
   static const txtGallery = 'Gallery';
   static const txtCamera = 'Camera';
+  static const txtSimplifyingSustainability = 'Simplifying sustainability';
 
   static const txtPrefUser = 'pref_user';
   static const txtSupportMail = 'support@zimbo.me';
@@ -227,6 +229,16 @@ class StringUtils {
   static const txtBlogDescription_3 =
       'A mature tree absorbs carbon dioxide at a rate of 22 kilograms per year. In one year, an acre of forest can absorb twice the carbon dioxide produced by the average motor vehicle each year.';
 
+  static const txtGuideTitle_1 = '1.	Sign-up and get your QR key chain sent to your door';
+  static const txtGuideTitle_2 = '2.	Select any eligible items you currently own';
+  static const txtGuideTitle_3 = '3.	Let us know when you shop';
+  static const txtGuideTitle_4 = '4.	Scan your QR key chain and select the item you\'ve reused';
+  static const txtGuideTitle_5 = '5.	Grow your sustainability score';
+  static const txtGuideDescription_1 = 'Your free QR keychain will be sent to your registered address.\nTip: Keep your keychain on you as much as possible to avoid missing an opportunity to log your reuse.';
+  static const txtGuideDescription_2 = 'From the list of eligible items, select all of the ones that you currently own.\nTip: Submit a picture of your reusables so we can verify and add to our community gallery.';
+  static const txtGuideDescription_3 = 'Tell us which days you usually go shopping for groceries or take-away drinks and we\'ll remind you to take along your reusables.\nTip: If you don\'t have a specific shopping day, or prefer not to be reminded, that\'s ok.';
+  static const txtGuideDescription_4 = 'Your zimbo QR keychain can be used to scan any eligible item in your pantry.\nTip: Keep a look out for new eligible items that are added and that you can grow your pantry with.';
+  static const txtGuideDescription_5 = 'The more you log your reuse, the faster your score grows.\nTip: Look out for \'How can I improve my score?\' in your personal dashboard for hints on how to grow your score even faster.';
 
   static const txtHowTitle_1 = 'Variety';
   static const txtHowTitle_2 = 'Frequency';
@@ -241,4 +253,18 @@ class StringUtils {
   static const txtHowDescription_4 =
       'Do you know someone who’s already a great re-user? Or maybe you’d like to help a family member or friend begin their sustainability journey. Each time you refer a friend, and they sign up to zimbo, your rating improves.';
 
+
+
+
+  static const txtReclamationStr_1 =
+      'Whether it’s an impromptu stop at the supermarket, a new purchase, a gift or perhaps even a little forgetfulness, we all tend to accumulate excess reusables over time.At zimbo, we want reusable items to live their best (and longest) life. Reclamationz is our circular economy initiative to find new homes and new purposes for excess resuable items. Simply mail any of the following excess items to us, and we’ll do the rest:';
+  static const txtReclamationStr_2 = '·      Reusable shopping bags';
+  static const txtReclamationStr_3 = '·      Reusable water bottles';
+  static const txtReclamationStr_4 = '·      Reusable Coffee/Tea cups';
+  static const txtReclamationStr_5 = '·      Reusable Smoothie/Bubble Tea cups';
+  static const txtReclamationStr_6 = 'Check in regularly on the zimbosphere for updates on the cool places your excess reusables are going. Mailing address:ATT: zimbo';
+  static const txtReclamationStr_7 = '85 The Parade';
+  static const txtReclamationStr_8 = 'Ascot Vale';
+  static const txtReclamationStr_9 = '3032';
+  static const txtReclamationStr_10 = 'Victoria';
 }

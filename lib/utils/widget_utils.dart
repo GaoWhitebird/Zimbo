@@ -115,6 +115,7 @@ Widget textView(
   var fontFamily,
   var fontWeight,
   var isCentered = false,
+  var textAlign = TextAlign.start,
   var maxLine = 1,
   var latterSpacing = 0.1,
   bool textAllCaps = false,
@@ -123,7 +124,7 @@ Widget textView(
 }) {
   return Text(
     textAllCaps ? text!.toUpperCase() : text!,
-    textAlign: isCentered ? TextAlign.center : TextAlign.start,
+    textAlign: isCentered ? TextAlign.center : textAlign,
     maxLines: isLongText ? null : maxLine,
     overflow: TextOverflow.ellipsis,
     style: GoogleFonts.poppins(
@@ -146,6 +147,7 @@ Widget textViewUnderline(
   var fontFamily,
   var fontWeight,
   var isCentered = false,
+  var textAlign = TextAlign.start,
   var maxLine = 1,
   var latterSpacing = 0.1,
   bool textAllCaps = false,
@@ -154,7 +156,7 @@ Widget textViewUnderline(
 }) {
   return Text(
     textAllCaps ? text!.toUpperCase() : text!,
-    textAlign: isCentered ? TextAlign.center : TextAlign.start,
+    textAlign: isCentered ? TextAlign.center : textAlign,
     maxLines: isLongText ? null : maxLine,
     overflow: TextOverflow.ellipsis,
     style: GoogleFonts.poppins(

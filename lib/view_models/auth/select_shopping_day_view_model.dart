@@ -77,16 +77,21 @@ class SelectShoppingDayViewModel extends BaseViewModel {
             dayInfoStr = dayInfoStr + ',' + '$i';
           }
         }
-        String _dayInfoStr = dayInfoStr.substring(1);
+        if(dayInfoStr.isNotEmpty){
+          String _dayInfoStr = dayInfoStr.substring(1);
 
-        req = ShoppingDayReq(specificDay: true, dayInfo: _dayInfoStr);
-        await networkService.doSetShoppingDay(token!, req).then((value) => {
-          if(value){
-            onClickSkip(context),
-          }else {
-            showMessage(StringUtils.txtSomethingWentWrong, null),
-          }
-        });
+          req = ShoppingDayReq(specificDay: true, dayInfo: _dayInfoStr);
+          await networkService.doSetShoppingDay(token!, req).then((value) => {
+            if(value){
+              onClickSkip(context),
+            }else {
+              showMessage(StringUtils.txtSomethingWentWrong, null),
+            }
+          });
+        }else {
+          onClickSkip(context);
+        }
+        
       }else {
         onClickSkip(context);
       }
