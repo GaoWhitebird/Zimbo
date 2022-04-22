@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:zimbo/utils/color_utils.dart';
+import 'package:zimbo/utils/image_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
 import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/system_utils.dart';
@@ -8,7 +9,7 @@ import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/other/reclamation_view_model.dart';
 
 class ReclamationView extends StatelessWidget {
-  const ReclamationView({ Key? key }) : super(key: key);
+  const ReclamationView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,40 +21,141 @@ class ReclamationView extends StatelessWidget {
   }
 
   buildWidget(BuildContext context, ReclamationViewModel model, Widget? child) {
+    var width = MediaQuery.of(context).size.width;
     return WillPopScope(
         child: Scaffold(
-        backgroundColor: ColorUtils.appColorBlue,
-        appBar: AppBar(
-          title: textView(StringUtils.txtReclamation,
-              textColor: ColorUtils.appColorTextTitle,
-              fontSize: SizeUtils.textSizeNormal,
-              fontWeight: FontWeight.w500,
-              isCentered: true),
-          backgroundColor: ColorUtils.appColorWhite,
-          centerTitle: true,
-          elevation: 0,
-          shape: const ContinuousRectangleBorder(
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(50),
-                  bottomRight: Radius.circular(50))),
-          leading: BackButton(
-            color: ColorUtils.appColorBlack,
-            onPressed: () {
-              finishView(context, 2);
-            },
-          ),
-        ),
-        body: Stack(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                children: <Widget>[
-                ],
+            backgroundColor: ColorUtils.appColorBlue,
+            appBar: AppBar(
+              title: textView(StringUtils.txtReclamation,
+                  textColor: ColorUtils.appColorTextTitle,
+                  fontSize: SizeUtils.textSizeNormal,
+                  fontWeight: FontWeight.w500,
+                  isCentered: true),
+              backgroundColor: ColorUtils.appColorWhite,
+              centerTitle: true,
+              elevation: 0,
+              shape: const ContinuousRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(50),
+                      bottomRight: Radius.circular(50))),
+              leading: BackButton(
+                color: ColorUtils.appColorBlack,
+                onPressed: () {
+                  finishView(context, 2);
+                },
               ),
             ),
-          ],
-        )),
+            body: SingleChildScrollView(
+              child: Container(
+                width: width,
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Image.asset(ImageUtils.imgIcReclamationHeader, width: width * 0.5, height: width * 0.5,),
+                    textView(StringUtils.txtReclamationStr_1,
+                      textColor: ColorUtils.appColorWhite,
+                      fontSize: SizeUtils.textSizeSMedium,
+                      fontWeight: FontWeight.w400,
+                      isCentered: true,
+                      maxLine: 15),
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        width: width,
+                        child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          textView(StringUtils.txtReclamationStr_2,
+                            textColor: ColorUtils.appColorWhite,
+                            fontSize: SizeUtils.textSizeSMedium,
+                            fontWeight: FontWeight.w400,
+                            isCentered: false,
+                            maxLine: 1),
+                          textView(StringUtils.txtReclamationStr_3,
+                            textColor: ColorUtils.appColorWhite,
+                            fontSize: SizeUtils.textSizeSMedium,
+                            fontWeight: FontWeight.w400,
+                            isCentered: false,
+                            maxLine: 1),
+                          textView(StringUtils.txtReclamationStr_4,
+                            textColor: ColorUtils.appColorWhite,
+                            fontSize: SizeUtils.textSizeSMedium,
+                            fontWeight: FontWeight.w400,
+                            isCentered: false,
+                            maxLine: 1),
+                          textView(StringUtils.txtReclamationStr_5,
+                            textColor: ColorUtils.appColorWhite,
+                            fontSize: SizeUtils.textSizeSMedium,
+                            fontWeight: FontWeight.w400,
+                            isCentered: false,
+                            maxLine: 1),
+                        ],
+                      ),
+                      ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Image.asset(ImageUtils.imgIcReclamationIc1, width: width * 0.4, height: width * 0.4,),
+                        Image.asset(ImageUtils.imgIcReclamationIc2, width: width * 0.4, height: width * 0.4,),
+                      ],
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Image.asset(ImageUtils.imgIcReclamationIc3, width: width * 0.4, height: width * 0.4,),
+                        Image.asset(ImageUtils.imgIcReclamationIc4, width: width * 0.4, height: width * 0.4,),
+                      ],
+                    ),
+                    textView(StringUtils.txtReclamationStr_6,
+                      textColor: ColorUtils.appColorWhite,
+                      fontSize: SizeUtils.textSizeSMedium,
+                      fontWeight: FontWeight.w400,
+                      isCentered: true,
+                      maxLine: 15),
+                    Container(
+                        padding: const EdgeInsets.all(10),
+                        width: width,
+                        child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          textView(StringUtils.txtReclamationStr_7,
+                            textColor: ColorUtils.appColorWhite,
+                            fontSize: SizeUtils.textSizeSMedium,
+                            fontWeight: FontWeight.w400,
+                            isCentered: false,
+                            maxLine: 1),
+                          textView(StringUtils.txtReclamationStr_8,
+                            textColor: ColorUtils.appColorWhite,
+                            fontSize: SizeUtils.textSizeSMedium,
+                            fontWeight: FontWeight.w400,
+                            isCentered: false,
+                            maxLine: 1),
+                          textView(StringUtils.txtReclamationStr_9,
+                            textColor: ColorUtils.appColorWhite,
+                            fontSize: SizeUtils.textSizeSMedium,
+                            fontWeight: FontWeight.w400,
+                            isCentered: false,
+                            maxLine: 1),
+                          textView(StringUtils.txtReclamationStr_10,
+                            textColor: ColorUtils.appColorWhite,
+                            fontSize: SizeUtils.textSizeSMedium,
+                            fontWeight: FontWeight.w400,
+                            isCentered: false,
+                            maxLine: 1),
+                        ],
+                      ),
+                      ),
+                  ],
+                ),
+              ),
+            )),
         onWillPop: () {
           finishView(context);
           return Future.value(false);

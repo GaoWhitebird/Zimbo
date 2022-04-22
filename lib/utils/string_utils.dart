@@ -85,6 +85,7 @@ class StringUtils {
   static const txtEcoHub = 'Eco Hub';
   static const txtSupport = 'Support';
   static const txtReclamation = 'Reclamationz';
+  static const txtSocial = 'Socialz';
   static const txtMenu = 'Menu';
   static const txtProfile = 'Profile';
   static const txtMyDetails = 'My Details';
@@ -257,7 +258,7 @@ class StringUtils {
 
 
   static const txtReclamationStr_1 =
-      'Whether it’s an impromptu stop at the supermarket, a new purchase, a gift or perhaps even a little forgetfulness, we all tend to accumulate excess reusables over time.At zimbo, we want reusable items to live their best (and longest) life. Reclamationz is our circular economy initiative to find new homes and new purposes for excess resuable items. Simply mail any of the following excess items to us, and we’ll do the rest:';
+      'Whether it’s an impromptu stop at the supermarket, a new purchase, a gift or perhaps even a little forgetfulness, we all tend to accumulate excess reusables over time.\n\nAt zimbo, we want reusable items to live their best (and longest) life. Reclamationz is our circular economy initiative to find new homes and new purposes for excess resuable items. Simply mail any of the following excess items to us, and we’ll do the rest:';
   static const txtReclamationStr_2 = '·      Reusable shopping bags';
   static const txtReclamationStr_3 = '·      Reusable water bottles';
   static const txtReclamationStr_4 = '·      Reusable Coffee/Tea cups';
@@ -267,4 +268,8 @@ class StringUtils {
   static const txtReclamationStr_8 = 'Ascot Vale';
   static const txtReclamationStr_9 = '3032';
   static const txtReclamationStr_10 = 'Victoria';
+
+  static const txtSocial1 = 'Share ideas';
+  static const txtSocial2 = 'At zimbo, we’re committed to expanding the scope of measurable personal sustainability. We work with technologists and innovators around Australia to find new and exciting ways to reuse. As more of these become publicly available, we will incorporate as many as possible into zimbo.\n\n Have a look at what’s available in the zimbo pantry. If you’ve come across any additional way to reuse, we’d love to hear about it.';
+  static const txtSocial3 = 'If your idea becomes something we can add to the pantry, not only will you get a nice kicker to your personal sustainability score, but you’ll also get a personal shout out on the zimbosphere!\n\n The more carbon offset we can capture and measure, the more sustainable our community becomes. Submit your idea below';
 }

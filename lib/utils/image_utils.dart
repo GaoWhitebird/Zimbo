@@ -25,6 +25,13 @@ class ImageUtils {
   static const imgIcGuide3 = 'assets/images/png/ic_guide_step_3.png';
   static const imgIcGuide4 = 'assets/images/png/ic_guide_step_4.png';
   static const imgIcGuide5 = 'assets/images/png/ic_guide_step_5.png';
+  static const imgIcReclamationHeader = 'assets/images/png/ic_reclamation_header.png';
+  static const imgIcReclamationIc1 = 'assets/images/png/ic_reclamation_ic_1.png';
+  static const imgIcReclamationIc2 = 'assets/images/png/ic_reclamation_ic_2.png';
+  static const imgIcReclamationIc3 = 'assets/images/png/ic_reclamation_ic_3.png';
+  static const imgIcReclamationIc4 = 'assets/images/png/ic_reclamation_ic_4.png';
+  static const imgIcSocialHeader = 'assets/images/png/ic_social_header.png';
+  static const imgIcSocialBubble = 'assets/images/png/ic_social_bubble.png';
 
   // svg
   static const imgIcFacebook = 'assets/images/svg/ic_facebook.svg';
@@ -51,6 +58,7 @@ class ImageUtils {
   static const imgIcBottomDashboard = 'assets/images/svg/ic_bottom_dashboard.svg';
   static const imgIcBottomChar = 'assets/images/svg/ic_bottom_char.svg';
   static const imgIcBottomCommunity = 'assets/images/svg/ic_bottom_community.svg';
+  static const imgIcBubbleChat = 'assets/images/svg/ic_bubble_chat.svg';
 
   //json
   static const imgLogingImage = 'assets/images/json/ic_loading_image.json';
