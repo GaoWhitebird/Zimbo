@@ -4,6 +4,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/model/request/signup_email_req.dart';
 import 'package:zimbo/model/request/signup_facebook_req.dart';
@@ -13,7 +14,6 @@ import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:zimbo/views/auth/select_item_view.dart';
 import 'package:zimbo/views/main/main_view.dart';
 
@@ -165,8 +165,8 @@ class SignUpViewModel extends BaseViewModel {
   }
 
   launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
+    if (await canLaunchUrlString(url)) {
+      await launchURL(url);
     } else {}
   }
 

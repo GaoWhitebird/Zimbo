@@ -5,8 +5,8 @@ import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/time_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
-import 'package:zimbo/views/other/edit_subscription_view.dart';
-import 'package:zimbo/views/other/subscription_history_view.dart';
+import 'package:zimbo/views/other/subscription/edit_subscription_view.dart';
+import 'package:zimbo/views/other/subscription/subscription_history_view.dart';
 
 class SubscriptionViewModel extends BaseViewModel {
   bool isSubscription = false;

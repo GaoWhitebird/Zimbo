@@ -7,7 +7,7 @@ import 'package:zimbo/utils/size_utils.dart';
 import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
-import 'package:zimbo/view_models/other/subscription_view_model.dart';
+import 'package:zimbo/view_models/other/subscription/subscription_view_model.dart';
 
 class SubscriptionView extends StatelessWidget {
   const SubscriptionView({Key? key}) : super(key: key);

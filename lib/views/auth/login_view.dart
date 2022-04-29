@@ -252,7 +252,7 @@ class LoginView extends StatelessWidget {
             context: context,
             builder: (BuildContext dlgContext) => const ExitDialog(),
           );
-          return Future.value(false);
+           return Future.value(false);
         });
   }
 }

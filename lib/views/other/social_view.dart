@@ -54,7 +54,7 @@ class SocialView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     const SizedBox(height: 10,),
-                    textView(StringUtils.txtSocial1,
+                    textViewUnderline(StringUtils.txtSocial1,
                       textColor: ColorUtils.appColorWhite,
                       fontSize: SizeUtils.textSizeXLarge,
                       fontWeight: FontWeight.bold,
@@ -83,13 +83,52 @@ class SocialView extends StatelessWidget {
                         
                       ],
                     ),  
-                    textView(StringUtils.txtSocial2,
+                    textView(StringUtils.txtSocial3,
                             textColor: ColorUtils.appColorWhite,
                             fontSize: SizeUtils.textSizeSMedium,
                             fontWeight: FontWeight.w400,
                             isCentered: true,
                             maxLine: 15),
-                    
+                    Container(
+                      alignment: Alignment.center,
+                      margin: const EdgeInsets.fromLTRB(
+                          10, 30, 10, 10),
+                      child: RoundButton(
+                          isStroked: false,
+                          textContent: StringUtils.txtSubmissionForm,
+                          textSize: SizeUtils.textSizeMedium,
+                          radius: 30,
+                          onPressed: () {
+                            model.onClickSubmissionForm(context);
+                          }),
+                    ),
+                    const SizedBox(height: 30,),
+                    textViewUnderline(StringUtils.txtSocial4,
+                      textColor: ColorUtils.appColorWhite,
+                      fontSize: SizeUtils.textSizeXLarge,
+                      fontWeight: FontWeight.bold,
+                      isCentered: true,),
+                    const SizedBox(height: 30,),
+                    textView(StringUtils.txtSocial5,
+                            textColor: ColorUtils.appColorWhite,
+                            fontSize: SizeUtils.textSizeSMedium,
+                            fontWeight: FontWeight.w400,
+                            isCentered: true,
+                            maxLine: 15),
+                    Container(
+                      alignment: Alignment.center,
+                      margin: const EdgeInsets.fromLTRB(
+                          10, 30, 10, 10),
+                      child: RoundButton(
+                          isStroked: false,
+                          textContent: StringUtils.txtShareApp,
+                          textSize: SizeUtils.textSizeMedium,
+                          radius: 30,
+                          onPressed: () {
+                            model.onClickShareApp(context);
+                          }),
+                    ),
+                    Image.asset(ImageUtils.imgIcSocialHeader, width: width, height: width,),
                   ],
                 ),
               ),

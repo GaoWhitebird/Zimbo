@@ -22,11 +22,18 @@ class StringUtils {
   static const txtSend = 'Send';
   static const txtDoYouWantToExit = 'Do you want to exit?';
   static const txtLogin = 'Login';
+  static const txtSubmissionForm = 'Submission form';
+  static const txtShareApp = 'Share app';
+  static const txtShareIdea = 'Share idea';
   static const txtSignUp = 'Sign Up';
+  static const txtContinue = 'Continue';
   static const txtFacebook = 'Facebook';
   static const txtGoogle = 'Google';
   static const txtOr = 'or';
   static const txtAnd = 'and';
+  static const txtAndroidID = 'com.au.zimbo';
+  static const txtIOSID = 'zimbo/id310633997';
+  static const txtPleaseInstallThisApp = 'Please install this app : \n ';
   static const txtSigninWithEmail = 'Sign In with Email';
   static const txtCreateAnAccount = 'Create an account';
   static const txtUserName = 'Username';
@@ -182,9 +189,20 @@ class StringUtils {
   static const txtGallery = 'Gallery';
   static const txtCamera = 'Camera';
   static const txtSimplifyingSustainability = 'Simplifying sustainability';
+  static const txtUnlockZimbo = 'Unlock zimbo';
+  static const txtTimeToTakeItPersonally = 'Time to take it personally...';
+  static const txtPersonalSustainabilityScore = 'Personal sustainability score';
+  static const txtMonitorMoneySavedFromReuse = 'Monitor money saved from reuse';
+  static const txtMonitorPersonalCarbonOffset = 'Monitor personal carbon offset';
+  static const txtMonitorPositiveEnvironment = 'Monitor positive environment';
+  static const txtMonitorEnvironmentalImpact = 'Monitor positive environmental impact';
+  static const txtExclusiveOffersAndDiscounts = 'Exclusive offers and discounts';
+  static const txtTry14DaysFree = 'Try 14 days free, then \$1.99/month. Cancel anytime.';
+  static const txt199Month = '\$1.99/month';
 
   static const txtPrefUser = 'pref_user';
   static const txtSupportMail = 'support@zimbo.me';
+  static const txtInfoMail = 'info@zimbo.me';
 
 
 
@@ -272,4 +290,6 @@ class StringUtils {
   static const txtSocial1 = 'Share ideas';
   static const txtSocial2 = 'At zimbo, we’re committed to expanding the scope of measurable personal sustainability. We work with technologists and innovators around Australia to find new and exciting ways to reuse. As more of these become publicly available, we will incorporate as many as possible into zimbo.\n\n Have a look at what’s available in the zimbo pantry. If you’ve come across any additional way to reuse, we’d love to hear about it.';
   static const txtSocial3 = 'If your idea becomes something we can add to the pantry, not only will you get a nice kicker to your personal sustainability score, but you’ll also get a personal shout out on the zimbosphere!\n\n The more carbon offset we can capture and measure, the more sustainable our community becomes. Submit your idea below';
+  static const txtSocial4 = 'Refer a friend';
+  static const txtSocial5 = 'Want to socialise zimbo? Looking to give your personal sustainability score a boost?\nWhy not refer a friend, a family member or a colleague?\nFor every referral that signs up, you’ll get a nice kicker to your score and help in reaching that next level. Simply share the app with one or more of your by clicking below and letting them know your email address.';
 }

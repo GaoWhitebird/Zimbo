@@ -13,9 +13,10 @@ import 'package:zimbo/views/auth/guide_view.dart';
 import 'package:zimbo/views/items/item_menu_view.dart';
 import 'package:zimbo/views/other/reclamation_view.dart';
 import 'package:zimbo/views/other/social_view.dart';
+import 'package:zimbo/views/other/subscription/subscription_lock_view.dart';
+import 'package:zimbo/views/other/subscription/subscription_view.dart';
 import 'package:zimbo/views/other/support_view.dart';
 import 'package:zimbo/views/other/profile_view.dart';
-import 'package:zimbo/views/other/subscription_view.dart';
 
 class MenuView extends StatelessWidget {
   const MenuView({Key? key}) : super(key: key);
@@ -85,7 +86,8 @@ class MenuView extends StatelessWidget {
                     titleStr: StringUtils.txtSubscription,
                     onTap: () => {
                           finishView(context),
-                          const SubscriptionView().launch(context),
+                          //const SubscriptionView().launch(context),
+                          const SubscriptionLockView().launch(context),
                         }),
                 MenuViewItem(
                     imageStr: ImageUtils.imgIcMenuSupport,

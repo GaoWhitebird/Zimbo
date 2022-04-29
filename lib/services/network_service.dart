@@ -331,6 +331,14 @@ class NetworkService {
     return true;
   }
 
+  Future doPostShare(String token, PostSupportReq req) async {
+    var res = await doPostRequest(ApiUtils.urlPostShare,
+        token: TokenReq(token: token).toJson(), param: req.toJson());
+    if (res == null) return false;
+
+    return true;
+  }
+
   Future doCancelPayment(String token) async {
     var res = await doPostRequest(ApiUtils.urlCancelPayment,
         token: TokenReq(token: token).toJson());
