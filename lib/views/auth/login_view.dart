@@ -33,6 +33,7 @@ class LoginView extends StatelessWidget {
 
     return WillPopScope(
         child: Scaffold(
+            backgroundColor: ColorUtils.appColorBlue,
             appBar: AppBar(
               title: Image.asset(ImageUtils.imgIcLogo, width: width * 0.15, fit: BoxFit.scaleDown),
               backgroundColor: ColorUtils.appColorBlue,
@@ -133,7 +134,7 @@ class LoginView extends StatelessWidget {
                           ]),
                       padding: const EdgeInsets.all(10),
                       width: width,
-                      height: height * 0.7,
+                      height: height * 0.75,
                       child: Column(
                         children: [
                           textView(StringUtils.txtSigninWithEmail,

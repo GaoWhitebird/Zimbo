@@ -28,6 +28,7 @@ class SphereView extends StatelessWidget {
         body: Container(
           alignment: Alignment.center,
           child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[

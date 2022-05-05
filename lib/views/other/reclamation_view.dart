@@ -46,6 +46,7 @@ class ReclamationView extends StatelessWidget {
               ),
             ),
             body: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               child: Container(
                 width: width,
                 padding: const EdgeInsets.all(10),

@@ -142,7 +142,7 @@ class SignUpView extends StatelessWidget {
                             ]),
                         padding: const EdgeInsets.all(10),
                         width: width,
-                        height: height * 0.7,
+                        height: height * 0.75,
                         child: Column(
                           children: [
                             textView(StringUtils.txtCreateAnAccount,

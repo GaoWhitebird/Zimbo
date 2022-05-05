@@ -55,224 +55,185 @@ class SubscriptionLockView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Container(
-                height: height * 0.1,
+                height: height * 0.15,
                 alignment: Alignment.center,
                 child: textView(StringUtils.txtTimeToTakeItPersonally,
                     textColor: ColorUtils.appColorWhite,
-                    fontSize: SizeUtils.textSizeLarge,
+                    fontSize: SizeUtils.textSizeXLarge,
                     fontWeight: FontWeight.w600,
                     isCentered: true,
                     maxLine: 2),
               ),
+              Container(
+                  alignment: Alignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      SvgPicture.asset(
+                        ImageUtils.imgIcUnLock,
+                        color: ColorUtils.appColorWhite,
+                        width: 20,
+                        height: 20,
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      textView(StringUtils.txtUnlockZimboSmall,
+                          textColor: ColorUtils.appColorWhite,
+                          fontSize: SizeUtils.textSizeNormal,
+                          fontWeight: FontWeight.w600,
+                          isCentered: true,
+                          maxLine: 2),
+                    ],
+                  )),
               Container(
                 alignment: Alignment.center,
-                child: textView(StringUtils.txtUnlockZimbo,
-                    textColor: ColorUtils.appColorWhite,
-                    fontSize: SizeUtils.textSizeNormal,
-                    fontWeight: FontWeight.w600,
-                    isCentered: true,
-                    maxLine: 2),
+                margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                decoration: const BoxDecoration(color: ColorUtils.appColorWhite,
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
+                          width * 0.01, width * 0.01),
+                      child: Row(
+                        children: <Widget>[
+                          SvgPicture.asset(
+                            ImageUtils.imgIcCheckCircleSuccess,
+                            width: 20,
+                            height: 20,
+                          ),
+                          SizedBox(
+                            width: width * 0.015,
+                          ),
+                          textView(StringUtils.txtPersonalSustainabilityScore,
+                              textColor: ColorUtils.appColorTextLight,
+                              fontSize: SizeUtils.textSizeSMedium,
+                              fontWeight: FontWeight.w400,
+                              maxLine: 2),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
+                          width * 0.01, width * 0.01),
+                      child: Row(
+                        children: <Widget>[
+                          SvgPicture.asset(
+                            ImageUtils.imgIcCheckCircleSuccess,
+                            width: 20,
+                            height: 20,
+                          ),
+                          SizedBox(
+                            width: width * 0.015,
+                          ),
+                          textView(StringUtils.txtMonitorMoneySavedFromReuse,
+                              textColor: ColorUtils.appColorTextLight,
+                              fontSize: SizeUtils.textSizeSMedium,
+                              fontWeight: FontWeight.w400,
+                              maxLine: 2),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
+                          width * 0.01, width * 0.01),
+                      child: Row(
+                        children: <Widget>[
+                          SvgPicture.asset(
+                            ImageUtils.imgIcCheckCircleSuccess,
+                            width: 20,
+                            height: 20,
+                          ),
+                          SizedBox(
+                            width: width * 0.015,
+                          ),
+                          textView(StringUtils.txtMonitorPersonalCarbonOffset,
+                              textColor: ColorUtils.appColorTextLight,
+                              fontSize: SizeUtils.textSizeSMedium,
+                              fontWeight: FontWeight.w400,
+                              maxLine: 2),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
+                          width * 0.01, width * 0.01),
+                      child: Row(
+                        children: <Widget>[
+                          SvgPicture.asset(
+                            ImageUtils.imgIcCheckCircleSuccess,
+                            width: 20,
+                            height: 20,
+                          ),
+                          SizedBox(
+                            width: width * 0.015,
+                          ),
+                          textView(StringUtils.txtMonitorPositiveEnvironment,
+                              textColor: ColorUtils.appColorTextLight,
+                              fontSize: SizeUtils.textSizeSMedium,
+                              fontWeight: FontWeight.w400,
+                              maxLine: 2),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
+                          width * 0.01, width * 0.01),
+                      child: Row(
+                        children: <Widget>[
+                          SvgPicture.asset(
+                            ImageUtils.imgIcCheckCircleSuccess,
+                            width: 20,
+                            height: 20,
+                          ),
+                          SizedBox(
+                            width: width * 0.015,
+                          ),
+                          textView(StringUtils.txtExclusiveOffersAndDiscounts,
+                              textColor: ColorUtils.appColorTextLight,
+                              fontSize: SizeUtils.textSizeSMedium,
+                              fontWeight: FontWeight.w400,
+                              maxLine: 2),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              Column(
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01, width * 0.01, width * 0.01),
-                    child: Row(
-                      children: <Widget>[
-                        Stack(
-                          children: const <Widget>[
-                            Icon(
-                              Icons.circle,
-                              size: 25,
-                              color: ColorUtils.appColorAccent,
-                            ),
-                            Positioned(
-                              left: 0,
-                              right: 0,
-                              top: 0,
-                              bottom: 0,
-                              child: Icon(
-                                Icons.check,
-                                size: 15,
-                                color: ColorUtils.appColorWhite,
-                              ),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          width: width * 0.01,
-                        ),
-                        textView(StringUtils.txtPersonalSustainabilityScore,
-                            textColor: ColorUtils.appColorWhite,
-                            fontSize: SizeUtils.textSizeMedium,
-                            fontWeight: FontWeight.w400,
-                            maxLine: 2),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01, width * 0.01, width * 0.01),
-                    child: Row(
-                      children: <Widget>[
-                        Stack(
-                          children: const <Widget>[
-                            Icon(
-                              Icons.circle,
-                              size: 25,
-                              color: ColorUtils.appColorAccent,
-                            ),
-                            Positioned(
-                              left: 0,
-                              right: 0,
-                              top: 0,
-                              bottom: 0,
-                              child: Icon(
-                                Icons.check,
-                                size: 15,
-                                color: ColorUtils.appColorWhite,
-                              ),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          width: width * 0.01,
-                        ),
-                        textView(StringUtils.txtMonitorMoneySavedFromReuse,
-                            textColor: ColorUtils.appColorWhite,
-                            fontSize: SizeUtils.textSizeMedium,
-                            fontWeight: FontWeight.w400,
-                            maxLine: 2),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01, width * 0.01, width * 0.01),
-                    child: Row(
-                      children: <Widget>[
-                        Stack(
-                          children: const <Widget>[
-                            Icon(
-                              Icons.circle,
-                              size: 25,
-                              color: ColorUtils.appColorAccent,
-                            ),
-                            Positioned(
-                              left: 0,
-                              right: 0,
-                              top: 0,
-                              bottom: 0,
-                              child: Icon(
-                                Icons.check,
-                                size: 15,
-                                color: ColorUtils.appColorWhite,
-                              ),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          width: width * 0.01,
-                        ),
-                        textView(StringUtils.txtMonitorPersonalCarbonOffset,
-                            textColor: ColorUtils.appColorWhite,
-                            fontSize: SizeUtils.textSizeMedium,
-                            fontWeight: FontWeight.w400,
-                            maxLine: 2),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01, width * 0.01, width * 0.01),
-                    child: Row(
-                      children: <Widget>[
-                        Stack(
-                          children: const <Widget>[
-                            Icon(
-                              Icons.circle,
-                              size: 25,
-                              color: ColorUtils.appColorAccent,
-                            ),
-                            Positioned(
-                              left: 0,
-                              right: 0,
-                              top: 0,
-                              bottom: 0,
-                              child: Icon(
-                                Icons.check,
-                                size: 15,
-                                color: ColorUtils.appColorWhite,
-                              ),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          width: width * 0.01,
-                        ),
-                        textView(StringUtils.txtMonitorPositiveEnvironment,
-                            textColor: ColorUtils.appColorWhite,
-                            fontSize: SizeUtils.textSizeMedium,
-                            fontWeight: FontWeight.w400,
-                            maxLine: 2),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01, width * 0.01, width * 0.01),
-                    child: Row(
-                      children: <Widget>[
-                        Stack(
-                          children: const <Widget>[
-                            Icon(
-                              Icons.circle,
-                              size: 25,
-                              color: ColorUtils.appColorAccent,
-                            ),
-                            Positioned(
-                              left: 0,
-                              right: 0,
-                              top: 0,
-                              bottom: 0,
-                              child: Icon(
-                                Icons.check,
-                                size: 15,
-                                color: ColorUtils.appColorWhite,
-                              ),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          width: width * 0.01,
-                        ),
-                        textView(StringUtils.txtExclusiveOffersAndDiscounts,
-                            textColor: ColorUtils.appColorWhite,
-                            fontSize: SizeUtils.textSizeMedium,
-                            fontWeight: FontWeight.w400,
-                            maxLine: 2),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+              
               Container(
                 margin: EdgeInsets.fromLTRB(width * 0.05, 0, width * 0.05, 0),
-                alignment: Alignment.centerLeft,
+                alignment: Alignment.center,
                 child: textView(StringUtils.txtTry14DaysFree,
                     textColor: ColorUtils.appColorWhite,
-                    fontSize: SizeUtils.textSizeMedium,
-                    fontWeight: FontWeight.w400,
-                    isCentered: false,
+                    fontSize: SizeUtils.textSizeSMedium,
+                    fontWeight: FontWeight.w600,
+                    isCentered: true,
                     maxLine: 2),
               ),
               Container(
                 alignment: Alignment.center,
                 margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                 child: RoundButton(
-                    isStroked: false,
-                    textContent: StringUtils.txtContinue,
-                    textSize: SizeUtils.textSizeMedium,
-                    radius: 30,
-                    onPressed: () => model.onClickContinue(context),
+                  isStroked: false,
+                  textContent: StringUtils.txtContinue,
+                  textSize: SizeUtils.textSizeMedium,
+                  radius: 30,
+                  onPressed: () => model.onClickContinue(context),
+                ),
               ),
-              )
+              Container(
+                margin: EdgeInsets.fromLTRB(width * 0.05, 0, width * 0.05, 0),
+                alignment: Alignment.center,
+                child: textView(StringUtils.txtNoNeedToPay,
+                    textColor: ColorUtils.appColorTextWhite,
+                    fontSize: SizeUtils.textSizeSmall,
+                    fontWeight: FontWeight.w400,
+                    isCentered: true,
+                    maxLine: 2),
+              ),
             ],
           ),
         ),

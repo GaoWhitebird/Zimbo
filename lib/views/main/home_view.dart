@@ -45,6 +45,7 @@ class _HomeViewState extends State<HomeView> with AutomaticKeepAliveClientMixin{
     return Scaffold(
         backgroundColor: ColorUtils.appColorBlue,
         body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(children: <Widget>[
             Container(
               padding: const EdgeInsets.all(10.0),

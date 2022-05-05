@@ -135,7 +135,7 @@ class SelectShoppingDayView extends StatelessWidget {
                                         ),
                                        
                                         isRadio: true,
-                                        onSelected: (index, isSelected) {
+                                        onSelected: (buttons, index, isSelected) {
                                           model.onGroupSelected(index, isSelected);
                                         },
                                         buttons: const [

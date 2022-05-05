@@ -182,6 +182,7 @@ class StringUtils {
   static const txtReset = 'Reset';
   static const txtDeleteProfile = 'Delete Profile';
   static const txtCountryCity = 'Country, City';
+  static const txtPostalAddress = 'Postal Address';
   static const txtWhyINeed = 'Why I need to do this?';
   static const txtNotNow = 'Not right now';
   static const txtWhyINeedDescription = 'Verification of reusable items helps ensure a sustainable platform for all.';
@@ -190,6 +191,7 @@ class StringUtils {
   static const txtCamera = 'Camera';
   static const txtSimplifyingSustainability = 'Simplifying sustainability';
   static const txtUnlockZimbo = 'Unlock zimbo';
+  static const txtUnlockZimboSmall = 'unlock zimbo';
   static const txtTimeToTakeItPersonally = 'Time to take it personally...';
   static const txtPersonalSustainabilityScore = 'Personal sustainability score';
   static const txtMonitorMoneySavedFromReuse = 'Monitor money saved from reuse';
@@ -197,8 +199,13 @@ class StringUtils {
   static const txtMonitorPositiveEnvironment = 'Monitor positive environment';
   static const txtMonitorEnvironmentalImpact = 'Monitor positive environmental impact';
   static const txtExclusiveOffersAndDiscounts = 'Exclusive offers and discounts';
-  static const txtTry14DaysFree = 'Try 14 days free, then \$1.99/month. Cancel anytime.';
+  static const txtTry14DaysFree = 'Try 14 days free, then \$1.99/month';
+  static const txtNoNeedToPay = 'No need to pay if you cancel the subscription at least a day before the 14-day free trial ends';
   static const txt199Month = '\$1.99/month';
+  static const txtSubscriptionConfirmed = 'Subscription confirmed!';
+  static const txtTimeToReceiveKey = 'Time to receive your official zimbo keychain';
+  static const txtPleaseEnterPostalAddress = 'Please enter your postal address';
+  static const txtKeychainIsOnWay = 'Thank you for subscribing.\nYour zimbo QR keychain is on its way.';
 
   static const txtPrefUser = 'pref_user';
   static const txtSupportMail = 'support@zimbo.me';

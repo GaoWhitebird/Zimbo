@@ -59,8 +59,11 @@ class ImageUtils {
   static const imgIcBottomChar = 'assets/images/svg/ic_bottom_char.svg';
   static const imgIcBottomCommunity = 'assets/images/svg/ic_bottom_community.svg';
   static const imgIcBubbleChat = 'assets/images/svg/ic_bubble_chat.svg';
+  static const imgIcUnLock = 'assets/images/svg/ic_lock_unlock.svg';
+  static const imgIcCheckCircleSuccess = 'assets/images/svg/ic_check_circle_success.svg';
 
   //json
   static const imgLogingImage = 'assets/images/json/ic_loading_image.json';
   static const imgLogingApi = 'assets/images/json/ic_loading_api.json';
+  static const imgLogingApp = 'assets/images/json/ic_loading.json';
 }

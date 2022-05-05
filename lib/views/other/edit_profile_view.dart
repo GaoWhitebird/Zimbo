@@ -163,7 +163,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                           ]),
                       padding: const EdgeInsets.all(10),
                       width: width,
-                      height: height * 0.7,
+                      height: height * 0.75,
                       child: Column(
                         children: [
                           EditTextField(

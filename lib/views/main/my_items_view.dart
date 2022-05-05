@@ -25,6 +25,7 @@ class MyItemsView extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorUtils.appColorBlue,
         body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
             child: Stack(
       children: [
         Container(

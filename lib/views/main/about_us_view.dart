@@ -25,6 +25,7 @@ class AboutUsView extends StatelessWidget {
       body: Container(
         alignment: Alignment.center,
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Container(
                   padding: const EdgeInsets.all(10),
                   child: Column(
