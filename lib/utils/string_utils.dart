@@ -33,7 +33,7 @@ class StringUtils {
   static const txtAnd = 'and';
   static const txtAndroidID = 'com.au.zimbo';
   static const txtIOSID = 'zimbo/id310633997';
-  static const txtPleaseInstallThisApp = 'Please install this app : \n ';
+  static const txtPleaseInstallThisApp = 'Please install this app and enter referral code when signing up : \n ';
   static const txtSigninWithEmail = 'Sign In with Email';
   static const txtCreateAnAccount = 'Create an account';
   static const txtUserName = 'Username';
@@ -44,6 +44,7 @@ class StringUtils {
   static const txtForgotPassword = 'Forgot Password?';
   static const txtResetHere = 'Reset here';
   static const txtResetPassword = 'Reset Password';
+  static const txtReferralCode = 'Referral Code';
   static const txtPasswordNotMatching = 'Password is not matching.';
   static const txtIRemember = 'I remembered my password';
   static const txtGoBack = 'Go back';
@@ -121,6 +122,7 @@ class StringUtils {
   static const txtPleaseEnterPassword = 'Please enter pasword';
   static const txtUsed = 'Used';
   static const txtTimes = 'Times';
+  static const txtAddPantryItemImage = 'You must select pantry item image!';
   static const txtRecyclableItemsAdded = 'Pantry item added successfully!';
   static const txtRecyclableItemsAddedFail = 'Pantry item added fail!';
   static const txtRecyclableItemsUpdatedSuccess = 'Pantry item updated successfully!';
@@ -231,7 +233,7 @@ class StringUtils {
   static const txtAboutDescription_1 =
       'At zimbo™ we are reimagining sustainability.\n\nWe believe that the largest opportunity for environmental impact lies with the collective power of individuals. \nWhere even the smallest adjustments to daily habits and buying decisions can provide meaningful relief for our planet.';
   static const txtAboutDescription_2 =
-      'zimbo is a modern approach to climate care that empowers Australians to behave more sustainably every day. \n\nConsumers should benefit from the conservational habits they foster. By making easy, ethical decisions in routine activities, zimbo provides its members with a 360-degree personal sustainability profile. This profile includes:\n\n •	Personal sustainability score \n •	Total reuse activity over time \n •	Total carbon offset  \n •	Money saved from reuse \n •	Other handy insights  \n\nMuch like a credit score, zimbo members enjoy exclusive benefits and discounts from our corporate partners based on the score they accumulate. \n\nThrough the zimbo app, members can easily access a vast pantry of sustainable items that contribute to their profile, placing control of their impact in their own hands. ';
+      'zimbo is a modern approach to climate care that empowers Australians to behave more sustainably every day. \n\nConsumers should benefit from the conservational habits they foster. By making easy, ethical decisions in routine activities, zimbo provides its members with a 360-degree personal sustainability profile. This profile includes:\n\n                    •	Personal sustainability score \n                     •	Total reuse activity over time \n •	Total carbon offset  \n             •	Money saved from reuse \n     •	Other handy insights  \n\nMuch like a credit score, zimbo members enjoy exclusive benefits and discounts from our corporate partners based on the score they accumulate. \n\nThrough the zimbo app, members can easily access a vast pantry of sustainable items that contribute to their profile, placing control of their impact in their own hands. ';
   static const txtAboutDescription_3 =
       'After downloading the zimbo app and creating an account, new members will receive a keychain printed with a unique QR code in the mail. \n\nWhether at home or out and about, each time a member uses an eligible reusable product, they can open the zimbo app, scan the QR code, and select the item that was reused. It’s as simple as that. \n\nYour impact and zimbo wallet are calculated based on a variety of sustainable behaviors. Details can be found in “How do I improve my score?” in the user dashboard. ';
 
@@ -288,8 +290,8 @@ class StringUtils {
   static const txtReclamationStr_3 = '·      Reusable water bottles';
   static const txtReclamationStr_4 = '·      Reusable Coffee/Tea cups';
   static const txtReclamationStr_5 = '·      Reusable Smoothie/Bubble Tea cups';
-  static const txtReclamationStr_6 = 'Check in regularly on the zimbosphere for updates on the cool places your excess reusables are going. Mailing address:ATT: zimbo';
-  static const txtReclamationStr_7 = '85 The Parade';
+  static const txtReclamationStr_6 = 'Check in regularly on the zimbosphere for updates on the cool places your excess reusables are going. Mailing address:';
+  static const txtReclamationStr_7 = 'ATT: zimbo\n85 The Parade';
   static const txtReclamationStr_8 = 'Ascot Vale';
   static const txtReclamationStr_9 = '3032';
   static const txtReclamationStr_10 = 'Victoria';
@@ -298,5 +300,5 @@ class StringUtils {
   static const txtSocial2 = 'At zimbo, we’re committed to expanding the scope of measurable personal sustainability. We work with technologists and innovators around Australia to find new and exciting ways to reuse. As more of these become publicly available, we will incorporate as many as possible into zimbo.\n\n Have a look at what’s available in the zimbo pantry. If you’ve come across any additional way to reuse, we’d love to hear about it.';
   static const txtSocial3 = 'If your idea becomes something we can add to the pantry, not only will you get a nice kicker to your personal sustainability score, but you’ll also get a personal shout out on the zimbosphere!\n\n The more carbon offset we can capture and measure, the more sustainable our community becomes. Submit your idea below';
   static const txtSocial4 = 'Refer a friend';
-  static const txtSocial5 = 'Want to socialise zimbo? Looking to give your personal sustainability score a boost?\nWhy not refer a friend, a family member or a colleague?\nFor every referral that signs up, you’ll get a nice kicker to your score and help in reaching that next level. Simply share the app with one or more of your by clicking below and letting them know your email address.';
+  static const txtSocial5 = 'Want to socialise zimbo? Looking to give your personal sustainability score a boost?\nWhy not refer a friend, a family member or a colleague? For every referral that signs up, you’ll get a nice kicker to your score and help in reaching that next level. Simply share the app with one or more of your by clicking below and letting them know your email address.';
 }

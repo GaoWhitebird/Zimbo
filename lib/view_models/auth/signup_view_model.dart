@@ -132,7 +132,7 @@ class SignUpViewModel extends BaseViewModel {
   }
 
   onClickSignUp(BuildContext context, String _name, String _email,
-      String _password) async {
+      String _password, String _code) async {
     name = _name.trim();
     email = _email.trim();
     password = _password;
@@ -144,7 +144,8 @@ class SignUpViewModel extends BaseViewModel {
           password: password,
           deviceKey: deviceKey ?? '',
           firebaseToken: firebaseToken!,
-          deviceType: platformType);
+          deviceType: platformType,
+          referralCode: _code);
 
       await networkService.doSignUpEmail(req).then((value) => {
             if (value != null)

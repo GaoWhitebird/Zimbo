@@ -18,6 +18,8 @@ class SignUpView extends StatelessWidget {
       TextEditingController();
   final TextEditingController textEditingControllerPassword =
       TextEditingController();
+  final TextEditingController textEditingControllerReferralCode =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -171,6 +173,13 @@ class SignUpView extends StatelessWidget {
                               mController: textEditingControllerPassword,
                               borderColor: ColorUtils.appColorBlack_10,
                             ),
+                            EditTextField(
+                              hintText: StringUtils.txtReferralCode,
+                              isPassword: false,
+                              isSecure: false,
+                              mController: textEditingControllerReferralCode,
+                              borderColor: ColorUtils.appColorBlack_10,
+                            ),
                             Expanded(
                               child: SizedBox(
                                 width: width,
@@ -189,8 +198,9 @@ class SignUpView extends StatelessWidget {
                                               context,
                                               textEditingControllerName.text,
                                               textEditingControllerEmail.text,
-                                              textEditingControllerPassword
-                                                  .text)),
+                                              textEditingControllerPassword.text,
+                                              textEditingControllerReferralCode.text,
+                                              )),
                                     ),
                                     Column(
                                       children: [

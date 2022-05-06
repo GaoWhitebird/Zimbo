@@ -5,6 +5,7 @@ class SignUpEmailReq{
   String deviceKey;
   String firebaseToken;
   String deviceType;
+  String? referralCode;
 
   SignUpEmailReq({
     required this.userName,
@@ -13,6 +14,7 @@ class SignUpEmailReq{
     required this.deviceKey,
     required this.firebaseToken,
     required this.deviceType,
+    this.referralCode,
   });
 
   Map<String, dynamic> toJson() => {
@@ -22,6 +24,7 @@ class SignUpEmailReq{
     'device_key': deviceKey,
     'fcm_token': firebaseToken,
     'device_type': deviceType,
+    'referral_code': referralCode,
   };
 
   factory SignUpEmailReq.fromJson(Map<String, dynamic> json) => SignUpEmailReq(
@@ -30,6 +33,7 @@ class SignUpEmailReq{
     password: json['password'],
     deviceKey: json['device_key'],
     firebaseToken: json['fcm_token'],
-    deviceType: json['device_type']
+    deviceType: json['device_type'],
+    referralCode: json['referral_code']
   );
 }

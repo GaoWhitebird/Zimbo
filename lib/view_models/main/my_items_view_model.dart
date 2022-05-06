@@ -10,6 +10,7 @@ import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
 import 'package:zimbo/views/auth/pantry_item_photo_view.dart';
 import 'package:zimbo/views/other/add_item_view.dart';
+import 'package:zimbo/views/other/menu_view.dart';
 
 class MyItemsViewModel extends BaseViewModel {
   List<RecyclableItemModel> mList = [];
@@ -67,18 +68,20 @@ class MyItemsViewModel extends BaseViewModel {
     RecyclableItemReq req = RecyclableItemReq(id: item.id,);
     list.add(req.toJson());
 
-    networkService.doAddRecyclableItems(token!, AddRecyclableReq(list: list)).then((value) => {
-      if(value != null) {
-        showMessage(StringUtils.txtRecyclableItemsAdded, null),
-        mList.add(item),
-        mAdditionalList.removeWhere((element) => element.id == item.id),
-
-        PantryItemPhotoView([item]).launch(context),
-      }else {
-        showMessage(StringUtils.txtRecyclableItemsAddedFail, null),
-      },
-
-      notifyListeners(),
+    await networkService.doGetProfile(token!).then((value) => {
+      gotoItemPhotoView(context, [item], item),
     });
+
+    
+  }
+
+  gotoItemPhotoView(BuildContext context, List<RecyclableItemModel> list, RecyclableItemModel item) async {
+    var result = await PantryItemPhotoView(list).launch(context, isNewTask: false);
+
+    if(result != null && result){
+        mList.add(item);
+        mAdditionalList.removeWhere((element) => element.id == item.id);
+        notifyListeners();
+    }
   }
 }

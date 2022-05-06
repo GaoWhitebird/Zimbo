@@ -394,4 +394,14 @@ class NetworkService {
 
     return true;
   }
+
+  Future doGetReferralCode(String token) async {
+    var res = await doGetRequest(
+        ApiUtils.urlGetReferralCode, TokenReq(token: token).toJson());
+    if (res == null) return '';
+
+    String code = res['referral_code'];
+    return code;
+  }
+
 }

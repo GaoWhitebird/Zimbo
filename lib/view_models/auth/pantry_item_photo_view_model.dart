@@ -60,6 +60,11 @@ class PantryItemPhotoViewModel extends BaseViewModel {
   onClickNext(BuildContext context) async {
     List _list = [];
     for (int i = 0; i < mReqList.length; i++) {
+      if(mReqList[i].image == null){
+        showMessage(StringUtils.txtAddPantryItemImage, null);
+        return;
+      }
+
       _list.add(mReqList[i].toJson());
     }
 
@@ -68,11 +73,11 @@ class PantryItemPhotoViewModel extends BaseViewModel {
         .then((value) => {
               if (value != null)
                 {
-                  showMessage(StringUtils.txtRecyclableItemsUpdatedSuccess, null),
+                  showMessage(StringUtils.txtRecyclableItemsAdded, null),
                 }else {
-                  showMessage(StringUtils.txtRecyclableItemsUpdatedFail, null),
+                  showMessage(StringUtils.txtRecyclableItemsAddedFail, null),
                 },
-              finishView(context),
+              finishView(context, true),
             });
   }
 

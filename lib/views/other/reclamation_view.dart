@@ -25,26 +25,6 @@ class ReclamationView extends StatelessWidget {
     return WillPopScope(
         child: Scaffold(
             backgroundColor: ColorUtils.appColorBlue,
-            appBar: AppBar(
-              title: textView(StringUtils.txtReclamation,
-                  textColor: ColorUtils.appColorTextTitle,
-                  fontSize: SizeUtils.textSizeNormal,
-                  fontWeight: FontWeight.w500,
-                  isCentered: true),
-              backgroundColor: ColorUtils.appColorWhite,
-              centerTitle: true,
-              elevation: 0,
-              shape: const ContinuousRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(50),
-                      bottomRight: Radius.circular(50))),
-              leading: BackButton(
-                color: ColorUtils.appColorBlack,
-                onPressed: () {
-                  finishView(context, 2);
-                },
-              ),
-            ),
             body: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               child: Container(

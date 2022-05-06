@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:zimbo/utils/color_utils.dart';
@@ -25,26 +26,6 @@ class SocialView extends StatelessWidget {
     return WillPopScope(
         child: Scaffold(
             backgroundColor: ColorUtils.appColorBlue,
-            appBar: AppBar(
-              title: textView(StringUtils.txtSocial,
-                  textColor: ColorUtils.appColorTextTitle,
-                  fontSize: SizeUtils.textSizeNormal,
-                  fontWeight: FontWeight.w500,
-                  isCentered: true),
-              backgroundColor: ColorUtils.appColorWhite,
-              centerTitle: true,
-              elevation: 0,
-              shape: const ContinuousRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(50),
-                      bottomRight: Radius.circular(50))),
-              leading: BackButton(
-                color: ColorUtils.appColorBlack,
-                onPressed: () {
-                  finishView(context, 2);
-                },
-              ),
-            ),
             body: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               child: Container(
@@ -73,13 +54,15 @@ class SocialView extends StatelessWidget {
                           width: width,
                           height: width,
                           alignment: Alignment.center,
-                          padding: EdgeInsets.all(width * 0.1),
-                          child: textView(StringUtils.txtSocial2,
-                            textColor: ColorUtils.appColorBlue,
-                            fontSize: SizeUtils.textSizeSSmall,
-                            fontWeight: FontWeight.w600,
-                            isCentered: true,
-                            maxLine: 15),
+                          padding: EdgeInsets.fromLTRB(width * 0.1, 0, width * 0.1, width * 0.1),
+                          child: 
+                          const AutoSizeText(
+                              StringUtils.txtSocial2,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: ColorUtils.appColorBlue, fontWeight: FontWeight.w600,),
+                              presetFontSizes: [13, 14, 16, 20],
+                              maxLines: 15,
+                            )
                         )
                         
                       ],

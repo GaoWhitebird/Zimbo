@@ -11,6 +11,7 @@ import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/other/menu_view_model.dart';
 import 'package:zimbo/views/auth/guide_view.dart';
 import 'package:zimbo/views/items/item_menu_view.dart';
+import 'package:zimbo/views/main/about_us_view.dart';
 import 'package:zimbo/views/other/reclamation_view.dart';
 import 'package:zimbo/views/other/social_view.dart';
 import 'package:zimbo/views/other/subscription/subscription_lock_view.dart';
@@ -65,7 +66,7 @@ class MenuView extends StatelessWidget {
                     imageStr: ImageUtils.imgIcBottomHelp,
                     titleStr: StringUtils.txtThisIsZimbo,
                     onTap: () {
-                          finishView(context, 0);
+                          const AboutUsView().launch(context);
                         }),
                 MenuViewItem(
                     imageStr: ImageUtils.imgIcAboutUs,
@@ -78,14 +79,12 @@ class MenuView extends StatelessWidget {
                     imageStr: ImageUtils.imgIcMenuProfile,
                     titleStr: StringUtils.txtMyDetails,
                     onTap: () => {
-                          finishView(context),
                           ProfileView().launch(context),
                         }),
                 MenuViewItem(
                     imageStr: ImageUtils.imgIcMyItems,
                     titleStr: StringUtils.txtSubscription,
                     onTap: () => {
-                          finishView(context),
                           //const SubscriptionView().launch(context),
                           const SubscriptionLockView().launch(context),
                         }),
@@ -93,22 +92,7 @@ class MenuView extends StatelessWidget {
                     imageStr: ImageUtils.imgIcMenuSupport,
                     titleStr: StringUtils.txtSupport,
                     onTap: () => {
-                      finishView(context),
                       SupportView().launch(context),
-                    }),
-                MenuViewItem(
-                    imageStr: ImageUtils.imgIcRefresh,
-                    titleStr: StringUtils.txtReclamation,
-                    onTap: () => {
-                      finishView(context),
-                      const ReclamationView().launch(context),
-                    }),
-                MenuViewItem(
-                    imageStr: ImageUtils.imgIcBubbleChat,
-                    titleStr: StringUtils.txtSocial,
-                    onTap: () => {
-                      finishView(context),
-                      const SocialView().launch(context),
                     }),
                 Expanded(child: Container()),
                 GestureDetector(

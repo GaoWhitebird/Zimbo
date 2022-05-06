@@ -10,8 +10,13 @@ import 'package:zimbo/views/other/submission_form_view.dart';
 
 class SocialViewModel extends BaseViewModel {
   
+  String? token;
+  String mCode = '';
   initialize(BuildContext context) async {
-
+    token = await sharedService.getToken();
+    networkService.doGetReferralCode(token!).then((value) => {
+      mCode = value
+    });
   }
 
   
@@ -22,9 +27,9 @@ class SocialViewModel extends BaseViewModel {
   
   onClickShareApp(BuildContext context) async {
     if(Platform.isAndroid){
-      Share.share(StringUtils.txtPleaseInstallThisApp + "https://play.google.com/store/apps/details?id=" + StringUtils.txtAndroidID);
+      Share.share(StringUtils.txtPleaseInstallThisApp + "https://play.google.com/store/apps/details?id=" + StringUtils.txtAndroidID + "\n\nReferral Code : " + mCode + "\n\n");
     }else if(Platform.isIOS) {
-      Share.share(StringUtils.txtPleaseInstallThisApp + "https://apps.apple.com/au/app/" + StringUtils.txtIOSID);
+      Share.share(StringUtils.txtPleaseInstallThisApp + "https://apps.apple.com/au/app/" + StringUtils.txtIOSID+ "\n\nReferral Code : " + mCode + "\n\n");
     }
   }
 

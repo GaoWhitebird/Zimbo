@@ -13,6 +13,8 @@ import 'package:zimbo/views/main/community_view.dart';
 import 'package:zimbo/views/main/home_view.dart';
 import 'package:zimbo/views/main/my_items_view.dart';
 import 'package:zimbo/views/main/sphere_view.dart';
+import 'package:zimbo/views/other/reclamation_view.dart';
+import 'package:zimbo/views/other/social_view.dart';
 
 // ignore: must_be_immutable
 class MainView extends StatefulWidget {
@@ -34,16 +36,17 @@ class _MainViewState extends State<MainView> {
 }
 
 List<String> navTitles = [
-  StringUtils.txtThisIsZimbo,
+  StringUtils.txtReclamation,
   StringUtils.txtPantry,
   StringUtils.txtMyProfile,
   StringUtils.txtZimboSphere,
-  StringUtils.txtCommunity,
+  StringUtils.txtSocial,
 ];
 
 List<SvgPicture> navIcons = [
   SvgPicture.asset(
-    ImageUtils.imgIcBottomHelp,
+    ImageUtils.imgIcRefresh,
+    color: ColorUtils.appColorBlue,
     width: 24,
     height: 24,
   ),
@@ -71,7 +74,7 @@ List<SvgPicture> navIcons = [
 
 List<SvgPicture> navIconsActive = [
   SvgPicture.asset(
-    ImageUtils.imgIcBottomHelp,
+    ImageUtils.imgIcRefresh,
     color: ColorUtils.appColorAccent,
   ),
   SvgPicture.asset(
@@ -94,7 +97,7 @@ List<SvgPicture> navIconsActive = [
 
 List<Widget> navWidgets = [
   const SizedBox(
-    child: AboutUsView(),
+    child: ReclamationView(),
   ),
   const SizedBox(
     child: MyItemsView(),
@@ -106,7 +109,7 @@ List<Widget> navWidgets = [
     child: SphereView(),
   ),
   const SizedBox(
-    child: CommunityView(),
+    child: SocialView(),
   ),
 ];
 

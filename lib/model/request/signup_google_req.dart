@@ -6,6 +6,7 @@ class SignUpGoogleReq {
   String deviceKey;
   String firebaseToken;
   String deviceType;
+  String? referralCode;
 
   SignUpGoogleReq({
     required this.userName,
@@ -15,6 +16,7 @@ class SignUpGoogleReq {
     required this.deviceKey,
     required this.firebaseToken,
     required this.deviceType,
+    this.referralCode,
   });
 
   Map<String, dynamic> toJson() => {
@@ -25,6 +27,7 @@ class SignUpGoogleReq {
     'device_key': deviceKey,
     'fcm_token': firebaseToken,
     'device_type': deviceType,
+    'referral_code': referralCode,
   };
 
   factory SignUpGoogleReq.fromJson(Map<String, dynamic> json) => SignUpGoogleReq(
@@ -34,6 +37,7 @@ class SignUpGoogleReq {
     image: json['image'],
     deviceKey: json['device_key'],
     firebaseToken: json['fcm_token'],
-    deviceType: json['device_type']
+    deviceType: json['device_type'],
+    referralCode: json['referral_code']
   );
 }
