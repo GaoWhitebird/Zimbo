@@ -90,8 +90,9 @@ class SubscriptionLockView extends StatelessWidget {
                 alignment: Alignment.center,
                 margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                 padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-                decoration: const BoxDecoration(color: ColorUtils.appColorWhite,
-                borderRadius: BorderRadius.all(Radius.circular(10))),
+                decoration: const BoxDecoration(
+                    color: ColorUtils.appColorWhite,
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
                 child: Column(
                   children: <Widget>[
                     Container(
@@ -202,7 +203,6 @@ class SubscriptionLockView extends StatelessWidget {
                   ],
                 ),
               ),
-              
               Container(
                 margin: EdgeInsets.fromLTRB(width * 0.05, 0, width * 0.05, 0),
                 alignment: Alignment.center,

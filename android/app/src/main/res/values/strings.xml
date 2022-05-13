@@ -3,4 +3,5 @@
     <string name="facebook_app_id">765052451139435</string>
     <string name="facebook_client_token">dbd9508541ce22ef8f3d16e86a736461</string>
     <string name="default_notification_channel_id">zimbo_channel_id</string>
+    <string name="asset_statements" translatable="false">[{ \"include\": \"https://zimbo.me/.well-known/assetlinks.json\" }]</string>
 </resources>

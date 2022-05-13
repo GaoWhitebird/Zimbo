@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:pay/pay.dart';
 import 'package:stacked/stacked.dart';
 import 'package:zimbo/utils/color_utils.dart';
@@ -32,9 +33,10 @@ class SubscriptionSelectView extends StatelessWidget {
         status: PaymentItemStatus.final_price,
       )
     ];
+   
     Pay _payClient = Pay.withAssets([
-      'apple_pay.json',
-      'google_pay.json'
+      'pay/apple_pay.json',
+      'pay/google_pay.json'
     ]);
 
     void onGooglePayResult(paymentResult) {
@@ -84,36 +86,23 @@ class SubscriptionSelectView extends StatelessWidget {
                       maxLine: 2),
                 ),
               ),
-              RawGooglePayButton(
-                style: GooglePayButtonStyle.white,
-                type: GooglePayButtonType.pay,
-                onPressed: () async {
-                    final result = await _payClient.showPaymentSelector(
-                                        provider: PayProvider.google_pay,
-                                        paymentItems: _paymentItems,
-                                      );
-                }),
-              GooglePayButton(
-                paymentConfigurationAsset: 'google_pay.json',
-                paymentItems: _paymentItems,
-                style: GooglePayButtonStyle.white,
-                type: GooglePayButtonType.pay,
-                margin: const EdgeInsets.only(top: 15.0),
-                onPaymentResult: onGooglePayResult,
-                loadingIndicator: const Center(
-                  child: CircularProgressIndicator(),
-                ),
-              ),
-              ApplePayButton(
-                paymentConfigurationAsset: 'apple_pay.json',
-                paymentItems: _paymentItems,
-                style: ApplePayButtonStyle.white,
-                type: ApplePayButtonType.buy,
-                margin: const EdgeInsets.only(top: 15.0),
-                onPaymentResult: onApplePayResult,
-                loadingIndicator: const Center(
-                  child: CircularProgressIndicator(),
-                ),
+              
+              Column(
+                children: [
+                  CardField(
+                    onCardChanged: (card) {
+                      print(card);
+                    },
+                  ),
+                  TextButton(
+                    onPressed: () async {
+                      // create payment method
+                      final paymentMethod = await Stripe.instance.createPaymentMethod(PaymentMethodParams.card());
+                      
+                    },
+                    child: Text('pay'),
+                  )
+                ],
               ),
             ],
           ),

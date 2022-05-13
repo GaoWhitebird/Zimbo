@@ -36,7 +36,7 @@ class SocialView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     const SizedBox(height: 10,),
-                    textViewUnderline(StringUtils.txtSocial1,
+                    textView(StringUtils.txtSocial1,
                       textColor: ColorUtils.appColorWhite,
                       fontSize: SizeUtils.textSizeXLarge,
                       fontWeight: FontWeight.bold,
@@ -87,7 +87,7 @@ class SocialView extends StatelessWidget {
                           }),
                     ),
                     const SizedBox(height: 30,),
-                    textViewUnderline(StringUtils.txtSocial4,
+                    textView(StringUtils.txtSocial4,
                       textColor: ColorUtils.appColorWhite,
                       fontSize: SizeUtils.textSizeXLarge,
                       fontWeight: FontWeight.bold,

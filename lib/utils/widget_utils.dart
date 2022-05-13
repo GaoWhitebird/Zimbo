@@ -45,7 +45,11 @@ class ExitDialog extends StatelessWidget {
               style: secondaryTextStyle(color: ColorUtils.appColorAccent)),
           onPressed: () {
             finish(context);
-            exit(0);
+            if (Platform.isAndroid) {
+              SystemNavigator.pop();
+            } else if (Platform.isIOS) {
+              exit(0);
+            }
           },
         ),
       ],

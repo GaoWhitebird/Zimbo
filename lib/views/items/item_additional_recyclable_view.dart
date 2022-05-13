@@ -70,7 +70,8 @@ class _AdditionalRecyclableItemViewState
                   children: [
                     textView(widget.model.name,
                         fontSize: SizeUtils.textSizeMedium,
-                        fontWeight: FontWeight.w500),
+                        fontWeight: FontWeight.w500,
+                        maxLine: 2),
                   ],
                 )),
                 Container(

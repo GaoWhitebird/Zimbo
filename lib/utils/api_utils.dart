@@ -27,6 +27,7 @@ class ApiUtils {
   static const urlAddScore = BASE_URL + 'user/add_user_score';
   static const urlPostSupport = BASE_URL + 'user/post_support';
   static const urlPostShare = BASE_URL + 'user/post_share';
+  static const urlAddPostalAddress = BASE_URL + 'user/add_postal_code';
 
   static const urlGetStripeKey = BASE_URL + 'payment/get_publish_key';
   static const urlUpdatePaymentInfo = BASE_URL + 'payment/update_payment';

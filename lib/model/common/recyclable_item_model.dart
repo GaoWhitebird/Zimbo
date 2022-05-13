@@ -5,6 +5,7 @@ class RecyclableItemModel {
   String count;
   String usedCount;
   String isChecked;
+  String isMultiple;
   String userRecyclableImage;
 
   RecyclableItemModel({
@@ -14,6 +15,7 @@ class RecyclableItemModel {
     required this.count,
     required this.usedCount,
     required this.isChecked,
+    required this.isMultiple,
     required this.userRecyclableImage
   });
 
@@ -24,6 +26,7 @@ class RecyclableItemModel {
     'count': count,
     'used_count': usedCount,
     'is_checked': isChecked,
+    'is_multiple': isMultiple,
     'user_recyclable_image': userRecyclableImage,
   };
 
@@ -34,6 +37,7 @@ class RecyclableItemModel {
     count: json['count'],
     usedCount: json['used_count'],
     isChecked: json['is_checked'],
+    isMultiple: json['is_multiple'],
     userRecyclableImage: json['user_recyclable_image'],
   );
 }

@@ -194,11 +194,11 @@ class StringUtils {
   static const txtSimplifyingSustainability = 'Simplifying sustainability';
   static const txtUnlockZimbo = 'Unlock zimbo';
   static const txtUnlockZimboSmall = 'unlock zimbo';
-  static const txtTimeToTakeItPersonally = 'Time to take it personally...';
+  static const txtTimeToTakeItPersonally = 'Time to\n take it personally...';
   static const txtPersonalSustainabilityScore = 'Personal sustainability score';
-  static const txtMonitorMoneySavedFromReuse = 'Monitor money saved from reuse';
+  static const txtMonitorMoneySavedFromReuse = 'Track the savings achieved from reuse';
   static const txtMonitorPersonalCarbonOffset = 'Monitor personal carbon offset';
-  static const txtMonitorPositiveEnvironment = 'Monitor positive environment';
+  static const txtMonitorPositiveEnvironment = 'Monitor your environmental impact';
   static const txtMonitorEnvironmentalImpact = 'Monitor positive environmental impact';
   static const txtExclusiveOffersAndDiscounts = 'Exclusive offers and discounts';
   static const txtTry14DaysFree = 'Try 14 days free, then \$1.99/month';
@@ -223,9 +223,9 @@ class StringUtils {
   static const txtIntroDescription_1 =
       'At zimbo we are reimagining sustainability. We believe that the largest opportunity for environmental impact lies with the collective power of individuals.';
   static const txtIntroDescription_2 =
-      'Easily log your sustainable behavior to generate a personal ‘green score’. Your score then qualifies you for exclusive discounts and offers from our corporate partners.';
+      'Easily log your sustainable behavior to generate a personal sustainability score. Based on your sustainability score, you can qualify for exclusive discounts and offers from our community partners.';
   static const txtIntroDescription_3 =
-      'Improve your green score by reusing household items that you may already own. Track your score, monitor your impact, enjoy the savings.';
+      'Improve your sustainability score by ongoing reuse of a range of household items that you likely already own. Track your score, monitor your impact, enjoy your savings.';
 
   static const txtAboutTitle_1 = 'Reimagining Sustainability';
   static const txtAboutTitle_2 = 'Who is zimbo?';
@@ -285,16 +285,16 @@ class StringUtils {
 
 
   static const txtReclamationStr_1 =
-      'Whether it’s an impromptu stop at the supermarket, a new purchase, a gift or perhaps even a little forgetfulness, we all tend to accumulate excess reusables over time.\n\nAt zimbo, we want reusable items to live their best (and longest) life. Reclamationz is our circular economy initiative to find new homes and new purposes for excess resuable items. Simply mail any of the following excess items to us, and we’ll do the rest:';
-  static const txtReclamationStr_2 = '·      Reusable shopping bags';
-  static const txtReclamationStr_3 = '·      Reusable water bottles';
-  static const txtReclamationStr_4 = '·      Reusable Coffee/Tea cups';
-  static const txtReclamationStr_5 = '·      Reusable Smoothie/Bubble Tea cups';
-  static const txtReclamationStr_6 = 'Check in regularly on the zimbosphere for updates on the cool places your excess reusables are going. Mailing address:';
-  static const txtReclamationStr_7 = 'ATT: zimbo\n85 The Parade';
-  static const txtReclamationStr_8 = 'Ascot Vale';
-  static const txtReclamationStr_9 = '3032';
-  static const txtReclamationStr_10 = 'Victoria';
+      'Whether it’s an impromptu stop at the supermarket, a new purchase, a gift or perhaps even a little forgetfulness, we all tend to accumulate excess reusables over time. At zimbo, we want reusable items to live their best (and longest) life. Reclamationz is our circular economy initiative to find new homes and new purposes for excess reusable items. Simply mail any of the following excess items to us, and we’ll do the rest:';
+  static const txtReclamationStr_2 = '\u2022     Reusable shopping bags';
+  static const txtReclamationStr_3 = '\u2022     Reusable water bottles';
+  static const txtReclamationStr_4 = '\u2022     Reusable Coffee/Tea cups';
+  static const txtReclamationStr_5 = '\u2022     Reusable Smoothie/Bubble Tea cups';
+  static const txtReclamationStr_6 = 'Check in regularly on the zimbosphere for updates on the cool places your excess reusables are going.';
+  static const txtReclamationStr_7 = 'Mailing address:';
+  static const txtReclamationStr_8 = 'ATTN: zimbo';
+  static const txtReclamationStr_9 = '85 The Parade';
+  static const txtReclamationStr_10 = 'Ascot Vale VIC 3032';
 
   static const txtSocial1 = 'Share ideas';
   static const txtSocial2 = 'At zimbo, we’re committed to expanding the scope of measurable personal sustainability. We work with technologists and innovators around Australia to find new and exciting ways to reuse. As more of these become publicly available, we will incorporate as many as possible into zimbo.\n\n Have a look at what’s available in the zimbo pantry. If you’ve come across any additional way to reuse, we’d love to hear about it.';

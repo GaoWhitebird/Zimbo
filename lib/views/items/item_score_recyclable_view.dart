@@ -99,7 +99,7 @@ class _ScoreRecyclableItemViewState extends State<ScoreRecyclableItemView> {
                   child: QuantityWidget(
                       model: widget.model,
                       addRemoveClicked: widget.onAddRemove,
-                    ).visible(true),
+                    ).visible(widget.model.isMultiple == '1'),
                 ),
                 
               ],

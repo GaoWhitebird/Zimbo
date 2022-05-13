@@ -97,7 +97,7 @@ class SubscriptionConfirmView extends StatelessWidget {
                       textContent: StringUtils.txtSubmit,
                       textSize: SizeUtils.textSizeMedium,
                       radius: 30,
-                      onPressed: () => model.onClickSubmit(context),
+                      onPressed: () => model.onClickSubmit(context, textEditingControllerAddress.text),
                     ),
                   )
                 ],

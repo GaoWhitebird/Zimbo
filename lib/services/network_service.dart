@@ -8,6 +8,7 @@ import 'package:zimbo/model/common/point_item_model.dart';
 import 'package:zimbo/model/common/recyclable_item_model.dart';
 import 'package:zimbo/model/common/subscription_info_model.dart';
 import 'package:zimbo/model/common/user_model.dart';
+import 'package:zimbo/model/request/add_postal_address_req.dart';
 import 'package:zimbo/model/request/add_recyclable_req.dart';
 import 'package:zimbo/model/request/add_score_req.dart';
 import 'package:zimbo/model/request/auto_login_req.dart';
@@ -402,6 +403,14 @@ class NetworkService {
 
     String code = res['referral_code'];
     return code;
+  }
+
+    Future doAddPostalAddress(String token, AddPostalAddressReq req) async {
+    var res = await doPostRequest(ApiUtils.urlAddPostalAddress,
+        token: TokenReq(token: token).toJson(), param: req.toJson());
+    if (res == null) return false;
+
+    return true;
   }
 
 }
