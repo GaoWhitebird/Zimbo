@@ -1,8 +1,6 @@
-import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:stacked/stacked.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/utils/color_utils.dart';
@@ -13,8 +11,7 @@ import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/other/qr_scanner_view_model.dart';
 import 'package:zimbo/views/other/add_score_view.dart';
 
-final codeStream = StreamController<Barcode>.broadcast();
-
+ MobileScannerController controller = MobileScannerController();
 class QrScannerView extends StatefulWidget {
   const QrScannerView({Key? key}) : super(key: key);
 
@@ -24,17 +21,13 @@ class QrScannerView extends StatefulWidget {
 
 class _QrScannerViewState extends State<QrScannerView> {
   Barcode? result;
-  QRViewController? controller;
+ 
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
 
   @override
   void reassemble() {
     super.reassemble();
-    if (Platform.isAndroid) {
-      controller!.pauseCamera();
-    } else if (Platform.isIOS) {
-      controller!.resumeCamera();
-    }
+    
   }
   @override
   void initState() {
@@ -43,48 +36,30 @@ class _QrScannerViewState extends State<QrScannerView> {
 
   @override
   void dispose() {
-    controller?.dispose();
     super.dispose();
   }
 
 Widget _buildQrView(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
-    var scanArea = width * 0.7;
 
-    return QRView(
-      key: qrKey,
-      onQRViewCreated: _onQRViewCreated,
-      overlay: QrScannerOverlayShape(
-          borderColor: ColorUtils.appColorWhite,
-          borderRadius: 5,
-          borderLength: 30,
-          borderWidth: 5,
-          cutOutSize: scanArea),
-      onPermissionSet: (ctrl, p) => _onPermissionSet(context, ctrl, p),
-    );
+    return MobileScanner(
+            allowDuplicates: false,
+            controller: controller,
+            onDetect: (barcode, args) {
+              if (barcode.rawValue == null) {
+                debugPrint('Failed to scan Barcode');
+              } else {
+                result = barcode;
+                final String code = barcode.rawValue!;
+                if(code.toLowerCase().contains(StringUtils.txtAppName)) {
+                
+                controller.stop();
+                finishView(context);
+                const AddScoreView().launch(context);
+                }
+              }
+            });
   }
-
-  void _onQRViewCreated(QRViewController controller) {
-    setState(() {
-      this.controller = controller;
-    });
-    controller.scannedDataStream.listen((scanData) async {
-      result = scanData;
-        if(result != null){
-          var barcodeStr = result!.code;
-          if(barcodeStr!.toLowerCase().contains(StringUtils.txtAppName)) {
-            await controller.pauseCamera();
-            finishView(context);
-            const AddScoreView().launch(context);
-          }
-        }
-    });
-  }
-
-  void _onPermissionSet(BuildContext context, QRViewController ctrl, bool p) {
-    if (!p) {
-    }
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -116,22 +91,36 @@ Widget _buildQrView(BuildContext context) {
         actions: [
            IconButton(
               splashRadius: 25,
-              icon: controller?.getFlashStatus() != null
-                  ? const Icon(Icons.flash_on)
-                  : const Icon(Icons.flash_off),
-              onPressed: () async {
-                await controller?.toggleFlash();
-                              setState(() {});
+              icon: ValueListenableBuilder(
+                valueListenable: controller.torchState,
+                builder: (context, state, child) {
+                  switch (state as TorchState) {
+                    case TorchState.off:
+                      return const Icon(Icons.flash_off, color: ColorUtils.appColorWhite);
+                    case TorchState.on:
+                      return const Icon(Icons.flash_on, color: ColorUtils.appColorWhite);
+                  }
+                },
+              ),
+              onPressed: () {
+                controller.toggleTorch();
               },
             ),
             IconButton(
               splashRadius: 25,
-              icon: controller?.getCameraInfo() != null
-                  ? const Icon(Icons.cameraswitch_outlined)
-                  : const Icon(Icons.cameraswitch_outlined),
-              onPressed: () async {
-                await controller?.flipCamera();
-                              setState(() {});
+              icon: ValueListenableBuilder(
+                valueListenable: controller.cameraFacingState,
+                builder: (context, state, child) {
+                  switch (state as CameraFacing) {
+                    case CameraFacing.front:
+                      return const Icon(Icons.cameraswitch_outlined);
+                    case CameraFacing.back:
+                      return const Icon(Icons.cameraswitch_outlined);
+                  }
+                },
+              ),
+              onPressed: () {
+                controller.switchCamera();
               },
             ),
         ],
@@ -145,7 +134,7 @@ Widget _buildQrView(BuildContext context) {
             bottom: 20,
             left: 0,
             right: 0,
-            child: result == null ? Container() : textView(result!.code, textColor: ColorUtils.appColorWhite, fontSize: SizeUtils.textSizeSMedium),
+            child: result == null ? Container() : textView(result!.rawValue, textColor: ColorUtils.appColorWhite, fontSize: SizeUtils.textSizeSMedium),
           )
         ],
       ),

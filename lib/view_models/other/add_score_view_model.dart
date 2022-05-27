@@ -20,7 +20,7 @@ class AddScoreViewModel extends BaseViewModel {
             {
               mList = value[0],
               for(int i = 0; i < mList.length; i++){
-                mList[i].isChecked = '1',
+                mList[i].isChecked = mList[i].isMultiple,
               },
 
               notifyListeners(),

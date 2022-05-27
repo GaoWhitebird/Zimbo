@@ -12,10 +12,7 @@ import 'package:zimbo/view_models/other/menu_view_model.dart';
 import 'package:zimbo/views/auth/guide_view.dart';
 import 'package:zimbo/views/items/item_menu_view.dart';
 import 'package:zimbo/views/main/about_us_view.dart';
-import 'package:zimbo/views/other/reclamation_view.dart';
-import 'package:zimbo/views/other/social_view.dart';
 import 'package:zimbo/views/other/subscription/subscription_lock_view.dart';
-import 'package:zimbo/views/other/subscription/subscription_view.dart';
 import 'package:zimbo/views/other/support_view.dart';
 import 'package:zimbo/views/other/profile_view.dart';
 

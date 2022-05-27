@@ -43,7 +43,12 @@ class _PantryItemPhotoViewState extends State<PantryItemPhotoView> {
               backgroundColor: ColorUtils.appColorBlue,
               centerTitle: true,
               elevation: 0,
-              automaticallyImplyLeading: false,
+              leading: BackButton(
+              color: ColorUtils.appColorWhite,
+              onPressed: () {
+                finishView(context);
+              },
+            ),
             ),
             body: Container(
               color: ColorUtils.appColorBlue,

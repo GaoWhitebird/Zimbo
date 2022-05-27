@@ -12,6 +12,8 @@ class ApiUtils {
   static const urlLogout = BASE_URL + 'user/logout';
   static const urlUpdateProfile = BASE_URL + 'user/update_profile';
   static const urlGetUserProfile = BASE_URL + 'user/profile';
+  static const urlGetDash = BASE_URL + 'user/get_home_profile';
+  static const urlGetHomeDetail = BASE_URL + 'user/get_home_detail';
   static const urlDeleteUserProfile = BASE_URL + 'user/delete_profile';
   static const urlResetScore = BASE_URL + 'user/reset_score';
   static const urlSetShoppingDay = BASE_URL + 'user/set_shopping_day';
@@ -34,6 +36,9 @@ class ApiUtils {
   static const urlCancelPayment = BASE_URL + 'payment/cancel_payment';
   static const urlGetSubscriptionInfo = BASE_URL + 'payment/get_subscription_info';
   static const urlGetPaymentHistory = BASE_URL + 'payment/get_payment_history';
+  static const urlChargeCard = BASE_URL + 'payment/charge_card';
+  static const urlChargeGoogle = BASE_URL + 'payment/charge_google';
+  static const urlChargeApple = BASE_URL + 'payment/charge_apple';
 
   static const urlFacebookAppId = '765052451139435';
   static const urlFacebookClientToken = 'dbd9508541ce22ef8f3d16e86a736461';

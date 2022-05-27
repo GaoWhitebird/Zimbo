@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:pay/pay.dart';
 import 'package:stacked/stacked.dart';
+import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
 import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/other/subscription/subscription_select_view_model.dart';
+
+import '../../../utils/image_utils.dart';
 
 class SubscriptionSelectView extends StatelessWidget {
   const SubscriptionSelectView({Key? key}) : super(key: key);
@@ -24,27 +27,17 @@ class SubscriptionSelectView extends StatelessWidget {
   buildWidget(
       BuildContext context, SubscriptionSelectViewModel model, Widget? child) {
     setStatusBarColor(ColorUtils.appColorWhite);
-    var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-    const _paymentItems = [
-      PaymentItem(
-        label: 'monthly',
-        amount: '1.99',
-        status: PaymentItemStatus.final_price,
-      )
-    ];
-   
-    Pay _payClient = Pay.withAssets([
-      'pay/apple_pay.json',
-      'pay/google_pay.json'
-    ]);
-
+    var width = MediaQuery.of(context).size.width;
+    
     void onGooglePayResult(paymentResult) {
       debugPrint(paymentResult.toString());
+      showMessage(paymentResult.toString(), null);
     }
 
     void onApplePayResult(paymentResult) {
       debugPrint(paymentResult.toString());
+      showMessage(paymentResult.toString(), null);
     }
 
     return WillPopScope(
@@ -74,6 +67,16 @@ class SubscriptionSelectView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
+              Container(
+                height: height * 0.15,
+                alignment: Alignment.center,
+                child: textView(StringUtils.txtChooseYourPaymentMethod,
+                    textColor: ColorUtils.appColorWhite,
+                    fontSize: SizeUtils.textSizeXLarge,
+                    fontWeight: FontWeight.w600,
+                    isCentered: true,
+                    maxLine: 2),
+              ),
               GestureDetector(
                 child: Container(
                   height: height * 0.1,
@@ -86,24 +89,105 @@ class SubscriptionSelectView extends StatelessWidget {
                       maxLine: 2),
                 ),
               ),
-              
-              Column(
+              SingleChildScrollView(
+                child: Column(
                 children: [
-                  CardField(
-                    onCardChanged: (card) {
-                      print(card);
-                    },
+                  Container(
+                    width: width,
+                    margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: ElevatedButton.icon(
+                          onPressed: () => model.onClickCardPay(context),
+                          icon: SvgPicture.asset(ImageUtils.imgIcCard, width: 30, height: 30,),
+                          label: textView(StringUtils.txtPay,
+                              textColor: ColorUtils.appColorBlack,
+                              fontSize: SizeUtils.textSizeLarge,
+                              fontWeight: FontWeight.w500,
+                              isCentered: true),
+                          style: ElevatedButton.styleFrom(
+                              primary: ColorUtils.appColorWhite,
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 10),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5),
+                              ))),
+                    ),
                   ),
-                  TextButton(
-                    onPressed: () async {
-                      // create payment method
-                      final paymentMethod = await Stripe.instance.createPaymentMethod(PaymentMethodParams.card());
-                      
-                    },
-                    child: Text('pay'),
-                  )
+                  Container(
+                    width: width,
+                    margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: ElevatedButton.icon(
+                          onPressed: () => model.onClickApplePay(context),
+                          icon: SvgPicture.asset(ImageUtils.imgIcApple, width: 30, height: 30,),
+                          label: textView(StringUtils.txtPay,
+                              textColor: ColorUtils.appColorBlack,
+                              fontSize: SizeUtils.textSizeLarge,
+                              fontWeight: FontWeight.w500,
+                              isCentered: true),
+                          style: ElevatedButton.styleFrom(
+                              primary: ColorUtils.appColorWhite,
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 10),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5),
+                              ))),
+                    ),
+                  ).visible(model.isApplePay),
+                  Container(
+                    width: width,
+                    margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: ElevatedButton.icon(
+                          onPressed: () => model.onClickGooglePay(context),
+                          icon: SvgPicture.asset(ImageUtils.imgIcGoogle, width: 30, height: 30,),
+                          label: textView(StringUtils.txtPay,
+                              textColor: ColorUtils.appColorBlack,
+                              fontSize: SizeUtils.textSizeLarge,
+                              fontWeight: FontWeight.w500,
+                              isCentered: true),
+                          style: ElevatedButton.styleFrom(
+                              primary: ColorUtils.appColorWhite,
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 10),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5),
+                              ))),
+                    ),
+                  ).visible(model.isGooglePay),
+                  GooglePayButton(
+                    width: width * 0.9,
+                    paymentConfigurationAsset:
+                        'pay/google_pay.json',
+                    paymentItems: SubscriptionSelectViewModel.paymentItems,
+                    style: GooglePayButtonStyle.white,
+                    type: GooglePayButtonType.pay,
+                    margin: const EdgeInsets.only(top: 15.0),
+                    onPaymentResult: onGooglePayResult,
+                    loadingIndicator: const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  ),
+                  ApplePayButton(
+                    width: width * 0.9,
+                    paymentConfigurationAsset:
+                        'pay/apple_pay.json',
+                    paymentItems: SubscriptionSelectViewModel.paymentItems,
+                    style: ApplePayButtonStyle.white,
+                    type: ApplePayButtonType.buy,
+                    margin: const EdgeInsets.only(top: 15.0),
+                    onPaymentResult: onApplePayResult,
+                    loadingIndicator: const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  ),
                 ],
               ),
+              ),
+              
             ],
           ),
         ),

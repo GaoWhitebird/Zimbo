@@ -228,7 +228,7 @@ class SubscriptionLockView extends StatelessWidget {
                 margin: EdgeInsets.fromLTRB(width * 0.05, 0, width * 0.05, 0),
                 alignment: Alignment.center,
                 child: textView(StringUtils.txtNoNeedToPay,
-                    textColor: ColorUtils.appColorTextWhite,
+                    textColor: ColorUtils.appColorWhite_50,
                     fontSize: SizeUtils.textSizeSmall,
                     fontWeight: FontWeight.w400,
                     isCentered: true,

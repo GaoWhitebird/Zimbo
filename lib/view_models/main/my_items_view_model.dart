@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/model/common/recyclable_item_model.dart';
-import 'package:zimbo/model/request/add_recyclable_req.dart';
 import 'package:zimbo/model/request/delete_recyclable_req.dart';
 import 'package:zimbo/model/request/recyclable_item_req.dart';
 import 'package:zimbo/model/request/update_recyclable_req.dart';
@@ -10,7 +9,6 @@ import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
 import 'package:zimbo/views/auth/pantry_item_photo_view.dart';
 import 'package:zimbo/views/other/add_item_view.dart';
-import 'package:zimbo/views/other/menu_view.dart';
 
 class MyItemsViewModel extends BaseViewModel {
   List<RecyclableItemModel> mList = [];
@@ -84,4 +82,5 @@ class MyItemsViewModel extends BaseViewModel {
         notifyListeners();
     }
   }
+
 }

@@ -27,7 +27,6 @@ class ResetPassViewModel extends BaseViewModel {
     
     if(token == null) return;
 
-    showLoading();
     ResetPasswordReq req = ResetPasswordReq(password: password, token: token!);
     await networkService.doResetPassword(req).then((value) => {
       if(value == null){
@@ -37,7 +36,6 @@ class ResetPassViewModel extends BaseViewModel {
         finishView(context),
       }
     });
-    hideLoading();
   }
 
   onClickRemember(BuildContext context) {

@@ -5,6 +5,7 @@ import 'package:zimbo/model/common/recyclable_item_model.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/image_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
+import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 
 class AdditionalRecyclableItemView extends StatefulWidget {
@@ -72,6 +73,15 @@ class _AdditionalRecyclableItemViewState
                         fontSize: SizeUtils.textSizeMedium,
                         fontWeight: FontWeight.w500,
                         maxLine: 2),
+                    textView(StringUtils.txtForMoreInfo,
+                        fontSize: SizeUtils.textSizeSSmall,
+                        fontWeight: FontWeight.w400,
+                        textColor: ColorUtils.appColorBlack_30,
+                        maxLine: 1,),
+                    textView(widget.model.description,
+                        fontSize: SizeUtils.textSizeSSmall,
+                        fontWeight: FontWeight.w400,
+                        maxLine: 1),
                   ],
                 )),
                 Container(

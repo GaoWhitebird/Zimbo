@@ -32,10 +32,13 @@ class ImageUtils {
   static const imgIcReclamationIc4 = 'assets/images/png/ic_reclamation_ic_4.png';
   static const imgIcSocialHeader = 'assets/images/png/ic_social_header.png';
   static const imgIcSocialBubble = 'assets/images/png/ic_social_bubble.png';
+  static const imgIcTree = 'assets/images/png/ic_tree.png';
 
   // svg
   static const imgIcFacebook = 'assets/images/svg/ic_facebook.svg';
   static const imgIcGoogle = 'assets/images/svg/ic_google.svg';
+  static const imgIcApple = 'assets/images/svg/ic_apple.svg';
+  static const imgIcCard = 'assets/images/svg/ic_card.svg';
   static const imgIcCheckOn = 'assets/images/svg/ic_check_checked.svg';
   static const imgIcCheckOff = 'assets/images/svg/ic_check_unchecked.svg';
   static const imgIcCheckSigngle = 'assets/images/svg/ic_check_single.svg';

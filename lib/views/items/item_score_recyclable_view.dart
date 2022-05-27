@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/model/common/recyclable_item_model.dart';
@@ -101,7 +102,25 @@ class _ScoreRecyclableItemViewState extends State<ScoreRecyclableItemView> {
                       addRemoveClicked: widget.onAddRemove,
                     ).visible(widget.model.isMultiple == '1'),
                 ),
-                
+                Container(
+                  height: width * 0.2 + 20,
+                  alignment: Alignment.topRight,
+                  child: IconButton(
+                    icon: widget.model.isChecked == '1' ? SvgPicture.asset(ImageUtils.imgIcCheckOn) : SvgPicture.asset(ImageUtils.imgIcCheckOff),
+                    alignment: Alignment.topRight,
+                    splashColor: ColorUtils.appColorTransparent,
+                    onPressed: () {
+                      setState(() {
+                        if(widget.model.isChecked == '1'){
+                          widget.model.count = '0';
+                        }else {
+                          widget.model.count = '1';
+                        }
+                        widget.model.isChecked == '1' ? widget.model.isChecked = '0' : widget.model.isChecked = '1';
+                      });
+                    },
+                  ),
+                ).visible(widget.model.isMultiple == '0'),
               ],
             ),
             Positioned(

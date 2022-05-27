@@ -73,7 +73,7 @@ class SubscriptionConfirmView extends StatelessWidget {
                       maxLine: 2),
                   SizedBox(height: height * 0.05,),  
                   textView(StringUtils.txtPleaseEnterPostalAddress,
-                      textColor: ColorUtils.appColorTextWhite,
+                      textColor: ColorUtils.appColorWhite_50,
                       fontSize: SizeUtils.textSizeSmall,
                       fontWeight: FontWeight.w400,
                       isCentered: true,

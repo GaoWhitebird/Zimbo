@@ -221,7 +221,7 @@ class SignUpView extends StatelessWidget {
                                                 textColor:
                                                     ColorUtils.appColorAccent,
                                                 fontSize:
-                                                    SizeUtils.textSizeMedium,
+                                                    SizeUtils.textSizeSMedium,
                                                 fontWeight: FontWeight.w500,
                                                 isCentered: false,
                                               ),
@@ -247,7 +247,7 @@ class SignUpView extends StatelessWidget {
                                                 textColor:
                                                     ColorUtils.appColorAccent,
                                                 fontSize:
-                                                    SizeUtils.textSizeMedium,
+                                                    SizeUtils.textSizeSMedium,
                                                 fontWeight: FontWeight.w500,
                                                 isCentered: false,
                                               ),

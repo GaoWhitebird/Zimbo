@@ -3,17 +3,26 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:zimbo/locator.dart';
+import 'package:zimbo/model/common/dash_model.dart';
+import 'package:zimbo/model/common/home_detail_model.dart';
 import 'package:zimbo/model/common/payment_history_item_model.dart';
 import 'package:zimbo/model/common/point_item_model.dart';
+import 'package:zimbo/model/common/profile_insight_model.dart';
+import 'package:zimbo/model/common/profile_level_model.dart';
 import 'package:zimbo/model/common/recyclable_item_model.dart';
-import 'package:zimbo/model/common/subscription_info_model.dart';
+import 'package:zimbo/model/common/subscription_model.dart';
+import 'package:zimbo/model/common/summary_model.dart';
 import 'package:zimbo/model/common/user_model.dart';
 import 'package:zimbo/model/request/add_postal_address_req.dart';
 import 'package:zimbo/model/request/add_recyclable_req.dart';
 import 'package:zimbo/model/request/add_score_req.dart';
 import 'package:zimbo/model/request/auto_login_req.dart';
+import 'package:zimbo/model/request/charge_apple_req.dart';
+import 'package:zimbo/model/request/charge_card_req.dart';
+import 'package:zimbo/model/request/charge_google_req.dart';
 import 'package:zimbo/model/request/delete_recyclable_req.dart';
 import 'package:zimbo/model/request/forgot_password_req.dart';
+import 'package:zimbo/model/request/get_home_detail_req.dart';
 import 'package:zimbo/model/request/login_req.dart';
 import 'package:zimbo/model/request/post_support_req.dart';
 import 'package:zimbo/model/request/reset_password_req.dart';
@@ -30,7 +39,7 @@ import 'package:zimbo/utils/api_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 
 class NetworkService {
-  var dio = Dio();
+  var dio = Dio(); 
 
   Future doPostRequest(String url, {dynamic param, dynamic token}) async {
     showLoading();
@@ -59,6 +68,7 @@ class NetworkService {
       return resData['api_result'];
     } catch (e) {
       hideLoading();
+      showMessage(e.toString(), null);
       return null;
     }
   }
@@ -85,6 +95,7 @@ class NetworkService {
       return resData['api_result'];
     } catch (e) {
       hideLoading();
+      showMessage(e.toString(), null);
       return null;
     }
   }
@@ -278,6 +289,45 @@ class NetworkService {
     return userModel;
   }
 
+  Future<HomeDetailModel?> doGetHomeDetail(String token, GetHomeDetailReq req) async {
+    var res = await doPostRequest(ApiUtils.urlGetHomeDetail,
+        token: TokenReq(token: token).toJson(), param: req.toJson());
+    if (res == null) return null;
+
+    HomeDetailModel homeDetailModel = HomeDetailModel();
+    homeDetailModel.summaryList = [];
+    homeDetailModel.title = res['title'];
+    homeDetailModel.total = res['total'];
+    
+    List<dynamic> summaryList = res['summary_list'];
+    for(int i = 0; i < summaryList.length; i++){
+      homeDetailModel.summaryList!.add(SummaryModel.fromJson(summaryList[i]));
+    }
+    
+    return homeDetailModel;
+  }
+
+  Future<DashModel?> doGetDashboardData(String token) async {
+    var res = await doGetRequest(
+        ApiUtils.urlGetDash, TokenReq(token: token).toJson());
+    if (res == null) return null;
+
+    DashModel dashModel = DashModel();
+    dashModel.levelList = [];
+    dashModel.available = res['available'];
+    UserModel userModel = UserModel.fromJson(res['user_info']);
+    dashModel.userModel = userModel;
+    ProfileInsightModel insightModel = ProfileInsightModel.fromJson(res['insight_list']);
+    dashModel.insightModel = insightModel;
+    
+    List<dynamic> levelList = res['level_list'];
+    for(int i = 0; i < levelList.length; i++){
+      dashModel.levelList!.add(ProfileLevelModel.fromJson(levelList[i]));
+    }
+    
+    return dashModel;
+  }
+
   Future<UserModel?> doAddScore(String token, AddScoreReq req) async {
     var res = await doPostRequest(ApiUtils.urlAddScore,
         param: req.toJson(), token: TokenReq(token: token).toJson());
@@ -340,6 +390,30 @@ class NetworkService {
     return true;
   }
 
+  Future doChargeCard(String token, ChargeCardReq req) async {
+    var res = await doPostRequest(ApiUtils.urlChargeCard,
+        token: TokenReq(token: token).toJson(), param: req.toJson());
+    if (res == null) return false;
+
+    return true;
+  }
+
+  Future doChargeGoogle(String token, ChargeGoogleReq req) async {
+    var res = await doPostRequest(ApiUtils.urlChargeGoogle,
+        token: TokenReq(token: token).toJson(), param: req.toJson());
+    if (res == null) return false;
+
+    return true;
+  }
+
+  Future doChargeApple(String token, ChargeAppleReq req) async {
+    var res = await doPostRequest(ApiUtils.urlChargeApple,
+        token: TokenReq(token: token).toJson(), param: req.toJson());
+    if (res == null) return false;
+
+    return true;
+  }
+
   Future doCancelPayment(String token) async {
     var res = await doPostRequest(ApiUtils.urlCancelPayment,
         token: TokenReq(token: token).toJson());
@@ -365,12 +439,12 @@ class NetworkService {
     return publishKey;
   }
 
-  Future<SubscriptionInfoModel?> doGetSubscriptionInfo(String token) async {
+  Future<SubscriptionModel?> doGetSubscriptionInfo(String token) async {
     var res = await doPostRequest(ApiUtils.urlGetSubscriptionInfo,
         token: TokenReq(token: token).toJson());
 
     if (res == null) return null;
-    SubscriptionInfoModel model = SubscriptionInfoModel.fromJson(res);
+    SubscriptionModel model = SubscriptionModel.fromJson(res);
     return model;
   }
 

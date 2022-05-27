@@ -12,7 +12,7 @@
           "parameters": {
             "gateway": "stripe",
             "stripe:version": "2020-08-27",
-            "stripe:publishableKey": "pk_test_51KDyzdAJErSwMoxLWEcZxAFUMBxUoZzhIWKUgH1KUjOXn2Bvi2gNRRqGrCLZ83bzZCdL6y41154amCffitmLQFMk00QSvuF3Ml"
+            "stripe:publishableKey": "pk_test"
           }
         },
         "parameters": {

@@ -18,6 +18,7 @@ class ColorUtils {
   static const appColorOrange_10 = Color(0x1AFFA800);
   static const appColorWhite = Color(0xFFFFFFFF);
   static const appColorWhite_20 = Color(0x33FFFFFF);
+  static const appColorWhite_50 = Color(0x80FFFFFF);
   static const appColorWhite_5 = Color(0x15FFFFFF);
   static const appColorRedDark = Color(0xFFFF3333);
   static const appColorTransparent = Color(0x00FFFFFF);

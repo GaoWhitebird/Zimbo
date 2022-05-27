@@ -16,6 +16,11 @@ class SubscriptionConfirmViewModel extends BaseViewModel {
   }
 
   onClickSubmit(BuildContext context, String postalAddress) async {
+    if(postalAddress.isEmpty){
+      showMessage(StringUtils.txtPleaseEnterPostalAddress, null);
+      return;
+    }
+    
     AddPostalAddressReq req = AddPostalAddressReq(postalAddress: postalAddress);
     networkService.doAddPostalAddress(token!, req).then((value) {
       if(value) {

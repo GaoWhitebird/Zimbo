@@ -8,8 +8,6 @@ import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/main/main_view_model.dart';
-import 'package:zimbo/views/main/about_us_view.dart';
-import 'package:zimbo/views/main/community_view.dart';
 import 'package:zimbo/views/main/home_view.dart';
 import 'package:zimbo/views/main/my_items_view.dart';
 import 'package:zimbo/views/main/sphere_view.dart';
@@ -38,7 +36,7 @@ class _MainViewState extends State<MainView> {
 List<String> navTitles = [
   StringUtils.txtReclamation,
   StringUtils.txtPantry,
-  StringUtils.txtMyProfile,
+  StringUtils.txtDashboard,
   StringUtils.txtZimboSphere,
   StringUtils.txtSocial,
 ];
@@ -170,7 +168,14 @@ buildWidget(BuildContext context, MainViewModel model, Widget? child) {
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(20),
                             topRight: Radius.circular(20),
-                          )),
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                                color: ColorUtils.appColorBlack_10,
+                                blurRadius: 10,
+                                offset: Offset(0, 5)),
+                          ],
+                          ),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [

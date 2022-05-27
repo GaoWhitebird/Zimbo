@@ -1,3 +1,5 @@
+import 'package:zimbo/model/common/subscription_info_model.dart';
+
 class UserModel {
   String? id;
   String? userName;
@@ -18,6 +20,7 @@ class UserModel {
   String? signupType;
   String? status;
   String? loginStatus;
+  SubscriptionInfoModel? subscriptionInfo;
 
   UserModel({
     this.id,
@@ -39,6 +42,7 @@ class UserModel {
     this.signupType,
     this.status,
     this.loginStatus,
+    this.subscriptionInfo,
   });
 
   Map<String, dynamic> toJson() => {
@@ -61,6 +65,7 @@ class UserModel {
     'signup_type': signupType,
     'status': status,
     'login_status': loginStatus,
+    'subscription_info': subscriptionInfo == null ? null : subscriptionInfo!.toJson(),
   };
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
@@ -83,5 +88,6 @@ class UserModel {
     signupType: json['signup_type'],
     status: json['status'],
     loginStatus: json['login_status'],
+    subscriptionInfo: json['subscription_info'] == null ? null : SubscriptionInfoModel.fromJson(json['subscription_info']),
   );
 }
