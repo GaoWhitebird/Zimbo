@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/model/common/recyclable_item_model.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/image_utils.dart';
@@ -77,11 +78,11 @@ class _AdditionalRecyclableItemViewState
                         fontSize: SizeUtils.textSizeSSmall,
                         fontWeight: FontWeight.w400,
                         textColor: ColorUtils.appColorBlack_30,
-                        maxLine: 1,),
+                        maxLine: 1,).visible(widget.model.description.isNotEmpty),
                     textView(widget.model.description,
                         fontSize: SizeUtils.textSizeSSmall,
                         fontWeight: FontWeight.w400,
-                        maxLine: 1),
+                        maxLine: 1).visible(widget.model.description.isNotEmpty),
                   ],
                 )),
                 Container(

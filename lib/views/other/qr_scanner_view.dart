@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:stacked/stacked.dart';
@@ -11,17 +10,17 @@ import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/other/qr_scanner_view_model.dart';
 import 'package:zimbo/views/other/add_score_view.dart';
 
- MobileScannerController controller = MobileScannerController();
+
 class QrScannerView extends StatefulWidget {
   const QrScannerView({Key? key}) : super(key: key);
-
+ 
   @override
   _QrScannerViewState createState() => _QrScannerViewState();
 }
 
 class _QrScannerViewState extends State<QrScannerView> {
   Barcode? result;
- 
+  MobileScannerController controller = MobileScannerController();
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
 
   @override
@@ -37,6 +36,7 @@ class _QrScannerViewState extends State<QrScannerView> {
   @override
   void dispose() {
     super.dispose();
+    controller.dispose();
   }
 
 Widget _buildQrView(BuildContext context) {

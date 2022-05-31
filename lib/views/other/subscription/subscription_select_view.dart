@@ -29,11 +29,6 @@ class SubscriptionSelectView extends StatelessWidget {
     setStatusBarColor(ColorUtils.appColorWhite);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-    
-    void onGooglePayResult(paymentResult) {
-      debugPrint(paymentResult.toString());
-      showMessage(paymentResult.toString(), null);
-    }
 
     void onApplePayResult(paymentResult) {
       debugPrint(paymentResult.toString());
@@ -158,24 +153,11 @@ class SubscriptionSelectView extends StatelessWidget {
                               ))),
                     ),
                   ).visible(model.isGooglePay),
-                  GooglePayButton(
-                    width: width * 0.9,
-                    paymentConfigurationAsset:
-                        'pay/google_pay.json',
-                    paymentItems: SubscriptionSelectViewModel.paymentItems,
-                    style: GooglePayButtonStyle.white,
-                    type: GooglePayButtonType.pay,
-                    margin: const EdgeInsets.only(top: 15.0),
-                    onPaymentResult: onGooglePayResult,
-                    loadingIndicator: const Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  ),
                   ApplePayButton(
                     width: width * 0.9,
                     paymentConfigurationAsset:
                         'pay/apple_pay.json',
-                    paymentItems: SubscriptionSelectViewModel.paymentItems,
+                    paymentItems: model.paymentItems,
                     style: ApplePayButtonStyle.white,
                     type: ApplePayButtonType.buy,
                     margin: const EdgeInsets.only(top: 15.0),

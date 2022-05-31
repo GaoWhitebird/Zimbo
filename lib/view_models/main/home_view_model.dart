@@ -7,6 +7,7 @@ import 'package:zimbo/model/common/profile_level_model.dart';
 import 'package:zimbo/model/common/user_model.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
 import 'package:zimbo/views/main/home_detail_view.dart';
+import 'package:zimbo/views/other/edit_profile_view.dart';
 import 'package:zimbo/views/other/how_work_view.dart';
 
 class HomeViewModel extends BaseViewModel {
@@ -56,6 +57,11 @@ class HomeViewModel extends BaseViewModel {
     const HowWorkView().launch(context);
   }
 
+  
+  onClickAddPhoto(BuildContext context) {
+    EditProfileView().launch(context);
+  }
+
   onInsightClicked(int index) {
     if(insightModel == null) return;
 
@@ -101,5 +107,6 @@ class HomeViewModel extends BaseViewModel {
       HomeDetailView(type: type,).launch(context);
     }
   }
+
 
 }

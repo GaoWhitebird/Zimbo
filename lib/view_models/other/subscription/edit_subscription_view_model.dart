@@ -18,7 +18,7 @@ class EditSubscriptionViewModel extends BaseViewModel {
 
   initialize(BuildContext context) async {
     token = await sharedService.getToken();
-    await networkService.doGetStripeKey(token!).then((value) => {
+    await networkService.doGetPaymentMethodInfo(token!).then((value) => {
       if(value != null){
         publishKey = value,
       }

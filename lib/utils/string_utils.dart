@@ -166,6 +166,7 @@ class StringUtils {
   static const txtWhatInIncluded = 'What in included in the subscription?';
   static const txtWhatInIncludedDescription = '- Personal reuse activity total \n - Personal carbon offset total (coming soon) \n - Personal ‘Green Rating’ (coming soon) \n - Reuse data & insights (coming soon) \n - Personalized offers and discounts (coming soon) \n - Social networking & challenges (coming soon)';
   static const txtPaymentHistory = 'Payment History';
+  static const txtPaymentKeyIsNull = 'Payment key is null';
   static const txtNextPayment = 'Next Payment';
   static const txtCancelPayment = 'Cancel my subscription';
   static const txtSubscriptionCost = 'Subscription Cost:';
@@ -243,7 +244,7 @@ class StringUtils {
   static const txtAboutDescription_1 =
       'At zimbo™ we are reimagining sustainability.\n\nWe believe that the largest opportunity for environmental impact lies with the collective power of individuals. \nWhere even the smallest adjustments to daily habits and buying decisions can provide meaningful relief for our planet.';
   static const txtAboutDescription_2 =
-      'zimbo is a modern approach to climate care that empowers Australians to behave more sustainably every day. \n\nConsumers should benefit from the conservational habits they foster. By making easy, ethical decisions in routine activities, zimbo provides its members with a 360-degree personal sustainability profile. This profile includes:\n\n•	Personal sustainability score\n•	Total reuse activity over time \n•	Total carbon offset 															 \n•	Money saved from reuse 						\n•	Other handy insights 												 \n\nMuch like a credit score, zimbo members enjoy exclusive benefits and discounts from our corporate partners based on the score they accumulate. \n\nThrough the zimbo app, members can easily access a vast pantry of sustainable items that contribute to their profile, placing control of their impact in their own hands. ';
+      'zimbo is a modern approach to climate care that empowers Australians to behave more sustainably every day. \n\nConsumers should benefit from the conservational habits they foster. By making easy, ethical decisions in routine activities, zimbo provides its members with a 360-degree personal sustainability profile. This profile includes:\n\n\u2022    Personal sustainability score \n\u2022    Total reuse activity over time\n\u2022    Total carbon offset                   \n\u2022    Money saved from reuse        \n\u2022    Other handy insights               \n\nMuch like a credit score, zimbo members enjoy exclusive benefits and discounts from our corporate partners based on the score they accumulate. \n\nThrough the zimbo app, members can easily access a vast pantry of sustainable items that contribute to their profile, placing control of their impact in their own hands. ';
   static const txtAboutDescription_3 =
       'After downloading the zimbo app and creating an account, new members will receive a keychain printed with a unique QR code in the mail. \n\nWhether at home or out and about, each time a member uses an eligible reusable product, they can open the zimbo app, scan the QR code, and select the item that was reused. It’s as simple as that. \n\nYour impact and zimbo wallet are calculated based on a variety of sustainable behaviors. Details can be found in “How do I improve my score?” in the user dashboard. ';
 
@@ -267,11 +268,11 @@ class StringUtils {
   static const txtBlogDescription_3 =
       'A mature tree absorbs carbon dioxide at a rate of 22 kilograms per year. In one year, an acre of forest can absorb twice the carbon dioxide produced by the average motor vehicle each year.';
 
-  static const txtGuideTitle_1 = '1.	Sign-up and get your QR key chain sent to your door';
-  static const txtGuideTitle_2 = '2.	Select any eligible items you currently own';
-  static const txtGuideTitle_3 = '3.	Let us know when you shop';
-  static const txtGuideTitle_4 = '4.	Scan your QR key chain and select the item you\'ve reused';
-  static const txtGuideTitle_5 = '5.	Grow your sustainability score';
+  static const txtGuideTitle_1 = '1. Sign-up and get your QR key chain sent to your door';
+  static const txtGuideTitle_2 = '2. Select any eligible items you currently own';
+  static const txtGuideTitle_3 = '3. Let us know when you shop';
+  static const txtGuideTitle_4 = '4. Scan your QR key chain and select the item you\'ve reused';
+  static const txtGuideTitle_5 = '5. Grow your sustainability score';
   static const txtGuideDescription_1 = 'Your free QR keychain will be sent to your registered address.\nTip: Keep your keychain on you as much as possible to avoid missing an opportunity to log your reuse.';
   static const txtGuideDescription_2 = 'From the list of eligible items, select all of the ones that you currently own.\nTip: Submit a picture of your reusables so we can verify and add to our community gallery.';
   static const txtGuideDescription_3 = 'Tell us which days you usually go shopping for groceries or take-away drinks and we\'ll remind you to take along your reusables.\nTip: If you don\'t have a specific shopping day, or prefer not to be reminded, that\'s ok.';

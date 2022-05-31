@@ -50,7 +50,8 @@ Future<void> setStatusBarColor(
 
 /// This function will show status bar
 Future<void> showStatusBar() async {
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+      overlays: SystemUiOverlay.values);
 }
 
 /// This function will hide status bar
@@ -110,7 +111,8 @@ Future<T?> invokeNativeMethod<T>(String channel, String method,
 
 Future<String?> getDeviceId() async {
   var deviceInfo = DeviceInfoPlugin();
-  if (Platform.isIOS) { // import 'dart:io'
+  if (Platform.isIOS) {
+    // import 'dart:io'
     var iosDeviceInfo = await deviceInfo.iosInfo;
     return iosDeviceInfo.identifierForVendor; // unique ID on iOS
   } else {
@@ -120,13 +122,13 @@ Future<String?> getDeviceId() async {
 }
 
 bool isValidEmail(String email) {
-
-  String p = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+  String p =
+      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
   RegExp regExp = new RegExp(p);
 
   return regExp.hasMatch(email);
 }
 
-bool isValidPassword(String password){
+bool isValidPassword(String password) {
   return password.length >= 6;
 }

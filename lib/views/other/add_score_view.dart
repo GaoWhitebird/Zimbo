@@ -60,8 +60,7 @@ class AddScoreView extends StatelessWidget {
                   ),
                   Expanded(
                     child: ListView(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
                       children: getChildList(context, model),
                     ),
                   ),

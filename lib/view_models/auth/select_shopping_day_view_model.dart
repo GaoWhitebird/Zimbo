@@ -4,7 +4,7 @@ import 'package:zimbo/model/request/shopping_day_req.dart';
 import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
-import 'package:zimbo/views/main/main_view.dart';
+import 'package:zimbo/views/other/subscription/subscription_lock_view.dart';
 
 class SelectShoppingDayViewModel extends BaseViewModel {
   final weekDayValues = List.filled(7, false);
@@ -27,7 +27,7 @@ class SelectShoppingDayViewModel extends BaseViewModel {
   }
 
   onClickSkip(BuildContext context) {
-    MainView().launch(context, isNewTask: true);
+    const SubscriptionLockView().launch(context, isNewTask: true);
   }
 
   void weekDayChanged(int day) {

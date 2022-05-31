@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:zimbo/locator.dart';
 import 'package:zimbo/model/common/dash_model.dart';
 import 'package:zimbo/model/common/home_detail_model.dart';
@@ -68,7 +69,9 @@ class NetworkService {
       return resData['api_result'];
     } catch (e) {
       hideLoading();
-      showMessage(e.toString(), null);
+      if (kDebugMode) {
+        print(e.toString());
+      }
       return null;
     }
   }
@@ -95,7 +98,9 @@ class NetworkService {
       return resData['api_result'];
     } catch (e) {
       hideLoading();
-      showMessage(e.toString(), null);
+      if (kDebugMode) {
+        print(e.toString());
+      }
       return null;
     }
   }
@@ -436,6 +441,24 @@ class NetworkService {
     if (res == null) return null;
 
     String publishKey = res['publish_key'];
+    return publishKey;
+  }
+
+  Future<String?> doGetPaymentMethodInfo(String token) async {
+    var res = await doPostRequest(ApiUtils.urlGetPaymentMethodInfo,
+        token: TokenReq(token: token).toJson());
+    if (res == null) return null;
+
+    Map stripe = res[1];
+    Map attribute = stripe['attributes'];
+    String environment = stripe['environment'];
+    String? publishKey; 
+    if(environment == '0'){
+      publishKey = attribute['test_publishable_key'];
+    }else {
+      publishKey = attribute['publishable_key'];
+    }
+    
     return publishKey;
   }
 

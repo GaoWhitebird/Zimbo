@@ -105,8 +105,8 @@ class _HomeViewState extends State<HomeView>
                               strokeWidth: 1,
                               borderType: BorderType.Circle,
                               radius: const Radius.circular(10),
-                              child: Container(
-                                  //onTap: () => model.onClickAddPhoto(context),
+                              child: GestureDetector(
+                                  onTap: () => model.onClickAddPhoto(context),
                                   )),
                         ),
                       ]),
