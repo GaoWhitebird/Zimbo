@@ -142,12 +142,19 @@ class LoginViewModel extends BaseViewModel {
         ],
       );
 
-      print(credential);
+      String userName = '';
+      String userEmail = '';
+      if (credential.givenName != null && credential.familyName != null) {
+        userName = credential.givenName! + ' ' + credential.familyName!;
+      }
+      if (credential.email != null) {
+        userEmail = credential.email!;
+      }
 
       SignUpAppleReq req = SignUpAppleReq(
-          userName: credential.givenName!,
-          appleId: credential.authorizationCode,
-          email: credential.email,
+          userName: userName,
+          appleId: credential.userIdentifier!,
+          email: userEmail,
           deviceKey: deviceKey!,
           firebaseToken: firebaseToken!,
           deviceType: platformType);

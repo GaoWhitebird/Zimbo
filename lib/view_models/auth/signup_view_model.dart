@@ -143,8 +143,6 @@ class SignUpViewModel extends BaseViewModel {
         ],
       );
 
-      print(credential);
-
       SignUpAppleReq req = SignUpAppleReq(
           userName: credential.givenName!,
           appleId: credential.authorizationCode,

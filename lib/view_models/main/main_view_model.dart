@@ -1,9 +1,13 @@
+import 'dart:io';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:uni_links/uni_links.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/utils/color_utils.dart';
@@ -13,25 +17,32 @@ import 'package:zimbo/views/other/add_score_view.dart';
 import 'package:zimbo/views/other/menu_view.dart';
 import 'package:zimbo/views/other/qr_scanner_view.dart';
 
+import '../../model/common/receive_notification.dart';
+
 class MainViewModel extends BaseViewModel {
   int selectedIndex = 2;
   bool initialUriIsHandled = false;
 
+  String? selectedNotificationPayload;
+
   initialize(BuildContext context, int? selectedVal) async {
-    if(selectedVal != null){
+    if (selectedVal != null) {
       selectedIndex = selectedVal;
     }
-    
+
     handleIncomingLinks(context);
     handleInitialUri(context);
     var status = await Permission.camera.status;
     if (status.isDenied) {
-      await Permission.camera.request().then((value) => {
-        
-      });
+      await Permission.camera.request().then((value) => {});
     }
 
-    setupNotification(context);
+    if (Platform.isAndroid) {
+      setupNotificationAndroid(context);
+    }else if(Platform.isIOS){
+      setupNotificationIOS(context);
+    }
+    
   }
 
   onClickMenu(BuildContext context) async {
@@ -51,35 +62,32 @@ class MainViewModel extends BaseViewModel {
 
   void handleIncomingLinks(BuildContext context) {
     uriLinkStream.listen((Uri? uri) async {
-      if(uri != null) {
-        if(!initialUriIsHandled){
+      if (uri != null) {
+        if (!initialUriIsHandled) {
           initialUriIsHandled = true;
           setSelectedIndex(2);
           const AddScoreView().launch(context);
         }
       }
-    }, onError: (Object err) {
-    });
+    }, onError: (Object err) {});
   }
 
   Future<void> handleInitialUri(BuildContext context) async {
     try {
-      if(!initialUriIsHandled){
+      if (!initialUriIsHandled) {
         initialUriIsHandled = true;
         final uri = await getInitialUri();
         if (uri == null) {
-        } else { 
+        } else {
           setSelectedIndex(2);
           const AddScoreView().launch(context);
         }
       }
-        
     } on PlatformException {
-    } on FormatException {
-    }
+    } on FormatException {}
   }
 
-  setupNotification(BuildContext context) async {
+  setupNotificationAndroid(BuildContext context) async {
     const AndroidNotificationChannel channel = AndroidNotificationChannel(
       'zimbo_channel_id',
       'High Importance Notifications',
@@ -94,7 +102,8 @@ class MainViewModel extends BaseViewModel {
             AndroidFlutterLocalNotificationsPlugin>()
         ?.createNotificationChannel(channel);
 
-    await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+    await FirebaseMessaging.instance
+        .setForegroundNotificationPresentationOptions(
       alert: true,
       badge: true,
       sound: true,
@@ -102,8 +111,9 @@ class MainViewModel extends BaseViewModel {
 
     var initialzationSettingsAndroid =
         const AndroidInitializationSettings('@drawable/ic_notification_logo');
-    var initializationSettings =
-        InitializationSettings(android: initialzationSettingsAndroid);
+    var initializationSettings = InitializationSettings(
+      android: initialzationSettingsAndroid,
+    );
     flutterLocalNotificationsPlugin.initialize(initializationSettings);
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
@@ -125,7 +135,95 @@ class MainViewModel extends BaseViewModel {
       }
     });
 
-    var details = await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
+    var details =
+        await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
+    if (details!.didNotificationLaunchApp) {
+      const SplashView().launch(context);
+    }
+  }
+
+  setupNotificationIOS(BuildContext context) async {
+
+
+    final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+        FlutterLocalNotificationsPlugin();
+    final BehaviorSubject<ReceivedNotification> didReceiveLocalNotificationSubject =
+    BehaviorSubject<ReceivedNotification>();
+
+    final BehaviorSubject<String?> selectNotificationSubject =
+    BehaviorSubject<String?>();
+
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+    await flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+            IOSFlutterLocalNotificationsPlugin>()
+        ?.requestPermissions(
+        alert: true,
+        badge: true,
+        sound: true,
+        );
+
+    final IOSInitializationSettings initializationSettingsIOS =
+      IOSInitializationSettings(
+          requestAlertPermission: false,
+          requestBadgePermission: false,
+          requestSoundPermission: false,
+          onDidReceiveLocalNotification: (
+            int id,
+            String? title,
+            String? body,
+            String? payload,
+          ) async {
+            didReceiveLocalNotificationSubject.add(
+              ReceivedNotification(
+                id: id,
+                title: title,
+                body: body,
+                payload: payload,
+              ),
+            );
+          });
+
+
+    var initializationSettings = InitializationSettings(
+      iOS: initializationSettingsIOS,
+    );
+    await flutterLocalNotificationsPlugin.initialize(initializationSettings,
+      onSelectNotification: (String? payload) async {
+      if (payload != null) {
+        debugPrint('notification payload: $payload');
+      }
+      selectedNotificationPayload = payload;
+      selectNotificationSubject.add(payload);
+    });
+
+    didReceiveLocalNotificationSubject.stream
+        .listen((ReceivedNotification receivedNotification) async {
+      await showDialog(
+        context: context,
+        builder: (BuildContext context) => CupertinoAlertDialog(
+          title: receivedNotification.title != null
+              ? Text(receivedNotification.title!)
+              : null,
+          content: receivedNotification.body != null
+              ? Text(receivedNotification.body!)
+              : null,
+          actions: <Widget>[
+            CupertinoDialogAction(
+              isDefaultAction: true,
+              onPressed: () async {
+                const SplashView().launch(context);
+              },
+              child: const Text('Ok'),
+            )
+          ],
+        ),
+      );
+    });
+
+    var details =
+        await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
     if (details!.didNotificationLaunchApp) {
       const SplashView().launch(context);
     }
@@ -133,5 +231,5 @@ class MainViewModel extends BaseViewModel {
 }
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-    await Firebase.initializeApp();
-  }
+  await Firebase.initializeApp();
+}
