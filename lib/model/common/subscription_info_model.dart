@@ -1,38 +1,50 @@
 class SubscriptionInfoModel {
-  String period;
-  String startTime;
-  String endTime;
-  String price;
-  String paidAmount;
-  String status;
-  String planName;
+  String? stripeSubscriptionId;
+  String? period;
+  String? paymentType;
+  String? canceledAt;
+  String? startTime;
+  String? endTime;
+  String? price;
+  String? environment;
+  String? status;
+  String? planName;
 
   SubscriptionInfoModel({
-    required this.period,
-    required this.startTime,
-    required this.endTime,
-    required this.price,
-    required this.paidAmount,
-    required this.status,
-    required this.planName,
+    this.stripeSubscriptionId,
+    this.period,
+    this.paymentType,
+    this.canceledAt,
+    this.startTime,
+    this.endTime,
+    this.price,
+    this.environment,
+    this.status,
+    this.planName,
   });
 
   Map<String, dynamic> toJson() => {
+    'stripe_subscription_id': stripeSubscriptionId,
+    'payment_type': paymentType,
     'period': period,
+    'canceled_at': canceledAt,
     'start_time': startTime,
     'end_time': endTime,
     'price': price,
-    'paid_amount': paidAmount,
+    'environment': environment,
     'status': status,
     'plan_name': planName,
   };
 
   factory SubscriptionInfoModel.fromJson(Map<String, dynamic> json) => SubscriptionInfoModel(
+    stripeSubscriptionId: json['stripe_subscription_id'], 
+    paymentType: json['payment_type'], 
     period: json['period'], 
+    canceledAt: json['canceled_at'], 
     startTime: json['start_time'],
     endTime: json['end_time'],
     price: json['price'],
-    paidAmount: json['paid_amount'],
+    environment: json['environment'],
     status: json['status'],
     planName: json['plan_name'],
   );

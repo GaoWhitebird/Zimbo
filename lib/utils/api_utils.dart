@@ -7,6 +7,7 @@ class ApiUtils {
   static const urlAutoLogin = BASE_URL + 'main/auto_login';
   static const urlLoginFacebook = BASE_URL + 'main/login_facebook';
   static const urlLoginGoogle = BASE_URL + 'main/login_google';
+  static const urlLoginApple = BASE_URL + 'main/login_apple';
   static const urlFortgotPassword = BASE_URL + 'main/forgot_password';
   static const urlResetPassword = BASE_URL + 'main/reset_password';
   static const urlLogout = BASE_URL + 'user/logout';

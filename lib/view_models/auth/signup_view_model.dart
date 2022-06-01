@@ -4,6 +4,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/model/request/signup_email_req.dart';
@@ -16,6 +17,8 @@ import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
 import 'package:zimbo/views/auth/select_item_view.dart';
 import 'package:zimbo/views/main/main_view.dart';
+
+import '../../model/request/signup_apple_req.dart';
 
 class SignUpViewModel extends BaseViewModel {
   String name = '';
@@ -124,6 +127,46 @@ class SignUpViewModel extends BaseViewModel {
       googleSignIn.signInSilently();
 
       await googleSignIn.signIn();
+    } catch (error) {
+      showMessage(StringUtils.txtSomethingWentWrong, null);
+    }
+
+    notifyListeners();
+  }
+
+  onClickAppleLogin(BuildContext context) async {
+    try {
+      final credential = await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
+      );
+
+      print(credential);
+
+      SignUpAppleReq req = SignUpAppleReq(
+          userName: credential.givenName!,
+          appleId: credential.authorizationCode,
+          email: credential.email,
+          deviceKey: deviceKey!,
+          firebaseToken: firebaseToken!,
+          deviceType: platformType);
+
+      networkService.doSignUpApple(req).then((value) async => {
+            if (value != null)
+              {
+                sharedService.saveUser(value),
+                if (await sharedService.getIsFirst())
+                  {
+                    const SelectItemView().launch(context, isNewTask: true),
+                  }
+                else
+                  {
+                    MainView().launch(context, isNewTask: true),
+                  }
+              }
+          });
     } catch (error) {
       showMessage(StringUtils.txtSomethingWentWrong, null);
     }

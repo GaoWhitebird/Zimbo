@@ -29,6 +29,7 @@ class StringUtils {
   static const txtContinue = 'Continue';
   static const txtFacebook = 'Facebook';
   static const txtGoogle = 'Google';
+  static const txtApple = 'Apple';
   static const txtPay = 'Pay';
   static const txtOr = 'or';
   static const txtAnd = 'and';

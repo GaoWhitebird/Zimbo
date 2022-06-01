@@ -18,6 +18,9 @@ import 'package:zimbo/views/auth/reset_pass_view.dart';
 import 'package:zimbo/views/auth/select_item_view.dart';
 import 'package:zimbo/views/auth/signup_view.dart';
 import 'package:zimbo/views/main/main_view.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+
+import '../../model/request/signup_apple_req.dart';
 
 class LoginViewModel extends BaseViewModel {
   String email = '';
@@ -123,6 +126,46 @@ class LoginViewModel extends BaseViewModel {
       googleSignIn.signInSilently();
 
       await googleSignIn.signIn();
+    } catch (error) {
+      showMessage(StringUtils.txtSomethingWentWrong, null);
+    }
+
+    notifyListeners();
+  }
+
+  onClickAppleLogin(BuildContext context) async {
+    try {
+      final credential = await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
+      );
+
+      print(credential);
+
+      SignUpAppleReq req = SignUpAppleReq(
+          userName: credential.givenName!,
+          appleId: credential.authorizationCode,
+          email: credential.email,
+          deviceKey: deviceKey!,
+          firebaseToken: firebaseToken!,
+          deviceType: platformType);
+
+      networkService.doSignUpApple(req).then((value) async => {
+            if (value != null)
+              {
+                sharedService.saveUser(value),
+                if (await sharedService.getIsFirst())
+                  {
+                    const SelectItemView().launch(context, isNewTask: true),
+                  }
+                else
+                  {
+                    MainView().launch(context, isNewTask: true),
+                  }
+              }
+          });
     } catch (error) {
       showMessage(StringUtils.txtSomethingWentWrong, null);
     }

@@ -28,6 +28,7 @@ import 'package:zimbo/model/request/login_req.dart';
 import 'package:zimbo/model/request/post_support_req.dart';
 import 'package:zimbo/model/request/reset_password_req.dart';
 import 'package:zimbo/model/request/shopping_day_req.dart';
+import 'package:zimbo/model/request/signup_apple_req.dart';
 import 'package:zimbo/model/request/signup_email_req.dart';
 import 'package:zimbo/model/request/signup_facebook_req.dart';
 import 'package:zimbo/model/request/signup_google_req.dart';
@@ -159,6 +160,21 @@ class NetworkService {
 
   Future<UserModel?> doSignUpGoogle(SignUpGoogleReq req) async {
     var res = await doPostRequest(ApiUtils.urlLoginGoogle, param: req.toJson());
+    if (res == null) return null;
+
+    String token = res['token'];
+    var sharedService = locator<SharedService>();
+    sharedService.saveToken(token);
+
+    bool isFirstSignUp = res['first_signup'];
+    sharedService.saveIsFirst(isFirstSignUp);
+
+    UserModel userModel = UserModel.fromJson(res['user_info']);
+    return userModel;
+  }
+
+  Future<UserModel?> doSignUpApple(SignUpAppleReq req) async {
+    var res = await doPostRequest(ApiUtils.urlLoginApple, param: req.toJson());
     if (res == null) return null;
 
     String token = res['token'];

@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
+import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/image_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
@@ -67,12 +70,12 @@ class LoginView extends StatelessWidget {
                       children: <Widget>[
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.fromLTRB(15, 10, 5, 10),
+                            padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
                             child: ElevatedButton.icon(
                                 onPressed: () =>
                                     model.onClickFacebookLogin(context),
                                 icon:
-                                    SvgPicture.asset(ImageUtils.imgIcFacebook),
+                                    SvgPicture.asset(ImageUtils.imgIcFacebook, width: 24, height: 24,),
                                 label: textView(StringUtils.txtFacebook,
                                     textColor: ColorUtils.appColorBlack,
                                     fontSize: SizeUtils.textSizeSMedium,
@@ -89,11 +92,11 @@ class LoginView extends StatelessWidget {
                         ),
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.fromLTRB(5, 10, 15, 10),
+                            padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
                             child: ElevatedButton.icon(
                                 onPressed: () =>
                                     model.onClickGoogleLogin(context),
-                                icon: SvgPicture.asset(ImageUtils.imgIcGoogle),
+                                icon: SvgPicture.asset(ImageUtils.imgIcGoogle, width: 24, height: 24,),
                                 label: textView(StringUtils.txtGoogle,
                                     textColor: ColorUtils.appColorBlack,
                                     fontSize: SizeUtils.textSizeSMedium,
@@ -107,7 +110,28 @@ class LoginView extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(25),
                                     ))),
                           ),
-                        )
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
+                            child: ElevatedButton.icon(
+                                onPressed: () =>
+                                    model.onClickAppleLogin(context),
+                                icon: SvgPicture.asset(ImageUtils.imgIcApple, width: 24, height: 24,),
+                                label: textView(StringUtils.txtApple,
+                                    textColor: ColorUtils.appColorBlack,
+                                    fontSize: SizeUtils.textSizeSMedium,
+                                    fontWeight: FontWeight.w500,
+                                    isCentered: true),
+                                style: ElevatedButton.styleFrom(
+                                    primary: ColorUtils.appColorWhite,
+                                    padding: const EdgeInsets.only(
+                                        top: 10, bottom: 10),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(25),
+                                    ))),
+                          ),
+                        ).visible(Platform.isIOS)
                       ],
                     ),
                     Container(
