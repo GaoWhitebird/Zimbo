@@ -1,28 +1,27 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
 import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
-import 'package:zimbo/view_models/other/subscription/subscription_card_view_model.dart';
+import 'package:zimbo/view_models/other/subscription/cancel_subscription_view_model.dart';
 
-class SubscriptionCardView extends StatelessWidget {
-  const SubscriptionCardView({Key? key}) : super(key: key);
+class CancelSubscriptionView extends StatelessWidget {
+  const CancelSubscriptionView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<SubscriptionCardViewModel>.reactive(
-      viewModelBuilder: () => SubscriptionCardViewModel(),
+    return ViewModelBuilder<CancelSubscriptionViewModel>.reactive(
+      viewModelBuilder: () => CancelSubscriptionViewModel(),
       builder: (context, model, child) => buildWidget(context, model, child),
       onModelReady: (model) => model.initialize(context),
     );
   }
 
   buildWidget(
-      BuildContext context, SubscriptionCardViewModel model, Widget? child) {
+      BuildContext context, CancelSubscriptionViewModel model, Widget? child) {
     setStatusBarColor(ColorUtils.appColorWhite);
     var height = MediaQuery.of(context).size.height;
 
@@ -48,18 +47,6 @@ class SubscriptionCardView extends StatelessWidget {
                 finishView(context);
               },
             ),
-            actions: [
-              IconButton(
-                splashRadius: 25,
-                icon: const Icon(
-                  Icons.edit_outlined,
-                  color: ColorUtils.appColorTextTitle,
-                ),
-                onPressed: () {
-                  model.onClickEdit(context);
-                },
-              )
-            ],
           ),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -83,25 +70,16 @@ class SubscriptionCardView extends StatelessWidget {
                       strokeWidth: 1,
                       radius: const Radius.circular(10),
                       child: GestureDetector(
-                        onTap: () => model.onClickAddCard(context),
                         child: Container(
                           alignment: Alignment.center,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Icon(
-                                Icons.credit_card_outlined,
-                                color: ColorUtils.appColorTextLight,
-                              ),
-                              textView(StringUtils.txtAddCard,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: SizeUtils.textSizeMedium,
-                                  textColor: ColorUtils.appColorTextTitle),
-                              textView(StringUtils.txtSubscriptionCancel,
+                              textView(StringUtils.txt199Month,
                                   fontWeight: FontWeight.w400,
-                                  fontSize: SizeUtils.textSizeSmall,
-                                  textColor: ColorUtils.appColorRedDark).visible(!model.isSubscription && model.hasHistory)
+                                  fontSize: SizeUtils.textSizeLarge,
+                                  textColor: ColorUtils.appColorAccent)
                             ],
                           ),
                         ),
@@ -121,29 +99,9 @@ class SubscriptionCardView extends StatelessWidget {
                       textSize: SizeUtils.textSizeMedium,
                       radius: 30,
                     ),
-                    Expanded(
-                        child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        textView(
-                          StringUtils.txtNextPayment,
-                          textColor: ColorUtils.appColorWhite,
-                          fontSize: SizeUtils.textSizeSmall,
-                          fontWeight: FontWeight.w300,
-                          isCentered: true,
-                        ),
-                        textView(
-                          model.nextDate,
-                          textColor: ColorUtils.appColorWhite,
-                          fontSize: SizeUtils.textSizeSmall,
-                          fontWeight: FontWeight.w600,
-                          isCentered: true,
-                        ),
-                      ],
-                    )),
                   ],
                 ),
-              ).visible(model.hasHistory),
+              ),
               Container(
                 height: 1,
                 color: ColorUtils.appColorAccent_5,
@@ -167,6 +125,7 @@ class SubscriptionCardView extends StatelessWidget {
                           fontSize: SizeUtils.textSizeSmall,
                           isCentered: false,
                           maxLine: 8),
+                      Container(height: 10,),
                     ],
                   ),
                 ),
@@ -177,13 +136,15 @@ class SubscriptionCardView extends StatelessWidget {
                 child: RoundButton(
                       isStroked: true,
                       textContent: StringUtils.txtCancelPayment,
-                      onPressed: () => model.onClickCancelPayment(context),
+                      onPressed: () {
+                        model.onClickCancelPayment(context);
+                      },
                       backgroundColor: ColorUtils.appColorWhite,
                       textColor: ColorUtils.appColorBlue,
                       textSize: SizeUtils.textSizeMedium,
                       radius: 30,
                 ),
-              ).visible(model.isSubscription),
+              ),
             ],
           ),
         ),

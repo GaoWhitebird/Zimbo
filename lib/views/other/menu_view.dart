@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
+import 'package:zimbo/model/common/plan_name_model.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/image_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
@@ -12,9 +13,12 @@ import 'package:zimbo/view_models/other/menu_view_model.dart';
 import 'package:zimbo/views/auth/guide_view.dart';
 import 'package:zimbo/views/items/item_menu_view.dart';
 import 'package:zimbo/views/main/about_us_view.dart';
+import 'package:zimbo/views/other/subscription/cancel_subscription_view.dart';
 import 'package:zimbo/views/other/subscription/subscription_lock_view.dart';
 import 'package:zimbo/views/other/support_view.dart';
 import 'package:zimbo/views/other/profile_view.dart';
+
+import '../../model/common/subscription_status_model.dart';
 
 class MenuView extends StatelessWidget {
   const MenuView({Key? key}) : super(key: key);
@@ -81,8 +85,13 @@ class MenuView extends StatelessWidget {
                     imageStr: ImageUtils.imgIcMyItems,
                     titleStr: StringUtils.txtSubscription,
                     onTap: () => {
-                          //const SubscriptionView().launch(context),
-                          const SubscriptionLockView().launch(context),
+                        if(model.userModel!.subscriptionInfo == null ||
+                            model.userModel!.subscriptionInfo!.planName == PlanNameModel.free ||
+                             model.userModel!.subscriptionInfo!.status != SubscriptionStatusModel.active){
+                               const SubscriptionLockView().launch(context),
+                             } else {
+                               const CancelSubscriptionView().launch(context),
+                             }
                         }),
                 MenuViewItem(
                     imageStr: ImageUtils.imgIcMenuSupport,

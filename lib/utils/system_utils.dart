@@ -7,7 +7,11 @@ import 'package:nb_utils/nb_utils.dart';
 
 /// Go back to previous screen.
 void finishView(BuildContext context, [Object? result]) {
-  if (Navigator.canPop(context)) Navigator.pop(context, result);
+  if (Navigator.canPop(context)) {
+    Navigator.pop(context, result);
+  }else {
+    SystemNavigator.pop();
+  }
 }
 
 /// Go to new screen with provided screen tag.

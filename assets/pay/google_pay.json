@@ -1,7 +1,7 @@
 {
   "provider": "google_pay",
   "data": {
-    "environment": "TEST",
+    "environment": "LIVE",
     "apiVersion": 2,
     "apiVersionMinor": 0,
     "allowedPaymentMethods": [

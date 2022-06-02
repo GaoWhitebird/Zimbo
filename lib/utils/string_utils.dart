@@ -27,6 +27,7 @@ class StringUtils {
   static const txtShareIdea = 'Share idea';
   static const txtSignUp = 'Sign Up';
   static const txtContinue = 'Continue';
+  static const txtContinueAsFree = 'Continue as Free';
   static const txtFacebook = 'Facebook';
   static const txtGoogle = 'Google';
   static const txtApple = 'Apple';
@@ -220,6 +221,10 @@ class StringUtils {
   static const txtCarbonOffset = 'Carbon Offset';
   static const txtSavings = 'Savings';
   static const txtTree = 'Tree';
+  static const txtPaymentStatusPending = 'Payment status is pending';
+  static const txtPaymentStatusActive = 'Payment status is activated';
+  static const txtPaymentStatusExpired = 'Payment status is expired';
+  static const txtPaymentStatusSuspended = 'Payment status is suspended';
 
   static const txtPrefUser = 'pref_user';
   static const txtSupportMail = 'support@zimbo.me';

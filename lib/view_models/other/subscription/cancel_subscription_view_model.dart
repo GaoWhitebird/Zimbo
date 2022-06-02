@@ -1,17 +1,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
+import 'package:zimbo/model/common/subscription_info_model.dart';
+import 'package:zimbo/model/common/user_model.dart';
+import 'package:zimbo/model/request/cancel_subscription_req.dart';
 import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
 import 'package:zimbo/views/other/subscription/edit_subscription_view.dart';
 import 'package:zimbo/views/other/subscription/subscription_history_view.dart';
+import 'package:zimbo/views/other/subscription/subscription_lock_view.dart';
 
-import '../../../model/common/subscription_info_model.dart';
-import '../../../model/common/user_model.dart';
-import '../../../model/request/cancel_subscription_req.dart';
-
-class SubscriptionViewModel extends BaseViewModel {
+class CancelSubscriptionViewModel extends BaseViewModel {
   SubscriptionInfoModel? subscriptionInfoModel;
   String? token;
   UserModel? userModel;
@@ -20,6 +20,14 @@ class SubscriptionViewModel extends BaseViewModel {
     token = await sharedService.getToken();
     userModel = await sharedService.getUser();
     subscriptionInfoModel = userModel!.subscriptionInfo;
+
+    await networkService.doGetSubscriptionInfo(token!).then((value) => {
+      if(value != null){
+        subscriptionInfoModel = value,
+
+        notifyListeners(),
+      }
+    });
   }
 
   void onClickAddCard(BuildContext context) async {
@@ -34,21 +42,14 @@ class SubscriptionViewModel extends BaseViewModel {
     const SubscriptionHistoryView().launch(context, isNewTask: false);
   }
 
-  void onClickCancelPayment(BuildContext context) async {
+  onClickCancelPayment(BuildContext context) async {
     CancelSubscriptionReq req = CancelSubscriptionReq(stripeSubscriptionId: subscriptionInfoModel!.stripeSubscriptionId!);
     await networkService.doCancelSubscription(token!, req).then((value) => {
       if(value){
         showMessage(StringUtils.txtSubscriptionCancel, null),
 
-        initialize(context),
-      }else {
-        showMessage(StringUtils.txtSubscriptionCancelFailed, null),
+        const SubscriptionLockView().launch(context, isNewTask: true),
       }
     });
   }
-
-  void onClickEdit(BuildContext context) {
-    onClickAddCard(context);
-  }
-
 }

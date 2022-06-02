@@ -10,6 +10,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:uni_links/uni_links.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
+import 'package:zimbo/model/common/user_model.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
 import 'package:zimbo/views/auth/splash_view.dart';
@@ -24,6 +25,8 @@ class MainViewModel extends BaseViewModel {
   bool initialUriIsHandled = false;
 
   String? selectedNotificationPayload;
+  String? token;
+  UserModel? userModel;
 
   initialize(BuildContext context, int? selectedVal) async {
     if (selectedVal != null) {
@@ -42,6 +45,17 @@ class MainViewModel extends BaseViewModel {
     }else if(Platform.isIOS){
       setupNotificationIOS(context);
     }
+
+    token = await sharedService.getToken();
+
+    networkService.doGetProfile(token!).then((value) => {
+      if(value != null){
+        userModel = value,
+        sharedService.saveUser(userModel),
+        
+        notifyListeners(),
+      }
+    });
     
   }
 

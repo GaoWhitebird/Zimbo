@@ -18,7 +18,9 @@ import 'package:zimbo/view_models/base_view_model.dart';
 import 'package:zimbo/views/auth/select_item_view.dart';
 import 'package:zimbo/views/main/main_view.dart';
 
+import '../../model/common/subscription_status_model.dart';
 import '../../model/request/signup_apple_req.dart';
+import '../../views/other/subscription/subscription_lock_view.dart';
 
 class SignUpViewModel extends BaseViewModel {
   String name = '';
@@ -76,7 +78,16 @@ class SignUpViewModel extends BaseViewModel {
                     }
                   else
                     {
-                      MainView().launch(context, isNewTask: true),
+                      if (value.subscriptionInfo == null ||
+                        value.subscriptionInfo!.status !=
+                            SubscriptionStatusModel.active)
+                      {
+                        const SubscriptionLockView().launch(context),
+                      }
+                      else
+                        {
+                          MainView().launch(context, isNewTask: true),
+                        },
                     }
                 }
             });
@@ -116,8 +127,17 @@ class SignUpViewModel extends BaseViewModel {
                       }
                     else
                       {
-                        MainView().launch(context, isNewTask: true),
-                      }
+                        if (value.subscriptionInfo == null ||
+                        value.subscriptionInfo!.status !=
+                            SubscriptionStatusModel.active)
+                        {
+                          const SubscriptionLockView().launch(context),
+                        }
+                        else
+                          {
+                            MainView().launch(context, isNewTask: true),
+                          },
+                        }
                   }
               });
         } else {
@@ -143,10 +163,19 @@ class SignUpViewModel extends BaseViewModel {
         ],
       );
 
+      String userName = '';
+      String userEmail = '';
+      if (credential.givenName != null && credential.familyName != null) {
+        userName = credential.givenName! + ' ' + credential.familyName!;
+      }
+      if (credential.email != null) {
+        userEmail = credential.email!;
+      }
+
       SignUpAppleReq req = SignUpAppleReq(
-          userName: credential.givenName!,
-          appleId: credential.authorizationCode,
-          email: credential.email,
+          userName: userName,
+          appleId: credential.userIdentifier!,
+          email: userEmail,
           deviceKey: deviceKey!,
           firebaseToken: firebaseToken!,
           deviceType: platformType);
@@ -161,7 +190,16 @@ class SignUpViewModel extends BaseViewModel {
                   }
                 else
                   {
-                    MainView().launch(context, isNewTask: true),
+                    if (value.subscriptionInfo == null ||
+                        value.subscriptionInfo!.status !=
+                            SubscriptionStatusModel.active)
+                      {
+                        const SubscriptionLockView().launch(context),
+                      }
+                      else
+                        {
+                          MainView().launch(context, isNewTask: true),
+                        },
                   }
               }
           });
@@ -171,6 +209,7 @@ class SignUpViewModel extends BaseViewModel {
 
     notifyListeners();
   }
+
 
   onClickSignUp(BuildContext context, String _name, String _email,
       String _password, String _code) async {

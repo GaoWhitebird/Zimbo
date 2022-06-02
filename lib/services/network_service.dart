@@ -11,7 +11,7 @@ import 'package:zimbo/model/common/point_item_model.dart';
 import 'package:zimbo/model/common/profile_insight_model.dart';
 import 'package:zimbo/model/common/profile_level_model.dart';
 import 'package:zimbo/model/common/recyclable_item_model.dart';
-import 'package:zimbo/model/common/subscription_model.dart';
+import 'package:zimbo/model/common/subscription_info_model.dart';
 import 'package:zimbo/model/common/summary_model.dart';
 import 'package:zimbo/model/common/user_model.dart';
 import 'package:zimbo/model/request/add_postal_address_req.dart';
@@ -39,6 +39,8 @@ import 'package:zimbo/model/request/update_recyclable_req.dart';
 import 'package:zimbo/services/shared_service.dart';
 import 'package:zimbo/utils/api_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
+
+import '../model/request/cancel_subscription_req.dart';
 
 class NetworkService {
   var dio = Dio(); 
@@ -435,9 +437,9 @@ class NetworkService {
     return true;
   }
 
-  Future doCancelPayment(String token) async {
-    var res = await doPostRequest(ApiUtils.urlCancelPayment,
-        token: TokenReq(token: token).toJson());
+  Future doCancelSubscription(String token, CancelSubscriptionReq req) async {
+    var res = await doPostRequest(ApiUtils.urlCancelSubscription,
+        token: TokenReq(token: token).toJson(), param: req.toJson());
     if (res == null) return false;
 
     return true;
@@ -478,12 +480,12 @@ class NetworkService {
     return publishKey;
   }
 
-  Future<SubscriptionModel?> doGetSubscriptionInfo(String token) async {
+  Future<SubscriptionInfoModel?> doGetSubscriptionInfo(String token) async {
     var res = await doPostRequest(ApiUtils.urlGetSubscriptionInfo,
         token: TokenReq(token: token).toJson());
 
     if (res == null) return null;
-    SubscriptionModel model = SubscriptionModel.fromJson(res);
+    SubscriptionInfoModel model = SubscriptionInfoModel.fromJson(res['subscription_info']);
     return model;
   }
 

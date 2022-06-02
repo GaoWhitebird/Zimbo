@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
 import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/other/subscription/subscription_confirm_view_model.dart';
+import 'package:zimbo/views/main/main_view.dart';
 
 class SubscriptionConfirmView extends StatelessWidget {
   SubscriptionConfirmView({Key? key}) : super(key: key);
@@ -46,7 +48,7 @@ class SubscriptionConfirmView extends StatelessWidget {
             leading: BackButton(
               color: ColorUtils.appColorBlack,
               onPressed: () {
-                finishView(context);
+                MainView().launch(context, isNewTask: true);
               },
             ),
           ),
@@ -108,7 +110,7 @@ class SubscriptionConfirmView extends StatelessWidget {
           
         ),
         onWillPop: () {
-          finishView(context);
+          MainView().launch(context, isNewTask: true);
           return Future.value(false);
         });
   }

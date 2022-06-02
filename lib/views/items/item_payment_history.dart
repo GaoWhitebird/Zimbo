@@ -3,7 +3,6 @@ import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/model/common/payment_history_item_model.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
-import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/time_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 
@@ -28,7 +27,7 @@ class _PaymentHistoryItemState extends State<PaymentHistoryItem> {
         width: width * 0.15,
         height: width * 0.15,
         color: ColorUtils.appColorWhite,
-        child: widget.model.status == 'success' ? const Icon(Icons.check_circle_outline_rounded, size: 30, color: ColorUtils.appColorAccent,)
+        child: widget.model.status == '1' ? const Icon(Icons.check_circle_outline_rounded, size: 30, color: ColorUtils.appColorAccent,)
           : const Icon(Icons.remove_circle_outline, size: 30, color: ColorUtils.appColorRedDark,)
       ),
     );
@@ -57,14 +56,14 @@ class _PaymentHistoryItemState extends State<PaymentHistoryItem> {
                         size: 18,
                       ),
                       const SizedBox(width: 5),
-                      textView(readTimestampYYYYDD(widget.model.time),
+                      textView(readTimestampYYYYDD(widget.model.time!),
                           fontSize: SizeUtils.textSizeSmall,
                           textColor: ColorUtils.appColorWhite),
                       const SizedBox(width: 5),
                       const Icon(Icons.timer,
                           color: ColorUtils.appColorWhite, size: 18),
                       const SizedBox(width: 5),
-                      textView(readTimestampHH(widget.model.time),
+                      textView(readTimestampHH(widget.model.time!),
                           fontSize: SizeUtils.textSizeSmall,
                           textColor: ColorUtils.appColorWhite),
                     ],
@@ -78,10 +77,6 @@ class _PaymentHistoryItemState extends State<PaymentHistoryItem> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      textView(StringUtils.txtMinusUSD,
-                          fontSize: SizeUtils.textSizeMedium,
-                          fontWeight: FontWeight.w500,
-                          textColor: ColorUtils.appColorWhite),
                       textView(widget.model.amount,
                           fontSize: SizeUtils.textSizeMedium,
                           textColor: ColorUtils.appColorWhite,

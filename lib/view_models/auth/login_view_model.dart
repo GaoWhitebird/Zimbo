@@ -20,7 +20,9 @@ import 'package:zimbo/views/auth/signup_view.dart';
 import 'package:zimbo/views/main/main_view.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
+import '../../model/common/subscription_status_model.dart';
 import '../../model/request/signup_apple_req.dart';
+import '../../views/other/subscription/subscription_lock_view.dart';
 
 class LoginViewModel extends BaseViewModel {
   String email = '';
@@ -75,7 +77,16 @@ class LoginViewModel extends BaseViewModel {
                     }
                   else
                     {
-                      MainView().launch(context, isNewTask: true),
+                     if (value.subscriptionInfo == null ||
+                        value.subscriptionInfo!.status !=
+                            SubscriptionStatusModel.active)
+                      {
+                        const SubscriptionLockView().launch(context),
+                      }
+                      else
+                        {
+                          MainView().launch(context, isNewTask: true),
+                        },
                     }
                 }
             });
@@ -115,7 +126,16 @@ class LoginViewModel extends BaseViewModel {
                       }
                     else
                       {
-                        MainView().launch(context, isNewTask: true),
+                        if (value.subscriptionInfo == null ||
+                        value.subscriptionInfo!.status !=
+                            SubscriptionStatusModel.active)
+                        {
+                          const SubscriptionLockView().launch(context),
+                        }
+                        else
+                          {
+                            MainView().launch(context, isNewTask: true),
+                          },
                       }
                   }
               });
@@ -169,7 +189,16 @@ class LoginViewModel extends BaseViewModel {
                   }
                 else
                   {
-                    MainView().launch(context, isNewTask: true),
+                    if (value.subscriptionInfo == null ||
+                        value.subscriptionInfo!.status !=
+                            SubscriptionStatusModel.active)
+                      {
+                        const SubscriptionLockView().launch(context),
+                      }
+                      else
+                        {
+                          MainView().launch(context, isNewTask: true),
+                        },
                   }
               }
           });
@@ -196,7 +225,16 @@ class LoginViewModel extends BaseViewModel {
             if (value != null)
               {
                 sharedService.saveUser(value),
-                MainView().launch(context, isNewTask: true),
+                if (value.subscriptionInfo == null ||
+                        value.subscriptionInfo!.status !=
+                            SubscriptionStatusModel.active)
+                      {
+                        const SubscriptionLockView().launch(context),
+                      }
+                      else
+                        {
+                          MainView().launch(context, isNewTask: true),
+                        },
               }
           });
     }

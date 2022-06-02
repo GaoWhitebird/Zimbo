@@ -59,7 +59,6 @@ class EditSubscriptionCardViewModel extends BaseViewModel {
               showMessage(StringUtils.txtSubscriptionSuccess, null),
               SubscriptionConfirmView().launch(context, isNewTask: true),
             }else {
-              showMessage(StringUtils.txtSubscriptionFailed, null),
               finishView(context),
             }
           }),

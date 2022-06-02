@@ -13,39 +13,58 @@ import 'package:zimbo/views/auth/intro_view.dart';
 import 'package:zimbo/views/auth/login_view.dart';
 import 'package:zimbo/views/main/main_view.dart';
 
-class SplashViewModel extends BaseViewModel{
+import '../../model/common/subscription_status_model.dart';
+import '../../views/other/subscription/subscription_lock_view.dart';
+
+class SplashViewModel extends BaseViewModel {
   String? deviceKey = '';
   late UserModel? userModel;
   String? firebaseToken = '';
   String platformType = '';
 
   initialize(BuildContext context) async {
-    await Firebase.initializeApp(); 
+    await Firebase.initializeApp();
     String? token = await sharedService.getToken();
     deviceKey = await getDeviceId();
     firebaseToken = await FirebaseMessaging.instance.getToken();
-    if(Platform.isAndroid){
+    if (Platform.isAndroid) {
       platformType = 'android';
-    }else if(Platform.isIOS){
+    } else if (Platform.isIOS) {
       platformType = 'ios';
     }
-    
-    if(token != null){
-      AutoLoginReq req = AutoLoginReq(token: token, deviceKey: deviceKey ?? '', firebaseToken: firebaseToken!, deviceType: platformType);
+
+    if (token != null) {
+      AutoLoginReq req = AutoLoginReq(
+          token: token,
+          deviceKey: deviceKey ?? '',
+          firebaseToken: firebaseToken!,
+          deviceType: platformType);
 
       await networkService.doAutoLogin(req).then((value) => {
-        if(value != null){
-          userModel = value,
-          sharedService.saveUser(userModel),
-          MainView().launch(context, isNewTask: true),
-        }else {
-          LoginView().launch(context, isNewTask: true),
-        }
-      });
-    }else{
+            if (value != null)
+              {
+                userModel = value,
+                sharedService.saveUser(userModel),
+                if (userModel!.subscriptionInfo == null ||
+                    userModel!.subscriptionInfo!.status !=
+                        SubscriptionStatusModel.active)
+                  {
+                    const SubscriptionLockView().launch(context, isNewTask: true),
+                  }
+                else
+                  {
+                    MainView().launch(context, isNewTask: true),
+                  },
+              }
+            else
+              {
+                LoginView().launch(context, isNewTask: true),
+              }
+          });
+    } else {
       Timer(const Duration(seconds: 3), () {
         const IntroView().launch(context, isNewTask: true);
-    });
+      });
     }
   }
 }

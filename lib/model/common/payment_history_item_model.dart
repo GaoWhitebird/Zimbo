@@ -1,12 +1,12 @@
 class PaymentHistoryItemModel {
-  String time;
-  String amount;
-  String status;
+  String? time;
+  String? amount;
+  String? status;
 
   PaymentHistoryItemModel({
-    required this.time,
-    required this.amount,
-    required this.status,
+    this.time,
+    this.amount,
+    this.status,
   });
 
   Map<String, dynamic> toJson() => {

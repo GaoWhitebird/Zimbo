@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/model/request/add_postal_address_req.dart';
 import 'package:zimbo/utils/string_utils.dart';
-import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
 import 'package:zimbo/views/other/subscription/keychain_confirm_view.dart';
@@ -25,8 +24,7 @@ class SubscriptionConfirmViewModel extends BaseViewModel {
     networkService.doAddPostalAddress(token!, req).then((value) {
       if(value) {
         
-        finishView(context);
-        const KeychainConfirmView().launch(context);
+        const KeychainConfirmView().launch(context, isNewTask: true);
       }else{
         showMessage(StringUtils.txtSomethingWentWrong, null);
       }

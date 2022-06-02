@@ -1,7 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
 import 'package:zimbo/utils/string_utils.dart';
@@ -98,10 +97,6 @@ class SubscriptionView extends StatelessWidget {
                                   fontWeight: FontWeight.w600,
                                   fontSize: SizeUtils.textSizeMedium,
                                   textColor: ColorUtils.appColorTextTitle),
-                              textView(StringUtils.txtSubscriptionCancel,
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: SizeUtils.textSizeSmall,
-                                  textColor: ColorUtils.appColorRedDark).visible(!model.isSubscription && model.hasHistory)
                             ],
                           ),
                         ),
@@ -132,18 +127,12 @@ class SubscriptionView extends StatelessWidget {
                           fontWeight: FontWeight.w300,
                           isCentered: true,
                         ),
-                        textView(
-                          model.nextDate,
-                          textColor: ColorUtils.appColorWhite,
-                          fontSize: SizeUtils.textSizeSmall,
-                          fontWeight: FontWeight.w600,
-                          isCentered: true,
-                        ),
+                        
                       ],
                     )),
                   ],
                 ),
-              ).visible(model.hasHistory),
+              ),
               Container(
                 height: 1,
                 color: ColorUtils.appColorAccent_5,
@@ -175,10 +164,6 @@ class SubscriptionView extends StatelessWidget {
                               fontSize: SizeUtils.textSizeMedium,
                               isCentered: false,),
                           Container(width: 10,),
-                          textView(model.subscriptionCost,
-                              textColor: ColorUtils.appColorWhite,
-                              fontSize: SizeUtils.textSizeMedium,
-                              isCentered: false,),
                         ],
                       )
                     ],
@@ -197,7 +182,7 @@ class SubscriptionView extends StatelessWidget {
                       textSize: SizeUtils.textSizeMedium,
                       radius: 30,
                 ),
-              ).visible(model.isSubscription),
+              ),
             ],
           ),
         ),

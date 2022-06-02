@@ -35,7 +35,7 @@ class ApiUtils {
   static const urlGetStripeKey = BASE_URL + 'payment/get_publish_key';
   static const urlGetPaymentMethodInfo = BASE_URL + 'payment/get_payment_method_info';
   static const urlUpdatePaymentInfo = BASE_URL + 'payment/update_payment';
-  static const urlCancelPayment = BASE_URL + 'payment/cancel_payment';
+  static const urlCancelSubscription = BASE_URL + 'payment/cancel_subscription';
   static const urlGetSubscriptionInfo = BASE_URL + 'payment/get_subscription_info';
   static const urlGetPaymentHistory = BASE_URL + 'payment/get_payment_history';
   static const urlChargeCard = BASE_URL + 'payment/charge_card';
