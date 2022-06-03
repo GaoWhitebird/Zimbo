@@ -9,8 +9,12 @@ import 'package:nb_utils/nb_utils.dart';
 void finishView(BuildContext context, [Object? result]) {
   if (Navigator.canPop(context)) {
     Navigator.pop(context, result);
-  }else {
-    SystemNavigator.pop();
+  } else {
+    if (Platform.isAndroid) {
+      SystemNavigator.pop();
+    } else if (Platform.isIOS) {
+      exit(0);
+    }
   }
 }
 

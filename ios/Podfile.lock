@@ -787,7 +787,7 @@ PODS:
     - MLKitBarcodeScanning (~> 1.7.0)
   - GoogleMLKit/MLKitCore (2.6.0):
     - MLKitCommon (~> 5.0.0)
-  - GoogleSignIn (6.2.1):
+  - GoogleSignIn (6.2.2):
     - AppAuth (~> 1.5)
     - GTMAppAuth (~> 1.3)
     - GTMSessionFetcher/Core (~> 1.1)
@@ -938,6 +938,27 @@ PODS:
   - sqflite (0.0.2):
     - Flutter
     - FMDB (>= 2.7.5)
+  - Stripe (22.3.2):
+    - Stripe/Stripe3DS2 (= 22.3.2)
+    - StripeApplePay (= 22.3.2)
+    - StripeCore (= 22.3.2)
+    - StripeUICore (= 22.3.2)
+  - Stripe/Stripe3DS2 (22.3.2):
+    - StripeApplePay (= 22.3.2)
+    - StripeCore (= 22.3.2)
+    - StripeUICore (= 22.3.2)
+  - stripe_ios (0.0.1):
+    - Flutter
+    - Stripe (~> 22.3.0)
+    - StripeFinancialConnections (~> 22.3.0)
+  - StripeApplePay (22.3.2):
+    - StripeCore (= 22.3.2)
+  - StripeCore (22.3.2)
+  - StripeFinancialConnections (22.3.2):
+    - StripeCore (= 22.3.2)
+    - StripeUICore (= 22.3.2)
+  - StripeUICore (22.3.2):
+    - StripeCore (= 22.3.2)
   - Toast (4.0.0)
   - uni_links (0.0.1):
     - Flutter
@@ -974,6 +995,7 @@ DEPENDENCIES:
   - shared_preferences_ios (from `.symlinks/plugins/shared_preferences_ios/ios`)
   - sign_in_with_apple (from `.symlinks/plugins/sign_in_with_apple/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
+  - stripe_ios (from `.symlinks/plugins/stripe_ios/ios`)
   - uni_links (from `.symlinks/plugins/uni_links/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
   - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/ios`)
@@ -1019,6 +1041,11 @@ SPEC REPOS:
     - PromisesObjC
     - Protobuf
     - ReachabilitySwift
+    - Stripe
+    - StripeApplePay
+    - StripeCore
+    - StripeFinancialConnections
+    - StripeUICore
     - Toast
 
 EXTERNAL SOURCES:
@@ -1076,6 +1103,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/sign_in_with_apple/ios"
   sqflite:
     :path: ".symlinks/plugins/sqflite/ios"
+  stripe_ios:
+    :path: ".symlinks/plugins/stripe_ios/ios"
   uni_links:
     :path: ".symlinks/plugins/uni_links/ios"
   url_launcher_ios:
@@ -1121,7 +1150,7 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 4c19f031220c72464d460c9daa1fb5d1acce958e
   GoogleDataTransport: 5fffe35792f8b96ec8d6775f5eccd83c998d5a3b
   GoogleMLKit: 755661c46990a85e42278015f26400286d98ad95
-  GoogleSignIn: 9c69f4188921d8f789816e4c99ba2a1f5f868ddc
+  GoogleSignIn: 3c68388ac221f379676e8f1cb115df3aaf73b93f
   GoogleToolboxForMac: 8bef7c7c5cf7291c687cf5354f39f9db6399ad34
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   GoogleUtilitiesComponents: 679b2c881db3b615a2777504623df6122dd20afe
@@ -1150,11 +1179,17 @@ SPEC CHECKSUMS:
   shared_preferences_ios: 548a61f8053b9b8a49ac19c1ffbc8b92c50d68ad
   sign_in_with_apple: f3bf75217ea4c2c8b91823f225d70230119b8440
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
+  Stripe: 17d25f91e6332898ba92585cd84be1a8b5594239
+  stripe_ios: a0a5c4e07e65afc7370a5d7432af6292c68482c5
+  StripeApplePay: 90b4c66db77cb49273eb8f5d58385b5dc3923cff
+  StripeCore: 7d8cf9e15ed8c3b25782693195cbf8757c7c3c4d
+  StripeFinancialConnections: 01deacb97a300f001b5b1ecfbed548d22b6a77de
+  StripeUICore: e90f3a6d4244fbda668fbc44cb657281574a7bd8
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   uni_links: d97da20c7701486ba192624d99bffaaffcfc298a
   url_launcher_ios: 839c58cdb4279282219f5e248c3321761ff3c4de
   webview_flutter_wkwebview: b7e70ef1ddded7e69c796c7390ee74180182971f
 
-PODFILE CHECKSUM: 7368163408c647b7eb699d0d788ba6718e18fb8d
+PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3
 
 COCOAPODS: 1.11.3

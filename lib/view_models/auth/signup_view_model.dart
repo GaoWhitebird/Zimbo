@@ -82,7 +82,7 @@ class SignUpViewModel extends BaseViewModel {
                         value.subscriptionInfo!.status !=
                             SubscriptionStatusModel.active)
                       {
-                        const SubscriptionLockView().launch(context),
+                        const SubscriptionLockView().launch(context, isNewTask: true),
                       }
                       else
                         {
@@ -131,7 +131,7 @@ class SignUpViewModel extends BaseViewModel {
                         value.subscriptionInfo!.status !=
                             SubscriptionStatusModel.active)
                         {
-                          const SubscriptionLockView().launch(context),
+                          const SubscriptionLockView().launch(context, isNewTask: true),
                         }
                         else
                           {
@@ -194,7 +194,7 @@ class SignUpViewModel extends BaseViewModel {
                         value.subscriptionInfo!.status !=
                             SubscriptionStatusModel.active)
                       {
-                        const SubscriptionLockView().launch(context),
+                        const SubscriptionLockView().launch(context, isNewTask: true),
                       }
                       else
                         {

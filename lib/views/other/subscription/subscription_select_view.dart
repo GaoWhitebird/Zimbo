@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pay/pay.dart';
 import 'package:stacked/stacked.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/utils/color_utils.dart';
@@ -29,11 +28,6 @@ class SubscriptionSelectView extends StatelessWidget {
     setStatusBarColor(ColorUtils.appColorWhite);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-
-    void onApplePayResult(paymentResult) {
-      debugPrint(paymentResult.toString());
-      showMessage(paymentResult.toString(), null);
-    }
 
     return WillPopScope(
         child: Scaffold(
@@ -86,90 +80,88 @@ class SubscriptionSelectView extends StatelessWidget {
               ),
               SingleChildScrollView(
                 child: Column(
-                children: [
-                  Container(
-                    width: width,
-                    margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: ElevatedButton.icon(
-                          onPressed: () => model.onClickCardPay(context),
-                          icon: SvgPicture.asset(ImageUtils.imgIcCard, width: 30, height: 30,),
-                          label: textView(StringUtils.txtPay,
-                              textColor: ColorUtils.appColorBlack,
-                              fontSize: SizeUtils.textSizeLarge,
-                              fontWeight: FontWeight.w500,
-                              isCentered: true),
-                          style: ElevatedButton.styleFrom(
-                              primary: ColorUtils.appColorWhite,
-                              padding:
-                                  const EdgeInsets.only(top: 10, bottom: 10),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5),
-                              ))),
+                  children: [
+                    Container(
+                      width: width,
+                      margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: ElevatedButton.icon(
+                            onPressed: () => model.onClickCardPay(context),
+                            icon: SvgPicture.asset(
+                              ImageUtils.imgIcCard,
+                              width: 30,
+                              height: 30,
+                            ),
+                            label: textView(StringUtils.txtPay,
+                                textColor: ColorUtils.appColorBlack,
+                                fontSize: SizeUtils.textSizeLarge,
+                                fontWeight: FontWeight.w500,
+                                isCentered: true),
+                            style: ElevatedButton.styleFrom(
+                                primary: ColorUtils.appColorWhite,
+                                padding:
+                                    const EdgeInsets.only(top: 10, bottom: 10),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5),
+                                ))),
+                      ),
                     ),
-                  ),
-                  Container(
-                    width: width,
-                    margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: ElevatedButton.icon(
-                          onPressed: () => model.onClickApplePay(context),
-                          icon: SvgPicture.asset(ImageUtils.imgIcApple, width: 30, height: 30,),
-                          label: textView(StringUtils.txtPay,
-                              textColor: ColorUtils.appColorBlack,
-                              fontSize: SizeUtils.textSizeLarge,
-                              fontWeight: FontWeight.w500,
-                              isCentered: true),
-                          style: ElevatedButton.styleFrom(
-                              primary: ColorUtils.appColorWhite,
-                              padding:
-                                  const EdgeInsets.only(top: 10, bottom: 10),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5),
-                              ))),
-                    ),
-                  ).visible(model.isApplePay),
-                  Container(
-                    width: width,
-                    margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: ElevatedButton.icon(
-                          onPressed: () => model.onClickGooglePay(context),
-                          icon: SvgPicture.asset(ImageUtils.imgIcGoogle, width: 30, height: 30,),
-                          label: textView(StringUtils.txtPay,
-                              textColor: ColorUtils.appColorBlack,
-                              fontSize: SizeUtils.textSizeLarge,
-                              fontWeight: FontWeight.w500,
-                              isCentered: true),
-                          style: ElevatedButton.styleFrom(
-                              primary: ColorUtils.appColorWhite,
-                              padding:
-                                  const EdgeInsets.only(top: 10, bottom: 10),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5),
-                              ))),
-                    ),
-                  ).visible(model.isGooglePay),
-                  ApplePayButton(
-                    width: width * 0.9,
-                    paymentConfigurationAsset:
-                        'pay/apple_pay.json',
-                    paymentItems: model.paymentItems,
-                    style: ApplePayButtonStyle.white,
-                    type: ApplePayButtonType.buy,
-                    margin: const EdgeInsets.only(top: 15.0),
-                    onPaymentResult: onApplePayResult,
-                    loadingIndicator: const Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  ),
-                ],
+                    Container(
+                      width: width,
+                      margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: ElevatedButton.icon(
+                            onPressed: () => model.onClickApplePay(context),
+                            icon: SvgPicture.asset(
+                              ImageUtils.imgIcApple,
+                              width: 30,
+                              height: 30,
+                            ),
+                            label: textView(StringUtils.txtPay,
+                                textColor: ColorUtils.appColorBlack,
+                                fontSize: SizeUtils.textSizeLarge,
+                                fontWeight: FontWeight.w500,
+                                isCentered: true),
+                            style: ElevatedButton.styleFrom(
+                                primary: ColorUtils.appColorWhite,
+                                padding:
+                                    const EdgeInsets.only(top: 10, bottom: 10),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5),
+                                ))),
+                      ),
+                    ).visible(model.isApplePay),
+                    Container(
+                      width: width,
+                      margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: ElevatedButton.icon(
+                            onPressed: () => model.onClickGooglePay(context),
+                            icon: SvgPicture.asset(
+                              ImageUtils.imgIcGoogle,
+                              width: 30,
+                              height: 30,
+                            ),
+                            label: textView(StringUtils.txtPay,
+                                textColor: ColorUtils.appColorBlack,
+                                fontSize: SizeUtils.textSizeLarge,
+                                fontWeight: FontWeight.w500,
+                                isCentered: true),
+                            style: ElevatedButton.styleFrom(
+                                primary: ColorUtils.appColorWhite,
+                                padding:
+                                    const EdgeInsets.only(top: 10, bottom: 10),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5),
+                                ))),
+                      ),
+                    ).visible(model.isGooglePay),
+                  ],
+                ),
               ),
-              ),
-              
             ],
           ),
         ),

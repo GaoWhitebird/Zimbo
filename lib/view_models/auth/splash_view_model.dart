@@ -49,7 +49,8 @@ class SplashViewModel extends BaseViewModel {
                     userModel!.subscriptionInfo!.status !=
                         SubscriptionStatusModel.active)
                   {
-                    const SubscriptionLockView().launch(context, isNewTask: true),
+                    const SubscriptionLockView()
+                        .launch(context, isNewTask: true),
                   }
                 else
                   {

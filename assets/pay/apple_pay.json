@@ -1,13 +1,13 @@
  {
-     "provider": "apple_pay",
+    "provider": "apple_pay",
     "data": {
-      "merchantIdentifier": "com.au.zimbo",
+      "merchantIdentifier": "merchant.com.au.zimbo",
       "displayName": "$1.99/month",
       "merchantCapabilities": ["3DS", "debit", "credit"],
       "supportedNetworks": ["amex", "visa", "discover", "masterCard"],
       "countryCode": "AU",
       "currencyCode": "AUD",
-      "requiredBillingContactFields": ["emailAddress", "name", "phoneNumber", "postalAddress"],
+      "requiredBillingContactFields": ["emailAddress"],
       "requiredShippingContactFields": [],
       "shippingMethods": [
         {

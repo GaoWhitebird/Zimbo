@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:pay/pay.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
+import 'package:zimbo/model/request/charge_apple_req.dart';
 import 'package:zimbo/model/request/charge_google_req.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
@@ -14,15 +16,15 @@ import '../../../utils/string_utils.dart';
 class SubscriptionSelectViewModel extends BaseViewModel {
   bool isGooglePay = false;
   bool isApplePay = false;
-  String publishKey ='';
+  String publishKey = '';
   String? token;
   final paymentItems = [
-      const PaymentItem(
-        label: 'Total',
-        amount: '1.99',
-        status: PaymentItemStatus.final_price,
-      )
-      ];
+    const PaymentItem(
+      label: 'Total',
+      amount: '1.99',
+      status: PaymentItemStatus.final_price,
+    )
+  ];
   Pay? payClient;
 
   initialize(BuildContext context) async {
@@ -35,43 +37,46 @@ class SubscriptionSelectViewModel extends BaseViewModel {
     PaymentConfiguration paymentConfigurationApple;
     List<PaymentConfiguration> configurations;
 
-    
-
     await networkService.doGetPaymentMethodInfo(token!).then((value) async => {
-      if(value != null){
-        publishKey = value,
-
-        googlePayJsonStr = await DefaultAssetBundle.of(context).loadString("assets/pay/google_pay.json"),
-        applePayJsonStr = await DefaultAssetBundle.of(context).loadString("assets/pay/apple_pay.json"),
-
-        configurations = <PaymentConfiguration>[],
-        jsonStringGoogle = googlePayJsonStr.replaceAll("pk_test", publishKey),
-        paymentConfigurationGoogle = PaymentConfiguration.fromJsonString(jsonStringGoogle),
-        paymentConfigurationApple = PaymentConfiguration.fromJsonString(applePayJsonStr),
-        configurations.add(paymentConfigurationGoogle),
-        configurations.add(paymentConfigurationApple),
-        
-        payClient = Pay(configurations),
-        payClient!.userCanPay(PayProvider.google_pay).then((value) => {
-          isGooglePay = value,
-          notifyListeners(),
-        },),
-        payClient!.userCanPay(PayProvider.apple_pay).then((value) => {
-          isApplePay = value,
-          notifyListeners(),
-        },),
-
-        notifyListeners(),
-      }
-    });
+          if (value != null)
+            {
+              publishKey = value,
+              Stripe.publishableKey = publishKey,
+              googlePayJsonStr = await DefaultAssetBundle.of(context)
+                  .loadString("assets/pay/google_pay.json"),
+              applePayJsonStr = await DefaultAssetBundle.of(context)
+                  .loadString("assets/pay/apple_pay.json"),
+              configurations = <PaymentConfiguration>[],
+              jsonStringGoogle =
+                  googlePayJsonStr.replaceAll("pk_test", publishKey),
+              paymentConfigurationGoogle =
+                  PaymentConfiguration.fromJsonString(jsonStringGoogle),
+              paymentConfigurationApple =
+                  PaymentConfiguration.fromJsonString(applePayJsonStr),
+              configurations.add(paymentConfigurationGoogle),
+              configurations.add(paymentConfigurationApple),
+              payClient = Pay(configurations),
+              payClient!.userCanPay(PayProvider.google_pay).then(
+                    (value) => {
+                      isGooglePay = value,
+                      notifyListeners(),
+                    },
+                  ),
+              payClient!.userCanPay(PayProvider.apple_pay).then(
+                    (value) => {
+                      isApplePay = value,
+                      notifyListeners(),
+                    },
+                  ),
+              notifyListeners(),
+            }
+        });
   }
 
   onClickGooglePay(BuildContext context) async {
-    try{
+    try {
       final result = await payClient!.showPaymentSelector(
-        provider: PayProvider.google_pay,
-        paymentItems: paymentItems
-      );
+          provider: PayProvider.google_pay, paymentItems: paymentItems);
 
       var paymentMethodData = result["paymentMethodData"];
       var tokenizationData = paymentMethodData["tokenizationData"];
@@ -79,34 +84,55 @@ class SubscriptionSelectViewModel extends BaseViewModel {
       tokenData = jsonDecode(tokenData);
       var id = tokenData["id"];
 
-      if(id.isNotEmpty){
+      if (id.isNotEmpty) {
         ChargeGoogleReq req = ChargeGoogleReq(txnId: id, planId: '1');
         networkService.doChargeGoogle(token!, req).then((value) => {
-          if(value){
-            showMessage(StringUtils.txtSubscriptionSuccess, null),
-            SubscriptionConfirmView().launch(context, isNewTask: true),
-          }else {
-            showMessage(StringUtils.txtSomethingWentWrong, null),      
-          }
-        });
+              if (value)
+                {
+                  showMessage(StringUtils.txtSubscriptionSuccess, null),
+                  SubscriptionConfirmView().launch(context, isNewTask: true),
+                }
+              else
+                {
+                  showMessage(StringUtils.txtSomethingWentWrong, null),
+                }
+            });
       }
-    }catch (e) {
+    } catch (e) {
       showMessage(StringUtils.txtSomethingWentWrong, null);
     }
-    
   }
 
   onClickApplePay(BuildContext context) async {
-    final result = await payClient!.showPaymentSelector(
-          provider: PayProvider.apple_pay,
-          paymentItems: paymentItems,
-        );
+    try {
+      final result = await payClient!.showPaymentSelector(
+        provider: PayProvider.apple_pay,
+        paymentItems: paymentItems,
+      );
 
-    showMessage(result.toString(), null);
+      final tokenApple = await Stripe.instance.createApplePayToken(result);
+      var data = tokenApple.id;
+
+      if (data.isNotEmpty) {
+        ChargeAppleReq req = ChargeAppleReq(txnId: data, planId: '1');
+        networkService.doChargeApple(token!, req).then((value) => {
+              if (value)
+                {
+                  showMessage(StringUtils.txtSubscriptionSuccess, null),
+                  SubscriptionConfirmView().launch(context, isNewTask: true),
+                }
+              else
+                {
+                  showMessage(StringUtils.txtSomethingWentWrong, null),
+                }
+            });
+      }
+    } catch (e) {
+      showMessage(StringUtils.txtSomethingWentWrong, null);
+    }
   }
 
   onClickCardPay(BuildContext context) {
     EditSubscriptionCardView().launch(context);
   }
-
 }

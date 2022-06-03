@@ -42,21 +42,20 @@ class MainViewModel extends BaseViewModel {
 
     if (Platform.isAndroid) {
       setupNotificationAndroid(context);
-    }else if(Platform.isIOS){
+    } else if (Platform.isIOS) {
       setupNotificationIOS(context);
     }
 
     token = await sharedService.getToken();
 
     networkService.doGetProfile(token!).then((value) => {
-      if(value != null){
-        userModel = value,
-        sharedService.saveUser(userModel),
-        
-        notifyListeners(),
-      }
-    });
-    
+          if (value != null)
+            {
+              userModel = value,
+              sharedService.saveUser(userModel),
+              notifyListeners(),
+            }
+        });
   }
 
   onClickMenu(BuildContext context) async {
@@ -157,15 +156,14 @@ class MainViewModel extends BaseViewModel {
   }
 
   setupNotificationIOS(BuildContext context) async {
-
-
     final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
         FlutterLocalNotificationsPlugin();
-    final BehaviorSubject<ReceivedNotification> didReceiveLocalNotificationSubject =
-    BehaviorSubject<ReceivedNotification>();
+    final BehaviorSubject<ReceivedNotification>
+        didReceiveLocalNotificationSubject =
+        BehaviorSubject<ReceivedNotification>();
 
     final BehaviorSubject<String?> selectNotificationSubject =
-    BehaviorSubject<String?>();
+        BehaviorSubject<String?>();
 
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
@@ -173,38 +171,37 @@ class MainViewModel extends BaseViewModel {
         .resolvePlatformSpecificImplementation<
             IOSFlutterLocalNotificationsPlugin>()
         ?.requestPermissions(
-        alert: true,
-        badge: true,
-        sound: true,
+          alert: true,
+          badge: true,
+          sound: true,
         );
 
     final IOSInitializationSettings initializationSettingsIOS =
-      IOSInitializationSettings(
-          requestAlertPermission: false,
-          requestBadgePermission: false,
-          requestSoundPermission: false,
-          onDidReceiveLocalNotification: (
-            int id,
-            String? title,
-            String? body,
-            String? payload,
-          ) async {
-            didReceiveLocalNotificationSubject.add(
-              ReceivedNotification(
-                id: id,
-                title: title,
-                body: body,
-                payload: payload,
-              ),
-            );
-          });
-
+        IOSInitializationSettings(
+            requestAlertPermission: false,
+            requestBadgePermission: false,
+            requestSoundPermission: false,
+            onDidReceiveLocalNotification: (
+              int id,
+              String? title,
+              String? body,
+              String? payload,
+            ) async {
+              didReceiveLocalNotificationSubject.add(
+                ReceivedNotification(
+                  id: id,
+                  title: title,
+                  body: body,
+                  payload: payload,
+                ),
+              );
+            });
 
     var initializationSettings = InitializationSettings(
       iOS: initializationSettingsIOS,
     );
     await flutterLocalNotificationsPlugin.initialize(initializationSettings,
-      onSelectNotification: (String? payload) async {
+        onSelectNotification: (String? payload) async {
       if (payload != null) {
         debugPrint('notification payload: $payload');
       }
