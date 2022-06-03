@@ -47,8 +47,14 @@ class SubscriptionSelectViewModel extends BaseViewModel {
               applePayJsonStr = await DefaultAssetBundle.of(context)
                   .loadString("assets/pay/apple_pay.json"),
               configurations = <PaymentConfiguration>[],
+
+              if(publishKey.contains("pk_live")){
+                jsonStringGoogle =
+                  googlePayJsonStr.replaceAll("TEST", "PRODUCTION"),
+              },
               jsonStringGoogle =
-                  googlePayJsonStr.replaceAll("pk_test", publishKey),
+                  googlePayJsonStr.replaceAll("pk_key", publishKey),
+              
               paymentConfigurationGoogle =
                   PaymentConfiguration.fromJsonString(jsonStringGoogle),
               paymentConfigurationApple =

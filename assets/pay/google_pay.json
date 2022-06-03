@@ -1,7 +1,7 @@
 {
   "provider": "google_pay",
   "data": {
-    "environment": "LIVE",
+    "environment": "TEST",
     "apiVersion": 2,
     "apiVersionMinor": 0,
     "allowedPaymentMethods": [
@@ -12,7 +12,7 @@
           "parameters": {
             "gateway": "stripe",
             "stripe:version": "2018-10-31",
-            "stripe:publishableKey": "pk_test"
+            "stripe:publishableKey": "pk_key"
           }
         },
         "parameters": {

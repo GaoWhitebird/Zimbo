@@ -111,29 +111,27 @@ class LoginView extends StatelessWidget {
                                     ))),
                           ),
                         ),
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
-                            child: ElevatedButton.icon(
-                                onPressed: () =>
-                                    model.onClickAppleLogin(context),
-                                icon: SvgPicture.asset(ImageUtils.imgIcApple, width: 24, height: 24,),
-                                label: textView(StringUtils.txtApple,
-                                    textColor: ColorUtils.appColorBlack,
-                                    fontSize: SizeUtils.textSizeSMedium,
-                                    fontWeight: FontWeight.w500,
-                                    isCentered: true),
-                                style: ElevatedButton.styleFrom(
-                                    primary: ColorUtils.appColorWhite,
-                                    padding: const EdgeInsets.only(
-                                        top: 10, bottom: 10),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(25),
-                                    ))),
-                          ),
-                        ).visible(Platform.isIOS)
                       ],
                     ),
+                    Container(
+                      alignment: Alignment.center,
+                      child: ElevatedButton.icon(
+                            onPressed: () =>
+                                model.onClickAppleLogin(context),
+                            icon: SvgPicture.asset(ImageUtils.imgIcApple, width: 24, height: 24,),
+                            label: textView(StringUtils.txtApple,
+                                textColor: ColorUtils.appColorBlack,
+                                fontSize: SizeUtils.textSizeSMedium,
+                                fontWeight: FontWeight.w500,
+                                isCentered: true),
+                            style: ElevatedButton.styleFrom(
+                                primary: ColorUtils.appColorWhite,
+                                padding: const EdgeInsets.only(
+                                    top: 10, bottom: 10, right: 30, left: 30),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(25),
+                                ))),
+                    ).visible(Platform.isIOS),
                     Container(
                       height: height * 0.1,
                       alignment: Alignment.center,

@@ -30,7 +30,7 @@ class StringUtils {
   static const txtContinueAsFree = 'Continue as Free';
   static const txtFacebook = 'Facebook';
   static const txtGoogle = 'Google';
-  static const txtApple = 'Apple';
+  static const txtApple = 'Continue with Apple';
   static const txtPay = 'Pay';
   static const txtOr = 'or';
   static const txtAnd = 'and';
