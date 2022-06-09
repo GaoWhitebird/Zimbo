@@ -76,7 +76,7 @@ class StringUtils {
   static const txtYourGuide =
       'Your guide to personal sustainability';
   static const txtWhatNewBlog =
-      'What\'s new in this blog';
+      'What\'s new on the blog';
 
   static const txtOnceAWeek = 'Once a week';
   static const txtTwiceAWeek = 'Twice a week';
@@ -174,12 +174,12 @@ class StringUtils {
   static const txtSubscriptionCost = 'Subscription Cost:';
   static const txtSubscriptionCancel = 'Subscription Canceled';
   static const txtSubscriptionCancelFailed = 'Subscription cancel failed';
-  static const txtSubscriptionSuccess = 'Subscription Successed !';
+  static const txtSubscriptionSuccess = 'Your request is in processing, it will be available soon!';
   static const txtSubscriptionFailed = 'Subscription Failed !';
   static const txtEditPaymentDetails = 'Edit Payment details';
   static const txtCardNumber = 'Card Number';
   static const txtCardHolder = 'Card Holder';
-  static const txtExpireDate = 'Expire Date';
+  static const txtExpireDate = 'Expiry Date';
   static const txtCVV = 'CVV';
 
   static const txtInvalideCardNumber = 'Please enter correct Card number';

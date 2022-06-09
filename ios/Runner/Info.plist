@@ -67,9 +67,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>This app needs camera access to scan QR codes</string>
+	<string>This app needs camera access to take photos for your profile and reusable item image.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Photo Library permission is required for sending image on Feedback.</string>
+	<string>This app needs photos access to retrieve photos for your profile and reusable item image.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

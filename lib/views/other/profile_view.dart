@@ -109,7 +109,8 @@ class ProfileView extends StatelessWidget {
                             ),
                           ],
                         ),
-                      ),
+                      ).visible(model.userModel == null ||
+                            model.userModel!.userImage!.isEmpty),
                       Container(
                         margin: const EdgeInsets.all(10),
                         child: DottedBorder(
@@ -120,8 +121,10 @@ class ProfileView extends StatelessWidget {
                             child: GestureDetector(
                                 //onTap: () => model.onClickAddPhoto(context),
                                 )),
-                      ),
-                    ])),
+                      ).visible(model.userModel == null ||
+                            model.userModel!.userImage!.isEmpty),
+                    ])
+                    ),
                 textView(
                     model.userModel == null ? '' : model.userModel!.userName,
                     fontWeight: FontWeight.w600,

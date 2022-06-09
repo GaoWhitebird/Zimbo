@@ -97,7 +97,8 @@ class _HomeViewState extends State<HomeView>
                               ),
                             ],
                           ),
-                        ),
+                        ).visible(model.userModel == null ||
+                            model.userModel!.userImage!.isEmpty),
                         Container(
                           margin: const EdgeInsets.all(10),
                           child: DottedBorder(
@@ -106,9 +107,41 @@ class _HomeViewState extends State<HomeView>
                               borderType: BorderType.Circle,
                               radius: const Radius.circular(10),
                               child: GestureDetector(
-                                  onTap: () => model.onClickAddPhoto(context),
-                                  )),
-                        ),
+                                onTap: () => model.onClickAddPhoto(context),
+                              )),
+                        ).visible(model.userModel == null ||
+                            model.userModel!.userImage!.isEmpty),
+                        Positioned(
+                            right: 0,
+                            bottom: 0,
+                            child: GestureDetector(
+                              onTap: () => model.onClickAddPhoto(context),
+                              child: Container(
+                                padding: const EdgeInsets.all(5),
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: ColorUtils.appColorWhite,
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: ColorUtils.appColorBlack_10,
+                                          blurRadius: 10,
+                                          offset: Offset(0, 5)),
+                                    ]),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: const <Widget>[
+                                    Icon(
+                                      Icons.camera_alt_outlined,
+                                      color: ColorUtils.appColorBlue,
+                                      size: 15,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )).visible(model.userModel !=
+                                null &&
+                            model.userModel!.userImage!.isNotEmpty),
                       ]),
                     ),
                     SizedBox(
@@ -231,14 +264,16 @@ class _HomeViewState extends State<HomeView>
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: <Widget>[
                           GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               model.onInsightClicked(0);
                             },
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: <Widget>[
                                 textView(StringUtils.txtCarbonOffset,
-                                    textColor: model.curInsightIndex == 0 ? ColorUtils.appColorAccent : ColorUtils.appColorTextTitle,
+                                    textColor: model.curInsightIndex == 0
+                                        ? ColorUtils.appColorAccent
+                                        : ColorUtils.appColorTextTitle,
                                     fontSize: SizeUtils.textSizeSMedium,
                                     fontWeight: FontWeight.w500,
                                     isCentered: true),
@@ -246,22 +281,26 @@ class _HomeViewState extends State<HomeView>
                                   height: 10,
                                 ),
                                 Container(
-                                    height: 3,
-                                    width: width * 0.3,
-                                    color: model.curInsightIndex == 0 ? ColorUtils.appColorAccent : ColorUtils.appColorTransparent,
-                                    )
+                                  height: 3,
+                                  width: width * 0.3,
+                                  color: model.curInsightIndex == 0
+                                      ? ColorUtils.appColorAccent
+                                      : ColorUtils.appColorTransparent,
+                                )
                               ],
                             ),
                           ),
                           GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               model.onInsightClicked(1);
                             },
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: <Widget>[
                                 textView(StringUtils.txtSavings,
-                                    textColor: model.curInsightIndex == 1 ? ColorUtils.appColorAccent : ColorUtils.appColorTextTitle,
+                                    textColor: model.curInsightIndex == 1
+                                        ? ColorUtils.appColorAccent
+                                        : ColorUtils.appColorTextTitle,
                                     fontSize: SizeUtils.textSizeSMedium,
                                     fontWeight: FontWeight.w500,
                                     isCentered: true),
@@ -269,22 +308,26 @@ class _HomeViewState extends State<HomeView>
                                   height: 10,
                                 ),
                                 Container(
-                                    height: 3,
-                                    width: width * 0.2,
-                                    color: model.curInsightIndex == 1 ? ColorUtils.appColorAccent : ColorUtils.appColorTransparent,
-                                    )
+                                  height: 3,
+                                  width: width * 0.2,
+                                  color: model.curInsightIndex == 1
+                                      ? ColorUtils.appColorAccent
+                                      : ColorUtils.appColorTransparent,
+                                )
                               ],
                             ),
                           ),
                           GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               model.onInsightClicked(2);
                             },
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: <Widget>[
                                 textView(StringUtils.txtReuse,
-                                    textColor: model.curInsightIndex == 2 ? ColorUtils.appColorAccent : ColorUtils.appColorTextTitle,
+                                    textColor: model.curInsightIndex == 2
+                                        ? ColorUtils.appColorAccent
+                                        : ColorUtils.appColorTextTitle,
                                     fontSize: SizeUtils.textSizeSMedium,
                                     fontWeight: FontWeight.w500,
                                     isCentered: true),
@@ -292,15 +335,17 @@ class _HomeViewState extends State<HomeView>
                                   height: 10,
                                 ),
                                 Container(
-                                    height: 3,
-                                    width: width * 0.15,
-                                    color: model.curInsightIndex == 2 ? ColorUtils.appColorAccent : ColorUtils.appColorTransparent,
-                                    )
+                                  height: 3,
+                                  width: width * 0.15,
+                                  color: model.curInsightIndex == 2
+                                      ? ColorUtils.appColorAccent
+                                      : ColorUtils.appColorTransparent,
+                                )
                               ],
                             ),
                           ),
                           GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               model.onInsightClicked(3);
                             },
                             child: Column(
@@ -310,16 +355,20 @@ class _HomeViewState extends State<HomeView>
                                   ImageUtils.imgIcTree,
                                   width: width * 0.1,
                                   height: width * 0.1,
-                                  color: model.curInsightIndex == 3 ? ColorUtils.appColorAccent : ColorUtils.appColorTextTitle,
+                                  color: model.curInsightIndex == 3
+                                      ? ColorUtils.appColorAccent
+                                      : ColorUtils.appColorTextTitle,
                                 ),
                                 const SizedBox(
                                   height: 10,
                                 ),
                                 Container(
-                                    height: 3,
-                                    width: width * 0.1,
-                                    color: model.curInsightIndex == 3 ? ColorUtils.appColorAccent : ColorUtils.appColorTransparent,
-                                    )
+                                  height: 3,
+                                  width: width * 0.1,
+                                  color: model.curInsightIndex == 3
+                                      ? ColorUtils.appColorAccent
+                                      : ColorUtils.appColorTransparent,
+                                )
                               ],
                             ),
                           ),
@@ -347,7 +396,6 @@ class _HomeViewState extends State<HomeView>
                           isCentered: true),
                     ),
                   )
-                  
                 ],
               ),
             )

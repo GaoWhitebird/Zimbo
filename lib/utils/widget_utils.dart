@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/image_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
@@ -510,6 +511,17 @@ class RoundButtonState extends State<RoundButton> {
             isCentered: true),
       ),
     );
+  }
+}
+
+class CustomMonthPicker extends DatePickerModel {
+  CustomMonthPicker({DateTime? currentTime, DateTime? minTime, DateTime? maxTime,
+    LocaleType? locale}) : super(locale: locale, minTime: minTime, maxTime:
+  maxTime, currentTime: currentTime);
+
+  @override
+  List<int> layoutProportions() {
+    return [1, 1, 0];
   }
 }
 

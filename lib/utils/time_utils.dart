@@ -29,6 +29,15 @@ String readDateYYYYMMDD(DateTime dateTime){
   return dateStr;
 }
 
+String readDateYYYYMM(DateTime dateTime){
+  var format = new DateFormat('yyyy/MM');
+  var dateStr = '';
+
+  dateStr = format.format(dateTime);
+
+  return dateStr;
+}
+
 String readTimestampYYYYMMDD(String timestamp){
   var format = new DateFormat('yyyy/MM/dd');
   var dateTime = new DateTime.fromMillisecondsSinceEpoch(int.parse(timestamp) * 1000,);

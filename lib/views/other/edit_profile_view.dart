@@ -4,6 +4,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 import 'package:stacked/stacked.dart';
+import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
 import 'package:zimbo/utils/string_utils.dart';
@@ -135,7 +136,8 @@ class _EditProfileViewState extends State<EditProfileView> {
                               ),
                             ],
                           ),
-                        ),
+                        ).visible(model.userModel == null ||
+                            model.userModel!.userImage!.isEmpty),
                         Container(
                           margin: const EdgeInsets.all(10),
                           child: DottedBorder(
@@ -146,7 +148,40 @@ class _EditProfileViewState extends State<EditProfileView> {
                               child: GestureDetector(
                                 onTap: () => model.onClickAddPhoto(context),
                               )),
-                        ),
+                        ).visible(model.userModel == null ||
+                            model.userModel!.userImage!.isEmpty),
+                        Positioned(
+                            right: 0,
+                            left: height * 0.1,
+                            bottom: 0,
+                            child: GestureDetector(
+                              onTap: () => model.onClickAddPhoto(context),
+                              child: Container(
+                                padding: const EdgeInsets.all(7),
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: ColorUtils.appColorWhite,
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: ColorUtils.appColorBlack_10,
+                                          blurRadius: 10,
+                                          offset: Offset(0, 5)),
+                                    ]),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: const <Widget>[
+                                    Icon(
+                                      Icons.camera_alt_outlined,
+                                      color: ColorUtils.appColorBlue,
+                                      size: 15,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )).visible(model.userModel !=
+                                null &&
+                            model.userModel!.userImage!.isNotEmpty),
                       ])),
                   Container(
                       alignment: Alignment.bottomCenter,

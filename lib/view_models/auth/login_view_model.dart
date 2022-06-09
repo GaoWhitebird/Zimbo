@@ -35,7 +35,6 @@ class LoginViewModel extends BaseViewModel {
 
   initialize(BuildContext context) async {
     handleIncomingLinks(context);
-    deviceKey = await getDeviceId();
     googleSignIn = GoogleSignIn();
     firebaseToken = await FirebaseMessaging.instance.getToken();
     if (Platform.isAndroid) {
@@ -58,6 +57,7 @@ class LoginViewModel extends BaseViewModel {
         final profile = await fb.getUserProfile();
         final imageUrl = await fb.getProfileImageUrl(width: 100);
         final email = await fb.getUserEmail();
+        deviceKey = email;
 
         SignUpFacebookReq req = SignUpFacebookReq(
             name: profile!.name!,
@@ -112,7 +112,7 @@ class LoginViewModel extends BaseViewModel {
               googleId: _currentUser!.id,
               email: _currentUser!.email,
               image: _currentUser!.photoUrl!,
-              deviceKey: deviceKey!,
+              deviceKey: _currentUser!.email,
               firebaseToken: firebaseToken!,
               deviceType: platformType);
 
@@ -175,7 +175,7 @@ class LoginViewModel extends BaseViewModel {
           userName: userName,
           appleId: credential.userIdentifier!,
           email: userEmail,
-          deviceKey: deviceKey!,
+          deviceKey: credential.userIdentifier!,
           firebaseToken: firebaseToken!,
           deviceType: platformType);
 
@@ -217,7 +217,7 @@ class LoginViewModel extends BaseViewModel {
       LoginReq req = LoginReq(
           email: email,
           password: password,
-          deviceKey: deviceKey ?? '',
+          deviceKey: email,
           firebaseToken: firebaseToken!,
           deviceType: platformType);
 

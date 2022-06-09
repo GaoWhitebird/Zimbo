@@ -83,7 +83,7 @@ class SubmissionFormView extends StatelessWidget {
                   height: height * 0.1,
                   alignment: Alignment.center,
                   padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: textView(StringUtils.txtInfoMail,
+                  child: textView(StringUtils.txtSupportMail,
                       textColor: ColorUtils.appColorWhite,
                       fontSize: SizeUtils.textSizeSMedium,
                       fontWeight: FontWeight.w500,

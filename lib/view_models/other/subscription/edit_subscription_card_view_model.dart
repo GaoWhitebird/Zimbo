@@ -63,6 +63,7 @@ class EditSubscriptionCardViewModel extends BaseViewModel {
             }
           }),
         }).onError((error, stackTrace) => {
+           hideLoading(),
           if(kDebugMode){
             // ignore: avoid_print
             print(error),
@@ -71,10 +72,14 @@ class EditSubscriptionCardViewModel extends BaseViewModel {
     }
 
   void onClickDatePicker(BuildContext context) {
-    DatePicker.showDatePicker(context,
+    DatePicker.showPicker(context,
         showTitleActions: true,
-        minTime: DateTime(2010, 1, 1),
-        maxTime: DateTime(2100, 1, 1),
+        pickerModel: CustomMonthPicker(
+          minTime: DateTime(2010, 1),
+          maxTime: DateTime(2100, 1),
+          currentTime: DateTime.now(), 
+          locale: LocaleType.en
+        ),
         theme: const DatePickerTheme(
             headerColor: ColorUtils.appColorWhite,
             backgroundColor: ColorUtils.appColorPrimaryDark,
@@ -85,9 +90,9 @@ class EditSubscriptionCardViewModel extends BaseViewModel {
         }, 
         onConfirm: (date) {
           expireDate = date;
-          expireDateStr = readDateYYYYMMDD(expireDate);
+          expireDateStr = readDateYYYYMM(expireDate);
 
           notifyListeners();
-        }, currentTime: DateTime.now(), locale: LocaleType.en);
+        });
   }
 }

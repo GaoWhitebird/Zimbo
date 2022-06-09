@@ -32,7 +32,6 @@ class SignUpViewModel extends BaseViewModel {
   String platformType = '';
 
   initialize(BuildContext context) async {
-    deviceKey = await getDeviceId();
     googleSignIn = GoogleSignIn();
     firebaseToken = await FirebaseMessaging.instance.getToken();
     if (Platform.isAndroid) {
@@ -59,6 +58,7 @@ class SignUpViewModel extends BaseViewModel {
         final profile = await fb.getUserProfile();
         final imageUrl = await fb.getProfileImageUrl(width: 100);
         final email = await fb.getUserEmail();
+        deviceKey = email;
 
         SignUpFacebookReq req = SignUpFacebookReq(
             name: profile!.name!,
@@ -113,7 +113,7 @@ class SignUpViewModel extends BaseViewModel {
               googleId: _currentUser!.id,
               email: _currentUser!.email,
               image: _currentUser!.photoUrl!,
-              deviceKey: deviceKey!,
+              deviceKey: _currentUser!.email,
               firebaseToken: firebaseToken!,
               deviceType: platformType);
 
@@ -176,7 +176,7 @@ class SignUpViewModel extends BaseViewModel {
           userName: userName,
           appleId: credential.userIdentifier!,
           email: userEmail,
-          deviceKey: deviceKey!,
+          deviceKey: credential.userIdentifier!,
           firebaseToken: firebaseToken!,
           deviceType: platformType);
 
@@ -222,7 +222,7 @@ class SignUpViewModel extends BaseViewModel {
           userName: name,
           email: email,
           password: password,
-          deviceKey: deviceKey ?? '',
+          deviceKey: email,
           firebaseToken: firebaseToken!,
           deviceType: platformType,
           referralCode: _code);
