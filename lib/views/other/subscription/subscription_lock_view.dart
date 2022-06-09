@@ -239,12 +239,15 @@ class SubscriptionLockView extends StatelessWidget {
                   radius: 30,
                   onPressed: () => model.onClickContinueFree(context),
                 ),
-              ).visible(model.userModel != null &&
+              )
+              //.visible(false)
+              .visible(model.userModel != null &&
                   model.userModel!.subscriptionInfo != null &&
                   model.userModel!.subscriptionInfo!.planName ==
                       PlanNameModel.free &&
                   model.userModel!.subscriptionInfo!.status ==
-                      SubscriptionStatusModel.active),
+                      SubscriptionStatusModel.active)
+              ,
               Container(
                 margin: EdgeInsets.fromLTRB(width * 0.05, 0, width * 0.05, 0),
                 alignment: Alignment.center,

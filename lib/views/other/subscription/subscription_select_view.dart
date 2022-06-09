@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:stacked/stacked.dart';
@@ -81,32 +83,7 @@ class SubscriptionSelectView extends StatelessWidget {
               SingleChildScrollView(
                 child: Column(
                   children: [
-                    Container(
-                      width: width,
-                      margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: ElevatedButton.icon(
-                            onPressed: () => model.onClickCardPay(context),
-                            icon: SvgPicture.asset(
-                              ImageUtils.imgIcCard,
-                              width: 30,
-                              height: 30,
-                            ),
-                            label: textView(StringUtils.txtPay,
-                                textColor: ColorUtils.appColorBlack,
-                                fontSize: SizeUtils.textSizeLarge,
-                                fontWeight: FontWeight.w500,
-                                isCentered: true),
-                            style: ElevatedButton.styleFrom(
-                                primary: ColorUtils.appColorWhite,
-                                padding:
-                                    const EdgeInsets.only(top: 10, bottom: 10),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5),
-                                ))),
-                      ),
-                    ),
+                    
                     Container(
                       width: width,
                       margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -132,7 +109,8 @@ class SubscriptionSelectView extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(5),
                                 ))),
                       ),
-                    ).visible(model.isApplePay),
+                    ).visible(Platform.isIOS),
+                    //.visible(model.isApplePay),
                     Container(
                       width: width,
                       margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -159,6 +137,32 @@ class SubscriptionSelectView extends StatelessWidget {
                                 ))),
                       ),
                     ).visible(model.isGooglePay),
+                    Container(
+                      width: width,
+                      margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: ElevatedButton.icon(
+                            onPressed: () => model.onClickCardPay(context),
+                            icon: SvgPicture.asset(
+                              ImageUtils.imgIcCard,
+                              width: 30,
+                              height: 30,
+                            ),
+                            label: textView(StringUtils.txtPay,
+                                textColor: ColorUtils.appColorBlack,
+                                fontSize: SizeUtils.textSizeLarge,
+                                fontWeight: FontWeight.w500,
+                                isCentered: true),
+                            style: ElevatedButton.styleFrom(
+                                primary: ColorUtils.appColorWhite,
+                                padding:
+                                    const EdgeInsets.only(top: 10, bottom: 10),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5),
+                                ))),
+                      ),
+                    ),
                   ],
                 ),
               ),

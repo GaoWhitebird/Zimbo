@@ -134,7 +134,7 @@ class SubscriptionSelectViewModel extends BaseViewModel {
             });
       }
     } catch (e) {
-      showMessage(StringUtils.txtSomethingWentWrong, null);
+      showMessage(e.toString(), null);
     }
   }
 
