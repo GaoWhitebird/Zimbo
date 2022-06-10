@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:pay/pay.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
@@ -47,14 +48,13 @@ class SubscriptionSelectViewModel extends BaseViewModel {
               applePayJsonStr = await DefaultAssetBundle.of(context)
                   .loadString("assets/pay/apple_pay.json"),
               configurations = <PaymentConfiguration>[],
-
-              if(publishKey.contains("pk_live")){
-                jsonStringGoogle =
-                  googlePayJsonStr.replaceAll("TEST", "PRODUCTION"),
-              },
+              if (publishKey.contains("pk_live"))
+                {
+                  jsonStringGoogle =
+                      googlePayJsonStr.replaceAll("TEST", "PRODUCTION"),
+                },
               jsonStringGoogle =
                   googlePayJsonStr.replaceAll("pk_key", publishKey),
-              
               paymentConfigurationGoogle =
                   PaymentConfiguration.fromJsonString(jsonStringGoogle),
               paymentConfigurationApple =
@@ -134,7 +134,11 @@ class SubscriptionSelectViewModel extends BaseViewModel {
             });
       }
     } catch (e) {
-      showMessage(e.toString(), null);
+      if (e is PlatformException) {
+        showMessage(
+            e.message == null ? StringUtils.txtSomethingWentWrong : e.message!,
+            null);
+      }
     }
   }
 
