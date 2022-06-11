@@ -63,6 +63,7 @@ class NetworkService {
 
       hideLoading();
 
+
       var resData = jsonDecode(response.data);
       if (resData['res'] != 'success') {
         showMessage(resData['err_msg'], null);

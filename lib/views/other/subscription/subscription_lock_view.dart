@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
-import 'package:zimbo/model/common/plan_name_model.dart';
-import 'package:zimbo/model/common/subscription_status_model.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/image_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
@@ -240,13 +238,13 @@ class SubscriptionLockView extends StatelessWidget {
                   onPressed: () => model.onClickContinueFree(context),
                 ),
               )
-              //.visible(false)
-              .visible(model.userModel != null &&
-                  model.userModel!.subscriptionInfo != null &&
-                  model.userModel!.subscriptionInfo!.planName ==
-                      PlanNameModel.free &&
-                  model.userModel!.subscriptionInfo!.status ==
-                      SubscriptionStatusModel.active)
+              .visible(false)
+              // .visible(model.userModel != null &&
+              //     model.userModel!.subscriptionInfo != null &&
+              //     model.userModel!.subscriptionInfo!.planName ==
+              //         PlanNameModel.free &&
+              //     model.userModel!.subscriptionInfo!.status ==
+              //         SubscriptionStatusModel.active)
               ,
               Container(
                 margin: EdgeInsets.fromLTRB(width * 0.05, 0, width * 0.05, 0),

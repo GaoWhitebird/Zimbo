@@ -19,6 +19,7 @@ import 'package:zimbo/views/other/support_view.dart';
 import 'package:zimbo/views/other/profile_view.dart';
 
 import '../../model/common/subscription_status_model.dart';
+import 'subscription/subscription_confirm_view.dart';
 
 class MenuView extends StatelessWidget {
   const MenuView({Key? key}) : super(key: key);
@@ -90,7 +91,8 @@ class MenuView extends StatelessWidget {
                              model.userModel!.subscriptionInfo!.status != SubscriptionStatusModel.active){
                                const SubscriptionLockView().launch(context),
                              } else {
-                               const CancelSubscriptionView().launch(context),
+                              //SubscriptionConfirmView().launch(context),
+                              const CancelSubscriptionView().launch(context),
                              }
                         }),
                 MenuViewItem(

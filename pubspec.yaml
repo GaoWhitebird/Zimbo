@@ -66,6 +66,7 @@ dependencies:
   weekday_selector: ^1.0.0
   group_button: ^5.0.0
   permission_handler: ^9.2.0
+  bottom_picker: ^1.8.0
   
   # Payment
   stripe_sdk: ^5.0.0-nullsafety.1

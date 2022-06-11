@@ -105,7 +105,11 @@ class SubscriptionSelectViewModel extends BaseViewModel {
             });
       }
     } catch (e) {
-      showMessage(StringUtils.txtSomethingWentWrong, null);
+      if (e is PlatformException) {
+        showMessage(
+            e.message == null ? StringUtils.txtSomethingWentWrong : e.message!,
+            null);
+      }
     }
   }
 

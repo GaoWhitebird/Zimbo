@@ -89,16 +89,11 @@ class SubscriptionSelectView extends StatelessWidget {
                       margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                       child: Padding(
                         padding: const EdgeInsets.all(10),
-                        child: ElevatedButton.icon(
+                        child: ElevatedButton(
                             onPressed: () => model.onClickApplePay(context),
-                            icon: SvgPicture.asset(
-                              ImageUtils.imgIcApple,
-                              width: 30,
-                              height: 30,
-                            ),
-                            label: textView(StringUtils.txtPay,
+                            child: textView(StringUtils.txtSubscribeForZimbo,
                                 textColor: ColorUtils.appColorBlack,
-                                fontSize: SizeUtils.textSizeLarge,
+                                fontSize: SizeUtils.textSizeNormal,
                                 fontWeight: FontWeight.w500,
                                 isCentered: true),
                             style: ElevatedButton.styleFrom(
@@ -125,7 +120,7 @@ class SubscriptionSelectView extends StatelessWidget {
                             ),
                             label: textView(StringUtils.txtPay,
                                 textColor: ColorUtils.appColorBlack,
-                                fontSize: SizeUtils.textSizeLarge,
+                                fontSize: SizeUtils.textSizeNormal,
                                 fontWeight: FontWeight.w500,
                                 isCentered: true),
                             style: ElevatedButton.styleFrom(
@@ -136,7 +131,7 @@ class SubscriptionSelectView extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(5),
                                 ))),
                       ),
-                    ).visible(model.isGooglePay),
+                    ).visible(Platform.isAndroid),
                     Container(
                       width: width,
                       margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -151,7 +146,7 @@ class SubscriptionSelectView extends StatelessWidget {
                             ),
                             label: textView(StringUtils.txtPay,
                                 textColor: ColorUtils.appColorBlack,
-                                fontSize: SizeUtils.textSizeLarge,
+                                fontSize: SizeUtils.textSizeNormal,
                                 fontWeight: FontWeight.w500,
                                 isCentered: true),
                             style: ElevatedButton.styleFrom(
