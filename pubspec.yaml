@@ -71,7 +71,7 @@ dependencies:
   # Payment
   stripe_sdk: ^5.0.0-nullsafety.1
   pay: ^1.0.9
-  flutter_stripe: ^3.0.2
+  in_app_purchase: ^3.0.5
 
   flutter_datetime_picker:
     git:

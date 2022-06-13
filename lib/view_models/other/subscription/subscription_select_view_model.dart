@@ -1,11 +1,10 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:pay/pay.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
-import 'package:zimbo/model/request/charge_apple_req.dart';
 import 'package:zimbo/model/request/charge_google_req.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
@@ -42,7 +41,6 @@ class SubscriptionSelectViewModel extends BaseViewModel {
           if (value != null)
             {
               publishKey = value,
-              Stripe.publishableKey = publishKey,
               googlePayJsonStr = await DefaultAssetBundle.of(context)
                   .loadString("assets/pay/google_pay.json"),
               applePayJsonStr = await DefaultAssetBundle.of(context)
@@ -114,36 +112,7 @@ class SubscriptionSelectViewModel extends BaseViewModel {
   }
 
   onClickApplePay(BuildContext context) async {
-    try {
-      final result = await payClient!.showPaymentSelector(
-        provider: PayProvider.apple_pay,
-        paymentItems: paymentItems,
-      );
-
-      final tokenApple = await Stripe.instance.createApplePayToken(result);
-      var data = tokenApple.id;
-
-      if (data.isNotEmpty) {
-        ChargeAppleReq req = ChargeAppleReq(txnId: data, planId: '1');
-        networkService.doChargeApple(token!, req).then((value) => {
-              if (value)
-                {
-                  showMessage(StringUtils.txtSubscriptionSuccess, null),
-                  SubscriptionConfirmView().launch(context, isNewTask: true),
-                }
-              else
-                {
-                  showMessage(StringUtils.txtSomethingWentWrong, null),
-                }
-            });
-      }
-    } catch (e) {
-      if (e is PlatformException) {
-        showMessage(
-            e.message == null ? StringUtils.txtSomethingWentWrong : e.message!,
-            null);
-      }
-    }
+    
   }
 
   onClickCardPay(BuildContext context) {

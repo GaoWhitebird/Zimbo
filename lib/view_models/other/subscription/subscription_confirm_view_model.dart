@@ -1,11 +1,15 @@
 
 import 'package:bottom_picker/bottom_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
 import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
+
+import '../../../model/request/add_postal_address_req.dart';
+import '../../../views/other/subscription/keychain_confirm_view.dart';
 
 class SubscriptionConfirmViewModel extends BaseViewModel {
   var stateItems = <Text>[];
@@ -34,15 +38,15 @@ class SubscriptionConfirmViewModel extends BaseViewModel {
       return;
     }
     
-    // AddPostalAddressReq req = AddPostalAddressReq(postalAddress: address1);
-    // networkService.doAddPostalAddress(token!, req).then((value) {
-    //   if(value) {
+    AddPostalAddressReq req = AddPostalAddressReq(address1: address1, address2: address2, suburb: suburb, state: state, postcode: postCode);
+    networkService.doAddPostalAddress(token!, req).then((value) {
+      if(value) {
         
-    //     const KeychainConfirmView().launch(context, isNewTask: true);
-    //   }else{
-    //     showMessage(StringUtils.txtSomethingWentWrong, null);
-    //   }
-    // });
+        const KeychainConfirmView().launch(context, isNewTask: true);
+      }else{
+        showMessage(StringUtils.txtSomethingWentWrong, null);
+      }
+    });
 
   }
 

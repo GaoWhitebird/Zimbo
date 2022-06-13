@@ -91,8 +91,8 @@ class MenuView extends StatelessWidget {
                              model.userModel!.subscriptionInfo!.status != SubscriptionStatusModel.active){
                                const SubscriptionLockView().launch(context),
                              } else {
-                              //SubscriptionConfirmView().launch(context),
-                              const CancelSubscriptionView().launch(context),
+                              SubscriptionConfirmView().launch(context),
+                              //const CancelSubscriptionView().launch(context),
                              }
                         }),
                 MenuViewItem(
