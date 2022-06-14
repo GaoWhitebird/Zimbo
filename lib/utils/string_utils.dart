@@ -33,6 +33,7 @@ class StringUtils {
   static const txtGoogle = 'Google';
   static const txtApple = 'Continue with Apple';
   static const txtPay = 'Pay';
+  static const txtRestorePurchase = 'Restore purchase';
   static const txtOr = 'or';
   static const txtAnd = 'and';
   static const txtAndroidID = 'com.au.zimbo';

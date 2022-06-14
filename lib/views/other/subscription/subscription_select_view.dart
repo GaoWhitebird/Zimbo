@@ -20,20 +20,12 @@ class SubscriptionSelectView extends StatefulWidget {
 
   @override
   State<SubscriptionSelectView> createState() => _SubscriptionSelectViewState();
-
-  
 }
 
 const bool _kAutoConsume = true;
 
-const String _kConsumableId = 'consumable';
-const String _kUpgradeId = 'upgrade';
-const String _kSilverSubscriptionId = 'subscription_silver';
 const String _kGoldSubscriptionId = 'zimbo_subscription_1_month';
 const List<String> _kProductIds = <String>[
-  _kConsumableId,
-  _kUpgradeId,
-  _kSilverSubscriptionId,
   _kGoldSubscriptionId,
 ];
 
@@ -48,7 +40,7 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
   bool _purchasePending = false;
   bool _loading = true;
   String? _queryProductError;
-  
+
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<SubscriptionSelectViewModel>.reactive(
@@ -60,8 +52,10 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
 
   @override
   void initState() {
-    final Stream<List<PurchaseDetails>> purchaseUpdated = _inAppPurchase.purchaseStream;
-    _subscription = purchaseUpdated.listen((List<PurchaseDetails> purchaseDetailsList) {
+    final Stream<List<PurchaseDetails>> purchaseUpdated =
+        _inAppPurchase.purchaseStream;
+    _subscription =
+        purchaseUpdated.listen((List<PurchaseDetails> purchaseDetailsList) {
       _listenToPurchaseUpdated(purchaseDetailsList);
     }, onDone: () {
       _subscription.cancel();
@@ -74,6 +68,7 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
 
   Future<void> initStoreInfo() async {
     final bool isAvailable = await _inAppPurchase.isAvailable();
+
     if (!isAvailable) {
       setState(() {
         _isAvailable = isAvailable;
@@ -131,47 +126,40 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
     _subscription.cancel();
     super.dispose();
   }
-   Card _buildConsumableBox() {
+
+  _buildProductList() {
     if (_loading) {
-      return const Card(
-          child: ListTile(
-              leading: CircularProgressIndicator(),
-              title: Text('Fetching consumables...')));
+      return;
     }
-    if (!_isAvailable || _notFoundIds.contains(_kConsumableId)) {
-      return const Card();
+    if (!_isAvailable) {
+      return;
     }
-    const ListTile consumableHeader =
-        ListTile(title: Text('Purchased consumables'));
-    final List<Widget> tokens = _consumables.map((String id) {
-      return GridTile(
-        child: IconButton(
-          icon: const Icon(
-            Icons.stars,
-            size: 42.0,
-            color: Colors.orange,
-          ),
-          splashColor: Colors.yellowAccent,
-          onPressed: () => consume(id),
-        ),
-      );
-    }).toList();
-    return Card(
-        child: Column(children: <Widget>[
-      consumableHeader,
-      const Divider(),
-      GridView.count(
-        crossAxisCount: 5,
-        shrinkWrap: true,
-        padding: const EdgeInsets.all(16.0),
-        children: tokens,
-      )
-    ]));
+    const ListTile productHeader = ListTile(title: Text('Products for Sale'));
+    final List<ListTile> productList = <ListTile>[];
+    if (_notFoundIds.isNotEmpty) {
+      productList.add(ListTile(
+          title: Text('[${_notFoundIds.join(", ")}] not found',
+              style: TextStyle(color: ThemeData.light().errorColor)),
+          subtitle: const Text(
+              'This app needs special configuration to run. Please see example/README.md for instructions.')));
+    }
+
+    // This loading previous purchases code is just a demo. Please do not use this as it is.
+    // In your app you should always verify the purchase data using the `verificationData` inside the [PurchaseDetails] object before trusting it.
+    // We recommend that you use your own server to verify the purchase data.
+    final Map<String, PurchaseDetails> purchases =
+        Map<String, PurchaseDetails>.fromEntries(
+            _purchases.map((PurchaseDetails purchase) {
+      if (purchase.pendingCompletePurchase) {
+        _inAppPurchase.completePurchase(purchase);
+      }
+      return MapEntry<String, PurchaseDetails>(purchase.productID, purchase);
+    }));
+
+    return;
   }
 
-  Future<void> consume(String id) async {
-   
-  }
+  Future<void> consume(String id) async {}
 
   void showPendingUI() {
     setState(() {
@@ -179,9 +167,7 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
     });
   }
 
-  Future<void> deliverProduct(PurchaseDetails purchaseDetails) async {
-   
-  }
+  Future<void> deliverProduct(PurchaseDetails purchaseDetails) async {}
 
   void handleError(IAPError error) {
     setState(() {
@@ -217,7 +203,7 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
             return;
           }
         }
-        
+
         if (purchaseDetails.pendingCompletePurchase) {
           await _inAppPurchase.completePurchase(purchaseDetails);
         }
@@ -225,9 +211,7 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
     }
   }
 
-  Future<void> confirmPriceChange(BuildContext context) async {
-  }
-  
+  Future<void> confirmPriceChange(BuildContext context) async {}
 
   buildWidget(
       BuildContext context, SubscriptionSelectViewModel model, Widget? child) {
@@ -287,14 +271,28 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
               SingleChildScrollView(
                 child: Column(
                   children: [
-                    
                     Container(
                       width: width,
                       margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                       child: Padding(
                         padding: const EdgeInsets.all(10),
                         child: ElevatedButton(
-                            onPressed: () => model.onClickApplePay(context),
+                            onPressed: () {
+                              if (_products.length > 0) {
+                                ProductDetails productDetails = _products[0];
+                                late PurchaseParam purchaseParam;
+                                purchaseParam = PurchaseParam(
+                                  productDetails: productDetails,
+                                  applicationUserName: null,
+                                );
+
+                                _inAppPurchase.buyNonConsumable(
+                                    purchaseParam: purchaseParam);
+                              } else {
+                                showMessage(
+                                    'Subscription item not found', null);
+                              }
+                            },
                             child: textView(StringUtils.txtSubscribeForZimbo,
                                 textColor: ColorUtils.appColorBlack,
                                 fontSize: SizeUtils.textSizeNormal,
@@ -362,7 +360,18 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
                                 ))),
                       ),
                     ),
-                    _buildConsumableBox(),
+                    Container(
+                        margin: const EdgeInsets.all(20),
+                        child: GestureDetector(
+                          onTap: () {
+                            _inAppPurchase.restorePurchases();
+                          },
+                          child: textView(StringUtils.txtRestorePurchase,
+                              textColor: ColorUtils.appColorWhite,
+                              fontSize: SizeUtils.textSizeMedium,
+                              fontWeight: FontWeight.w400,
+                              isCentered: true),
+                        ).visible(Platform.isIOS))
                   ],
                 ),
               ),

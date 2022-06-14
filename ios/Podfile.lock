@@ -881,6 +881,8 @@ PODS:
   - GTMSessionFetcher/Core (1.7.2)
   - image_picker_ios (0.0.1):
     - Flutter
+  - in_app_purchase_storekit (0.0.1):
+    - Flutter
   - leveldb-library (1.22.1)
   - Libuv-gRPC (0.0.10):
     - Libuv-gRPC/Implementation (= 0.0.10)
@@ -938,27 +940,6 @@ PODS:
   - sqflite (0.0.2):
     - Flutter
     - FMDB (>= 2.7.5)
-  - Stripe (22.4.0):
-    - Stripe/Stripe3DS2 (= 22.4.0)
-    - StripeApplePay (= 22.4.0)
-    - StripeCore (= 22.4.0)
-    - StripeUICore (= 22.4.0)
-  - Stripe/Stripe3DS2 (22.4.0):
-    - StripeApplePay (= 22.4.0)
-    - StripeCore (= 22.4.0)
-    - StripeUICore (= 22.4.0)
-  - stripe_ios (0.0.1):
-    - Flutter
-    - Stripe (~> 22.4.0)
-    - StripeFinancialConnections (~> 22.4.0)
-  - StripeApplePay (22.4.0):
-    - StripeCore (= 22.4.0)
-  - StripeCore (22.4.0)
-  - StripeFinancialConnections (22.4.0):
-    - StripeCore (= 22.4.0)
-    - StripeUICore (= 22.4.0)
-  - StripeUICore (22.4.0):
-    - StripeCore (= 22.4.0)
   - Toast (4.0.0)
   - uni_links (0.0.1):
     - Flutter
@@ -985,6 +966,7 @@ DEPENDENCIES:
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - google_sign_in_ios (from `.symlinks/plugins/google_sign_in_ios/ios`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
+  - in_app_purchase_storekit (from `.symlinks/plugins/in_app_purchase_storekit/ios`)
   - mobile_scanner (from `.symlinks/plugins/mobile_scanner/ios`)
   - nb_utils (from `.symlinks/plugins/nb_utils/ios`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
@@ -995,7 +977,6 @@ DEPENDENCIES:
   - shared_preferences_ios (from `.symlinks/plugins/shared_preferences_ios/ios`)
   - sign_in_with_apple (from `.symlinks/plugins/sign_in_with_apple/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
-  - stripe_ios (from `.symlinks/plugins/stripe_ios/ios`)
   - uni_links (from `.symlinks/plugins/uni_links/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
   - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/ios`)
@@ -1041,11 +1022,6 @@ SPEC REPOS:
     - PromisesObjC
     - Protobuf
     - ReachabilitySwift
-    - Stripe
-    - StripeApplePay
-    - StripeCore
-    - StripeFinancialConnections
-    - StripeUICore
     - Toast
 
 EXTERNAL SOURCES:
@@ -1083,6 +1059,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/google_sign_in_ios/ios"
   image_picker_ios:
     :path: ".symlinks/plugins/image_picker_ios/ios"
+  in_app_purchase_storekit:
+    :path: ".symlinks/plugins/in_app_purchase_storekit/ios"
   mobile_scanner:
     :path: ".symlinks/plugins/mobile_scanner/ios"
   nb_utils:
@@ -1103,8 +1081,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/sign_in_with_apple/ios"
   sqflite:
     :path: ".symlinks/plugins/sqflite/ios"
-  stripe_ios:
-    :path: ".symlinks/plugins/stripe_ios/ios"
   uni_links:
     :path: ".symlinks/plugins/uni_links/ios"
   url_launcher_ios:
@@ -1159,6 +1135,7 @@ SPEC CHECKSUMS:
   GTMAppAuth: 4d8f864896f3646f0c33baf38a28362f4c601e15
   GTMSessionFetcher: 5595ec75acf5be50814f81e9189490412bad82ba
   image_picker_ios: b786a5dcf033a8336a657191401bfdf12017dabb
+  in_app_purchase_storekit: d7fcf4646136ec258e237872755da8ea6c1b6096
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
   MLImage: a454f9f8ecfd537783a12f9488f5be1a68820829
@@ -1179,12 +1156,6 @@ SPEC CHECKSUMS:
   shared_preferences_ios: 548a61f8053b9b8a49ac19c1ffbc8b92c50d68ad
   sign_in_with_apple: f3bf75217ea4c2c8b91823f225d70230119b8440
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
-  Stripe: a925dfa9a7e51aa8f782f428abc10cb828b45a85
-  stripe_ios: ba9cf4ad304acf74500b0a2cdd46b519173388c6
-  StripeApplePay: 369857bafe8baf02e31b47478db1574febd2a2f3
-  StripeCore: a94d2823817c97c79fce60884ab9027a2da798c1
-  StripeFinancialConnections: 269658b79f639c2d6b7d513235d469418b04c2dd
-  StripeUICore: a8e24a6c91a5c99075c7a490d45695fb912876e8
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   uni_links: d97da20c7701486ba192624d99bffaaffcfc298a
   url_launcher_ios: 839c58cdb4279282219f5e248c3321761ff3c4de
