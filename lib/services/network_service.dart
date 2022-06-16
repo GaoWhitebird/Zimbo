@@ -41,6 +41,7 @@ import 'package:zimbo/utils/api_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 
 import '../model/request/cancel_subscription_req.dart';
+import '../model/request/charge_iap_req.dart';
 
 class NetworkService {
   var dio = Dio(); 
@@ -432,6 +433,14 @@ class NetworkService {
 
   Future doChargeApple(String token, ChargeAppleReq req) async {
     var res = await doPostRequest(ApiUtils.urlChargeApple,
+        token: TokenReq(token: token).toJson(), param: req.toJson());
+    if (res == null) return false;
+
+    return true;
+  }
+
+  Future doChargeIAP(String token, ChargeIapReq req) async {
+    var res = await doPostRequest(ApiUtils.urlChargeIAP,
         token: TokenReq(token: token).toJson(), param: req.toJson());
     if (res == null) return false;
 

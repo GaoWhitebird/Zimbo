@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
@@ -37,7 +39,7 @@ class MenuView extends StatelessWidget {
     setStatusBarColor(ColorUtils.appColorWhite);
     return WillPopScope(
         child: Scaffold(
-          backgroundColor: ColorUtils.appColorBlue,
+            backgroundColor: ColorUtils.appColorBlue,
             appBar: AppBar(
               title: textView(StringUtils.txtMenu,
                   textColor: ColorUtils.appColorTextTitle,
@@ -68,14 +70,14 @@ class MenuView extends StatelessWidget {
                     imageStr: ImageUtils.imgIcBottomHelp,
                     titleStr: StringUtils.txtThisIsZimbo,
                     onTap: () {
-                          const AboutUsView().launch(context);
-                        }),
+                      const AboutUsView().launch(context);
+                    }),
                 MenuViewItem(
                     imageStr: ImageUtils.imgIcAboutUs,
                     titleStr: StringUtils.txtHowDoesZimboWork,
                     onTap: () async {
-                          const GuideView().launch(context);
-                        }),
+                      const GuideView().launch(context);
+                    }),
                 MenuViewItem(
                     imageStr: ImageUtils.imgIcMenuProfile,
                     titleStr: StringUtils.txtMyDetails,
@@ -86,21 +88,34 @@ class MenuView extends StatelessWidget {
                     imageStr: ImageUtils.imgIcMyItems,
                     titleStr: StringUtils.txtSubscription,
                     onTap: () => {
-                        if(model.userModel!.subscriptionInfo == null ||
-                            model.userModel!.subscriptionInfo!.planName == PlanNameModel.free ||
-                             model.userModel!.subscriptionInfo!.status != SubscriptionStatusModel.active){
-                               const SubscriptionLockView().launch(context),
-                             } else {
-                              SubscriptionConfirmView().launch(context),
-                              //const CancelSubscriptionView().launch(context),
-                             }
-                        }),
+                          if (model.userModel!.subscriptionInfo == null ||
+                              model.userModel!.subscriptionInfo!.planName ==
+                                  PlanNameModel.free ||
+                              model.userModel!.subscriptionInfo!.status !=
+                                  SubscriptionStatusModel.active)
+                            {
+                              const SubscriptionLockView().launch(context),
+                            }
+                          else
+                            {
+                              if (Platform.isIOS)
+                                {
+                                  showMessage(
+                                      StringUtils.txtYouAlreadyMember, null),
+                                }
+                              else
+                                {
+                                  const CancelSubscriptionView()
+                                      .launch(context),
+                                }
+                            }
+                        }).visible(!Platform.isIOS),
                 MenuViewItem(
                     imageStr: ImageUtils.imgIcMenuSupport,
                     titleStr: StringUtils.txtSupport,
                     onTap: () => {
-                      SupportView().launch(context),
-                    }),
+                          SupportView().launch(context),
+                        }),
                 Expanded(child: Container()),
                 GestureDetector(
                   child: Container(
@@ -128,8 +143,16 @@ class MenuView extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      textView(StringUtils.txtAppName, textColor: ColorUtils.appColorWhite, fontSize: SizeUtils.textSizeSMedium, fontWeight: FontWeight.w600, isCentered: false),
-                      textView(StringUtils.txtAppVersion + " " + model.version, textColor: ColorUtils.appColorWhite, fontSize: SizeUtils.textSizeSmall, fontWeight: FontWeight.w300, isCentered: false),
+                      textView(StringUtils.txtAppName,
+                          textColor: ColorUtils.appColorWhite,
+                          fontSize: SizeUtils.textSizeSMedium,
+                          fontWeight: FontWeight.w600,
+                          isCentered: false),
+                      textView(StringUtils.txtAppVersion + " " + model.version,
+                          textColor: ColorUtils.appColorWhite,
+                          fontSize: SizeUtils.textSizeSmall,
+                          fontWeight: FontWeight.w300,
+                          isCentered: false),
                     ],
                   ),
                 )

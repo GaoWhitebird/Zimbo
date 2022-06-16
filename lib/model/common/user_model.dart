@@ -11,7 +11,6 @@ class UserModel {
   String? userScore;
   String? country;
   String? address;
-  String? postalCode;
   String? lat;
   String? lon;
   String? isEmailVerified;
@@ -21,6 +20,12 @@ class UserModel {
   String? status;
   String? loginStatus;
   SubscriptionInfoModel? subscriptionInfo;
+
+  String? address1;
+  String? address2;
+  String? suburb;
+  String? state;
+  String? postalCode;
 
   UserModel({
     this.id,
@@ -33,7 +38,6 @@ class UserModel {
     this.userScore,
     this.country,
     this.address,
-    this.postalCode,
     this.lat,
     this.lon,
     this.isEmailVerified,
@@ -43,51 +47,71 @@ class UserModel {
     this.status,
     this.loginStatus,
     this.subscriptionInfo,
+
+    this.address1,
+    this.address2,
+    this.suburb,
+    this.state,
+    this.postalCode
   });
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'user_name': userName,
-    'user_first_name': firstName,
-    'user_last_name': lastName,
-    'user_email': userEmail,
-    'user_image': userImage,
-    'user_phone': userPhone,
-    'user_score': userScore,
-    'country': country,
-    'address': address,
-    'postal_code': postalCode,
-    'lat': lat,
-    'lon': lon,
-    'email_verified': isEmailVerified,
-    'phone_verified': isPhoneVerified,
-    'social_id': socialId,
-    'signup_type': signupType,
-    'status': status,
-    'login_status': loginStatus,
-    'subscription_info': subscriptionInfo == null ? null : subscriptionInfo!.toJson(),
-  };
+        'id': id,
+        'user_name': userName,
+        'user_first_name': firstName,
+        'user_last_name': lastName,
+        'user_email': userEmail,
+        'user_image': userImage,
+        'user_phone': userPhone,
+        'user_score': userScore,
+        'country': country,
+        'address': address,
+        'lat': lat,
+        'lon': lon,
+        'email_verified': isEmailVerified,
+        'phone_verified': isPhoneVerified,
+        'social_id': socialId,
+        'signup_type': signupType,
+        'status': status,
+        'login_status': loginStatus,
+        'subscription_info':
+            subscriptionInfo == null ? null : subscriptionInfo!.toJson(),
+
+        'address1': address1,
+        'address2': address2,
+        'suburb': suburb,
+        'state': state,
+        'postal_code': postalCode,
+      };
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-    id: json['id'],
-    userName: json['user_name'],
-    firstName: json['user_first_name'],
-    lastName: json['user_last_name'],
-    userEmail: json['user_email'],
-    userImage: json['user_image'],
-    userPhone: json['user_phone'],
-    userScore: json['user_score'],
-    country: json['country'],
-    address: json['address'],
-    postalCode: json['postal_code'],
-    lat: json['lat'],
-    lon: json['lon'],
-    isEmailVerified: json['email_verified'],
-    isPhoneVerified: json['phone_verified'],
-    socialId: json['social_id'],
-    signupType: json['signup_type'],
-    status: json['status'],
-    loginStatus: json['login_status'],
-    subscriptionInfo: json['subscription_info'] == null ? null : SubscriptionInfoModel.fromJson(json['subscription_info']),
-  );
+        id: json['id'],
+        userName: json['user_name'],
+        firstName: json['user_first_name'],
+        lastName: json['user_last_name'],
+        userEmail: json['user_email'],
+        userImage: json['user_image'],
+        userPhone: json['user_phone'],
+        userScore: json['user_score'],
+        country: json['country'],
+        address: json['address'],
+        lat: json['lat'],
+        lon: json['lon'],
+        isEmailVerified: json['email_verified'],
+        isPhoneVerified: json['phone_verified'],
+        socialId: json['social_id'],
+        signupType: json['signup_type'],
+        status: json['status'],
+        loginStatus: json['login_status'],
+        subscriptionInfo: json['subscription_info'] == null
+            ? null
+            : SubscriptionInfoModel.fromJson(json['subscription_info']),
+
+        
+        address1: json['address1'],
+        address2: json['address2'],
+        suburb: json['suburb'],
+        state: json['state'],
+        postalCode: json['postal_code'],
+      );
 }

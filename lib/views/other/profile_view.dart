@@ -10,6 +10,8 @@ import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/other/profile_view_model.dart';
 import 'package:zimbo/views/items/item_profile_view.dart';
+import 'package:zimbo/views/other/subscription/get_keychain_view.dart';
+import 'package:zimbo/views/other/subscription/subscription_confirm_view.dart';
 
 class ProfileView extends StatelessWidget {
   ProfileView({Key? key}) : super(key: key);
@@ -30,7 +32,7 @@ class ProfileView extends StatelessWidget {
 
     return WillPopScope(
         child: Scaffold(
-          backgroundColor: ColorUtils.appColorBlue,
+            backgroundColor: ColorUtils.appColorBlue,
             appBar: AppBar(
               title: textView(StringUtils.txtProfile,
                   textColor: ColorUtils.appColorTextTitle,
@@ -110,7 +112,7 @@ class ProfileView extends StatelessWidget {
                           ],
                         ),
                       ).visible(model.userModel == null ||
-                            model.userModel!.userImage!.isEmpty),
+                          model.userModel!.userImage!.isEmpty),
                       Container(
                         margin: const EdgeInsets.all(10),
                         child: DottedBorder(
@@ -122,9 +124,8 @@ class ProfileView extends StatelessWidget {
                                 //onTap: () => model.onClickAddPhoto(context),
                                 )),
                       ).visible(model.userModel == null ||
-                            model.userModel!.userImage!.isEmpty),
-                    ])
-                    ),
+                          model.userModel!.userImage!.isEmpty),
+                    ])),
                 textView(
                     model.userModel == null ? '' : model.userModel!.userName,
                     fontWeight: FontWeight.w600,
@@ -166,8 +167,7 @@ class ProfileView extends StatelessWidget {
                             children: [
                               Row(
                                 mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
                                     margin: const EdgeInsets.all(15),
@@ -196,6 +196,21 @@ class ProfileView extends StatelessWidget {
                                       ),
                                     ),
                                   ).visible(false),
+                                  Container(
+                                    margin: const EdgeInsets.all(15),
+                                    child: GestureDetector(
+                                      child: textViewUnderline(
+                                        StringUtils.txtZimboKeychain,
+                                        textColor: ColorUtils.appColorWhite,
+                                        fontSize: SizeUtils.textSizeMedium,
+                                        fontWeight: FontWeight.w500,
+                                        isCentered: false,
+                                      ),
+                                      onTap: () {
+                                        GetKeychainView().launch(context);
+                                      },
+                                    ),
+                                  ),
                                   Container(
                                     margin: const EdgeInsets.all(15),
                                     child: GestureDetector(
