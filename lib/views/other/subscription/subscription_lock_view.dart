@@ -44,12 +44,26 @@ class SubscriptionLockView extends StatelessWidget {
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(50),
                     bottomRight: Radius.circular(50))),
-            leading: BackButton(
-              color: ColorUtils.appColorBlack,
-              onPressed: () {
-                finishView(context);
-              },
-            ),
+            actions: [
+              IconButton(
+                splashRadius: 25,
+                icon: SvgPicture.asset(ImageUtils.imgIcMenuLogout,
+                    color: ColorUtils.appColorTextDark),
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext dlgContext) => CustomDialog(
+                        title: StringUtils.txtWarning,
+                        description: StringUtils.txtAreYouSureLogout,
+                        okButtonStr: StringUtils.txtLogout,
+                        cancelButtonStr: StringUtils.txtCancel,
+                        okClicked: () {
+                          model.onClickLogout(context);
+                        }),
+                  );
+                },
+              )
+            ],
           ),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -237,8 +251,7 @@ class SubscriptionLockView extends StatelessWidget {
                   radius: 30,
                   onPressed: () => model.onClickContinueFree(context),
                 ),
-              )
-              .visible(false)
+              ).visible(false)
               // .visible(model.userModel != null &&
               //     model.userModel!.subscriptionInfo != null &&
               //     model.userModel!.subscriptionInfo!.planName ==

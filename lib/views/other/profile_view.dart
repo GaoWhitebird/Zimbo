@@ -11,7 +11,6 @@ import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/other/profile_view_model.dart';
 import 'package:zimbo/views/items/item_profile_view.dart';
 import 'package:zimbo/views/other/subscription/get_keychain_view.dart';
-import 'package:zimbo/views/other/subscription/subscription_confirm_view.dart';
 
 class ProfileView extends StatelessWidget {
   ProfileView({Key? key}) : super(key: key);

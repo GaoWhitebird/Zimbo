@@ -169,6 +169,7 @@ class StringUtils {
   static const txtResetScoreSuccess = 'Reset score successfully';
   static const txtDoYouWantToDelete = 'Do you want to delete this item?';
   static const txtDoYouWantToAdd = 'Do you want to add this item?';
+  static const txtAreYouSureLogout = 'Are you sure you want to logout?';
   static const txtDoYouWantToDeleteProfile = 'Do you want to delete Profile?';
   static const txtDoYouWantToResetScore = 'Do you want to Reset Score?';
   static const txtWhatInIncluded = 'What in included in the subscription?';

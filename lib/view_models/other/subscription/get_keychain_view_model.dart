@@ -1,7 +1,6 @@
 import 'package:bottom_picker/bottom_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/model/common/user_model.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
@@ -11,7 +10,6 @@ import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
 
 import '../../../model/request/add_postal_address_req.dart';
-import '../../../views/other/subscription/keychain_confirm_view.dart';
 
 class GetKeychainViewModel extends BaseViewModel {
   var stateItems = <Text>[];

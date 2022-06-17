@@ -23,10 +23,9 @@ class ExitDialog extends StatelessWidget {
       backgroundColor: Colors.white,
       title: Row(
         children: [
-          Image.asset(ImageUtils.imgIcIntro2, height: 25, fit: BoxFit.fitHeight),
-          Container(
-            width: 20,
-          ),
+          Image.asset(ImageUtils.imgIcAppLogo,
+              height: 25, fit: BoxFit.fitHeight).visible(false),
+          
           Text(StringUtils.txtWarning,
               style: boldTextStyle(color: Colors.orange)),
         ],
@@ -83,10 +82,10 @@ class CustomDialog extends StatelessWidget {
       backgroundColor: Colors.white,
       title: Row(
         children: [
-          Image.asset(ImageUtils.imgIcIntro2, height: 25, fit: BoxFit.fitHeight),
-          Container(
-            width: 20,
-          ),
+          Image.asset(ImageUtils.imgIcAppLogo,
+                  height: 25, fit: BoxFit.fitHeight)
+              .visible(false),
+          
           Text(title, style: boldTextStyle(color: Colors.orange)),
         ],
       ),
@@ -376,7 +375,11 @@ class WalkThrough extends StatelessWidget {
   final String? backImg;
 
   WalkThrough(
-      {Key? key, this.textTitle, this.textContent, required this.walkImg, this.backImg})
+      {Key? key,
+      this.textTitle,
+      this.textContent,
+      required this.walkImg,
+      this.backImg})
       : super(key: key);
 
   @override
@@ -385,20 +388,18 @@ class WalkThrough extends StatelessWidget {
     var width = MediaQuery.of(context).size.width;
     return Stack(
       children: <Widget>[
-        Image.asset(backImg!,
-                width: width, height: h, fit: BoxFit.fill),
+        Image.asset(backImg!, width: width, height: h, fit: BoxFit.fill),
         Container(
           height: h,
           width: width,
           decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: <Color>[
+              gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: <Color>[
                 ColorUtils.appColorGradientStart,
                 ColorUtils.appColorGradientEnd,
-            ])
-          ),
+              ])),
         ),
         SizedBox(
           width: MediaQuery.of(context).size.width,
@@ -515,9 +516,16 @@ class RoundButtonState extends State<RoundButton> {
 }
 
 class CustomMonthPicker extends DatePickerModel {
-  CustomMonthPicker({DateTime? currentTime, DateTime? minTime, DateTime? maxTime,
-    LocaleType? locale}) : super(locale: locale, minTime: minTime, maxTime:
-  maxTime, currentTime: currentTime);
+  CustomMonthPicker(
+      {DateTime? currentTime,
+      DateTime? minTime,
+      DateTime? maxTime,
+      LocaleType? locale})
+      : super(
+            locale: locale,
+            minTime: minTime,
+            maxTime: maxTime,
+            currentTime: currentTime);
 
   @override
   List<int> layoutProportions() {

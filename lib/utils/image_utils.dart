@@ -2,6 +2,7 @@
 class ImageUtils {
   // png
   static const imgIcLogo = 'assets/images/png/ic_logo.png';
+  static const imgIcAppLogo = 'assets/images/png/ic_app_logo.png';
   static const imgIcSplash = 'assets/images/png/ic_splash.png';
   static const imgIcIntroBack = 'assets/images/png/ic_intro_back.png';
   static const imgIcIntroBack1 = 'assets/images/png/ic_intro_back_1.png';

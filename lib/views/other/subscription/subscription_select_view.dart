@@ -151,10 +151,6 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
         receiptData: purchaseDetails.verificationData.serverVerificationData,
         planId: '1');
 
-    print(
-      purchaseDetails.verificationData.serverVerificationData,
-    );
-
     networkService.doChargeIAP(token!, req).then((value) => {
           if (value)
             {
