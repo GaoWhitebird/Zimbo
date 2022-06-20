@@ -222,7 +222,7 @@ class StringUtils {
   static const txtForMoreInfo = 'For more info visit';
   static const txtUnlockZimboSmall = 'unlock zimbo';
   static const txtTimeToTakeItPersonally = 'Time to\n take it personally...';
-  static const txtChooseYourPaymentMethod = 'Choose your\n payment method';
+  static const txtChooseYourPaymentMethod = 'Please subscribe\n for zimbo';
   static const txtPersonalSustainabilityScore = 'Personal sustainability score';
   static const txtMonitorMoneySavedFromReuse =
       'Track the savings achieved from reuse';

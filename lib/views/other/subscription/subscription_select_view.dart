@@ -318,7 +318,7 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
                                   borderRadius: BorderRadius.circular(5),
                                 ))),
                       ),
-                    ).visible(Platform.isAndroid),
+                    ).visible(false),
                     Container(
                         margin: const EdgeInsets.all(20),
                         child: GestureDetector(
