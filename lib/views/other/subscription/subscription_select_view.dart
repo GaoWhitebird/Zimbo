@@ -27,7 +27,7 @@ class SubscriptionSelectView extends StatefulWidget {
   State<SubscriptionSelectView> createState() => _SubscriptionSelectViewState();
 }
 
-const String _kMonthSubscriptionId = 'zimbo_subscription_1_month';
+const String _kMonthSubscriptionId = 'zimbo_member_1_month';
 const List<String> _kProductIds = <String>[
   _kMonthSubscriptionId,
 ];
@@ -209,21 +209,17 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
                     isCentered: true,
                     maxLine: 2),
               ),
-              GestureDetector(
-                child: Container(
-                  height: height * 0.1,
-                  alignment: Alignment.center,
-                  child: textView(StringUtils.txt199Month,
-                      textColor: ColorUtils.appColorWhite,
-                      fontSize: SizeUtils.textSizeLarge,
-                      fontWeight: FontWeight.w600,
-                      isCentered: true,
-                      maxLine: 2),
-                ),
-              ),
               SingleChildScrollView(
                 child: Column(
                   children: [
+                    textView(StringUtils.txtFreeTrial,
+                        textColor: ColorUtils.appColorWhite,
+                        fontSize: SizeUtils.textSizeMedium,
+                        fontWeight: FontWeight.w400,
+                        isCentered: true),
+                    const SizedBox(
+                      height: 5,
+                    ),
                     Container(
                       width: width,
                       margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -252,11 +248,18 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
                                 }
                               }
                             },
-                            child: textView(StringUtils.txtSubscribeForZimbo,
-                                textColor: ColorUtils.appColorBlack,
-                                fontSize: SizeUtils.textSizeNormal,
-                                fontWeight: FontWeight.w500,
-                                isCentered: true),
+                            child: _loading
+                                ? const CircularProgressIndicator(
+                                    color: ColorUtils.appColorAccent,
+                                  )
+                                : textView(
+                                    _products.length > 0
+                                        ? '${_products[0].price} / Month'
+                                        : StringUtils.txt199Month,
+                                    textColor: ColorUtils.appColorBlack,
+                                    fontSize: SizeUtils.textSizeLarge,
+                                    fontWeight: FontWeight.w500,
+                                    isCentered: true),
                             style: ElevatedButton.styleFrom(
                                 primary: ColorUtils.appColorWhite,
                                 padding:
@@ -331,7 +334,7 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
                               fontSize: SizeUtils.textSizeMedium,
                               fontWeight: FontWeight.w400,
                               isCentered: true),
-                        ).visible(Platform.isIOS))
+                        ).visible(false))
                   ],
                 ),
               ),

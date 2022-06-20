@@ -238,6 +238,7 @@ class StringUtils {
   static const txtNoNeedToPay =
       'No need to pay if you cancel the subscription at least a day before the 14-day free trial ends';
   static const txt199Month = '\$1.99 / Month';
+  static const txtFreeTrial = 'Start your 14 days free trial';
   static const txtSubscribeFor199Month = 'Subscribe for \$1.99 / month';
   static const txtSubscribeForZimbo = 'Subscribe for zimbo';
   static const txtSubscriptionConfirmed = 'Subscription confirmed!';
@@ -250,8 +251,7 @@ class StringUtils {
   static const txtPleaseEnterPostcode = 'Please enter postcode';
   static const txtKeychainIsOnWay =
       'Thank you for subscribing.\nYour zimbo QR keychain is on its way.';
-  static const txtKeychainIsOnWayGet =
-      'Your zimbo QR keychain is on its way.';
+  static const txtKeychainIsOnWayGet = 'Your zimbo QR keychain is on its way.';
   static const txtCarbonOffset = 'Carbon Offset';
   static const txtSavings = 'Savings';
   static const txtTree = 'Tree';
