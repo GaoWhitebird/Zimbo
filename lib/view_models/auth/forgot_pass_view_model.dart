@@ -12,6 +12,10 @@ class ForgotPassViewModel extends BaseViewModel {
   }
 
   onClickSend(BuildContext context, String email) async {
+    if(email.isNotEmpty){
+      email = email.trim();
+    }
+    
     if(email.isNotEmpty && isValidEmail(email)){
       ForgotPasswordReq req = ForgotPasswordReq(email: email);
       await networkService.doForgotPassword(req).then((value) => {

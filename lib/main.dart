@@ -2,7 +2,7 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/string_utils.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter/services.dart';
 import 'locator.dart';
 import 'views/auth/splash_view.dart';
 
@@ -10,8 +10,10 @@ Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   setupLocator();
-  
-  runApp(const MyApp());
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+  .then((_) {
+    runApp(const MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {

@@ -61,19 +61,32 @@ class EditProfileViewModel extends BaseViewModel {
   }
 
   onClickSave(BuildContext context, String textName, String textPhone, String textEmail, String textCountry, String textAddress) async {
-    
-    String timeStr = new DateTime.now().microsecond.toString();
-    UpdateProfileReq req = new UpdateProfileReq(userName: textName, userPhone: textPhone, country: textCountry, address: textAddress,
-    userImage: imagePath.isNotEmpty ? await MultipartFile.fromFile(imagePath, filename: 'upload_' + timeStr + '.jpg') : null);
+    if(checkValidate(textName, textEmail,)){
+       String timeStr = new DateTime.now().microsecond.toString();
+      UpdateProfileReq req = new UpdateProfileReq(userName: textName, userPhone: textPhone, country: textCountry, address: textAddress,
+      userImage: imagePath.isNotEmpty ? await MultipartFile.fromFile(imagePath, filename: 'upload_' + timeStr + '.jpg') : null);
 
-    networkService.doUpdateProfile(token!, req).then((value) => {
-      if(value != null){
-        sharedService.saveUser(value),
-        showMessage(StringUtils.txtProfileUpdatedSuccess, null),
-        imagePath = '',
-        
-        finishView(context, true),
-      }
-    });
+      networkService.doUpdateProfile(token!, req).then((value) => {
+        if(value != null){
+          sharedService.saveUser(value),
+          showMessage(StringUtils.txtProfileUpdatedSuccess, null),
+          imagePath = '',
+          
+          finishView(context, true),
+        }
+      });
+    }
+  }
+
+  bool checkValidate(String name, String email){
+    if(name.isEmpty){
+      showMessage(StringUtils.txtPleaseEnterName, null);
+      return false;
+    }
+    if(email.isEmpty){
+      showMessage(StringUtils.txtPleaseEnterEmail, null);
+      return false;
+    }
+    return true;
   }
 }

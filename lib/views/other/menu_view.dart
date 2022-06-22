@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,7 +14,6 @@ import 'package:zimbo/view_models/other/menu_view_model.dart';
 import 'package:zimbo/views/auth/guide_view.dart';
 import 'package:zimbo/views/items/item_menu_view.dart';
 import 'package:zimbo/views/main/about_us_view.dart';
-import 'package:zimbo/views/other/subscription/cancel_subscription_view.dart';
 import 'package:zimbo/views/other/subscription/subscription_lock_view.dart';
 import 'package:zimbo/views/other/support_view.dart';
 import 'package:zimbo/views/other/profile_view.dart';
@@ -97,18 +95,12 @@ class MenuView extends StatelessWidget {
                             }
                           else
                             {
-                              if (Platform.isIOS)
-                                {
+                              {
                                   showMessage(
                                       StringUtils.txtYouAlreadyMember, null),
                                 }
-                              else
-                                {
-                                  const CancelSubscriptionView()
-                                      .launch(context),
-                                }
                             }
-                        }).visible(!Platform.isIOS),
+                        }).visible(true),
                 MenuViewItem(
                     imageStr: ImageUtils.imgIcMenuSupport,
                     titleStr: StringUtils.txtSupport,

@@ -25,51 +25,56 @@ class HomeDetailView extends StatelessWidget {
   buildWidget(BuildContext context, HomeDetailViewModel model, Widget? child) {
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: ColorUtils.appColorBlue,
-      appBar: AppBar(
-              title: textView(model.title,
-                  textColor: ColorUtils.appColorTextTitle,
-                  fontSize: SizeUtils.textSizeNormal,
-                  fontWeight: FontWeight.w500,
-                  isCentered: true),
-              backgroundColor: ColorUtils.appColorWhite,
-              centerTitle: true,
-              elevation: 0,
-              shape: const ContinuousRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(50),
-                      bottomRight: Radius.circular(50))),
-              leading: BackButton(
-                color: ColorUtils.appColorBlack,
-                onPressed: () {
-                  finishView(context, 2);
-                },
-              ),
-            ),
-      body: Container(
-        alignment: Alignment.center,
-        child: Column(
-          children: <Widget>[
-            Container(
-                height: height * 0.15,
-                alignment: Alignment.center,
-                child: textView(model.total,
-                    textColor: ColorUtils.appColorWhite,
-                    fontSize: SizeUtils.textSizeXLarge,
-                    fontWeight: FontWeight.w600,
-                    isCentered: true,
-                    maxLine: 1),
-              ),
-              Expanded(
-                child: ListView(
+        backgroundColor: ColorUtils.appColorBlue,
+        appBar: AppBar(
+          title: textView(model.title,
+              textColor: ColorUtils.appColorTextTitle,
+              fontSize: SizeUtils.textSizeNormal,
+              fontWeight: FontWeight.w500,
+              isCentered: true),
+          backgroundColor: ColorUtils.appColorWhite,
+          centerTitle: true,
+          elevation: 0,
+          shape: const ContinuousRectangleBorder(
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(50),
+                  bottomRight: Radius.circular(50))),
+          leading: BackButton(
+            color: ColorUtils.appColorBlack,
+            onPressed: () {
+              finishView(context, 2);
+            },
+          ),
+        ),
+        body: Container(
+            alignment: Alignment.center,
+            child: Column(
+              children: <Widget>[
+                Container(
+                    height: height * 0.15,
+                    alignment: Alignment.center,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          primary: ColorUtils.appColorAccent,
+                          padding: const EdgeInsets.fromLTRB(50, 5, 50, 5),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
+                          )),
+                      onPressed: () {},
+                      child: textView(model.total,
+                          textColor: ColorUtils.appColorWhite,
+                          fontSize: SizeUtils.textSizeXLarge,
+                          fontWeight: FontWeight.w600,
+                          isCentered: true,
+                          maxLine: 1),
+                    )),
+                Expanded(
+                    child: ListView(
                   physics: const BouncingScrollPhysics(),
                   children: getChildList(context, model),
-                )
-              ),
-          ],
-        )
-      )
-    );
+                )),
+              ],
+            )));
   }
 
   List<Widget> getChildList(BuildContext context, HomeDetailViewModel model) {

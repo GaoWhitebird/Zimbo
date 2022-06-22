@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:stacked/stacked.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
+import 'package:zimbo/model/request/charge_iap_google_req.dart';
 import 'package:zimbo/services/shared_service.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
@@ -17,7 +17,6 @@ import 'package:zimbo/view_models/other/subscription/subscription_select_view_mo
 import '../../../locator.dart';
 import '../../../model/request/charge_iap_req.dart';
 import '../../../services/network_service.dart';
-import '../../../utils/image_utils.dart';
 import 'subscription_confirm_view.dart';
 
 class SubscriptionSelectView extends StatefulWidget {
@@ -147,21 +146,42 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
     NetworkService networkService = locator<NetworkService>();
     SharedService sharedService = locator<SharedService>();
     String? token = await sharedService.getToken();
-    ChargeIapReq req = ChargeIapReq(
+
+    if(Platform.isIOS){
+      ChargeIapReq req = ChargeIapReq(
         receiptData: purchaseDetails.verificationData.serverVerificationData,
         planId: '1');
 
-    networkService.doChargeIAP(token!, req).then((value) => {
-          if (value)
-            {
-              showMessage(StringUtils.txtSubscriptionSuccessIAP, null),
-              SubscriptionConfirmView().launch(context, isNewTask: true),
-            }
-          else
-            {
-              showMessage(StringUtils.txtSomethingWentWrong, null),
-            }
-        });
+      networkService.doChargeIAP(token!, req).then((value) => {
+            if (value)
+              {
+                showMessage(StringUtils.txtSubscriptionSuccessIAP, null),
+                SubscriptionConfirmView().launch(context, isNewTask: true),
+              }
+            else
+              {
+                showMessage(StringUtils.txtSomethingWentWrong, null),
+              }
+          });
+    }else if(Platform.isAndroid){ 
+       ChargeIapGoogleReq req = ChargeIapGoogleReq(
+        packageName: 'com.au.zimbo',
+        subscriptionId: purchaseDetails.purchaseID ?? '',
+        purchaseToken: purchaseDetails.verificationData.serverVerificationData,
+        planId: '1');
+        networkService.doChargeIAPGoogle(token!, req).then((value) => {
+              if (value)
+                {
+                  showMessage(StringUtils.txtSubscriptionSuccessIAP, null),
+                  SubscriptionConfirmView().launch(context, isNewTask: true),
+                }
+              else
+                {
+                  showMessage(StringUtils.txtSomethingWentWrong, null),
+                }
+            });
+    }
+    
   }
 
   Future<void> confirmPriceChange(BuildContext context) async {}
@@ -268,60 +288,8 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
                                   borderRadius: BorderRadius.circular(5),
                                 ))),
                       ),
-                    ).visible(Platform.isIOS),
-                    //.visible(model.isApplePay),
-                    Container(
-                      width: width,
-                      margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: ElevatedButton.icon(
-                            onPressed: () => model.onClickGooglePay(context),
-                            icon: SvgPicture.asset(
-                              ImageUtils.imgIcGoogle,
-                              width: 30,
-                              height: 30,
-                            ),
-                            label: textView(StringUtils.txtPay,
-                                textColor: ColorUtils.appColorBlack,
-                                fontSize: SizeUtils.textSizeNormal,
-                                fontWeight: FontWeight.w500,
-                                isCentered: true),
-                            style: ElevatedButton.styleFrom(
-                                primary: ColorUtils.appColorWhite,
-                                padding:
-                                    const EdgeInsets.only(top: 10, bottom: 10),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5),
-                                ))),
-                      ),
-                    ).visible(Platform.isAndroid),
-                    Container(
-                      width: width,
-                      margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: ElevatedButton.icon(
-                            onPressed: () => model.onClickCardPay(context),
-                            icon: SvgPicture.asset(
-                              ImageUtils.imgIcCard,
-                              width: 30,
-                              height: 30,
-                            ),
-                            label: textView(StringUtils.txtPay,
-                                textColor: ColorUtils.appColorBlack,
-                                fontSize: SizeUtils.textSizeNormal,
-                                fontWeight: FontWeight.w500,
-                                isCentered: true),
-                            style: ElevatedButton.styleFrom(
-                                primary: ColorUtils.appColorWhite,
-                                padding:
-                                    const EdgeInsets.only(top: 10, bottom: 10),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5),
-                                ))),
-                      ),
-                    ).visible(false),
+                    ),
+                   
                     Container(
                         margin: const EdgeInsets.all(20),
                         child: GestureDetector(

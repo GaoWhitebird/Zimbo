@@ -216,7 +216,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                             borderColor: ColorUtils.appColorBlack_10,
                             textInputType: TextInputType.phone,
                             inputFormatters: [PhoneInputFormatter()],
-                          ),
+                          ).visible(false),
                           EditTextField(
                             hintText: StringUtils.txtEmail,
                             isPassword: false,

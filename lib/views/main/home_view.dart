@@ -180,7 +180,7 @@ class _HomeViewState extends State<HomeView>
                 child: textView(
                   StringUtils.txtMySustainabilityScore,
                   textColor: ColorUtils.appColorWhite,
-                  fontSize: SizeUtils.textSizeMedium,
+                  fontSize: SizeUtils.textSizeNormal,
                   fontWeight: FontWeight.w500,
                   isCentered: true,
                 ),
@@ -381,21 +381,34 @@ class _HomeViewState extends State<HomeView>
                       )
                     ],
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      model.onInsightSubClicked(context);
-                    },
-                    child: Container(
-                      color: ColorUtils.appColorTransparent,
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.all(10),
-                      child: textView(model.curInsightValue,
-                          textColor: ColorUtils.appColorTextTitle,
-                          fontSize: SizeUtils.textSizeLarge,
-                          fontWeight: FontWeight.w600,
-                          isCentered: true),
-                    ),
-                  )
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          primary: ColorUtils.appColorAccent,
+                          padding: const EdgeInsets.fromLTRB(30, 0, 10, 0),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
+                          )),
+                      onPressed: () {
+                        model.onInsightSubClicked(context);
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          textView(model.curInsightValue,
+                              textColor: ColorUtils.appColorWhite,
+                              fontSize: SizeUtils.textSizeLarge,
+                              fontWeight: FontWeight.w600,
+                              isCentered: true),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          const Icon(
+                            Icons.navigate_next,
+                            color: ColorUtils.appColorWhite,
+                            size: 24,
+                          ),
+                        ],
+                      ))
                 ],
               ),
             )

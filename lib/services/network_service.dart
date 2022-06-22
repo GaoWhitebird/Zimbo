@@ -21,6 +21,7 @@ import 'package:zimbo/model/request/auto_login_req.dart';
 import 'package:zimbo/model/request/charge_apple_req.dart';
 import 'package:zimbo/model/request/charge_card_req.dart';
 import 'package:zimbo/model/request/charge_google_req.dart';
+import 'package:zimbo/model/request/charge_iap_google_req.dart';
 import 'package:zimbo/model/request/delete_recyclable_req.dart';
 import 'package:zimbo/model/request/forgot_password_req.dart';
 import 'package:zimbo/model/request/get_home_detail_req.dart';
@@ -446,6 +447,15 @@ class NetworkService {
 
     return true;
   }
+
+  Future doChargeIAPGoogle(String token, ChargeIapGoogleReq req) async {
+    var res = await doPostRequest(ApiUtils.urlChargeIAPGoogle,
+        token: TokenReq(token: token).toJson(), param: req.toJson());
+    if (res == null) return false;
+
+    return true;
+  }
+
 
   Future doCancelSubscription(String token, CancelSubscriptionReq req) async {
     var res = await doPostRequest(ApiUtils.urlCancelSubscription,

@@ -51,6 +51,7 @@ class ApiUtils {
   static const urlChargeGoogle = BASE_URL + 'payment/charge_google';
   static const urlChargeApple = BASE_URL + 'payment/charge_apple';
   static const urlChargeIAP = BASE_URL + 'payment/charge_in_app';
+  static const urlChargeIAPGoogle = BASE_URL + 'payment/charge_in_google';
 
   static const urlFacebookAppId = '765052451139435';
   static const urlFacebookClientToken = 'dbd9508541ce22ef8f3d16e86a736461';
