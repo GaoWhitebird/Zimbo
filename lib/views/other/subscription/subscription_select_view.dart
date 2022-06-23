@@ -36,6 +36,7 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
   late StreamSubscription<List<PurchaseDetails>> _subscription;
   List<ProductDetails> _products = <ProductDetails>[];
   bool _loading = true;
+  bool isDone = false;
 
   @override
   Widget build(BuildContext context) {
@@ -121,6 +122,7 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
 
   Future<void> _listenToPurchaseUpdated(
       List<PurchaseDetails> purchaseDetailsList) async {
+       
     for (final PurchaseDetails purchaseDetails in purchaseDetailsList) {
       if (purchaseDetails.status == PurchaseStatus.pending) {
         showPendingUI();
@@ -131,7 +133,9 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
         } else if (purchaseDetails.status == PurchaseStatus.purchased ||
             purchaseDetails.status == PurchaseStatus.restored) {
           if (purchaseDetails.productID == _kMonthSubscriptionId) {
-            verifyPurchase(context, purchaseDetails);
+            if(isDone){
+              verifyPurchase(context, purchaseDetails);
+            }
           }
         }
 
@@ -256,9 +260,11 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
                                   applicationUserName: null,
                                 );
 
+                                isDone = true;
                                 _inAppPurchase.buyNonConsumable(
                                     purchaseParam: purchaseParam);
                               } else {
+                                isDone = false;
                                 if (_loading) {
                                   showLoading();
                                 } else {
