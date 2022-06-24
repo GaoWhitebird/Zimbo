@@ -1,24 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/model/common/user_model.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
-import 'package:zimbo/views/auth/login_view.dart';
+import 'package:zimbo/views/other/subscription/subscription_select_view.dart';
 
-class MenuViewModel extends BaseViewModel {
-  String version = '1.0.1';
-  String? token;
+import '../../../views/auth/login_view.dart';
+import '../../../views/other/subscription/subscription_confirm_view.dart';
+
+class SubscriptionMemberViewModel extends BaseViewModel {
   UserModel? userModel;
-
+  String? token;
   initialize(BuildContext context) async {
-    //PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    //version = packageInfo.version;
-    token = await sharedService.getToken();
     userModel = await sharedService.getUser();
-
+    token = await sharedService.getToken();
     notifyListeners();
+  }
+
+  onClickContinue(BuildContext context) {
+    const SubscriptionSelectView().launch(context);
+  }
+
+  onClickContinueFree(BuildContext context) {
+    SubscriptionConfirmView().launch(
+      context,
+    );
   }
 
   onClickLogout(BuildContext context) async {

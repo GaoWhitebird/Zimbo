@@ -76,8 +76,7 @@ class MainViewModel extends BaseViewModel {
   void handleIncomingLinks(BuildContext context) {
     uriLinkStream.listen((Uri? uri) async {
       if (uri != null) {
-        if (!initialUriIsHandled) {
-          initialUriIsHandled = true;
+        if (uri.toString().contains('zimbo://page=main')) {
           setSelectedIndex(2);
           const AddScoreView().launch(context);
         }
@@ -87,15 +86,12 @@ class MainViewModel extends BaseViewModel {
 
   Future<void> handleInitialUri(BuildContext context) async {
     try {
-      if (!initialUriIsHandled) {
-        initialUriIsHandled = true;
-        final uri = await getInitialUri();
+      final uri = await getInitialUri();
         if (uri == null) {
-        } else {
+        } else if (uri.toString().contains('zimbo://page=main')){
           setSelectedIndex(2);
           const AddScoreView().launch(context);
         }
-      }
     } on PlatformException {
     } on FormatException {}
   }

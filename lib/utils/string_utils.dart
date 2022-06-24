@@ -184,6 +184,7 @@ class StringUtils {
   static const txtSubscriptionCancelFailed = 'Subscription cancel failed';
   static const txtSubscriptionSuccessIAP = 'You have successfully subscribed!';
   static const txtYouAlreadyMember = 'You are already a zimbo member';
+  static const txtYouAlreadySubscribed = 'You have already subscribed';
   static const txtSubscriptionSuccess =
       'Your request is in processing, it will be available soon!';
   static const txtSubscriptionFailed = 'Subscription Failed !';

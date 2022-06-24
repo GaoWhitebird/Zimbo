@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
@@ -15,6 +14,7 @@ import 'package:zimbo/views/auth/guide_view.dart';
 import 'package:zimbo/views/items/item_menu_view.dart';
 import 'package:zimbo/views/main/about_us_view.dart';
 import 'package:zimbo/views/other/subscription/subscription_lock_view.dart';
+import 'package:zimbo/views/other/subscription/subscription_member_view.dart';
 import 'package:zimbo/views/other/support_view.dart';
 import 'package:zimbo/views/other/profile_view.dart';
 
@@ -95,10 +95,7 @@ class MenuView extends StatelessWidget {
                             }
                           else
                             {
-                              {
-                                  showMessage(
-                                      StringUtils.txtYouAlreadyMember, null),
-                                }
+                              const SubscriptionMemberView().launch(context),
                             }
                         }).visible(true),
                 MenuViewItem(

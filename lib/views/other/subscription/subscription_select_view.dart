@@ -33,9 +33,10 @@ const List<String> _kProductIds = <String>[
 
 class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
   final InAppPurchase _inAppPurchase = InAppPurchase.instance;
-  late StreamSubscription<List<PurchaseDetails>> _subscription;
+  StreamSubscription? _subscription;
   List<ProductDetails> _products = <ProductDetails>[];
   bool _loading = true;
+  bool isDone = false;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +55,7 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
         purchaseUpdated.listen((List<PurchaseDetails> purchaseDetailsList) {
       _listenToPurchaseUpdated(purchaseDetailsList);
     }, onDone: () {
-      _subscription.cancel();
+      _subscription!.cancel();
     }, onError: (Object error) {
       // handle error here.
     });
@@ -85,7 +86,6 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
       });
       return;
     }
-
     if (productDetailResponse.productDetails.isEmpty) {
       setState(() {
         _products = productDetailResponse.productDetails;
@@ -103,7 +103,7 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
 
   @override
   void dispose() {
-    _subscription.cancel();
+    _subscription!.cancel();
     super.dispose();
   }
 
@@ -129,9 +129,12 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
         if (purchaseDetails.status == PurchaseStatus.error) {
           handleError(purchaseDetails.error!);
         } else if (purchaseDetails.status == PurchaseStatus.purchased ||
-            purchaseDetails.status == PurchaseStatus.restored) {
+            purchaseDetails.status == PurchaseStatus.restored ||
+            purchaseDetails.pendingCompletePurchase == false) {
           if (purchaseDetails.productID == _kMonthSubscriptionId) {
-            verifyPurchase(context, purchaseDetails);
+            if (isDone) {
+              verifyPurchase(context, purchaseDetails);
+            }
           }
         }
 
@@ -147,10 +150,10 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
     SharedService sharedService = locator<SharedService>();
     String? token = await sharedService.getToken();
 
-    if(Platform.isIOS){
+    if (Platform.isIOS) {
       ChargeIapReq req = ChargeIapReq(
-        receiptData: purchaseDetails.verificationData.serverVerificationData,
-        planId: '1');
+          receiptData: purchaseDetails.verificationData.serverVerificationData,
+          planId: '1');
 
       networkService.doChargeIAP(token!, req).then((value) => {
             if (value)
@@ -163,25 +166,25 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
                 showMessage(StringUtils.txtSomethingWentWrong, null),
               }
           });
-    }else if(Platform.isAndroid){ 
-       ChargeIapGoogleReq req = ChargeIapGoogleReq(
-        packageName: 'com.au.zimbo',
-        subscriptionId: purchaseDetails.purchaseID ?? '',
-        purchaseToken: purchaseDetails.verificationData.serverVerificationData,
-        planId: '1');
-        networkService.doChargeIAPGoogle(token!, req).then((value) => {
-              if (value)
-                {
-                  showMessage(StringUtils.txtSubscriptionSuccessIAP, null),
-                  SubscriptionConfirmView().launch(context, isNewTask: true),
-                }
-              else
-                {
-                  showMessage(StringUtils.txtSomethingWentWrong, null),
-                }
-            });
+    } else if (Platform.isAndroid) {
+      ChargeIapGoogleReq req = ChargeIapGoogleReq(
+          packageName: 'com.au.zimbo',
+          subscriptionId: purchaseDetails.purchaseID ?? '',
+          purchaseToken:
+              purchaseDetails.verificationData.serverVerificationData,
+          planId: '1');
+      networkService.doChargeIAPGoogle(token!, req).then((value) => {
+            if (value)
+              {
+                showMessage(StringUtils.txtSubscriptionSuccessIAP, null),
+                SubscriptionConfirmView().launch(context, isNewTask: true),
+              }
+            else
+              {
+                showMessage(StringUtils.txtSomethingWentWrong, null),
+              }
+          });
     }
-    
   }
 
   Future<void> confirmPriceChange(BuildContext context) async {}
@@ -255,10 +258,11 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
                                   productDetails: productDetails,
                                   applicationUserName: null,
                                 );
-
+                                isDone = true;
                                 _inAppPurchase.buyNonConsumable(
                                     purchaseParam: purchaseParam);
                               } else {
+                                isDone = false;
                                 if (_loading) {
                                   showLoading();
                                 } else {
@@ -289,7 +293,6 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
                                 ))),
                       ),
                     ),
-                   
                     Container(
                         margin: const EdgeInsets.all(20),
                         child: GestureDetector(
