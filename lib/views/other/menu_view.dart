@@ -73,7 +73,7 @@ class MenuView extends StatelessWidget {
                     imageStr: ImageUtils.imgIcAboutUs,
                     titleStr: StringUtils.txtHowDoesZimboWork,
                     onTap: () async {
-                      const GuideView().launch(context);
+                      const GuideView().launch(context,);
                     }),
                 MenuViewItem(
                     imageStr: ImageUtils.imgIcMenuProfile,

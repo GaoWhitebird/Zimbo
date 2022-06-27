@@ -3,7 +3,7 @@ class ApiUtils {
   //static const BASE_URL = 'https://api.zimbo.me/zimbo/mobile/';
   static const BASE_URL = 'https://api.zimbo.me/zimbo_test/mobile/';
   //static const BASE_URL = 'http://52.64.223.19/zimbo_test/mobile/';
-  //static const BASE_URL = 'http://192.168.0.75/zimbo/mobile/';
+  // static const BASE_URL = 'http://192.168.0.75/zimbo/mobile/';
   static const urlSignupEmail = BASE_URL + 'main/signup_email';
   static const urlLogin = BASE_URL + 'main/login';
   static const urlAutoLogin = BASE_URL + 'main/auto_login';

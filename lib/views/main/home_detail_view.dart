@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
+import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/main/home_detail_view_model.dart';
@@ -68,6 +69,13 @@ class HomeDetailView extends StatelessWidget {
                           isCentered: true,
                           maxLine: 1),
                     )),
+                 textView(StringUtils.txtMayVaryBased,
+                          textColor: ColorUtils.appColorWhite,
+                          fontSize: SizeUtils.textSizeSMedium,
+                          fontWeight: FontWeight.w400,
+                          isCentered: true,
+                          maxLine: 1),
+                  const SizedBox(height: 10,),
                 Expanded(
                     child: ListView(
                   physics: const BouncingScrollPhysics(),

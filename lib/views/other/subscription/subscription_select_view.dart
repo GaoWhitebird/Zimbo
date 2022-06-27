@@ -13,6 +13,7 @@ import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/other/subscription/subscription_select_view_model.dart';
+import 'package:zimbo/views/auth/guide_view.dart';
 
 import '../../../locator.dart';
 import '../../../model/request/charge_iap_req.dart';
@@ -159,7 +160,7 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
             if (value)
               {
                 showMessage(StringUtils.txtSubscriptionSuccessIAP, null),
-                SubscriptionConfirmView().launch(context, isNewTask: true),
+                const GuideView().launch(context, isNewTask: true),
               }
             else
               {
@@ -170,6 +171,7 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
       ChargeIapGoogleReq req = ChargeIapGoogleReq(
           packageName: 'com.au.zimbo',
           subscriptionId: purchaseDetails.purchaseID ?? '',
+          productId: purchaseDetails.productID,
           purchaseToken:
               purchaseDetails.verificationData.serverVerificationData,
           planId: '1');

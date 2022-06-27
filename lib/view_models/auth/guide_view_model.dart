@@ -1,11 +1,14 @@
 
 import 'package:flutter/material.dart';
+import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/model/common/guide_model.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/image_utils.dart';
 import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
+
+import '../../views/other/subscription/subscription_confirm_view.dart';
 
 class GuideViewModel extends BaseViewModel {
 
@@ -21,6 +24,10 @@ class GuideViewModel extends BaseViewModel {
   onClickGotIt(BuildContext context) {
     //const MainView().launch(context, isNewTask: true);
     finishView(context);
+  }
+
+  onClickContinue(BuildContext context) {
+    SubscriptionConfirmView().launch(context);
   }
 
 }

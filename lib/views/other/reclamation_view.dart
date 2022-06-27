@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:stacked/stacked.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/image_utils.dart';
@@ -34,12 +35,32 @@ class ReclamationView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Image.asset(ImageUtils.imgIcReclamationHeader, width: width * 0.5, height: width * 0.5,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Container(
+                          margin: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+                          width: width * 0.6,
+                          child: textView(StringUtils.txtReclamationStr_0,
+                            textColor: ColorUtils.appColorWhite,
+                            fontSize: SizeUtils.textSizeNormal,
+                            fontWeight: FontWeight.w600,
+                            isCentered: false,
+                            maxLine: 15),
+                        ),
+                          SvgPicture.asset(
+                            ImageUtils.imgIcRefresh,
+                            color: ColorUtils.appColorWhite,
+                            width: width * 0.3,
+                            height: width * 0.3,
+                          ),
+                      ],
+                    ),
                     textView(StringUtils.txtReclamationStr_1,
                       textColor: ColorUtils.appColorWhite,
                       fontSize: SizeUtils.textSizeSMedium,
                       fontWeight: FontWeight.w400,
-                      isCentered: true,
+                      isCentered: false,
                       maxLine: 15),
                       Container(
                         padding: const EdgeInsets.all(10),
@@ -97,7 +118,7 @@ class ReclamationView extends StatelessWidget {
                       textColor: ColorUtils.appColorWhite,
                       fontSize: SizeUtils.textSizeSMedium,
                       fontWeight: FontWeight.w400,
-                      isCentered: true,
+                      isCentered: false,
                       maxLine: 15),
                     Container(
                         padding: const EdgeInsets.all(10),

@@ -65,6 +65,9 @@ class ImageUtils {
   static const imgIcBubbleChat = 'assets/images/svg/ic_bubble_chat.svg';
   static const imgIcUnLock = 'assets/images/svg/ic_lock_unlock.svg';
   static const imgIcCheckCircleSuccess = 'assets/images/svg/ic_check_circle_success.svg';
+  static const imgIcShareBack = 'assets/images/svg/ic_share_back.svg';
+  static const imgIcShareIdea = 'assets/images/svg/ic_share_idea.svg';
+  static const imgIcReferNewFriend = 'assets/images/svg/ic_refer_new_friend.svg';
 
   //json
   static const imgLogingImage = 'assets/images/json/ic_loading_image.json';

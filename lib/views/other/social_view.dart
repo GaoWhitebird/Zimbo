@@ -1,5 +1,5 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/image_utils.dart';
@@ -38,67 +38,137 @@ class SocialView extends StatelessWidget {
                     const SizedBox(height: 10,),
                     textView(StringUtils.txtSocial1,
                       textColor: ColorUtils.appColorWhite,
-                      fontSize: SizeUtils.textSizeXLarge,
+                      fontSize: SizeUtils.textSizeNormal,
                       fontWeight: FontWeight.bold,
-                      isCentered: true,),
+                      isCentered: false,
+                      maxLine: 10),
+                    SizedBox(
+                      width: width,
+                      child: Stack(
+                          children: <Widget>[
+                            Positioned(
+                              right: 0,
+                              top: 0,
+                              child: Container(
+                                alignment: Alignment.centerRight,
+                                child: SvgPicture.asset(ImageUtils.imgIcShareIdea, height: width * 0.3,),
+                              )
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                 const SizedBox(height: 20,),
+                                 SizedBox(
+                                  width: width * 0.5,
+                                  child: textView(StringUtils.txtSocial2,
+                                    textColor: ColorUtils.appColorWhite,
+                                    fontSize: SizeUtils.textSizeSMedium,
+                                    fontWeight: FontWeight.w400,
+                                    isCentered: false,
+                                    maxLine: 15),
+                                ),
+                                const SizedBox(height: 20,),
+                                Container(
+                                  child: textView(StringUtils.txtSocial2_2,
+                                    textColor: ColorUtils.appColorWhite,
+                                    fontSize: SizeUtils.textSizeSMedium,
+                                    fontWeight: FontWeight.w400,
+                                    isCentered: false,
+                                    maxLine: 15),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                    ),  
+                    const SizedBox(height: 20,),
                     Stack(
                       children: <Widget>[
-                        Image.asset(ImageUtils.imgIcSocialBubble, width: width, height: width,),
                         Positioned(
-                          bottom: 0,
-                          left: width * 0.4,
-                          right: 0,
-                          child: Image.asset(ImageUtils.imgIcSocialHeader, width: width * 0.3, height: width * 0.3,),
-                        ),
+                          child: SvgPicture.asset(ImageUtils.imgIcShareBack, width: width,),),
                         Container(
-                          width: width,
-                          height: width,
-                          alignment: Alignment.center,
-                          padding: EdgeInsets.fromLTRB(width * 0.1, 0, width * 0.1, width * 0.1),
-                          child: 
-                          const AutoSizeText(
-                              StringUtils.txtSocial2,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(color: ColorUtils.appColorBlue, fontWeight: FontWeight.w600,),
-                              presetFontSizes: [13, 14, 16, 20],
-                              maxLines: 15,
-                            )
+                          margin: const EdgeInsets.all(10),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Container(
+                                margin: const EdgeInsets.all(10),
+                                child: textView(StringUtils.txtSocial3,
+                                  textColor: ColorUtils.appColorBlue,
+                                  fontSize: SizeUtils.textSizeSmall,
+                                  fontWeight: FontWeight.w400,
+                                  isCentered: true,
+                                  maxLine: 15),
+                              ),
+                              Container(
+                                alignment: Alignment.center,
+                                margin: const EdgeInsets.fromLTRB(
+                                    10, 10, 10, 30),
+                                child: RoundButton(
+                                    isStroked: false,
+                                    textContent: StringUtils.txtSubmissionForm,
+                                    textSize: SizeUtils.textSizeMedium,
+                                    radius: 30,
+                                    onPressed: () {
+                                      model.onClickSubmissionForm(context);
+                                    }),
+                              ),
+                            ],
+                          ),
                         )
-                        
+                       
                       ],
-                    ),  
-                    textView(StringUtils.txtSocial3,
-                            textColor: ColorUtils.appColorWhite,
-                            fontSize: SizeUtils.textSizeSMedium,
-                            fontWeight: FontWeight.w400,
-                            isCentered: true,
-                            maxLine: 15),
-                    Container(
-                      alignment: Alignment.center,
-                      margin: const EdgeInsets.fromLTRB(
-                          10, 30, 10, 10),
-                      child: RoundButton(
-                          isStroked: false,
-                          textContent: StringUtils.txtSubmissionForm,
-                          textSize: SizeUtils.textSizeMedium,
-                          radius: 30,
-                          onPressed: () {
-                            model.onClickSubmissionForm(context);
-                          }),
                     ),
-                    const SizedBox(height: 30,),
+                    const SizedBox(height: 20,),
                     textView(StringUtils.txtSocial4,
                       textColor: ColorUtils.appColorWhite,
-                      fontSize: SizeUtils.textSizeXLarge,
+                      fontSize: SizeUtils.textSizeNormal,
                       fontWeight: FontWeight.bold,
-                      isCentered: true,),
+                      isCentered: false,
+                      maxLine: 10),
                     const SizedBox(height: 30,),
-                    textView(StringUtils.txtSocial5,
-                            textColor: ColorUtils.appColorWhite,
-                            fontSize: SizeUtils.textSizeSMedium,
-                            fontWeight: FontWeight.w400,
-                            isCentered: true,
-                            maxLine: 15),
+                    SizedBox(
+                      width: width,
+                      child: Stack(
+                          children: <Widget>[
+                            Positioned(
+                              right: 0,
+                              top: 0,
+                              child: Container(
+                                alignment: Alignment.centerRight,
+                                child: SvgPicture.asset(ImageUtils.imgIcReferNewFriend, height: width * 0.3,),
+                              )
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                 const SizedBox(height: 20,),
+                                 SizedBox(
+                                  width: width * 0.5,
+                                  child: textView(StringUtils.txtSocial5,
+                                    textColor: ColorUtils.appColorWhite,
+                                    fontSize: SizeUtils.textSizeSMedium,
+                                    fontWeight: FontWeight.w400,
+                                    isCentered: false,
+                                    maxLine: 15),
+                                ),
+                                const SizedBox(height: 20,),
+                                Container(
+                                  child: textView(StringUtils.txtSocial6,
+                                    textColor: ColorUtils.appColorWhite,
+                                    fontSize: SizeUtils.textSizeSMedium,
+                                    fontWeight: FontWeight.w400,
+                                    isCentered: false,
+                                    maxLine: 15),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                    ),
                     Container(
                       alignment: Alignment.center,
                       margin: const EdgeInsets.fromLTRB(
@@ -112,7 +182,6 @@ class SocialView extends StatelessWidget {
                             model.onClickShareApp(context);
                           }),
                     ),
-                    Image.asset(ImageUtils.imgIcSocialHeader, width: width, height: width,),
                   ],
                 ),
               ),

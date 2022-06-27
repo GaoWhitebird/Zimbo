@@ -260,6 +260,7 @@ class StringUtils {
   static const txtPaymentStatusActive = 'Payment status is activated';
   static const txtPaymentStatusExpired = 'Payment status is expired';
   static const txtPaymentStatusSuspended = 'Payment status is suspended';
+  static const txtMayVaryBased = 'May vary based on location of reuse';
 
   static const txtPrefUser = 'pref_user';
   static const txtSupportMail = 'support@zimbo.me';
@@ -339,8 +340,9 @@ class StringUtils {
   static const txtHowDescription_4 =
       'Do you know someone who’s already a great re-user? Or maybe you’d like to help a family member or friend begin their sustainability journey. Each time you refer a friend, and they sign up to zimbo, your rating improves.';
 
+  static const txtReclamationStr_0 = 'We want reusable items to live their best (and longest) life.';
   static const txtReclamationStr_1 =
-      'Whether it’s an impromptu stop at the supermarket, a new purchase, a gift or perhaps even a little forgetfulness, we all tend to accumulate excess reusables over time. At zimbo, we want reusable items to live their best (and longest) life. Reclamationz is our circular economy initiative to find new homes and new purposes for excess reusable items. Simply mail any of the following excess items to us, and we’ll do the rest:';
+      'Whether it’s an impromptu stop at the supermarket, a new purchase, a gift or perhaps even a little forgetfulness, we all tend to accumulate excess reusables over time. \n\nReclamationz is our circular economy initiative to find new homes and new purposes for excess reusable items. Simply mail any of the following excess items to us, and we’ll do the rest:';
   static const txtReclamationStr_2 = '\u2022     Reusable shopping bags';
   static const txtReclamationStr_3 = '\u2022     Reusable water bottles';
   static const txtReclamationStr_4 = '\u2022     Reusable Coffee/Tea cups';
@@ -353,12 +355,16 @@ class StringUtils {
   static const txtReclamationStr_9 = '85 The Parade';
   static const txtReclamationStr_10 = 'Ascot Vale VIC 3032';
 
-  static const txtSocial1 = 'Share ideas';
+  static const txtSocial1 = 'Share your ideas - We’d love to hear about additional ways to be sustainable!';
   static const txtSocial2 =
-      'At zimbo, we’re committed to expanding the scope of measurable personal sustainability. We work with technologists and innovators around Australia to find new and exciting ways to reuse. As more of these become publicly available, we will incorporate as many as possible into zimbo.\n\n Have a look at what’s available in the zimbo pantry. If you’ve come across any additional way to reuse, we’d love to hear about it.';
+      'At zimbo, we’re committed to expanding the scope of measurable personal sustainability.';
+  static const txtSocial2_2 =
+      'We work with technologists and innovators around Australia to find new and exciting ways to reuse. As more of these become publicly available, we will incorporate as many as possible into zimbo.';
   static const txtSocial3 =
-      'If your idea becomes something we can add to the pantry, not only will you get a nice kicker to your personal sustainability score, but you’ll also get a personal shout out on the zimbosphere!\n\n The more carbon offset we can capture and measure, the more sustainable our community becomes. Submit your idea below';
-  static const txtSocial4 = 'Refer a friend';
+      'If your idea becomes something we can add to the pantry, not only will you get a nice kicker to your personal sustainability score, but you’ll also get a personal shout out on the zimbosphere! The more carbon offset we can capture and measure, the more sustainable our community becomes.';
+  static const txtSocial4 = 'Looking to give your personal sustainability score a boost? Refer a friend :)';
   static const txtSocial5 =
-      'Want to socialise zimbo? Looking to give your personal sustainability score a boost?\nWhy not refer a friend, a family member or a colleague? For every referral that signs up, you’ll get a nice kicker to your score and help in reaching that next level. Simply share the app with one or more of your friends by clicking below and letting them know your email address.';
+      'For every referral that signs up, you’ll get a nice kicker to your score and help in reaching that next level.';
+  static const txtSocial6 =
+      'Simply share the app with one or more of your friends or family by clicking on the link below and letting them know your email address.';
 }

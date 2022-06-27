@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1109" height="725" viewBox="0 0 1109 725" xml:space="preserve">
+    <desc>Created with Fabric.js 3.6.3</desc>
+    <defs>
+    </defs>
+    <g transform="matrix(1 0 0 1 533 363)"  >
+    <g style=""   >
+            <g transform="matrix(1.33 0 0 1.33 37.17 15.11)" clip-path="url(#CLIPPATH_5)"  >
+    <clipPath id="CLIPPATH_5" >
+        <path transform="matrix(1 0 0 1 0 0) translate(-747.88, -416.33)" id="id1" d="M 343.628906 156.082031 L 1152.128906 156.082031 L 1152.128906 676.582031 L 343.628906 676.582031 Z M 343.628906 156.082031" stroke-linecap="round" />
+    </clipPath>
+    <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(126,217,87); fill-rule: nonzero; opacity: 1;"  transform=" translate(-747.88, -416.33)" d="M 1121.398438 676.582031 L 374.355469 676.582031 C 357.425781 676.582031 343.628906 662.785156 343.628906 645.859375 L 343.628906 186.804688 C 343.628906 169.875 357.425781 156.082031 374.355469 156.082031 L 1121.398438 156.082031 C 1138.332031 156.082031 1152.128906 169.875 1152.128906 186.804688 L 1152.128906 645.859375 C 1152.128906 662.785156 1138.332031 676.582031 1121.398438 676.582031" stroke-linecap="round" />
+    </g>
+            <g transform="matrix(1.33 0 0 1.33 7.52 -15.15)" clip-path="url(#CLIPPATH_6)"  >
+    <clipPath id="CLIPPATH_6" >
+        <path transform="matrix(1 0 0 1 0 0) translate(-725.64, -393.64)" id="id2" d="M 321.390625 133.390625 L 1129.890625 133.390625 L 1129.890625 653.890625 L 321.390625 653.890625 Z M 321.390625 133.390625" stroke-linecap="round" />
+    </clipPath>
+    <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;"  transform=" translate(-725.64, -393.64)" d="M 1099.160156 653.890625 L 352.117188 653.890625 C 335.1875 653.890625 321.390625 640.097656 321.390625 623.167969 L 321.390625 164.113281 C 321.390625 147.1875 335.1875 133.390625 352.117188 133.390625 L 1099.160156 133.390625 C 1116.09375 133.390625 1129.890625 147.1875 1129.890625 164.113281 L 1129.890625 623.167969 C 1129.890625 640.097656 1116.09375 653.890625 1099.160156 653.890625" stroke-linecap="round" />
+    </g>
+    </g>
+    </g>
+    </svg>
