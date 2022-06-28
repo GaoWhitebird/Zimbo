@@ -160,7 +160,7 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
             if (value)
               {
                 showMessage(StringUtils.txtSubscriptionSuccessIAP, null),
-                const GuideView().launch(context, isNewTask: true),
+                GuideView(isFirst: true,).launch(context, isNewTask: true),
               }
             else
               {

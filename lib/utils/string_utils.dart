@@ -107,6 +107,7 @@ class StringUtils {
   static const txtAddCard = 'Add Card';
   static const txtAddItems = 'Add Items';
   static const txtAddAddress = 'Add address';
+  static const txtZimboNotKeychain = 'Didn\'t receive a keychain yet?';
   static const txtZimboKeychain = 'zimbo keychain';
   static const txtSubmit = 'Submit';
   static const txtSubscription = 'Subscription';

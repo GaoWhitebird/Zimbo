@@ -164,8 +164,8 @@ class ProfileView extends StatelessWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
@@ -199,10 +199,10 @@ class ProfileView extends StatelessWidget {
                                     margin: const EdgeInsets.all(15),
                                     child: GestureDetector(
                                       child: textViewUnderline(
-                                        StringUtils.txtZimboKeychain,
+                                        StringUtils.txtZimboNotKeychain,
                                         textColor: ColorUtils.appColorWhite,
                                         fontSize: SizeUtils.textSizeMedium,
-                                        fontWeight: FontWeight.w500,
+                                        fontWeight: FontWeight.w400,
                                         isCentered: false,
                                       ),
                                       onTap: () {

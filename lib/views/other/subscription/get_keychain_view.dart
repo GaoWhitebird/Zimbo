@@ -47,7 +47,7 @@ class GetKeychainView extends StatelessWidget {
         child: Scaffold(
             backgroundColor: ColorUtils.appColorBlue,
             appBar: AppBar(
-              title: textView(StringUtils.txtZimboKeychain,
+              title: textView(StringUtils.txtPostalAddress,
                   textColor: ColorUtils.appColorTextTitle,
                   fontSize: SizeUtils.textSizeNormal,
                   fontWeight: FontWeight.w500,
