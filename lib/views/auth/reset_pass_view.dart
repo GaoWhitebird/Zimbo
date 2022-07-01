@@ -72,7 +72,7 @@ class ResetPassView extends StatelessWidget {
                         Container(
                           height: height * 0.1,
                           alignment: Alignment.center,
-                          child: textView(StringUtils.txtWeWillSend,
+                          child: textView(StringUtils.txtPasswordResetSent,
                               textColor: ColorUtils.appColorWhite,
                               fontSize: SizeUtils.textSizeSMedium,
                               fontWeight: FontWeight.w500,
@@ -125,7 +125,7 @@ class ResetPassView extends StatelessWidget {
                                             20, 10, 20, 10),
                                         child: RoundButton(
                                             isStroked: false,
-                                            textContent: StringUtils.txtSend,
+                                            textContent: StringUtils.txtReset,
                                             textSize: SizeUtils.textSizeMedium,
                                             radius: 30,
                                             onPressed: () =>

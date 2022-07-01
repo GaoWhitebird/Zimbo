@@ -18,7 +18,6 @@ import 'package:zimbo/views/auth/guide_view.dart';
 import '../../../locator.dart';
 import '../../../model/request/charge_iap_req.dart';
 import '../../../services/network_service.dart';
-import 'subscription_confirm_view.dart';
 
 class SubscriptionSelectView extends StatefulWidget {
   const SubscriptionSelectView({Key? key}) : super(key: key);
@@ -179,7 +178,7 @@ class _SubscriptionSelectViewState extends State<SubscriptionSelectView> {
             if (value)
               {
                 showMessage(StringUtils.txtSubscriptionSuccessIAP, null),
-                SubscriptionConfirmView().launch(context, isNewTask: true),
+                GuideView(isFirst: true,).launch(context, isNewTask: true),
               }
             else
               {

@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -115,18 +114,6 @@ Future<T?> invokeNativeMethod<T>(String channel, String method,
     [dynamic arguments]) async {
   var platform = MethodChannel(channel);
   return await platform.invokeMethod<T>(method, arguments);
-}
-
-Future<String?> getDeviceId() async {
-  var deviceInfo = DeviceInfoPlugin();
-  if (Platform.isIOS) {
-    // import 'dart:io'
-    var iosDeviceInfo = await deviceInfo.iosInfo;
-    return iosDeviceInfo.identifierForVendor; // unique ID on iOS
-  } else {
-    var androidDeviceInfo = await deviceInfo.androidInfo;
-    return androidDeviceInfo.androidId; // unique ID on Android
-  }
 }
 
 bool isValidEmail(String email) {

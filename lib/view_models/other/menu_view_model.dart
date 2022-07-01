@@ -7,13 +7,11 @@ import 'package:zimbo/view_models/base_view_model.dart';
 import 'package:zimbo/views/auth/login_view.dart';
 
 class MenuViewModel extends BaseViewModel {
-  String version = '1.0.2';
+  String version = '1.0.7';
   String? token;
   UserModel? userModel;
 
   initialize(BuildContext context) async {
-    //PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    //version = packageInfo.version;
     token = await sharedService.getToken();
     userModel = await sharedService.getUser();
 

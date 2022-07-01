@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "941073048729-v96kp4fmfkmk4h3pb35207vf77iligdv.apps.googleusercontent.com",
+          "client_id": "941073048729-sj628200k2isd1ulha28gde6aue5emec.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.au.zimbo",
-            "certificate_hash": "0d47f5aba500f4a5c196851fe406758f3c9c385f"
+            "certificate_hash": "e851f9c738308844aee04954343af0d464e9d053"
           }
         },
         {
@@ -37,6 +37,13 @@
             {
               "client_id": "941073048729-p44fv3051860mbvaium1h560i8voj912.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "941073048729-rljjkp5mhibsolnlr4srldq6gcr2tj67.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.au.zimbo"
+              }
             }
           ]
         }

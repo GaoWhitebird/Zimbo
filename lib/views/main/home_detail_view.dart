@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
 import 'package:zimbo/utils/string_utils.dart';
@@ -74,7 +75,7 @@ class HomeDetailView extends StatelessWidget {
                           fontSize: SizeUtils.textSizeSMedium,
                           fontWeight: FontWeight.w400,
                           isCentered: true,
-                          maxLine: 1),
+                          maxLine: 1).visible(type != "reuse"),
                   const SizedBox(height: 10,),
                 Expanded(
                     child: ListView(

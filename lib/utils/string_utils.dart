@@ -56,6 +56,7 @@ class StringUtils {
   static const txtGoBack = 'Go back';
   static const txtGotIt = 'Got it';
   static const txtWeWillSend = 'We will send you a new password by email';
+  static const txtPasswordResetSent = 'Thank you! Password reset email has been sent';
   static const txtRegisterHere = 'Register here';
   static const txtNoAccount = 'Don\'t have an account?';
   static const txtByTap = 'By tapping \'Sign Up\' you accept our';
