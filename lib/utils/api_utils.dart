@@ -1,7 +1,7 @@
 class ApiUtils {
   // ignore: constant_identifier_names
-  //static const BASE_URL = 'https://api.zimbo.me/zimbo/mobile/';
-  static const BASE_URL = 'https://api.zimbo.me/zimbo_test/mobile/';
+  static const BASE_URL = 'https://api.zimbo.me/zimbo/mobile/';
+  //static const BASE_URL = 'https://api.zimbo.me/zimbo_test/mobile/';
   //static const BASE_URL = 'http://52.64.223.19/zimbo_test/mobile/';
   //static const BASE_URL = 'http://192.168.0.75/zimbo/mobile/';
   static const urlSignupEmail = BASE_URL + 'main/signup_email';

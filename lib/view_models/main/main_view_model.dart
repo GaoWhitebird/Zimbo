@@ -84,6 +84,9 @@ class MainViewModel extends BaseViewModel {
           if (urlStr.contains("merchant")) {
             qrId = urlStr.split("code=")[1];
           }
+
+          initialUriIsHandled = true;
+
           AddScoreView(
             qrId: qrId,
           ).launch(context);
@@ -94,8 +97,8 @@ class MainViewModel extends BaseViewModel {
 
   Future<void> handleInitialUri(BuildContext context) async {
     try {
-      final uri = await getInitialUri();
-      if (uri != null) {
+      var uri = await getInitialLink();
+      if (uri != null && !initialUriIsHandled) {
         if (uri.toString().contains('zimbo://')) {
           setSelectedIndex(2);
 
@@ -104,6 +107,9 @@ class MainViewModel extends BaseViewModel {
           if (urlStr.contains("merchant")) {
             qrId = urlStr.split("code=")[1];
           }
+
+          initialUriIsHandled = true;
+
           AddScoreView(
             qrId: qrId,
           ).launch(context);
