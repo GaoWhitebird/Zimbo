@@ -13,7 +13,7 @@ import 'package:zimbo/views/auth/login_view.dart';
 import 'package:zimbo/views/main/main_view.dart';
 
 import '../../model/common/subscription_status_model.dart';
-import '../../views/auth/guide_view.dart';
+import '../../views/other/subscription/get_keychain_view.dart';
 import '../../views/other/subscription/subscription_lock_view.dart';
 
 class SplashViewModel extends BaseViewModel {
@@ -61,16 +61,11 @@ class SplashViewModel extends BaseViewModel {
                   }
                 else
                   {
-                    if (value.country!.isEmpty || value.zipCode!.isEmpty)
-                      {
-                        GuideView(
-                          isFirst: true,
-                        ).launch(context, isNewTask: true)
-                      }
-                    else
-                      {
+                    if (value.country!.isEmpty || value.zipCode!.isEmpty) {
+                      GetKeychainView().launch(context, isNewTask: true)
+                    } else {
                         MainView().launch(context, isNewTask: true),
-                      }
+                    }
                   },
               }
             else

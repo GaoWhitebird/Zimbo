@@ -14,7 +14,6 @@ import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
 import 'package:zimbo/views/auth/forgot_pass_view.dart';
-import 'package:zimbo/views/auth/guide_view.dart';
 import 'package:zimbo/views/auth/reset_pass_view.dart';
 import 'package:zimbo/views/auth/select_item_view.dart';
 import 'package:zimbo/views/auth/signup_view.dart';
@@ -23,6 +22,7 @@ import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import '../../model/common/subscription_status_model.dart';
 import '../../model/request/signup_apple_req.dart';
+import '../../views/other/subscription/get_keychain_view.dart';
 import '../../views/other/subscription/subscription_lock_view.dart';
 
 class LoginViewModel extends BaseViewModel {
@@ -78,19 +78,20 @@ class LoginViewModel extends BaseViewModel {
                     }
                   else
                     {
-                     if (value.subscriptionInfo == null ||
-                        value.subscriptionInfo!.status !=
-                            SubscriptionStatusModel.active)
-                      {
-                        const SubscriptionLockView().launch(context, isNewTask: true),
-                      }
+                      if (value.subscriptionInfo == null ||
+                          value.subscriptionInfo!.status !=
+                              SubscriptionStatusModel.active)
+                        {
+                          const SubscriptionLockView()
+                              .launch(context, isNewTask: true),
+                        }
                       else
                         {
-                          if(value.country!.isEmpty || value.zipCode!.isEmpty){
-                              GuideView(isFirst: true,).launch(context, isNewTask: true)
-                            }else {
-                              MainView().launch(context, isNewTask: true),
-                            }
+                          if (value.country!.isEmpty || value.zipCode!.isEmpty) {
+                            GetKeychainView().launch(context, isNewTask: true)
+                          } else {
+                            MainView().launch(context, isNewTask: true),
+                          }
                         },
                     }
                 }
@@ -132,16 +133,17 @@ class LoginViewModel extends BaseViewModel {
                     else
                       {
                         if (value.subscriptionInfo == null ||
-                        value.subscriptionInfo!.status !=
-                            SubscriptionStatusModel.active)
-                        {
-                          const SubscriptionLockView().launch(context, isNewTask: true),
-                        }
+                            value.subscriptionInfo!.status !=
+                                SubscriptionStatusModel.active)
+                          {
+                            const SubscriptionLockView()
+                                .launch(context, isNewTask: true),
+                          }
                         else
                           {
-                            if(value.country!.isEmpty || value.zipCode!.isEmpty){
-                              GuideView(isFirst: true,).launch(context, isNewTask: true)
-                            }else {
+                            if (value.country!.isEmpty || value.zipCode!.isEmpty) {
+                              GetKeychainView().launch(context, isNewTask: true)
+                            } else {
                               MainView().launch(context, isNewTask: true),
                             }
                           },
@@ -202,16 +204,17 @@ class LoginViewModel extends BaseViewModel {
                         value.subscriptionInfo!.status !=
                             SubscriptionStatusModel.active)
                       {
-                        const SubscriptionLockView().launch(context, isNewTask: true),
+                        const SubscriptionLockView()
+                            .launch(context, isNewTask: true),
                       }
-                      else
-                        {
-                          if(value.country!.isEmpty || value.zipCode!.isEmpty){
-                              GuideView(isFirst: true,).launch(context, isNewTask: true)
-                            }else {
-                              MainView().launch(context, isNewTask: true),
-                            }
-                        },
+                    else
+                      {
+                        if (value.country!.isEmpty || value.zipCode!.isEmpty) {
+                          GetKeychainView().launch(context, isNewTask: true)
+                        } else {
+                          MainView().launch(context, isNewTask: true),
+                        }
+                      },
                   }
               }
           });
@@ -239,19 +242,20 @@ class LoginViewModel extends BaseViewModel {
               {
                 sharedService.saveUser(value),
                 if (value.subscriptionInfo == null ||
-                        value.subscriptionInfo!.status !=
-                            SubscriptionStatusModel.active)
-                      {
-                        const SubscriptionLockView().launch(context, isNewTask: true),
-                      }
-                      else
-                        {
-                          if(value.country!.isEmpty || value.zipCode!.isEmpty){
-                              GuideView(isFirst: true,).launch(context, isNewTask: true)
-                            }else {
-                              MainView().launch(context, isNewTask: true),
-                            }
-                        },
+                    value.subscriptionInfo!.status !=
+                        SubscriptionStatusModel.active)
+                  {
+                    const SubscriptionLockView()
+                        .launch(context, isNewTask: true),
+                  }
+                else
+                  {
+                    if (value.country!.isEmpty || value.zipCode!.isEmpty) {
+                      GetKeychainView().launch(context, isNewTask: true)
+                    } else {
+                      MainView().launch(context, isNewTask: true),
+                    }
+                  },
               }
           });
     }

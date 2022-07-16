@@ -78,13 +78,15 @@ class MainViewModel extends BaseViewModel {
       if (uri != null) {
         if (uri.toString().contains('zimbo://')) {
           setSelectedIndex(2);
-          
+
           String urlStr = uri.toString();
           String qrId = '';
-          if(urlStr.contains("merchant")){
+          if (urlStr.contains("merchant")) {
             qrId = urlStr.split("code=")[1];
           }
-          AddScoreView(qrId: qrId,).launch(context);
+          AddScoreView(
+            qrId: qrId,
+          ).launch(context);
         }
       }
     }, onError: (Object err) {});
@@ -93,18 +95,20 @@ class MainViewModel extends BaseViewModel {
   Future<void> handleInitialUri(BuildContext context) async {
     try {
       final uri = await getInitialUri();
-        if (uri != null) {
-          if (uri.toString().contains('zimbo://')) {
-            setSelectedIndex(2);
-            
-            String urlStr = uri.toString();
-            String qrId = '';
-            if(urlStr.contains("merchant")){
-              qrId = urlStr.split("code=")[1];
-            }
-            AddScoreView(qrId: qrId,).launch(context);
+      if (uri != null) {
+        if (uri.toString().contains('zimbo://')) {
+          setSelectedIndex(2);
+
+          String urlStr = uri.toString();
+          String qrId = '';
+          if (urlStr.contains("merchant")) {
+            qrId = urlStr.split("code=")[1];
           }
+          AddScoreView(
+            qrId: qrId,
+          ).launch(context);
         }
+      }
     } on PlatformException {
     } on FormatException {}
   }

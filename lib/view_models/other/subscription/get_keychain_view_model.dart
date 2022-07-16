@@ -5,11 +5,11 @@ import 'package:zimbo/model/common/user_model.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
 import 'package:zimbo/utils/string_utils.dart';
-import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
 
 import '../../../model/request/add_postal_address_req.dart';
+import '../../../views/main/main_view.dart';
 
 class GetKeychainViewModel extends BaseViewModel {
   var stateItems = <Text>[];
@@ -42,8 +42,16 @@ class GetKeychainViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  onClickSubmit(BuildContext context, String firstName, String lastName, String street, String apt,
-      String city, String state, String postCode, String country) async {
+  onClickSubmit(
+      BuildContext context,
+      String firstName,
+      String lastName,
+      String street,
+      String apt,
+      String city,
+      String state,
+      String postCode,
+      String country) async {
     if (firstName.isEmpty) {
       showMessage(StringUtils.txtPleaseEnterName, null);
       return;
@@ -96,7 +104,7 @@ class GetKeychainViewModel extends BaseViewModel {
         userModel!.country = country;
         sharedService.saveUser(userModel);
 
-        finishView(context);
+        MainView().launch(context, isNewTask: true);
       } else {
         showMessage(StringUtils.txtSomethingWentWrong, null);
       }
