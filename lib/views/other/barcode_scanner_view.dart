@@ -40,7 +40,7 @@ class _BarcodeScannerScreenState extends State<BarcodeScannerScreen> {
 
       if(barcodeStr.toLowerCase().contains(StringUtils.txtAppName)){
         finishView(context);
-        const AddScoreView().launch(context);
+        AddScoreView().launch(context);
       }
     });
   }

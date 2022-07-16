@@ -1,9 +1,9 @@
 class ApiUtils {
   // ignore: constant_identifier_names
-  static const BASE_URL = 'https://api.zimbo.me/zimbo/mobile/';
-  //static const BASE_URL = 'https://api.zimbo.me/zimbo_test/mobile/';
+  //static const BASE_URL = 'https://api.zimbo.me/zimbo/mobile/';
+  static const BASE_URL = 'https://api.zimbo.me/zimbo_test/mobile/';
   //static const BASE_URL = 'http://52.64.223.19/zimbo_test/mobile/';
-  // static const BASE_URL = 'http://192.168.0.75/zimbo/mobile/';
+  //static const BASE_URL = 'http://192.168.0.75/zimbo/mobile/';
   static const urlSignupEmail = BASE_URL + 'main/signup_email';
   static const urlLogin = BASE_URL + 'main/login';
   static const urlAutoLogin = BASE_URL + 'main/auto_login';
@@ -34,6 +34,8 @@ class ApiUtils {
   static const urlGetPointHistory = BASE_URL + 'user/get_point_history';
   static const urlGetUserRecyclableList =
       BASE_URL + 'user/get_user_recyclable_list';
+  static const urlGetMerchantRecyclableList =
+      BASE_URL + 'user/get_merchant_recyclable_list';
   static const urlAddScore = BASE_URL + 'user/add_user_score';
   static const urlPostSupport = BASE_URL + 'user/post_support';
   static const urlPostShare = BASE_URL + 'user/post_share';
@@ -55,4 +57,5 @@ class ApiUtils {
 
   static const urlFacebookAppId = '765052451139435';
   static const urlFacebookClientToken = 'dbd9508541ce22ef8f3d16e86a736461';
+  static const urlMapApiKey = 'AIzaSyBB2Ss_ca1MErWgHIPRkAWtqcl6zGMJlrs';
 }

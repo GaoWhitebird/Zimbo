@@ -76,9 +76,15 @@ class MainViewModel extends BaseViewModel {
   void handleIncomingLinks(BuildContext context) {
     uriLinkStream.listen((Uri? uri) async {
       if (uri != null) {
-        if (uri.toString().contains('zimbo://page=main')) {
+        if (uri.toString().contains('zimbo://')) {
           setSelectedIndex(2);
-          const AddScoreView().launch(context);
+          
+          String urlStr = uri.toString();
+          String qrId = '';
+          if(urlStr.contains("merchant")){
+            qrId = urlStr.split("code=")[1];
+          }
+          AddScoreView(qrId: qrId,).launch(context);
         }
       }
     }, onError: (Object err) {});
@@ -87,10 +93,17 @@ class MainViewModel extends BaseViewModel {
   Future<void> handleInitialUri(BuildContext context) async {
     try {
       final uri = await getInitialUri();
-        if (uri == null) {
-        } else if (uri.toString().contains('zimbo://page=main')){
-          setSelectedIndex(2);
-          const AddScoreView().launch(context);
+        if (uri != null) {
+          if (uri.toString().contains('zimbo://')) {
+            setSelectedIndex(2);
+            
+            String urlStr = uri.toString();
+            String qrId = '';
+            if(urlStr.contains("merchant")){
+              qrId = urlStr.split("code=")[1];
+            }
+            AddScoreView(qrId: qrId,).launch(context);
+          }
         }
     } on PlatformException {
     } on FormatException {}

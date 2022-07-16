@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stacked/stacked.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
+import 'package:zimbo/utils/api_utils.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
 import 'package:zimbo/utils/string_utils.dart';
@@ -10,18 +11,27 @@ import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/other/subscription/get_keychain_view_model.dart';
 import 'package:zimbo/views/main/main_view.dart';
 
+import '../../../utils/maps_places_autocomplete/maps_places_autocomplete.dart';
+import '../../../utils/maps_places_autocomplete/model/place.dart';
+import '../../../utils/maps_places_autocomplete/model/suggestion.dart';
+
 class GetKeychainView extends StatelessWidget {
   GetKeychainView({Key? key}) : super(key: key);
-
-  final TextEditingController textEditingControllerAddress1 =
+  final TextEditingController textEditingControllerFirstName =
       TextEditingController();
-  final TextEditingController textEditingControllerAddress2 =
+    final TextEditingController textEditingControllerLastName =
       TextEditingController();
-  final TextEditingController textEditingControllerSuburb =
+  final TextEditingController textEditingControllerStreet =
       TextEditingController();
-  final TextEditingController textEditingControllerState =
+  final TextEditingController textEditingControllerApt =
       TextEditingController();
-  final TextEditingController textEditingControllerPostCode =
+  final TextEditingController textEditingControllerCity =
+      TextEditingController();
+  final TextEditingController textEditingControllerStateProvince =
+      TextEditingController();
+  final TextEditingController textEditingControllerZipCode =
+      TextEditingController();
+  final TextEditingController textEditingControllerCountry =
       TextEditingController();
 
   @override
@@ -31,11 +41,14 @@ class GetKeychainView extends StatelessWidget {
       builder: (context, model, child) => buildWidget(context, model, child),
       onModelReady: (model) => model.initialize(
           context,
-          textEditingControllerAddress1,
-          textEditingControllerAddress2,
-          textEditingControllerSuburb,
-          textEditingControllerState,
-          textEditingControllerPostCode),
+          textEditingControllerFirstName,
+          textEditingControllerLastName,
+          textEditingControllerStreet,
+          textEditingControllerApt,
+          textEditingControllerCity,
+          textEditingControllerStateProvince,
+          textEditingControllerZipCode,
+          textEditingControllerCountry),
     );
   }
 
@@ -96,65 +109,137 @@ class GetKeychainView extends StatelessWidget {
                         height: height * 0.01,
                       ),
                       EditTextField(
-                        hintText: StringUtils.txtAddressLine1,
+                        hintText: StringUtils.txtFistName,
                         hintColor: ColorUtils.appColorWhite,
                         isPassword: false,
                         isSecure: false,
-                        mController: textEditingControllerAddress1,
+                        mController: textEditingControllerFirstName,
                         borderColor: ColorUtils.appColorWhite,
                         textColor: ColorUtils.appColorWhite,
                       ),
                       EditTextField(
-                        hintText: StringUtils.txtAddressLine2,
+                        hintText: StringUtils.txtLastName,
                         hintColor: ColorUtils.appColorWhite,
                         isPassword: false,
                         isSecure: false,
-                        mController: textEditingControllerAddress2,
+                        mController: textEditingControllerLastName,
                         borderColor: ColorUtils.appColorWhite,
                         textColor: ColorUtils.appColorWhite,
                       ),
-                      EditTextField(
-                        hintText: StringUtils.txtSuburb,
-                        hintColor: ColorUtils.appColorWhite,
-                        isPassword: false,
-                        isSecure: false,
-                        mController: textEditingControllerSuburb,
-                        borderColor: ColorUtils.appColorWhite,
-                        textColor: ColorUtils.appColorWhite,
-                      ),
-                      Stack(
-                        children: <Widget>[
-                          EditTextField(
-                            hintText: StringUtils.txtState,
-                            hintColor: ColorUtils.appColorWhite,
-                            isPassword: false,
-                            isSecure: false,
-                            mController: textEditingControllerState,
-                            borderColor: ColorUtils.appColorWhite,
-                            textColor: ColorUtils.appColorWhite,
-                            autoFocus: false,
-                            enableInteractiveSelection: false,
-                            onTap: () {
-                              FocusScope.of(context)
-                                  .requestFocus(new FocusNode());
-                              model.showBottomPicker(
-                                  context, textEditingControllerState);
+                      Container(
+                        height: 50,
+                        margin: const EdgeInsets.all(10),
+                        child: MapsPlacesAutocomplete(
+                            showGoogleTradeMark: false,
+                            containerDecoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                  border: Border.all(color: ColorUtils.appColorGreyLight),
+                                  color: ColorUtils.appColorWhite,
+                                  boxShadow: const [
+                                     BoxShadow(
+                                        color: ColorUtils.appColorBlack_10,
+                                        blurRadius: 10,
+                                        offset: Offset(0, 0)),
+                                  ]),
+                            mapsApiKey: ApiUtils.urlMapApiKey,
+                            onSuggestionClick: (Place place){
+                              String? _street = place.street;
+                              String? _city = place.city;
+                              String? _state = place.state;
+                              String? _zipCode = place.zipCode;
+                              String? _country = place.country;
+                              
+                              textEditingControllerStreet.text = _street ?? '';
+                              textEditingControllerCity.text = _city ?? '';
+                              textEditingControllerStateProvince.text = _state ?? '';
+                              textEditingControllerZipCode.text = _zipCode ?? '';
+                              textEditingControllerCountry.text = _country ?? '';
                             },
+                            buildItem: (Suggestion suggestion, int index) {
+                              return Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: ColorUtils.appColorGreyLight),
+                                  ),
+                                margin: const EdgeInsets.fromLTRB(2, 0, 2, 0),
+                                padding: const EdgeInsets.all(8),
+                                alignment: Alignment.centerLeft,
+                                child: textView(suggestion.description, fontSize: SizeUtils.textSizeSmall)
+                              );
+                            },
+                            inputDecoration: InputDecoration(
+                              contentPadding: const EdgeInsets.fromLTRB(25, 8, 4, 8),
+                              labelText: StringUtils.txtStreet,
+                              hintStyle: const TextStyle(
+                                  color: ColorUtils.appColorWhite),
+                              labelStyle: const TextStyle(
+                                  color: ColorUtils.appColorWhite,
+                                  fontSize: SizeUtils.textSizeSmall),
+                              filled: true,
+                              fillColor:ColorUtils.appColorTransparent,
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                                borderSide: const BorderSide( color: ColorUtils.appColorWhite, width: 1),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                                borderSide: const BorderSide(color: ColorUtils.appColorWhite, width: 1),
+                              ),
+                              focusColor: ColorUtils.appColorWhite,
+                              hoverColor: ColorUtils.appColorWhite,
+                              errorText: null),
+                            clearButton: const Icon(Icons.close, color: ColorUtils.appColorWhite,),
+                            textEditingController: textEditingControllerStreet,
                           ),
-                        ],
-                      ),
+                        ),
+                      
                       EditTextField(
-                        hintText: StringUtils.txtPostCode,
+                        hintText: StringUtils.txtApt,
                         hintColor: ColorUtils.appColorWhite,
                         isPassword: false,
                         isSecure: false,
-                        mController: textEditingControllerPostCode,
+                        mController: textEditingControllerApt,
+                        borderColor: ColorUtils.appColorWhite,
+                        textColor: ColorUtils.appColorWhite,
+                      ),
+                      EditTextField(
+                        hintText: StringUtils.txtCity,
+                        hintColor: ColorUtils.appColorWhite,
+                        isPassword: false,
+                        isSecure: false,
+                        mController: textEditingControllerCity,
+                        borderColor: ColorUtils.appColorWhite,
+                        textColor: ColorUtils.appColorWhite,
+                      ),
+                      EditTextField(
+                        hintText: StringUtils.txtStateProvince,
+                        hintColor: ColorUtils.appColorWhite,
+                        isPassword: false,
+                        isSecure: false,
+                        mController: textEditingControllerStateProvince,
+                        borderColor: ColorUtils.appColorWhite,
+                        textColor: ColorUtils.appColorWhite,
+                      ),
+                      EditTextField(
+                        hintText: StringUtils.txtZipCode,
+                        hintColor: ColorUtils.appColorWhite,
+                        isPassword: false,
+                        isSecure: false,
+                        mController: textEditingControllerZipCode,
                         borderColor: ColorUtils.appColorWhite,
                         textColor: ColorUtils.appColorWhite,
                         textInputType: TextInputType.number,
                         inputFormatters: [
                           FilteringTextInputFormatter.digitsOnly
                         ],
+                      ),
+                      EditTextField(
+                        hintText: StringUtils.txtCountry,
+                        hintColor: ColorUtils.appColorWhite,
+                        isPassword: false,
+                        isSecure: false,
+                        mController: textEditingControllerCountry,
+                        borderColor: ColorUtils.appColorWhite,
+                        textColor: ColorUtils.appColorWhite,
                       ),
                       SizedBox(
                         height: height * 0.01,
@@ -169,11 +254,14 @@ class GetKeychainView extends StatelessWidget {
                             radius: 30,
                             onPressed: () => model.onClickSubmit(
                                   context,
-                                  textEditingControllerAddress1.text,
-                                  textEditingControllerAddress2.text,
-                                  textEditingControllerSuburb.text,
-                                  textEditingControllerState.text,
-                                  textEditingControllerPostCode.text,
+                                  textEditingControllerFirstName.text,
+                                  textEditingControllerLastName.text,
+                                  textEditingControllerStreet.text,
+                                  textEditingControllerApt.text,
+                                  textEditingControllerCity.text,
+                                  textEditingControllerStateProvince.text,
+                                  textEditingControllerZipCode.text,
+                                  textEditingControllerCountry.text,
                                 )),
                       )
                     ],

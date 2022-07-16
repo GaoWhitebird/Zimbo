@@ -396,8 +396,8 @@ class _HomeViewState extends State<HomeView>
                         children: <Widget>[
                           textView(model.curInsightValue,
                               textColor: ColorUtils.appColorWhite,
-                              fontSize: SizeUtils.textSizeLarge,
-                              fontWeight: FontWeight.w600,
+                              fontSize: SizeUtils.textSizeNormal,
+                              fontWeight: FontWeight.w500,
                               isCentered: true),
                           const SizedBox(
                             width: 10,

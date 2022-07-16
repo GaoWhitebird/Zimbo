@@ -1,31 +1,43 @@
 class AddPostalAddressReq {
-  String address1;
-  String? address2;
-  String suburb;
+  String firstName;
+  String lastName;
+  String street;
+  String? apt;
+  String city;
   String state;
-  String postcode;
+  String zipcode;
+  String country;
 
   AddPostalAddressReq({
-    required this.address1,
-    this.address2,
-    required this.suburb,
+    required this.firstName,
+    required this.lastName,
+    required this.street,
+    this.apt,
+    required this.city,
     required this.state,
-    required this.postcode,
+    required this.zipcode,
+    required this.country,
   });
 
   Map<String, dynamic> toJson() => {
-    'address1': address1,
-    'address2': address2,
-    'suburb': suburb,
+    'first_name': firstName,
+    'last_name': lastName,
+    'street': street,
+    'apt': apt,
+    'city': city,
     'state': state,
-    'postcode': postcode,
+    'postcode': zipcode,
+    'country': country,
   };
 
   factory AddPostalAddressReq.fromJson(Map<String, dynamic> json) => AddPostalAddressReq(
-    address1: json['address1'],
-    address2: json['address2'],
-    suburb: json['suburb'],
+    firstName: json['first_name'],
+    lastName: json['last_name'],
+    street: json['street'],
+    apt: json['apt'],
+    city: json['city'],
     state: json['state'],
-    postcode: json['postcode'],
+    zipcode: json['postcode'],
+    country: json['country'],
   );
 }

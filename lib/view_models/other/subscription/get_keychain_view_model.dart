@@ -18,32 +18,46 @@ class GetKeychainViewModel extends BaseViewModel {
   UserModel? userModel;
   initialize(
       BuildContext context,
-      TextEditingController controllerAddress1,
-      TextEditingController controllerAddress2,
-      TextEditingController controllerSuburb,
+      TextEditingController controllerFirstName,
+      TextEditingController controllerLastName,
+      TextEditingController controllerStreet,
+      TextEditingController controllerApt,
+      TextEditingController controllerCity,
       TextEditingController controllerState,
-      TextEditingController controllerPostCode) async {
+      TextEditingController controllerZipCode,
+      TextEditingController controllerCountry) async {
     token = await sharedService.getToken();
     userModel = await sharedService.getUser();
     stateItems = stateItemValues.map((value) => Text(value)).toList();
 
-    controllerAddress1.text = userModel!.address1!;
-    controllerAddress2.text = userModel!.address2!;
-    controllerSuburb.text = userModel!.suburb!;
+    controllerFirstName.text = userModel!.firstName!;
+    controllerLastName.text = userModel!.lastName!;
+    controllerStreet.text = userModel!.street!;
+    controllerApt.text = userModel!.apt!;
+    controllerCity.text = userModel!.city!;
     controllerState.text = userModel!.state!;
-    controllerPostCode.text = userModel!.postalCode!;
+    controllerZipCode.text = userModel!.zipCode!;
+    controllerCountry.text = userModel!.country!;
 
     notifyListeners();
   }
 
-  onClickSubmit(BuildContext context, String address1, String address2,
-      String suburb, String state, String postCode) async {
-    if (address1.isEmpty) {
-      showMessage(StringUtils.txtPleaseEnterAddress, null);
+  onClickSubmit(BuildContext context, String firstName, String lastName, String street, String apt,
+      String city, String state, String postCode, String country) async {
+    if (firstName.isEmpty) {
+      showMessage(StringUtils.txtPleaseEnterName, null);
       return;
     }
-    if (suburb.isEmpty) {
-      showMessage(StringUtils.txtPleaseEnterSuburb, null);
+    if (lastName.isEmpty) {
+      showMessage(StringUtils.txtPleaseEnterName, null);
+      return;
+    }
+    if (street.isEmpty) {
+      showMessage(StringUtils.txtPleaseEnterStreet, null);
+      return;
+    }
+    if (city.isEmpty) {
+      showMessage(StringUtils.txtPleaseEnterCity, null);
       return;
     }
     if (state.isEmpty) {
@@ -54,23 +68,32 @@ class GetKeychainViewModel extends BaseViewModel {
       showMessage(StringUtils.txtPleaseEnterPostcode, null);
       return;
     }
+    if (country.isEmpty) {
+      showMessage(StringUtils.txtPleaseEnterCountry, null);
+      return;
+    }
 
     hideKeyboard(context);
     AddPostalAddressReq req = AddPostalAddressReq(
-        address1: address1,
-        address2: address2,
-        suburb: suburb,
+        firstName: firstName,
+        lastName: lastName,
+        street: street,
+        apt: apt,
+        city: city,
         state: state,
-        postcode: postCode);
+        zipcode: postCode,
+        country: country);
     networkService.doAddPostalAddress(token!, req).then((value) {
       if (value) {
         showMessage(StringUtils.txtKeychainIsOnWayGet, null);
-
-        userModel!.address1 = address1;
-        userModel!.address2 = address2;
-        userModel!.suburb = suburb;
+        userModel!.firstName = firstName;
+        userModel!.lastName = lastName;
+        userModel!.street = street;
+        userModel!.apt = apt;
+        userModel!.city = city;
         userModel!.state = state;
-        userModel!.postalCode = postCode;
+        userModel!.zipCode = postCode;
+        userModel!.country = country;
         sharedService.saveUser(userModel);
 
         finishView(context);

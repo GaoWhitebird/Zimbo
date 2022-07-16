@@ -43,6 +43,7 @@ import 'package:zimbo/utils/widget_utils.dart';
 
 import '../model/request/cancel_subscription_req.dart';
 import '../model/request/charge_iap_req.dart';
+import '../model/request/get_merchant_req.dart';
 
 class NetworkService {
   var dio = Dio(); 
@@ -266,6 +267,21 @@ class NetworkService {
     totalList.add(templist);
 
     return totalList;
+  }
+
+  Future<List<RecyclableItemModel>?> doGetMerchantRecyclableList(
+      String token, GetMerchantReq req) async {
+    var res = await doPostRequest(
+        ApiUtils.urlGetMerchantRecyclableList, param: req.toJson(), token: TokenReq(token: token).toJson());
+    if (res == null) return null;
+
+    List<dynamic> _list = res['user_recyclable_item_list'];
+    List<RecyclableItemModel> list = [];
+    for (int i = 0; i < _list.length; i++) {
+      list.add(RecyclableItemModel.fromJson(_list[i]));
+    }
+
+    return list;
   }
 
   Future doAddRecyclableItems(

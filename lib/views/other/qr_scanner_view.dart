@@ -51,10 +51,16 @@ Widget _buildQrView(BuildContext context) {
                 result = barcode;
                 final String code = barcode.rawValue!;
                 if(code.toLowerCase().contains(StringUtils.txtAppName)) {
-                
-                controller.stop();
-                finishView(context);
-                const AddScoreView().launch(context);
+                  
+                  String urlStr = code;
+                  String qrId = '';
+                  if(urlStr.contains("merchant")){
+                    qrId = urlStr.split("code=")[1];
+                  }
+                  
+                  controller.stop();
+                  finishView(context);
+                  AddScoreView(qrId: qrId,).launch(context);
                 }
               }
             });

@@ -20,25 +20,46 @@ class SubscriptionConfirmViewModel extends BaseViewModel {
     stateItems = stateItemValues.map((value) => Text(value)).toList();
   }
 
-  onClickSubmit(BuildContext context, String address1, String address2, String suburb, String state, String postCode) async {
-    if(address1.isEmpty){
-      showMessage(StringUtils.txtPleaseEnterAddress, null);
+  onClickSubmit(BuildContext context, String firstName, String lastName, String street, String apt,
+      String city, String state, String postCode, String country) async {
+    if (firstName.isEmpty) {
+      showMessage(StringUtils.txtPleaseEnterName, null);
       return;
     }
-    if(suburb.isEmpty){
-      showMessage(StringUtils.txtPleaseEnterSuburb, null);
+    if (lastName.isEmpty) {
+      showMessage(StringUtils.txtPleaseEnterName, null);
       return;
     }
-    if(state.isEmpty){
+    if (street.isEmpty) {
+      showMessage(StringUtils.txtPleaseEnterStreet, null);
+      return;
+    }
+    if (city.isEmpty) {
+      showMessage(StringUtils.txtPleaseEnterCity, null);
+      return;
+    }
+    if (state.isEmpty) {
       showMessage(StringUtils.txtPleaseSelectState, null);
       return;
     }
-    if(postCode.isEmpty){
+    if (postCode.isEmpty) {
       showMessage(StringUtils.txtPleaseEnterPostcode, null);
       return;
     }
+    if (country.isEmpty) {
+      showMessage(StringUtils.txtPleaseEnterCountry, null);
+      return;
+    }
     
-    AddPostalAddressReq req = AddPostalAddressReq(address1: address1, address2: address2, suburb: suburb, state: state, postcode: postCode);
+    AddPostalAddressReq req = AddPostalAddressReq(
+        firstName: firstName,
+        lastName: lastName,
+        street: street,
+        apt: apt,
+        city: city,
+        state: state,
+        zipcode: postCode,
+        country: country);
     networkService.doAddPostalAddress(token!, req).then((value) {
       if(value) {
         

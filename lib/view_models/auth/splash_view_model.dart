@@ -13,6 +13,7 @@ import 'package:zimbo/views/auth/login_view.dart';
 import 'package:zimbo/views/main/main_view.dart';
 
 import '../../model/common/subscription_status_model.dart';
+import '../../views/auth/guide_view.dart';
 import '../../views/other/subscription/subscription_lock_view.dart';
 
 class SplashViewModel extends BaseViewModel {
@@ -24,14 +25,14 @@ class SplashViewModel extends BaseViewModel {
   initialize(BuildContext context) async {
     await Firebase.initializeApp();
     String? token = await sharedService.getToken();
-    
+
     if (token != null) {
       userModel = await sharedService.getUser();
-      if(userModel == null){
+      if (userModel == null) {
         LoginView().launch(context);
         return;
       }
-      
+
       deviceKey = userModel!.userEmail;
       firebaseToken = await FirebaseMessaging.instance.getToken();
       if (Platform.isAndroid) {
@@ -60,7 +61,16 @@ class SplashViewModel extends BaseViewModel {
                   }
                 else
                   {
-                    MainView().launch(context, isNewTask: true),
+                    if (value.country!.isEmpty || value.zipCode!.isEmpty)
+                      {
+                        GuideView(
+                          isFirst: true,
+                        ).launch(context, isNewTask: true)
+                      }
+                    else
+                      {
+                        MainView().launch(context, isNewTask: true),
+                      }
                   },
               }
             else

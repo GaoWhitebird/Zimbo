@@ -43,6 +43,8 @@ class StringUtils {
   static const txtSigninWithEmail = 'Sign In with Email';
   static const txtCreateAnAccount = 'Create an account';
   static const txtUserName = 'Username';
+  static const txtFistName = 'First name';
+  static const txtLastName = 'Last name';
   static const txtEmail = 'Email';
   static const txtUserNameOrEmail = 'Username OR Email';
   static const txtPassword = 'Password';
@@ -208,6 +210,12 @@ class StringUtils {
   static const txtCountryCity = 'Country, City';
   static const txtPostalAddress = 'Postal Address';
   static const txtAddressLine1 = 'Address';
+  static const txtStreet = 'Street';
+  static const txtApt = 'Apt/Suite Number';
+  static const txtCity = 'City';
+  static const txtStateProvince = 'State/Province';
+  static const txtZipCode = 'Post Code/ZIP Code';
+  static const txtCountry = 'Country';
   static const txtAddressLine2 = 'Address Line 2 (optional)';
   static const txtSuburb = 'Suburb';
   static const txtState = 'State';
@@ -249,9 +257,12 @@ class StringUtils {
       'Time to receive your official zimbo\n keychain';
   static const txtPleaseEnterPostalAddress = 'Please enter your postal address';
   static const txtPleaseEnterAddress = 'Please enter your address';
-  static const txtPleaseEnterSuburb = 'Please enter suburb';
-  static const txtPleaseSelectState = 'Please select state';
-  static const txtPleaseEnterPostcode = 'Please enter postcode';
+  static const txtPleaseEnterStreet = 'Please enter street';
+  static const txtPleaseEnterApt = 'Please enter apt/suite number';
+  static const txtPleaseEnterCity = 'Please enter city';
+  static const txtPleaseSelectState = 'Please enter state/province';
+  static const txtPleaseEnterPostcode = 'Please enter post code/zip code';
+  static const txtPleaseEnterCountry = 'Please enter country';
   static const txtKeychainIsOnWay =
       'Thank you for subscribing.\nYour zimbo QR keychain is on its way.';
   static const txtKeychainIsOnWayGet = 'Your zimbo QR keychain is on its way.';
@@ -263,6 +274,8 @@ class StringUtils {
   static const txtPaymentStatusExpired = 'Payment status is expired';
   static const txtPaymentStatusSuspended = 'Payment status is suspended';
   static const txtMayVaryBased = 'May vary based on location of reuse';
+  static const txtCarbonDioxideEquivalent = 'Carbon dioxide equivalent';
+  static const txtCarbonOffsetAmount = '\'Carbon Offset\' = the amount of Carbon emissions saved from entering the atmosphere. This is measured in \'Carbon dioxide equivalent\' aka CO2e.';
 
   static const txtPrefUser = 'pref_user';
   static const txtSupportMail = 'support@zimbo.me';

@@ -8,15 +8,17 @@ import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/other/add_score_view_model.dart';
 import 'package:zimbo/views/items/item_score_recyclable_view.dart';
 
+// ignore: must_be_immutable
 class AddScoreView extends StatelessWidget {
-  const AddScoreView({Key? key}) : super(key: key);
+  AddScoreView({Key? key, this.qrId}) : super(key: key);
 
+  String? qrId;
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<AddScoreViewModel>.reactive(
       viewModelBuilder: () => AddScoreViewModel(),
       builder: (context, model, child) => buildWidget(context, model, child),
-      onModelReady: (model) => model.initialize(context),
+      onModelReady: (model) => model.initialize(context, qrId),
     );
   }
 

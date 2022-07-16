@@ -4,6 +4,7 @@ import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/model/common/recyclable_item_model.dart';
 import 'package:zimbo/model/common/score_model.dart';
 import 'package:zimbo/model/request/add_score_req.dart';
+import 'package:zimbo/model/request/get_merchant_req.dart';
 import 'package:zimbo/utils/string_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
@@ -12,10 +13,13 @@ import 'package:zimbo/views/main/main_view.dart';
 class AddScoreViewModel extends BaseViewModel {
   List<RecyclableItemModel> mList = [];
   String? token;
+  String? mQrID;
 
-  initialize(BuildContext context) async {
+  initialize(BuildContext context, String? qrId) async {
     token = await sharedService.getToken();
-    await networkService.doGetUserRecyclableList(token!).then((value) => {
+    mQrID = qrId;
+    if(qrId == null || qrId.isEmpty){
+      await networkService.doGetUserRecyclableList(token!).then((value) => {
           if (value != null)
             {
               mList = value[0],
@@ -26,6 +30,20 @@ class AddScoreViewModel extends BaseViewModel {
               notifyListeners(),
             }
         });
+    }else {
+      await networkService.doGetMerchantRecyclableList(token!, GetMerchantReq(merchantId: qrId)).then((value) => {
+          if (value != null)
+            {
+              mList = value,
+              for(int i = 0; i < mList.length; i++){
+                mList[i].isChecked = mList[i].isMultiple,
+              },
+
+              notifyListeners(),
+            }
+        });
+    }
+    
   }
 
   onClickAddScore(BuildContext context) async {
@@ -45,7 +63,14 @@ class AddScoreViewModel extends BaseViewModel {
         }
       }
 
-      networkService.doAddScore(token!, AddScoreReq(recyclableIds: list,)).then((value) => {
+      bool isMerchant = false;
+      if(mQrID == null || mQrID!.isEmpty){
+        isMerchant = false;
+      }else {
+        isMerchant = true;
+      }
+
+      networkService.doAddScore(token!, AddScoreReq(recyclableIds: list, merchant: isMerchant)).then((value) => {
         if(value != null) {
           sharedService.saveUser(value),
           showMessage(StringUtils.txtScoreAddedSuccess, null),

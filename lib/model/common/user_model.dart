@@ -9,7 +9,6 @@ class UserModel {
   String? userImage;
   String? userPhone;
   String? userScore;
-  String? country;
   String? address;
   String? lat;
   String? lon;
@@ -21,11 +20,12 @@ class UserModel {
   String? loginStatus;
   SubscriptionInfoModel? subscriptionInfo;
 
-  String? address1;
-  String? address2;
-  String? suburb;
+  String? street;
+  String? apt;
+  String? city;
   String? state;
-  String? postalCode;
+  String? zipCode;
+  String? country;
 
   UserModel({
     this.id,
@@ -48,11 +48,11 @@ class UserModel {
     this.loginStatus,
     this.subscriptionInfo,
 
-    this.address1,
-    this.address2,
-    this.suburb,
+    this.street,
+    this.apt,
+    this.city,
     this.state,
-    this.postalCode
+    this.zipCode
   });
 
   Map<String, dynamic> toJson() => {
@@ -77,11 +77,11 @@ class UserModel {
         'subscription_info':
             subscriptionInfo == null ? null : subscriptionInfo!.toJson(),
 
-        'address1': address1,
-        'address2': address2,
-        'suburb': suburb,
+        'street': street,
+        'apt': apt,
+        'city': city,
         'state': state,
-        'postal_code': postalCode,
+        'postal_code': zipCode,
       };
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
@@ -108,10 +108,10 @@ class UserModel {
             : SubscriptionInfoModel.fromJson(json['subscription_info']),
 
         
-        address1: json['address1'],
-        address2: json['address2'],
-        suburb: json['suburb'],
+        street: json['street'],
+        apt: json['apt'],
+        city: json['city'],
         state: json['state'],
-        postalCode: json['postal_code'],
+        zipCode: json['postal_code'],
       );
 }

@@ -44,7 +44,7 @@ class QuantityWidgetState extends State<QuantityWidget> {
                     color: ColorUtils.appColorTextDark, size: 15,),
                 onPressed: () {
                   setState(() {
-                    if (int.parse(widget.model.count) > 0) {
+                    if (int.parse(widget.model.count) > 0 ) {
                       widget.model.count = (int.parse(widget.model.count) - 1).toString();
                     }
                   });
@@ -66,7 +66,9 @@ class QuantityWidgetState extends State<QuantityWidget> {
                     color: ColorUtils.appColorTextDark, size: 15),
                 onPressed: () {
                   setState(() {
-                    widget.model.count = (int.parse(widget.model.count) + 1).toString();
+                    if (int.parse(widget.model.count) < 3 ) {
+                      widget.model.count = (int.parse(widget.model.count) + 1).toString();
+                    }
                   });
                   if(widget.addRemoveClicked != null){
                     widget.addRemoveClicked!();

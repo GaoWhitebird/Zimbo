@@ -54,9 +54,9 @@ class _SummaryItemViewState extends State<SummaryItemView> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  textView(widget.model.name, fontSize: SizeUtils.textSizeMedium, fontWeight: FontWeight.w400, maxLine: 2),
+                  textView(widget.model.name, fontSize: SizeUtils.textSizeSMedium, fontWeight: FontWeight.w400, maxLine: 2),
                   const SizedBox(height: 5,),
-                  textView(widget.model.value, fontSize: SizeUtils.textSizeNormal, fontWeight: FontWeight.w500, maxLine: 2),
+                  textView(widget.model.value, fontSize: SizeUtils.textSizeLargeMedium, fontWeight: FontWeight.w500, maxLine: 2),
                 ],
               )
             ),

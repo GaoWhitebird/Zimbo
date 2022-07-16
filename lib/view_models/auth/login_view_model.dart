@@ -14,6 +14,7 @@ import 'package:zimbo/utils/system_utils.dart';
 import 'package:zimbo/utils/widget_utils.dart';
 import 'package:zimbo/view_models/base_view_model.dart';
 import 'package:zimbo/views/auth/forgot_pass_view.dart';
+import 'package:zimbo/views/auth/guide_view.dart';
 import 'package:zimbo/views/auth/reset_pass_view.dart';
 import 'package:zimbo/views/auth/select_item_view.dart';
 import 'package:zimbo/views/auth/signup_view.dart';
@@ -85,7 +86,11 @@ class LoginViewModel extends BaseViewModel {
                       }
                       else
                         {
-                          MainView().launch(context, isNewTask: true),
+                          if(value.country!.isEmpty || value.zipCode!.isEmpty){
+                              GuideView(isFirst: true,).launch(context, isNewTask: true)
+                            }else {
+                              MainView().launch(context, isNewTask: true),
+                            }
                         },
                     }
                 }
@@ -134,7 +139,11 @@ class LoginViewModel extends BaseViewModel {
                         }
                         else
                           {
-                            MainView().launch(context, isNewTask: true),
+                            if(value.country!.isEmpty || value.zipCode!.isEmpty){
+                              GuideView(isFirst: true,).launch(context, isNewTask: true)
+                            }else {
+                              MainView().launch(context, isNewTask: true),
+                            }
                           },
                       }
                   }
@@ -197,7 +206,11 @@ class LoginViewModel extends BaseViewModel {
                       }
                       else
                         {
-                          MainView().launch(context, isNewTask: true),
+                          if(value.country!.isEmpty || value.zipCode!.isEmpty){
+                              GuideView(isFirst: true,).launch(context, isNewTask: true)
+                            }else {
+                              MainView().launch(context, isNewTask: true),
+                            }
                         },
                   }
               }
@@ -233,7 +246,11 @@ class LoginViewModel extends BaseViewModel {
                       }
                       else
                         {
-                          MainView().launch(context, isNewTask: true),
+                          if(value.country!.isEmpty || value.zipCode!.isEmpty){
+                              GuideView(isFirst: true,).launch(context, isNewTask: true)
+                            }else {
+                              MainView().launch(context, isNewTask: true),
+                            }
                         },
               }
           });
