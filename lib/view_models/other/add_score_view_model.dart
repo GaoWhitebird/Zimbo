@@ -50,9 +50,14 @@ class AddScoreViewModel extends BaseViewModel {
   void onAddRemoveClicked(BuildContext context, RecyclableItemModel item) {}
 
   onClickSubmit(BuildContext context) {
+    int count = 0;
     List<dynamic> list = [];
     for (int i = 0; i < mList.length; i++) {
       if (mList[i].isChecked == '1') {
+        if((mList[i].isMultiple == '1' && mList[i].count != '0') || mList[i].isMultiple == '0'){
+          count ++;
+        }
+        
         ScoreModel req = ScoreModel(
           id: mList[i].id,
           count: mList[i].count,
@@ -68,7 +73,7 @@ class AddScoreViewModel extends BaseViewModel {
       isMerchant = true;
     }
 
-    if (list.isEmpty) {
+    if (count == 0) {
       showMessage(StringUtils.txtPleaseSelectItem, null);
       return;
     }
