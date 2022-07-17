@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:zimbo/model/common/recyclable_item_model.dart';
 import 'package:zimbo/model/common/score_model.dart';
@@ -17,67 +16,77 @@ class AddScoreViewModel extends BaseViewModel {
   initialize(BuildContext context, String? qrId) async {
     token = await sharedService.getToken();
     mQrID = qrId;
-    if(qrId == null || qrId.isEmpty){
+    if (qrId == null || qrId.isEmpty) {
       await networkService.doGetUserRecyclableList(token!).then((value) => {
-          if (value != null)
-            {
-              mList = value[0],
-              for(int i = 0; i < mList.length; i++){
-                mList[i].isChecked = mList[i].isMultiple,
-              },
-
-              notifyListeners(),
-            }
-        });
-    }else {
-      await networkService.doGetMerchantRecyclableList(token!, GetMerchantReq(merchantId: qrId)).then((value) => {
-          if (value != null)
-            {
-              mList = value,
-              for(int i = 0; i < mList.length; i++){
-                mList[i].isChecked = mList[i].isMultiple,
-              },
-
-              notifyListeners(),
-            }
-        });
+            if (value != null)
+              {
+                mList = value[0],
+                for (int i = 0; i < mList.length; i++)
+                  {
+                    mList[i].isChecked = mList[i].isMultiple,
+                  },
+                notifyListeners(),
+              }
+          });
+    } else {
+      await networkService
+          .doGetMerchantRecyclableList(token!, GetMerchantReq(merchantId: qrId))
+          .then((value) => {
+                if (value != null)
+                  {
+                    mList = value,
+                    for (int i = 0; i < mList.length; i++)
+                      {
+                        mList[i].isChecked = mList[i].isMultiple,
+                      },
+                    notifyListeners(),
+                  }
+              });
     }
-    
   }
 
-  onClickAddScore(BuildContext context) async {
-    
-  }
+  onClickAddScore(BuildContext context) async {}
 
-  void onAddRemoveClicked(BuildContext context, RecyclableItemModel item) {
-    
-  }
+  void onAddRemoveClicked(BuildContext context, RecyclableItemModel item) {}
 
   onClickSubmit(BuildContext context) {
-      List<dynamic> list = [];
-      for (int i = 0; i < mList.length; i++){
-        if(mList[i].isChecked == '1'){
-          ScoreModel req = ScoreModel(id: mList[i].id, count: mList[i].count,);
-          list.add(req.toJson());
-        }
+    List<dynamic> list = [];
+    for (int i = 0; i < mList.length; i++) {
+      if (mList[i].isChecked == '1') {
+        ScoreModel req = ScoreModel(
+          id: mList[i].id,
+          count: mList[i].count,
+        );
+        list.add(req.toJson());
       }
-
-      bool isMerchant = false;
-      if(mQrID == null || mQrID!.isEmpty){
-        isMerchant = false;
-      }else {
-        isMerchant = true;
-      }
-
-      networkService.doAddScore(token!, AddScoreReq(recyclableIds: list, merchant: isMerchant)).then((value) => {
-        if(value != null) {
-          sharedService.saveUser(value),
-          showMessage(StringUtils.txtScoreAddedSuccess, null),
-
-          finishView(context)
-        }else {
-          showMessage(StringUtils.txtScoreAddedFail, null),
-        }
-      });
     }
+
+    bool isMerchant = false;
+    if (mQrID == null || mQrID!.isEmpty) {
+      isMerchant = false;
+    } else {
+      isMerchant = true;
+    }
+
+    if (list.isEmpty) {
+      showMessage(StringUtils.txtPleaseSelectItem, null);
+      return;
+    }
+
+    networkService
+        .doAddScore(
+            token!, AddScoreReq(recyclableIds: list, merchant: isMerchant))
+        .then((value) => {
+              if (value != null)
+                {
+                  sharedService.saveUser(value),
+                  showMessage(StringUtils.txtScoreAddedSuccess, null),
+                  finishView(context)
+                }
+              else
+                {
+                  showMessage(StringUtils.txtScoreAddedFail, null),
+                }
+            });
+  }
 }

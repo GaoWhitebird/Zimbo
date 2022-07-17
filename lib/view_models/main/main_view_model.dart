@@ -22,19 +22,17 @@ import '../../model/common/receive_notification.dart';
 
 class MainViewModel extends BaseViewModel {
   int selectedIndex = 2;
-  bool initialUriIsHandled = false;
 
   String? selectedNotificationPayload;
   String? token;
   UserModel? userModel;
+  static bool isInitialized = false;
 
   initialize(BuildContext context, int? selectedVal) async {
     if (selectedVal != null) {
       selectedIndex = selectedVal;
     }
 
-    handleIncomingLinks(context);
-    handleInitialUri(context);
     var status = await Permission.camera.status;
     if (status.isDenied) {
       await Permission.camera.request().then((value) => {});
@@ -56,6 +54,12 @@ class MainViewModel extends BaseViewModel {
               notifyListeners(),
             }
         });
+
+    handleIncomingLinks(context);
+    if (!isInitialized) {
+      await handleInitialUri(context);
+      isInitialized = true;
+    }
   }
 
   onClickMenu(BuildContext context) async {
@@ -85,8 +89,6 @@ class MainViewModel extends BaseViewModel {
             qrId = urlStr.split("code=")[1];
           }
 
-          initialUriIsHandled = true;
-
           AddScoreView(
             qrId: qrId,
           ).launch(context);
@@ -98,7 +100,7 @@ class MainViewModel extends BaseViewModel {
   Future<void> handleInitialUri(BuildContext context) async {
     try {
       var uri = await getInitialLink();
-      if (uri != null && !initialUriIsHandled) {
+      if (uri != null) {
         if (uri.toString().contains('zimbo://')) {
           setSelectedIndex(2);
 
@@ -107,8 +109,6 @@ class MainViewModel extends BaseViewModel {
           if (urlStr.contains("merchant")) {
             qrId = urlStr.split("code=")[1];
           }
-
-          initialUriIsHandled = true;
 
           AddScoreView(
             qrId: qrId,

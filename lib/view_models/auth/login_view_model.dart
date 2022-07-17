@@ -87,11 +87,12 @@ class LoginViewModel extends BaseViewModel {
                         }
                       else
                         {
-                          if (value.country!.isEmpty || value.zipCode!.isEmpty) {
-                            GetKeychainView().launch(context, isNewTask: true)
-                          } else {
-                            MainView().launch(context, isNewTask: true),
-                          }
+                          if (value.country!.isEmpty || value.zipCode!.isEmpty)
+                            {GetKeychainView().launch(context, isNewTask: true)}
+                          else
+                            {
+                              MainView().launch(context, isNewTask: true),
+                            }
                         },
                     }
                 }
@@ -141,11 +142,16 @@ class LoginViewModel extends BaseViewModel {
                           }
                         else
                           {
-                            if (value.country!.isEmpty || value.zipCode!.isEmpty) {
-                              GetKeychainView().launch(context, isNewTask: true)
-                            } else {
-                              MainView().launch(context, isNewTask: true),
-                            }
+                            if (value.country!.isEmpty ||
+                                value.zipCode!.isEmpty)
+                              {
+                                GetKeychainView()
+                                    .launch(context, isNewTask: true)
+                              }
+                            else
+                              {
+                                MainView().launch(context, isNewTask: true),
+                              }
                           },
                       }
                   }
@@ -209,11 +215,12 @@ class LoginViewModel extends BaseViewModel {
                       }
                     else
                       {
-                        if (value.country!.isEmpty || value.zipCode!.isEmpty) {
-                          GetKeychainView().launch(context, isNewTask: true)
-                        } else {
-                          MainView().launch(context, isNewTask: true),
-                        }
+                        if (value.country!.isEmpty || value.zipCode!.isEmpty)
+                          {GetKeychainView().launch(context, isNewTask: true)}
+                        else
+                          {
+                            MainView().launch(context, isNewTask: true),
+                          }
                       },
                   }
               }
@@ -250,11 +257,12 @@ class LoginViewModel extends BaseViewModel {
                   }
                 else
                   {
-                    if (value.country!.isEmpty || value.zipCode!.isEmpty) {
-                      GetKeychainView().launch(context, isNewTask: true)
-                    } else {
-                      MainView().launch(context, isNewTask: true),
-                    }
+                    if (value.country!.isEmpty || value.zipCode!.isEmpty)
+                      {GetKeychainView().launch(context, isNewTask: true)}
+                    else
+                      {
+                        MainView().launch(context, isNewTask: true),
+                      }
                   },
               }
           });

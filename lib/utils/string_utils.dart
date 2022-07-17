@@ -261,6 +261,7 @@ class StringUtils {
   static const txtPleaseEnterApt = 'Please enter apt/suite number';
   static const txtPleaseEnterCity = 'Please enter city';
   static const txtPleaseSelectState = 'Please enter state/province';
+  static const txtPleaseSelectItem = 'Please choose reuse item(s)';
   static const txtPleaseEnterPostcode = 'Please enter post code/zip code';
   static const txtPleaseEnterCountry = 'Please enter country';
   static const txtKeychainIsOnWay =
