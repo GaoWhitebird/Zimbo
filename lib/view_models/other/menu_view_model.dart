@@ -7,7 +7,7 @@ import 'package:zimbo/view_models/base_view_model.dart';
 import 'package:zimbo/views/auth/login_view.dart';
 
 class MenuViewModel extends BaseViewModel {
-  String version = '1.0.8';
+  String version = '1.0.9';
   String? token;
   UserModel? userModel;
 
