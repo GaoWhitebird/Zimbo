@@ -83,6 +83,10 @@ class PlaceApiProvider {
 
         for (var c in components) {
           final List type = c['types'];
+          
+          if (type.contains('subpremise')) {
+            place.aptNumber = c['long_name'];
+          }
           if (type.contains('street_number')) {
             place.streetNumber = c['long_name'];
           }

@@ -17,6 +17,7 @@ class AddScoreViewModel extends BaseViewModel {
     token = await sharedService.getToken();
     mQrID = qrId;
     if (qrId == null || qrId.isEmpty) {
+      mQrID = '';
       await networkService.doGetUserRecyclableList(token!).then((value) => {
             if (value != null)
               {
@@ -80,7 +81,7 @@ class AddScoreViewModel extends BaseViewModel {
 
     networkService
         .doAddScore(
-            token!, AddScoreReq(recyclableIds: list, merchant: isMerchant))
+            token!, AddScoreReq(recyclableIds: list, merchant: isMerchant, merchantId: mQrID ?? ''))
         .then((value) => {
               if (value != null)
                 {

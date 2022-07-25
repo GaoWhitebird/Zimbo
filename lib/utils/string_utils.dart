@@ -29,6 +29,7 @@ class StringUtils {
   static const txtSignUp = 'Sign Up';
   static const txtContinue = 'Continue';
   static const txtContinueAsFree = 'Continue as Free';
+  static const txtTryForFree = 'Try for free';
   static const txtFacebook = 'Facebook';
   static const txtGoogle = 'Google';
   static const txtApple = 'Continue with Apple';
@@ -250,6 +251,7 @@ class StringUtils {
       'No need to pay if you cancel the subscription at least a day before the 14-day free trial ends';
   static const txt199Month = '\$1.99 / Month';
   static const txtFreeTrial = 'Start your 14 days free trial';
+  static const txtFor14Days = 'For 14 days\nfollowed by \$1.99 / Month';
   static const txtSubscribeFor199Month = 'Subscribe for \$1.99 / month';
   static const txtSubscribeForZimbo = 'Subscribe for zimbo';
   static const txtSubscriptionConfirmed = 'Subscription confirmed!';
@@ -383,4 +385,8 @@ class StringUtils {
       'For every referral that signs up, you’ll get a nice kicker to your score and help in reaching that next level.';
   static const txtSocial6 =
       'Simply share the app with one or more of your friends or family by clicking on the link below and letting them know your email address.';
+  static const txtSocial7 = 'Campaignz and Challengenz';
+  static const txtSocial8 = 'Plastic Free July \nChallenge';
+  static const txtSocial9 = 'Do you have what it takes to be crowned Champion? Take up the Plastic Free July challenge and stand a chance to emerge victorious as Australia\'s most sustainable zimbo!';
+  static const txtSocial10 = 'Submit your username and email below along with a screenshot of your zimbo dashboard on the last day of the challenge.';
 }

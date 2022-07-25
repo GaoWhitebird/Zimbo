@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:group_button/group_button.dart';
 import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/model/common/dash_model.dart';
 import 'package:zimbo/model/common/profile_insight_model.dart';
@@ -21,10 +22,12 @@ class HomeViewModel extends BaseViewModel {
   int selectedIndex = 0;
   int curInsightIndex = 1;
   String curInsightValue = '0';
+  GroupButtonController? groupButtonController;
 
   initialize(BuildContext context) async {
     userModel = await sharedService.getUser();
     token = await sharedService.getToken();
+    groupButtonController = new GroupButtonController();
 
     await networkService.doGetDashboardData(token!).then((value) => {
       dashModel = value,
@@ -46,11 +49,17 @@ class HomeViewModel extends BaseViewModel {
 
         curInsightIndex = 1,
         curInsightValue = insightModel!.savings,
+        groupButtonController?.selectIndex(selectedIndex),
 
         notifyListeners(),
       }
     });
 
+  }
+
+  onButtonSelected(int index){
+    groupButtonController?.selectIndex(selectedIndex);
+    notifyListeners();
   }
 
   onClickScore(BuildContext context) {

@@ -4,6 +4,7 @@ class Place {
   String? city;
   String? state;
   String? zipCode;
+  String? aptNumber;
   String? vicinity;
   String? country;
   double? lat;
@@ -15,6 +16,7 @@ class Place {
     this.city,
     this.state,
     this.zipCode,
+    this.aptNumber,
     this.vicinity,
     this.country,
     this.lat,

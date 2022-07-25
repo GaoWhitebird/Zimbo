@@ -208,6 +208,88 @@ class SocialView extends StatelessWidget {
                             model.onClickShareApp(context);
                           }),
                     ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: textView(StringUtils.txtSocial7,
+                          textColor: ColorUtils.appColorWhite,
+                          fontSize: SizeUtils.textSizeNormal,
+                          fontWeight: FontWeight.bold,
+                          isCentered: false,
+                          maxLine: 10),
+                      ),
+                    const SizedBox(height: 20,),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: textView(StringUtils.txtSocial8,
+                        textColor: ColorUtils.appColorAccent,
+                        fontSize: SizeUtils.textSizeNormal,
+                        fontWeight: FontWeight.bold,
+                        isCentered: false,
+                        maxLine: 10),
+                    ),
+                    SizedBox(
+                      width: width,
+                      child: Stack(
+                        children: <Widget>[
+                          Positioned(
+                              right: 0,
+                              top: 20,
+                              child: Container(
+                                alignment: Alignment.centerRight,
+                                child: Image.asset(
+                                  ImageUtils.imgIcPlasticFree,
+                                  height: width * 0.4,
+                                ),
+                              )),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              SizedBox(
+                                width: width * 0.5,
+                                child: textView(StringUtils.txtSocial9,
+                                    textColor: ColorUtils.appColorWhite,
+                                    fontSize: SizeUtils.textSizeSMedium,
+                                    fontWeight: FontWeight.w400,
+                                    isCentered: false,
+                                    maxLine: 15),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                child: textView(StringUtils.txtSocial10,
+                                    textColor: ColorUtils.appColorWhite,
+                                    fontSize: SizeUtils.textSizeSMedium,
+                                    fontWeight: FontWeight.w400,
+                                    isCentered: false,
+                                    maxLine: 15),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      alignment: Alignment.center,
+                      margin:
+                          const EdgeInsets.fromLTRB(10, 30, 10, 30),
+                      child: RoundButton(
+                          isStroked: false,
+                          textContent:
+                              StringUtils.txtSubmissionForm,
+                          textSize: SizeUtils.textSizeMedium,
+                          radius: 30,
+                          onPressed: () {
+                            model.onClickSubmissionForm(context);
+                          }),
+                    ),
                   ],
                 ),
               ),

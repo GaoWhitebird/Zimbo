@@ -34,6 +34,8 @@ class ImageUtils {
   static const imgIcSocialHeader = 'assets/images/png/ic_social_header.png';
   static const imgIcSocialBubble = 'assets/images/png/ic_social_bubble.png';
   static const imgIcTree = 'assets/images/png/ic_tree.png';
+  static const imgIcUnLockMain = 'assets/images/png/ic_unlock.png';
+  static const imgIcPlasticFree = 'assets/images/png/ic_plastic_free.png';
 
   // svg
   static const imgIcFacebook = 'assets/images/svg/ic_facebook.svg';

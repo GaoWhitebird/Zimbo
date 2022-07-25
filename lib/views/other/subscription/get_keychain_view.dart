@@ -144,16 +144,19 @@ class GetKeychainView extends StatelessWidget {
                             mapsApiKey: ApiUtils.urlMapApiKey,
                             onSuggestionClick: (Place place){
                               String? _street = place.street;
+                              String? _streetNumber = place.streetNumber;
                               String? _city = place.city;
                               String? _state = place.state;
                               String? _zipCode = place.zipCode;
                               String? _country = place.country;
+                              String? _number = place.aptNumber;
                               
-                              textEditingControllerStreet.text = _street ?? '';
+                              textEditingControllerStreet.text = (_streetNumber ?? '') + " " + (_street ?? '');
                               textEditingControllerCity.text = _city ?? '';
                               textEditingControllerStateProvince.text = _state ?? '';
                               textEditingControllerZipCode.text = _zipCode ?? '';
                               textEditingControllerCountry.text = _country ?? '';
+                              textEditingControllerApt.text = _number ?? '';
                             },
                             buildItem: (Suggestion suggestion, int index) {
                               return Container(

@@ -222,11 +222,11 @@ class _HomeViewState extends State<HomeView>
                         selectedTextStyle: const TextStyle(
                             color: ColorUtils.appColorWhite,
                             fontSize: SizeUtils.textSizeSmall)),
-                    onSelected: (buttons, index, isSelected) {},
+                    onSelected: (buttons, index, isSelected) {
+                      model.onButtonSelected(index);
+                    },
                     isRadio: true,
-                    controller: GroupButtonController(
-                      selectedIndex: model.selectedIndex,
-                    ),
+                    controller: model.groupButtonController,
                     buttons: model.mLevelStrList,
                   ),
                 ).visible(model.isLevelAvailable),
