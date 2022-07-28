@@ -12,7 +12,7 @@ class AddScoreReq {
   Map<String, dynamic> toJson() => {
     'recyclable_ids': recyclableIds,
     'merchant': merchant,
-    'merchant_id': merchantId
+    'merchant_id': merchantId,
   };
 
   factory AddScoreReq.fromJson(Map<String, dynamic> json) => AddScoreReq(

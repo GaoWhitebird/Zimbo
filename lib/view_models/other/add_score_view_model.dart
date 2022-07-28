@@ -25,6 +25,7 @@ class AddScoreViewModel extends BaseViewModel {
                 for (int i = 0; i < mList.length; i++)
                   {
                     mList[i].isChecked = mList[i].isMultiple,
+                    mList[i].selectedIndex = -1,
                   },
                 notifyListeners(),
               }
@@ -39,6 +40,7 @@ class AddScoreViewModel extends BaseViewModel {
                     for (int i = 0; i < mList.length; i++)
                       {
                         mList[i].isChecked = mList[i].isMultiple,
+                        mList[i].selectedIndex = -1,
                       },
                     notifyListeners(),
                   }
@@ -55,15 +57,34 @@ class AddScoreViewModel extends BaseViewModel {
     List<dynamic> list = [];
     for (int i = 0; i < mList.length; i++) {
       if (mList[i].isChecked == '1') {
-        if((mList[i].isMultiple == '1' && mList[i].count != '0') || mList[i].isMultiple == '0'){
+        ScoreModel req;
+
+        if((mList[i].isMultiple == '1' && mList[i].count != '0')){
           count ++;
+          req = ScoreModel(
+            id: mList[i].id,
+            count: mList[i].count,
+            hasSub: '0',
+          );
+          list.add(req.toJson());
+        }else if(mList[i].hasSub == '1' && mList[i].selectedIndex != -1){
+          count ++;
+          RecyclableItemModel item =  RecyclableItemModel.fromJson(mList[i].subList[mList[i].selectedIndex!]);
+          req = ScoreModel(
+            id: item.id,
+            count: mList[i].count,
+            hasSub: '1',
+          );
+          list.add(req.toJson());
+        }else if(mList[i].hasSub == '0' && mList[i].isMultiple == '0'){
+          count ++;
+          req = ScoreModel(
+            id: mList[i].id,
+            count: mList[i].count,
+            hasSub: '0',
+          );
+          list.add(req.toJson());
         }
-        
-        ScoreModel req = ScoreModel(
-          id: mList[i].id,
-          count: mList[i].count,
-        );
-        list.add(req.toJson());
       }
     }
 

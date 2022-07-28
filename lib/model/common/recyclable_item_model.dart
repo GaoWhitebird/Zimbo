@@ -7,7 +7,11 @@ class RecyclableItemModel {
   String usedCount;
   String isChecked;
   String isMultiple;
-  String userRecyclableImage;
+  String? userRecyclableImage;
+  String rootId;
+  String hasSub;
+  List<dynamic> subList;
+  int? selectedIndex;
 
   RecyclableItemModel({
     required this.id,
@@ -18,7 +22,11 @@ class RecyclableItemModel {
     required this.usedCount,
     required this.isChecked,
     required this.isMultiple,
-    required this.userRecyclableImage
+    this.userRecyclableImage,
+    required this.rootId,
+    required this.hasSub,
+    required this.subList,
+    this.selectedIndex,
   });
 
   Map<String, dynamic> toJson() => {
@@ -31,6 +39,10 @@ class RecyclableItemModel {
     'is_checked': isChecked,
     'is_multiple': isMultiple,
     'user_recyclable_image': userRecyclableImage,
+    'root_id': rootId,
+    'has_sub': hasSub,
+    'sub_list': subList,
+    'selected_index': selectedIndex,
   };
 
   factory RecyclableItemModel.fromJson(Map<String, dynamic> json) => RecyclableItemModel(
@@ -43,5 +55,9 @@ class RecyclableItemModel {
     isChecked: json['is_checked'],
     isMultiple: json['is_multiple'],
     userRecyclableImage: json['user_recyclable_image'],
+    rootId: json['root_id'],
+    hasSub: json['has_sub'],
+    subList: json['sub_list'],
+    selectedIndex: json['selected_index'],
   );
 }
