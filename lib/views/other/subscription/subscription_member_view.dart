@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
-import 'package:zimbo/extentions/widget_extensions.dart';
 import 'package:zimbo/utils/color_utils.dart';
 import 'package:zimbo/utils/image_utils.dart';
 import 'package:zimbo/utils/size_utils.dart';
@@ -32,7 +31,7 @@ class SubscriptionMemberView extends StatelessWidget {
         child: Scaffold(
           backgroundColor: ColorUtils.appColorBlue,
           appBar: AppBar(
-            title: textView(StringUtils.txtUnlockZimbo,
+            title: textView(StringUtils.txtSubscription,
                 textColor: ColorUtils.appColorTextTitle,
                 fontSize: SizeUtils.textSizeNormal,
                 fontWeight: FontWeight.w500,
@@ -51,205 +50,224 @@ class SubscriptionMemberView extends StatelessWidget {
               },
             ),
           ),
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Container(
-                height: height * 0.15,
-                alignment: Alignment.center,
-                child: textView(StringUtils.txtTimeToTakeItPersonally,
-                    textColor: ColorUtils.appColorWhite,
-                    fontSize: SizeUtils.textSizeXLarge,
-                    fontWeight: FontWeight.w600,
-                    isCentered: true,
-                    maxLine: 2),
-              ),
-              Container(
-                  alignment: Alignment.center,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+          body: Container(
+            color: ColorUtils.appColorWhite,
+            child: Stack(
+              children: <Widget>[
+                SizedBox(height: height,),
+                Container(
+                  height: height * 0.52,
+                  decoration: const BoxDecoration(
+                            color: ColorUtils.appColorAccent,
+                            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))),
+                ),
+                Container(
+                  height: height * 0.5,
+                  width: width,
+                  decoration: const BoxDecoration(
+                            color: ColorUtils.appColorBlue,
+                            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      SvgPicture.asset(
-                        ImageUtils.imgIcUnLock,
-                        color: ColorUtils.appColorWhite,
-                        width: 20,
-                        height: 20,
+                      Container(
+                        height: height * 0.1,
+                        alignment: Alignment.center,
+                        child: textView(StringUtils.txtUnlockZimbo,
+                            textColor: ColorUtils.appColorWhite,
+                            fontSize: SizeUtils.textSizeXLarge,
+                            fontWeight: FontWeight.w600,
+                            isCentered: true,
+                            maxLine: 2),
                       ),
-                      const SizedBox(
-                        width: 10,
+                      Container(
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Image.asset(ImageUtils.imgIcUnLockMain,
+                                color: ColorUtils.appColorWhite,
+                                width: height * 0.1,
+                                height: height * 0.1,)
+                            ],
+                          )),
+                      Container(
+                        alignment: Alignment.center,
+                        margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
+                                  width * 0.01, width * 0.01),
+                              child: Row(
+                                children: <Widget>[
+                                  SvgPicture.asset(
+                                    ImageUtils.imgIcCheckCircleSuccess,
+                                    width: 20,
+                                    height: 20,
+                                    color: ColorUtils.appColorAccent,
+                                  ),
+                                  SizedBox(
+                                    width: width * 0.015,
+                                  ),
+                                  textView(StringUtils.txtPersonalSustainabilityScore,
+                                      textColor: ColorUtils.appColorWhite,
+                                      fontSize: SizeUtils.textSizeSMedium,
+                                      fontWeight: FontWeight.w400,
+                                      maxLine: 2),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
+                                  width * 0.01, width * 0.01),
+                              child: Row(
+                                children: <Widget>[
+                                  SvgPicture.asset(
+                                    ImageUtils.imgIcCheckCircleSuccess,
+                                    width: 20,
+                                    height: 20,
+                                    color: ColorUtils.appColorAccent,
+                                  ),
+                                  SizedBox(
+                                    width: width * 0.015,
+                                  ),
+                                  textView(StringUtils.txtMonitorMoneySavedFromReuse,
+                                      textColor: ColorUtils.appColorWhite,
+                                      fontSize: SizeUtils.textSizeSMedium,
+                                      fontWeight: FontWeight.w400,
+                                      maxLine: 2),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
+                                  width * 0.01, width * 0.01),
+                              child: Row(
+                                children: <Widget>[
+                                  SvgPicture.asset(
+                                    ImageUtils.imgIcCheckCircleSuccess,
+                                    width: 20,
+                                    height: 20,
+                                    color: ColorUtils.appColorAccent,
+                                  ),
+                                  SizedBox(
+                                    width: width * 0.015,
+                                  ),
+                                  textView(StringUtils.txtMonitorPersonalCarbonOffset,
+                                      textColor: ColorUtils.appColorWhite,
+                                      fontSize: SizeUtils.textSizeSMedium,
+                                      fontWeight: FontWeight.w400,
+                                      maxLine: 2),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
+                                  width * 0.01, width * 0.01),
+                              child: Row(
+                                children: <Widget>[
+                                  SvgPicture.asset(
+                                    ImageUtils.imgIcCheckCircleSuccess,
+                                    width: 20,
+                                    height: 20,
+                                    color: ColorUtils.appColorAccent,
+                                  ),
+                                  SizedBox(
+                                    width: width * 0.015,
+                                  ),
+                                  textView(StringUtils.txtMonitorPositiveEnvironment,
+                                      textColor: ColorUtils.appColorWhite,
+                                      fontSize: SizeUtils.textSizeSMedium,
+                                      fontWeight: FontWeight.w400,
+                                      maxLine: 2),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
+                                  width * 0.01, width * 0.01),
+                              child: Row(
+                                children: <Widget>[
+                                  SvgPicture.asset(
+                                    ImageUtils.imgIcCheckCircleSuccess,
+                                    width: 20,
+                                    height: 20,
+                                    color: ColorUtils.appColorAccent,
+                                  ),
+                                  SizedBox(
+                                    width: width * 0.015,
+                                  ),
+                                  textView(StringUtils.txtExclusiveOffersAndDiscounts,
+                                      textColor: ColorUtils.appColorWhite,
+                                      fontSize: SizeUtils.textSizeSMedium,
+                                      fontWeight: FontWeight.w400,
+                                      maxLine: 2),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                      textView(StringUtils.txtUnlockZimboSmall,
-                          textColor: ColorUtils.appColorWhite,
-                          fontSize: SizeUtils.textSizeNormal,
-                          fontWeight: FontWeight.w600,
-                          isCentered: true,
-                          maxLine: 2),
+
                     ],
-                  )),
-              Container(
-                alignment: Alignment.center,
-                margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-                decoration: const BoxDecoration(
-                    color: ColorUtils.appColorWhite,
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
-                          width * 0.01, width * 0.01),
-                      child: Row(
-                        children: <Widget>[
-                          SvgPicture.asset(
-                            ImageUtils.imgIcCheckCircleSuccess,
-                            width: 20,
-                            height: 20,
-                          ),
-                          SizedBox(
-                            width: width * 0.015,
-                          ),
-                          textView(StringUtils.txtPersonalSustainabilityScore,
-                              textColor: ColorUtils.appColorTextLight,
-                              fontSize: SizeUtils.textSizeSMedium,
-                              fontWeight: FontWeight.w400,
-                              maxLine: 2),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
-                          width * 0.01, width * 0.01),
-                      child: Row(
-                        children: <Widget>[
-                          SvgPicture.asset(
-                            ImageUtils.imgIcCheckCircleSuccess,
-                            width: 20,
-                            height: 20,
-                          ),
-                          SizedBox(
-                            width: width * 0.015,
-                          ),
-                          textView(StringUtils.txtMonitorMoneySavedFromReuse,
-                              textColor: ColorUtils.appColorTextLight,
-                              fontSize: SizeUtils.textSizeSMedium,
-                              fontWeight: FontWeight.w400,
-                              maxLine: 2),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
-                          width * 0.01, width * 0.01),
-                      child: Row(
-                        children: <Widget>[
-                          SvgPicture.asset(
-                            ImageUtils.imgIcCheckCircleSuccess,
-                            width: 20,
-                            height: 20,
-                          ),
-                          SizedBox(
-                            width: width * 0.015,
-                          ),
-                          textView(StringUtils.txtMonitorPersonalCarbonOffset,
-                              textColor: ColorUtils.appColorTextLight,
-                              fontSize: SizeUtils.textSizeSMedium,
-                              fontWeight: FontWeight.w400,
-                              maxLine: 2),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
-                          width * 0.01, width * 0.01),
-                      child: Row(
-                        children: <Widget>[
-                          SvgPicture.asset(
-                            ImageUtils.imgIcCheckCircleSuccess,
-                            width: 20,
-                            height: 20,
-                          ),
-                          SizedBox(
-                            width: width * 0.015,
-                          ),
-                          textView(StringUtils.txtMonitorPositiveEnvironment,
-                              textColor: ColorUtils.appColorTextLight,
-                              fontSize: SizeUtils.textSizeSMedium,
-                              fontWeight: FontWeight.w400,
-                              maxLine: 2),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
-                          width * 0.01, width * 0.01),
-                      child: Row(
-                        children: <Widget>[
-                          SvgPicture.asset(
-                            ImageUtils.imgIcCheckCircleSuccess,
-                            width: 20,
-                            height: 20,
-                          ),
-                          SizedBox(
-                            width: width * 0.015,
-                          ),
-                          textView(StringUtils.txtExclusiveOffersAndDiscounts,
-                              textColor: ColorUtils.appColorTextLight,
-                              fontSize: SizeUtils.textSizeSMedium,
-                              fontWeight: FontWeight.w400,
-                              maxLine: 2),
-                        ],
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.fromLTRB(width * 0.05, 0, width * 0.05, 0),
-                alignment: Alignment.center,
-                child: textView(StringUtils.txtTry14DaysFree,
-                    textColor: ColorUtils.appColorWhite,
-                    fontSize: SizeUtils.textSizeSMedium,
-                    fontWeight: FontWeight.w600,
-                    isCentered: true,
-                    maxLine: 2),
-              ),
-              Container(
-                alignment: Alignment.center,
-                margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                child: RoundButton(
-                  isStroked: false,
-                  textContent: StringUtils.txtContinue,
-                  textSize: SizeUtils.textSizeMedium,
-                  radius: 30,
-                  onPressed: () => model.onClickContinue(context),
-                ),
-              ).visible(false),
-              Container(
-                alignment: Alignment.topCenter,
-                margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                child: RoundButton(
-                  isStroked: false,
-                  backgroundColor: ColorUtils.appColorWhite,
-                  textColor: ColorUtils.appColorTextTitle,
-                  textContent: StringUtils.txtYouAlreadySubscribed,
-                  textSize: SizeUtils.textSizeMedium,
-                  radius: 30,
-                  onPressed: () {},
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.fromLTRB(width * 0.05, 0, width * 0.05, 0),
-                alignment: Alignment.center,
-                child: textView(StringUtils.txtNoNeedToPay,
-                    textColor: ColorUtils.appColorWhite_50,
-                    fontSize: SizeUtils.textSizeSmall,
-                    fontWeight: FontWeight.w400,
-                    isCentered: true,
-                    maxLine: 2),
-              ),
-            ],
-          ),
+                Positioned(
+                  bottom: 10,
+                  child: SizedBox(
+                    height: height * 0.3,
+                    width: width,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Container(
+                          alignment: Alignment.topCenter,
+                          margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                          child: RoundButton(
+                            isStroked: false,
+                            backgroundColor: ColorUtils.appColorWhite,
+                            textColor: ColorUtils.appColorTextTitle,
+                            textContent: StringUtils.txtYouAlreadySubscribed,
+                            textSize: SizeUtils.textSizeMedium,
+                            radius: 30,
+                            onPressed: () {},
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(width * 0.05, 0, width * 0.05, 0),
+                          alignment: Alignment.center,
+                          child: textView(StringUtils.txtFor14Days,
+                              textColor: ColorUtils.appColorBlue,
+                              fontSize: SizeUtils.textSizeNormal,
+                              fontWeight: FontWeight.w500,
+                              isCentered: true,
+                              maxLine: 2),
+                        ),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(width * 0.05, 0, width * 0.05, 0),
+                          alignment: Alignment.center,
+                          child: textView(StringUtils.txtNoNeedToPay,
+                              textColor: ColorUtils.appColorBlue,
+                              fontSize: SizeUtils.textSizeSmall,
+                              fontWeight: FontWeight.w400,
+                              isCentered: true,
+                              maxLine: 2),
+                        ),
+                      
+                      ],
+                    ),
+                  )
+                  
+                )
+                
+              ],
+            )
+            
+          )
         ),
         onWillPop: () {
           finishView(context);

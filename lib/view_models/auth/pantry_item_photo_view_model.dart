@@ -57,6 +57,10 @@ class PantryItemPhotoViewModel extends BaseViewModel {
         });
   }
 
+  onClickLater(BuildContext context){
+    finishView(context, true);
+  }
+
   onClickNext(BuildContext context) async {
     List _list = [];
     for (int i = 0; i < mReqList.length; i++) {

@@ -10,6 +10,9 @@ import 'package:zimbo/view_models/base_view_model.dart';
 import 'package:zimbo/views/auth/pantry_item_photo_view.dart';
 import 'package:zimbo/views/other/add_item_view.dart';
 
+import '../../utils/color_utils.dart';
+import '../../utils/system_utils.dart';
+
 class MyItemsViewModel extends BaseViewModel {
   List<RecyclableItemModel> mList = [];
   List<RecyclableItemModel> mAdditionalList = [];
@@ -75,7 +78,7 @@ class MyItemsViewModel extends BaseViewModel {
 
   gotoItemPhotoView(BuildContext context, List<RecyclableItemModel> list, RecyclableItemModel item) async {
     var result = await PantryItemPhotoView(list).launch(context, isNewTask: false);
-
+    setStatusBarColor(ColorUtils.appColorWhite);
     if(result != null && result){
         mList.add(item);
         mAdditionalList.removeWhere((element) => element.id == item.id);

@@ -57,6 +57,11 @@ class SelectItemPhotoViewModel extends BaseViewModel {
         });
   }
 
+
+  onClickLater(BuildContext context){
+    const SelectShoppingDayView().launch(context, isNewTask: true);
+  }
+
   onClickNext(BuildContext context) {
     List _list = [];
     for (int i = 0; i < mReqList.length; i++) {

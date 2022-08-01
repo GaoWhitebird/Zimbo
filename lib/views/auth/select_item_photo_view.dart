@@ -85,15 +85,35 @@ class _SelectItemPhotoViewState extends State<SelectItemPhotoView> {
                       ),
                     ),
                   ),
-                  Container(
-                    alignment: Alignment.center,
-                    margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                    child: RoundButton(
-                        isStroked: false,
-                        textContent: StringUtils.txtNext,
-                        textSize: SizeUtils.textSizeMedium,
-                        radius: 30,
-                        onPressed: () => model.onClickNext(context)),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Expanded(
+                        child: Container(
+                          alignment: Alignment.center,
+                          margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                          child: RoundButton(
+                            isStroked: false,
+                            textContent: StringUtils.txtDone,
+                            textSize: SizeUtils.textSizeMedium,
+                            radius: 30,
+                            onPressed: () => model.onClickNext(context))
+                          ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          alignment: Alignment.center,
+                          margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                          child: RoundButton(
+                            isStroked: false,
+                            textContent: StringUtils.txtLater,
+                            textSize: SizeUtils.textSizeMedium,
+                            radius: 30,
+                            onPressed: () => model.onClickLater(context)),
+                          )
+                      ),
+                    ],
                   ),
                 ],
               ),
