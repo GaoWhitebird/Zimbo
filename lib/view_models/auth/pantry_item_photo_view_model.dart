@@ -57,8 +57,23 @@ class PantryItemPhotoViewModel extends BaseViewModel {
         });
   }
 
-  onClickLater(BuildContext context){
-    finishView(context, true);
+  onClickLater(BuildContext context) async {
+    List _list = [];
+        for (int i = 0; i < mReqList.length; i++) {
+          _list.add(mReqList[i].toJson());
+        }
+
+        await networkService
+            .doAddRecyclableItems(token!, AddRecyclableReq(list: _list))
+            .then((value) => {
+                  if (value != null)
+                    {
+                      showMessage(StringUtils.txtRecyclableItemsAdded, null),
+                    }else {
+                      showMessage(StringUtils.txtRecyclableItemsAddedFail, null),
+                    },
+                  finishView(context, true),
+                });
   }
 
   onClickNext(BuildContext context) async {

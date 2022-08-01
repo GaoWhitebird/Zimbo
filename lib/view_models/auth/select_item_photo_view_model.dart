@@ -11,6 +11,8 @@ import 'package:zimbo/views/auth/select_shopping_day_view.dart';
 import 'package:zimbo/views/dialog/photo_select_dlg.dart';
 import 'package:zimbo/views/dialog/take_photo_help_dlg.dart';
 
+import '../../utils/widget_utils.dart';
+
 class SelectItemPhotoViewModel extends BaseViewModel {
   String? token;
   List<RecyclableItemModel> mList = [];
@@ -59,12 +61,30 @@ class SelectItemPhotoViewModel extends BaseViewModel {
 
 
   onClickLater(BuildContext context){
-    const SelectShoppingDayView().launch(context, isNewTask: true);
+    List _list = [];
+    for (int i = 0; i < mReqList.length; i++) {
+      _list.add(mReqList[i].toJson());
+    }
+
+    networkService
+        .doAddRecyclableItems(token!, AddRecyclableReq(list: _list))
+        .then((value) => {
+              if (value != null)
+                {
+                  const SelectShoppingDayView()
+                      .launch(context, isNewTask: true),
+                }
+            });
   }
 
   onClickNext(BuildContext context) {
     List _list = [];
     for (int i = 0; i < mReqList.length; i++) {
+      if(mReqList[i].image == null){
+        showMessage(StringUtils.txtAddPantryItemImage, null);
+        return;
+      }
+
       _list.add(mReqList[i].toJson());
     }
 
