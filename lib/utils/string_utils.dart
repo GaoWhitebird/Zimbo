@@ -247,7 +247,7 @@ class StringUtils {
   static const txtMonitorEnvironmentalImpact =
       'Monitor positive environmental impact';
   static const txtExclusiveOffersAndDiscounts =
-      'Exclusive offers and discounts \n(coming soon)';
+      'Exclusive offers and discounts (coming soon)';
   static const txtTry14DaysFree = 'Try 14 days free, then \$1.99/month';
   static const txtNoNeedToPay =
       'No need to pay if you cancel the subscription at least a day before the 14-day free trial ends';

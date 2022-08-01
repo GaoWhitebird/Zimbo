@@ -113,7 +113,7 @@ class SubscriptionLockView extends StatelessWidget {
                         child: Column(
                           children: <Widget>[
                             Container(
-                              margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
+                              margin: EdgeInsets.fromLTRB(width * 0.02, width * 0.01,
                                   width * 0.01, width * 0.01),
                               child: Row(
                                 children: <Widget>[
@@ -128,14 +128,14 @@ class SubscriptionLockView extends StatelessWidget {
                                   ),
                                   textView(StringUtils.txtPersonalSustainabilityScore,
                                       textColor: ColorUtils.appColorWhite,
-                                      fontSize: SizeUtils.textSizeSMedium,
+                                      fontSize: SizeUtils.textSizeLSmall,
                                       fontWeight: FontWeight.w400,
                                       maxLine: 2),
                                 ],
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
+                              margin: EdgeInsets.fromLTRB(width * 0.02, width * 0.01,
                                   width * 0.01, width * 0.01),
                               child: Row(
                                 children: <Widget>[
@@ -150,14 +150,14 @@ class SubscriptionLockView extends StatelessWidget {
                                   ),
                                   textView(StringUtils.txtMonitorMoneySavedFromReuse,
                                       textColor: ColorUtils.appColorWhite,
-                                      fontSize: SizeUtils.textSizeSMedium,
+                                      fontSize: SizeUtils.textSizeLSmall,
                                       fontWeight: FontWeight.w400,
                                       maxLine: 2),
                                 ],
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
+                              margin: EdgeInsets.fromLTRB(width * 0.02, width * 0.01,
                                   width * 0.01, width * 0.01),
                               child: Row(
                                 children: <Widget>[
@@ -172,14 +172,14 @@ class SubscriptionLockView extends StatelessWidget {
                                   ),
                                   textView(StringUtils.txtMonitorPersonalCarbonOffset,
                                       textColor: ColorUtils.appColorWhite,
-                                      fontSize: SizeUtils.textSizeSMedium,
+                                      fontSize: SizeUtils.textSizeLSmall,
                                       fontWeight: FontWeight.w400,
                                       maxLine: 2),
                                 ],
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
+                              margin: EdgeInsets.fromLTRB(width * 0.02, width * 0.01,
                                   width * 0.01, width * 0.01),
                               child: Row(
                                 children: <Widget>[
@@ -194,14 +194,14 @@ class SubscriptionLockView extends StatelessWidget {
                                   ),
                                   textView(StringUtils.txtMonitorPositiveEnvironment,
                                       textColor: ColorUtils.appColorWhite,
-                                      fontSize: SizeUtils.textSizeSMedium,
+                                      fontSize: SizeUtils.textSizeLSmall,
                                       fontWeight: FontWeight.w400,
                                       maxLine: 2),
                                 ],
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
+                              margin: EdgeInsets.fromLTRB(width * 0.02, width * 0.01,
                                   width * 0.01, width * 0.01),
                               child: Row(
                                 children: <Widget>[
@@ -216,7 +216,7 @@ class SubscriptionLockView extends StatelessWidget {
                                   ),
                                   textView(StringUtils.txtExclusiveOffersAndDiscounts,
                                       textColor: ColorUtils.appColorWhite,
-                                      fontSize: SizeUtils.textSizeSMedium,
+                                      fontSize: SizeUtils.textSizeLSmall,
                                       fontWeight: FontWeight.w400,
                                       maxLine: 2),
                                 ],

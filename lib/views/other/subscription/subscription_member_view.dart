@@ -99,7 +99,7 @@ class SubscriptionMemberView extends StatelessWidget {
                         child: Column(
                           children: <Widget>[
                             Container(
-                              margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
+                              margin: EdgeInsets.fromLTRB(width * 0.02, width * 0.01,
                                   width * 0.01, width * 0.01),
                               child: Row(
                                 children: <Widget>[
@@ -114,14 +114,14 @@ class SubscriptionMemberView extends StatelessWidget {
                                   ),
                                   textView(StringUtils.txtPersonalSustainabilityScore,
                                       textColor: ColorUtils.appColorWhite,
-                                      fontSize: SizeUtils.textSizeSMedium,
+                                      fontSize: SizeUtils.textSizeLSmall,
                                       fontWeight: FontWeight.w400,
                                       maxLine: 2),
                                 ],
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
+                              margin: EdgeInsets.fromLTRB(width * 0.02, width * 0.01,
                                   width * 0.01, width * 0.01),
                               child: Row(
                                 children: <Widget>[
@@ -136,14 +136,14 @@ class SubscriptionMemberView extends StatelessWidget {
                                   ),
                                   textView(StringUtils.txtMonitorMoneySavedFromReuse,
                                       textColor: ColorUtils.appColorWhite,
-                                      fontSize: SizeUtils.textSizeSMedium,
+                                      fontSize: SizeUtils.textSizeLSmall,
                                       fontWeight: FontWeight.w400,
                                       maxLine: 2),
                                 ],
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
+                              margin: EdgeInsets.fromLTRB(width * 0.02, width * 0.01,
                                   width * 0.01, width * 0.01),
                               child: Row(
                                 children: <Widget>[
@@ -158,14 +158,14 @@ class SubscriptionMemberView extends StatelessWidget {
                                   ),
                                   textView(StringUtils.txtMonitorPersonalCarbonOffset,
                                       textColor: ColorUtils.appColorWhite,
-                                      fontSize: SizeUtils.textSizeSMedium,
+                                      fontSize: SizeUtils.textSizeLSmall,
                                       fontWeight: FontWeight.w400,
                                       maxLine: 2),
                                 ],
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
+                              margin: EdgeInsets.fromLTRB(width * 0.02, width * 0.01,
                                   width * 0.01, width * 0.01),
                               child: Row(
                                 children: <Widget>[
@@ -180,14 +180,14 @@ class SubscriptionMemberView extends StatelessWidget {
                                   ),
                                   textView(StringUtils.txtMonitorPositiveEnvironment,
                                       textColor: ColorUtils.appColorWhite,
-                                      fontSize: SizeUtils.textSizeSMedium,
+                                      fontSize: SizeUtils.textSizeLSmall,
                                       fontWeight: FontWeight.w400,
                                       maxLine: 2),
                                 ],
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.fromLTRB(width * 0.05, width * 0.01,
+                              margin: EdgeInsets.fromLTRB(width * 0.02, width * 0.01,
                                   width * 0.01, width * 0.01),
                               child: Row(
                                 children: <Widget>[
@@ -202,7 +202,7 @@ class SubscriptionMemberView extends StatelessWidget {
                                   ),
                                   textView(StringUtils.txtExclusiveOffersAndDiscounts,
                                       textColor: ColorUtils.appColorWhite,
-                                      fontSize: SizeUtils.textSizeSMedium,
+                                      fontSize: SizeUtils.textSizeLSmall,
                                       fontWeight: FontWeight.w400,
                                       maxLine: 2),
                                 ],
@@ -229,8 +229,8 @@ class SubscriptionMemberView extends StatelessWidget {
                           margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                           child: RoundButton(
                             isStroked: false,
-                            backgroundColor: ColorUtils.appColorWhite,
-                            textColor: ColorUtils.appColorTextTitle,
+                            backgroundColor: ColorUtils.appColorAccent,
+                            textColor: ColorUtils.appColorWhite,
                             textContent: StringUtils.txtYouAlreadySubscribed,
                             textSize: SizeUtils.textSizeMedium,
                             radius: 30,
